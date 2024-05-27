@@ -71,6 +71,5 @@ target/*
 *.lst
 *.html
 *.css
-*.xml
 *.js
 *.csv
