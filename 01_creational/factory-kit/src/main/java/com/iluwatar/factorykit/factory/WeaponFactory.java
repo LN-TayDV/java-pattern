@@ -23,8 +23,9 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit.weapon.factory;
+package com.iluwatar.factorykit.factory;
 
+import com.iluwatar.factorykit.weapon.Weapon;
 import java.util.HashMap;
 import java.util.function.Consumer;
 import java.util.function.Supplier;

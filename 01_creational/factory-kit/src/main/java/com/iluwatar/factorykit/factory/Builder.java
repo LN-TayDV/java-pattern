@@ -23,12 +23,14 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection.tobacco;
+package com.iluwatar.factorykit.factory;
 
-import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
+import com.iluwatar.factorykit.weapon.Weapon;
+import java.util.function.Supplier;
 
 /**
- * OldTobyTobacco concrete {@link Tobacco} implementation.
+ * Functional interface that allows adding builder with name to the factory.
  */
-public class OldTobyTobacco extends Tobacco {
+public interface Builder {
+    void add(WeaponType name, Supplier<Weapon> supplier);
 }

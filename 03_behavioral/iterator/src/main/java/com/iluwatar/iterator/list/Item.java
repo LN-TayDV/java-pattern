@@ -35,10 +35,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Item {
 
-    private final String name;
     @Getter
     @Setter
     private ItemType type;
+
+    private final String name;
 
     @Override
     public String toString() {

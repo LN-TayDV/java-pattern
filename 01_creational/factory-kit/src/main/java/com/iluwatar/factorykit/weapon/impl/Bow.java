@@ -23,12 +23,16 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection.tobacco;
+package com.iluwatar.factorykit.weapon.impl;
 
-import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
+import com.iluwatar.factorykit.weapon.Weapon;
 
 /**
- * RivendellTobacco concrete {@link Tobacco} implementation.
+ * Class representing Bows.
  */
-public class RivendellTobacco extends Tobacco {
+public class Bow implements Weapon {
+    @Override
+    public String toString() {
+        return "Bow";
+    }
 }

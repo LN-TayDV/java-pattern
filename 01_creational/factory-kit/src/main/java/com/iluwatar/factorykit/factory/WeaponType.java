@@ -23,13 +23,16 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit.weapon.factory;
+package com.iluwatar.factorykit.factory;
 
-import java.util.function.Supplier;
+import com.iluwatar.factorykit.weapon.Weapon;
 
 /**
- * Functional interface that allows adding builder with name to the factory.
+ * Enumerates {@link Weapon} types.
  */
-public interface Builder {
-    void add(WeaponType name, Supplier<Weapon> supplier);
+public enum WeaponType {
+    SWORD,
+    AXE,
+    BOW,
+    SPEAR
 }

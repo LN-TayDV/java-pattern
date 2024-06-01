@@ -27,12 +27,12 @@ package com.iluwatar.factorykit.factorykit;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.iluwatar.factorykit.weapon.factory.Weapon;
-import com.iluwatar.factorykit.weapon.factory.WeaponFactory;
-import com.iluwatar.factorykit.weapon.factory.WeaponType;
-import com.iluwatar.factorykit.weapon.types.Axe;
-import com.iluwatar.factorykit.weapon.types.Spear;
-import com.iluwatar.factorykit.weapon.types.Sword;
+import com.iluwatar.factorykit.weapon.Weapon;
+import com.iluwatar.factorykit.factory.WeaponFactory;
+import com.iluwatar.factorykit.factory.WeaponType;
+import com.iluwatar.factorykit.weapon.impl.Axe;
+import com.iluwatar.factorykit.weapon.impl.Spear;
+import com.iluwatar.factorykit.weapon.impl.Sword;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -28,8 +28,8 @@ package com.iluwatar.dependency.injection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.iluwatar.dependency.injection.constructor.SimpleWizard;
-import com.iluwatar.dependency.injection.tobacco.OldTobyTobacco;
-import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
+import com.iluwatar.dependency.injection.tobacco.extend.OldTobyTobacco;
+import com.iluwatar.dependency.injection.tobacco.Tobacco;
 import com.iluwatar.dependency.injection.utils.InMemoryAppender;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

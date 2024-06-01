@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit.weapon.factory;
+package com.iluwatar.factorykit.weapon;
 
 /**
  * Interface representing weapon.

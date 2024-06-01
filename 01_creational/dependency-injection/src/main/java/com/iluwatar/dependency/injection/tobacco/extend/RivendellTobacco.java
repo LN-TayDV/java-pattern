@@ -23,12 +23,12 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection.tobacco;
+package com.iluwatar.dependency.injection.tobacco.extend;
 
-import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
+import com.iluwatar.dependency.injection.tobacco.Tobacco;
 
 /**
- * SecondBreakfastTobacco concrete {@link Tobacco} implementation.
+ * RivendellTobacco concrete {@link Tobacco} implementation.
  */
-public class SecondBreakfastTobacco extends Tobacco {
+public class RivendellTobacco extends Tobacco {
 }

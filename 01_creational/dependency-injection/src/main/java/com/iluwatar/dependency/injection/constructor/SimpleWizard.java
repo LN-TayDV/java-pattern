@@ -26,7 +26,7 @@
 package com.iluwatar.dependency.injection.constructor;
 
 import com.iluwatar.dependency.injection.Wizard;
-import com.iluwatar.dependency.injection.tobacco.OldTobyTobacco;
+import com.iluwatar.dependency.injection.tobacco.extend.OldTobyTobacco;
 
 /**
  * Naive Wizard implementation violating the inversion of control principle. It should depend on

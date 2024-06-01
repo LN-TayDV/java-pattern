@@ -23,14 +23,16 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit.weapon.factory;
+package com.iluwatar.factorykit.weapon.impl;
+
+import com.iluwatar.factorykit.weapon.Weapon;
 
 /**
- * Enumerates {@link Weapon} types.
+ * Class representing Spear.
  */
-public enum WeaponType {
-    SWORD,
-    AXE,
-    BOW,
-    SPEAR
+public class Spear implements Weapon {
+    @Override
+    public String toString() {
+        return "Spear";
+    }
 }

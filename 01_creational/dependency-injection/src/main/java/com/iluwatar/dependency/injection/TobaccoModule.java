@@ -26,8 +26,8 @@
 package com.iluwatar.dependency.injection;
 
 import com.google.inject.AbstractModule;
-import com.iluwatar.dependency.injection.tobacco.RivendellTobacco;
-import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
+import com.iluwatar.dependency.injection.tobacco.extend.RivendellTobacco;
+import com.iluwatar.dependency.injection.tobacco.Tobacco;
 
 /**
  * Guice module for binding certain concrete {@link Tobacco} implementation.

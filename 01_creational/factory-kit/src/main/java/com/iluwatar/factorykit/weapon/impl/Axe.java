@@ -23,9 +23,9 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit.weapon.types;
+package com.iluwatar.factorykit.weapon.impl;
 
-import com.iluwatar.factorykit.weapon.factory.Weapon;
+import com.iluwatar.factorykit.weapon.Weapon;
 
 /**
  * Class representing Axe.

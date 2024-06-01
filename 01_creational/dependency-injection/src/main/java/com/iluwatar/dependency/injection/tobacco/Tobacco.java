@@ -23,16 +23,21 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit.weapon.types;
+package com.iluwatar.dependency.injection.tobacco;
 
-import com.iluwatar.factorykit.weapon.factory.Weapon;
+import com.iluwatar.dependency.injection.Wizard;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * Class representing Spear.
+ * Tobacco abstraction.
  */
-public class Spear implements Weapon {
-    @Override
-    public String toString() {
-        return "Spear";
+@Slf4j
+public abstract class Tobacco {
+
+    public void smoke(Wizard wizard) {
+        LOGGER.info("{} smoking {}",
+            wizard.getClass().getSimpleName(),
+            this.getClass().getSimpleName()
+        );
     }
 }
