@@ -18,7 +18,7 @@ tag:
 ## Intent
 
 To allow subclasses to alter the core behavior of a class by providing specific implementations of certain methods while keeping the overall structure unchanged.
-  
+
 ## Explanation
 
 Real-world example
@@ -125,8 +125,8 @@ Program output:
 ## Class diagram
 
 ![Subclass Sandbox](./etc/subclass-sandbox.urm.png "Subclass Sandbox pattern class diagram")
-  
-## Applicability  
+
+## Applicability
 
 * Use when you want to create a framework that allows users to define their own behaviors by extending classes.
 * Applicable in scenarios where you need to enforce a specific algorithm structure while allowing certain steps to be overridden.
@@ -156,7 +156,7 @@ Trade-offs:
 * [Template Method](https://java-design-patterns.com/patterns/template-method/): Similar in enforcing a structure where certain steps can be overridden by subclasses.
 * [Strategy](https://java-design-patterns.com/patterns/strategy/): Both involve interchangeable behaviors, but Strategy pattern uses composition over inheritance.
 
-## Credits  
+## Credits
 
 * [Design Patterns: Elements of Reusable Object-Oriented Software](https://amzn.to/3w0pvKI)
 * [Effective Java](https://amzn.to/4cGk2Jz)

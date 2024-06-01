@@ -21,11 +21,11 @@ The Poison Pill design pattern is used to gracefully shut down a service or a pr
 
 Real world example
 
-> A real-world analogy for the Poison Pill design pattern is the use of a "closed" sign in a retail store. When the store is ready to close for the day, the manager places a "closed" sign on the door. This sign acts as a signal to any new customers that no more customers will be admitted, but it doesn't immediately force out the customers already inside. The store staff will then attend to the remaining customers, allowing them to complete their purchases before finally locking up and turning off the lights. Similarly, in the Poison Pill pattern, a special "poison pill" message signals consumers to stop accepting new tasks while allowing them to finish processing the current tasks before shutting down gracefully. 
+> A real-world analogy for the Poison Pill design pattern is the use of a "closed" sign in a retail store. When the store is ready to close for the day, the manager places a "closed" sign on the door. This sign acts as a signal to any new customers that no more customers will be admitted, but it doesn't immediately force out the customers already inside. The store staff will then attend to the remaining customers, allowing them to complete their purchases before finally locking up and turning off the lights. Similarly, in the Poison Pill pattern, a special "poison pill" message signals consumers to stop accepting new tasks while allowing them to finish processing the current tasks before shutting down gracefully.
 
 In plain words
 
-> Poison Pill is a known message structure that ends the message exchange.   
+> Poison Pill is a known message structure that ends the message exchange.
 
 **Programmatic Example**
 
@@ -116,7 +116,7 @@ public class SimpleMessageQueue implements MessageQueue {
 }
 ```
 
-Next, we need message `Producer` and `Consumer`. Internally they use the message queues from above. It's important to notice that when `Producer` stops, it sends out the poison pill to inform `Consumer` that the messaging has finished. 
+Next, we need message `Producer` and `Consumer`. Internally they use the message queues from above. It's important to notice that when `Producer` stops, it sends out the poison pill to inform `Consumer` that the messaging has finished.
 
 ```java
 public class Producer {

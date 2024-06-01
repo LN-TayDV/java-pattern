@@ -6,7 +6,6 @@ tag:
  - Decoupling
 ---
 
-
 ## Propósito
 
 Separe la definición de la interfaz y su implementación en paquetes diferentes. Esto permite al cliente desconozca por completo la implementación.

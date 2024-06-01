@@ -6,8 +6,8 @@ tag:
  - Performance
 ---
 
-
 ## Propósito
+
 El patrón de diseño de objeto activo desacopla la ejecución del método de la invocación del método para los objetos que residen en su propio hilo de control. El objetivo es introducir la concurrencia mediante el uso de la invocación de métodos asíncronos y un planificador para manejar solicitudes.
 
 ## Explicación
@@ -19,7 +19,6 @@ Ejemplo del mundo real
 > Los orcos son conocidos por su salvajismo y filosofía de no hacer equipo. Basándonos en este comportamiento se podría decir que tienen su propio hilo de control.
 
 Podemos usar el patrón Active Object para implementar una criatura que tiene su propio hilo de control y exponer su API pero no la ejecución como tal.
-
 
 **Ejemplo Programático**
 

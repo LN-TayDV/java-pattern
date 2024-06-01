@@ -8,7 +8,7 @@ tag:
 
 ## Intention
 
-Le pattron de conception Asynchronous method invocation est un pattron dans lequel le thread appelé n'est pas bloqué en 
+Le pattron de conception Asynchronous method invocation est un pattron dans lequel le thread appelé n'est pas bloqué en
 attendant la fin de l'exécution des tâches.
 Ce pattron permet le traitement parallèle de plusieurs tâches indépendantes et récupère les résultats via les callback ou patiente jusqu'à la fin.
 
@@ -26,7 +26,7 @@ En clair
 
 Wikipedia dit
 
-> Dans la programmation multithread, asynchronous method invocation (AMI), également connue sous le nom de asynchronous method calls 
+> Dans la programmation multithread, asynchronous method invocation (AMI), également connue sous le nom de asynchronous method calls
 > ou le pattron asynchronous, est un pattron de conception dans lequel le site d'appel n'est pas bloqué en attendant que le code appelé se termine.
 > Au lieu de cela, le thread appelant est informé de l'arrivée de la réponse. L'interrogation pour une réponse est une option non souhaitée.
 

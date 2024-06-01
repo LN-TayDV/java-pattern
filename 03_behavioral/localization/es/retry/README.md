@@ -111,7 +111,6 @@ Siempre que una aplicación necesite comunicarse con un recurso externo, especia
 
 ## Patrones relacionados
 
-
 * [Circuit Breaker](https://java-design-patterns.com/patterns/circuit-breaker/)
 
 ## Créditos

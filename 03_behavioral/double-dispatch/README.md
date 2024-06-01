@@ -33,7 +33,7 @@ Wikipedia says
 
 **Programmatic Example**
 
-The Double Dispatch pattern is used to handle collisions between different types of game objects. Each game object is an instance of a class that extends the `GameObject` abstract class. The `GameObject` class has method `collision`, which is overridden in each subclass to define the behavior when a collision occurs with another game object.  Here is a simplified version of the `GameObject` class and its subclasses:
+The Double Dispatch pattern is used to handle collisions between different types of game objects. Each game object is an instance of a class that extends the `GameObject` abstract class. The `GameObject` class has method `collision`, which is overridden in each subclass to define the behavior when a collision occurs with another game object. Here is a simplified version of the `GameObject` class and its subclasses:
 
 ```java
 public abstract class GameObject {

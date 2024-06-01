@@ -117,6 +117,7 @@ public static Trampoline<Integer> loop(int times, int prod) {
 ## 适用场景
 
 使用蹦床模式时
+
 * 用于实现尾递归函数。该模式允许切换无堆栈操作。
 * 用于在同一线程上交错执行两个或多个函数。
 

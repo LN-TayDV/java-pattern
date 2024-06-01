@@ -26,7 +26,7 @@ Queue-Based Load Leveling aims to manage the load in a system by using a queue t
 
 Real-world example
 
-> Imagine a popular restaurant with a limited number of kitchen staff (consumers) and a large number of customers placing orders (producers). During peak hours, if all customers were served immediately, the kitchen would be overwhelmed, leading to long wait times and potential mistakes in orders. To manage this, the restaurant implements a queue-based load leveling system using a ticketing machine. 
+> Imagine a popular restaurant with a limited number of kitchen staff (consumers) and a large number of customers placing orders (producers). During peak hours, if all customers were served immediately, the kitchen would be overwhelmed, leading to long wait times and potential mistakes in orders. To manage this, the restaurant implements a queue-based load leveling system using a ticketing machine.
 >
 > When customers place orders, they receive a ticket number and their order is placed in a queue. The kitchen staff then processes orders one at a time in the order they were received. This ensures that the kitchen can handle the workload at a manageable pace, preventing overload and maintaining service quality. Customers wait comfortably knowing their order is in line and will be handled efficiently, even during the busiest times.
 

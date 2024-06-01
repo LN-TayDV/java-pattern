@@ -7,9 +7,11 @@ tag:
 ---
 
 ## Còn được gọi là
+
 Wrapper
 
 ## Mục đích
+
 Chuyển đổi giao diện của một lớp thành một giao diện khác mà mình mong muốn. Adapter cho phép các lớp làm việc cùng nhau, mặc dù ban đầu chúng không thể làm việc cùng nhau do giao diện không tương thích.
 
 ## Giải thích
@@ -91,9 +93,11 @@ captain.row();
 ```
 
 ## Sơ đồ lớp
+
 ![alt text](../../../adapter/etc/adapter.urm.png "Adapter class diagram")
 
 ## Áp dụng
+
 Sử dụng mẫu Adapter khi:
 
 * Bạn muốn sử dụng một lớp hiện có, và giao diện của nó không phù hợp với giao diện bạn cần
@@ -107,7 +111,7 @@ Sử dụng mẫu Adapter khi:
 * [Refactoring Guru](https://refactoring.guru/design-patterns/adapter/java/example)
 * [Baeldung](https://www.baeldung.com/java-adapter-pattern)
 
-## Kết luận 
+## Kết luận
 
 Lớp adapter và đối tượng adapter có những lợi ích và khả năng thích ứng khác nhau. Một lớp adapter
 
@@ -115,7 +119,7 @@ Lớp adapter và đối tượng adapter có những lợi ích và khả năng
 * Cho phép Adapter ghi đè một số hành vi của Adaptee vì Adapter là một lớp con của Adaptee.
 * Chỉ giới thiệu một đối tượng và không cần thêm con trỏ để truy cập gián tiếp đến Adaptee.
 
-Một đối tượng Adapter 
+Một đối tượng Adapter
 
 * Cho phép một Adapter làm việc với nhiều Adaptees, tức là chính Adaptee và tất cả các lớp con của nó (nếu có). Adapter cũng có thể thêm chức năng cho tất cả Adaptee cùng một lúc.
 * Làm cho việc ghi đè hành vi của Adaptee trở nên khó khăn hơn. Nó sẽ yêu cầu việc kế thừa Adaptee và làm cho Adapter tham chiếu đến lớp con thay vì chính Adaptee.

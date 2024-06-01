@@ -19,12 +19,12 @@ To represent an operation to be performed on the elements of an object structure
 Real-world example
 
 > An analogous real-world example of the Visitor design pattern can be seen in a museum tour guide system. Imagine a museum where visitors can take guided tours to learn about different types of exhibits, such as paintings, sculptures, and historical artifacts. Each exhibit type requires a different explanation, which is provided by specialized tour guides.
-> 
-> In this scenario, the exhibits are like the elements in the Visitor pattern, and the tour guides are like the visitors. The museum structure remains unchanged, but new guides with new types of tours (operations) can be added without modifying the exhibits themselves. Each guide (visitor) implements a specific way to interact with the exhibits, providing detailed explanations according to their specialization, thereby separating the operations from the objects they operate on. 
+>
+> In this scenario, the exhibits are like the elements in the Visitor pattern, and the tour guides are like the visitors. The museum structure remains unchanged, but new guides with new types of tours (operations) can be added without modifying the exhibits themselves. Each guide (visitor) implements a specific way to interact with the exhibits, providing detailed explanations according to their specialization, thereby separating the operations from the objects they operate on.
 
 In plain words
 
-> Visitor pattern defines operations that can be performed on the nodes of the data structure. 
+> Visitor pattern defines operations that can be performed on the nodes of the data structure.
 
 Wikipedia says
 

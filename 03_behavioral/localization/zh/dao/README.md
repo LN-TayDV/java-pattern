@@ -47,7 +47,7 @@ public class Customer {
 
 这是`CustomerDao`接口及其两个不同的实现。
 
-Here's the `CustomerDao` interface and two different implementations for it. `InMemoryCustomerDao` 
+Here's the `CustomerDao` interface and two different implementations for it. `InMemoryCustomerDao`
 将简单的客户数据映射保存在内存中 而`DBCustomerDao`是真正的RDBMS实现。
 
 ```java

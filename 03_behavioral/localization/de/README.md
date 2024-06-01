@@ -28,7 +28,7 @@ Entwurfschemas können den Entwicklungsprozess beschleunigen, indem sie getestet
 Entwicklungsparadigmen bereitstellen.
 
 Die Wiederverwendung von Entwurfschemas hilft, subtile Fehler zu vermeiden, die größere
-Probleme verursachen können, sowie die Lesbarkeit des Codes für Programmierer und Architekten zu verbessern, 
+Probleme verursachen können, sowie die Lesbarkeit des Codes für Programmierer und Architekten zu verbessern,
 welche mit den Prinzipien der Entwurfsmuster vertraut sind.
 
 # Erste Schritte
@@ -37,7 +37,7 @@ Auf dieser Seite werden Java Entwurfschemas vorgestellt. Die Lösungen wurden en
 erfahrenen Programmierern und Architekten aus der Open-Source-Gemeinschaft. Die
 Schemas können anhand ihrer übergeordneten Beschreibungen oder anhand ihres
 Quellcodes durchsucht werden. Die Quellcode-Beispiele sind gut kommentiert und können als
-Programmiertutorials zur Implementierung eines bestimmten Schemas angesehen werden. Wir  verwenden die am besten
+Programmiertutorials zur Implementierung eines bestimmten Schemas angesehen werden. Wir verwenden die am besten
 bekannten und erprobtesten Open-Source Java-Technologien.
 
 Bevor Sie in die Materie der Entwurfschemas eintauchen, sollten sie sich mit den verschiednen
@@ -49,10 +49,10 @@ und Do The Simplest Thing That Could Possibly Work prinzipen anfangen. Komplexe 
 Sobald sie mit diesen Konzepten vertraut sind, können sie beginnen, sich mit den [verfügbaren Entwurfschemas](https://java-design-patterns.com/patterns/) auseinanderzusetzen, durch einen
 der folgenden Ansätze
 
- - Nach einem bestimmten Schema anhand des Namens suchen. 
- Sie können keins finden? Bitte melden sie ein neues Schema [hier](https://github.com/iluwatar/java-design-patterns/issues).
- - Verwendung von Tags wie `Performance`, `Gang of Four` oder `Data access`.
- - Verwendung von Entwurfschema-Kategorien wie `Creational`, `Behavioral` und andere.
+- Nach einem bestimmten Schema anhand des Namens suchen.
+  Sie können keins finden? Bitte melden sie ein neues Schema [hier](https://github.com/iluwatar/java-design-patterns/issues).
+- Verwendung von Tags wie `Performance`, `Gang of Four` oder `Data access`.
+- Verwendung von Entwurfschema-Kategorien wie `Creational`, `Behavioral` und andere.
 
 Hoffentlich finden sie die auf dieser Website vorgestellten objektorientierten Lösungen
 für ihre Architekturen nützlich und dass sie genauso viel Spaß beim Lernen haben, wie wir bei ihrer Entwicklung hatten.

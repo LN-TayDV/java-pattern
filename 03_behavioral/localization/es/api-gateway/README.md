@@ -10,20 +10,20 @@ tag:
 
 ## Propósito
 
-Agregar llamadas a los microservicios en un mismo lugar, la puerta de enlace API (API Gateway). El usuario 
+Agregar llamadas a los microservicios en un mismo lugar, la puerta de enlace API (API Gateway). El usuario
 hace una llamada simple a la API Gateway, y la API Gateway hace la llamada a cada microservicio relevante.
 
 ## Explicación
 
-Con el patrón de microservicios, el cliente puede necesitar datos de múltiples microservicios. Si el 
+Con el patrón de microservicios, el cliente puede necesitar datos de múltiples microservicios. Si el
 cliente llamara a cada microservicio de forma directe, podría ocasionar tiempos de carga largos, ya que
 el cliente tendría que hacer una solicitud de red para cada microservicio llamado. Además, tener
 la llamada del cliente a cada microservicio vincula directamente al cliente con ese microservicio - si la
-implementacion interna del cambio de microservicios (por ejemplo, si dos microservicios se combinan en 
-algún momento en el futuro) o si la ubicación (host y puerto) de un microservicio cambia, entonces cada 
+implementacion interna del cambio de microservicios (por ejemplo, si dos microservicios se combinan en
+algún momento en el futuro) o si la ubicación (host y puerto) de un microservicio cambia, entonces cada
 cliente que hace uso de esos microservicios debe ser actualizado.
 
-La intención del patrón API Gateway es aliviar algunos de estos problemas. En el patrón API Gateway, 
+La intención del patrón API Gateway es aliviar algunos de estos problemas. En el patrón API Gateway,
 se coloca una entidad adicional (la API Gateway) entre el cliente y los microservicios.
 El trabajo de API Gateway es agregar las llamadas a los microservicios. En lugar de que el cliente
 llame a cada microservicio individualmente, el cliente llama a la API Gateway una sola vez. La API
@@ -41,22 +41,22 @@ En otras palabras
 
 Wikipedia dice
 
-> API Gateway es un servidor que actúa como un front-end de API, recibe solicitudes de API, aplica la 
-> limitación y políticas de seguridad, pasa las solicitudes al servicio back-end y luego devuelve la 
-> respuesta al solicitante. Una puerta de enlace a menudo incluye un motor de transformación para 
-> orquestar y modificar las solicitudes y respuestas sobre la marcha. Una puerta de enlace también 
-> puede proporcionar funciones como recopilar análisis de datos y almacenamiento en caché. La puerta 
-> de enlace puede proporcionar funcionalidad para soportar autenticación, autorización, seguridad, 
+> API Gateway es un servidor que actúa como un front-end de API, recibe solicitudes de API, aplica la
+> limitación y políticas de seguridad, pasa las solicitudes al servicio back-end y luego devuelve la
+> respuesta al solicitante. Una puerta de enlace a menudo incluye un motor de transformación para
+> orquestar y modificar las solicitudes y respuestas sobre la marcha. Una puerta de enlace también
+> puede proporcionar funciones como recopilar análisis de datos y almacenamiento en caché. La puerta
+> de enlace puede proporcionar funcionalidad para soportar autenticación, autorización, seguridad,
 > auditoría y cumplimiento normativo.
 
 **Código de ejemplo**
 
 Esta implementación muestra cómo podría verse el patrón API Gateway para un sitio de e-commerce. El
-`ApiGateway` hace llamadas a los microservicios Image y Price usando `ImageClientImpl` y`PriceClientImpl` 
+`ApiGateway` hace llamadas a los microservicios Image y Price usando `ImageClientImpl` y`PriceClientImpl`
 respectivamente. Los clientes que ven el sitio en un dispositivo de escritorio pueden ver la información
 de precio y una imagen de un producto, entonces `ApiGateway` llama a los microservicios y
-agrega los datos en el modelo `DesktopProduct`. Sin embargo, los usuarios de dispositivos móviles solo 
-ven información de precios, no ven una imagen del producto. Para usuarios móviles, `ApiGateway` solo 
+agrega los datos en el modelo `DesktopProduct`. Sin embargo, los usuarios de dispositivos móviles solo
+ven información de precios, no ven una imagen del producto. Para usuarios móviles, `ApiGateway` solo
 recupera el precio información, que utiliza para completar el `MobileProduct`.
 
 Aquí está la implementación del microservicio de imagen (Image).

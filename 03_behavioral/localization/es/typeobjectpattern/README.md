@@ -8,11 +8,13 @@ tag:
 ---
 
 ## Propósito
+
 Como se explica en el libro Game Programming Patterns de Robert Nystrom, el patrón objeto tipo ayuda a
 
 > Permitir la creación flexible de nuevas "clases" mediante la creación de una única clase, cada instancia de la cual representa un tipo diferente de objeto
 
 ## Explicación
+
 Ejemplo del mundo real
 > Estás trabajando en un juego con muchas razas diferentes de monstruos. Cada raza de monstruo tiene diferentes valores para los atributos, como ataque, salud, inteligencia, etc. Quieres crear nuevas razas de monstruos, o modificar los atributos de una raza existente, sin necesidad de modificar el código y recompilar el juego.
 
@@ -194,6 +196,7 @@ public class Enemy {
 En el ejemplo anterior, `EnemyType` encapsula propiedades específicas del tipo (nombre, velocidad, salud, daño), y `Enemy` utiliza una instancia de `EnemyType` para definir su tipo. De esta forma, puedes añadir tantos tipos de enemigos como quieras sin modificar la clase "Enemigo".
 
 ## Aplicabilidad
+
 Este patrón puede utilizarse cuando:
 
 * No sabemos de antemano qué tipos vamos a necesitar.
@@ -201,6 +204,7 @@ Este patrón puede utilizarse cuando:
 * La única diferencia entre los diferentes "tipos" de objetos son los datos, no el comportamiento.
 
 ## Otro ejemplo con diagrama de clases
+
 ![alt text](./etc/typeobjectpattern.urm.png "Type-Object pattern class diagram")
 
 ## Créditos

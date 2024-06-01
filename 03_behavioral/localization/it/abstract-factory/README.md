@@ -178,7 +178,6 @@ public static class FactoryMaker {
 
 ![alt text](../../../abstract-factory/etc/abstract-factory.urm.png "Abstract Factory class diagram")
 
-
 ## Applicabilità
 
 Utilizza il pattern Abstract Factory quando
@@ -194,21 +193,21 @@ Utilizza il pattern Abstract Factory quando
 * Hai bisogno di coerenza tra i prodotti.
 * Non vuoi modificare il codice esistente quando aggiungi nuovi prodotti o famiglie di prodotti al programma.
 
-Esempi di casi d'uso	
+Esempi di casi d'uso
 
-* Selezionare la chiamata all'implementazione appropriata di FileSystemAcmeService o DatabaseAcmeService o NetworkAcmeService in fase di esecuzione. 
-* La scrittura di casi di unit test diventa molto più semplice. 
+* Selezionare la chiamata all'implementazione appropriata di FileSystemAcmeService o DatabaseAcmeService o NetworkAcmeService in fase di esecuzione.
+* La scrittura di casi di unit test diventa molto più semplice.
 * Strumenti UI per diversi sistemi operativi.
 
 ## Conseguenze
 
-* La dependency injection in Java nasconde le dipendenze delle classi di servizio, il che può portare a errori a runtime che sarebbero stati rilevati in fase di compilazione. 
-* Se da un lato il pattern è ottimo per la creazione di oggetti predefiniti, l'aggiunta di nuovi oggetti potrebbe essere complicato. 
+* La dependency injection in Java nasconde le dipendenze delle classi di servizio, il che può portare a errori a runtime che sarebbero stati rilevati in fase di compilazione.
+* Se da un lato il pattern è ottimo per la creazione di oggetti predefiniti, l'aggiunta di nuovi oggetti potrebbe essere complicato.
 * Il codice diventa più complesso di quanto dovrebbe essere, poiché vengono introdotte molte nuove interfacce e classi insieme al pattern.
 
 ## Tutorial
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## Usi noti
 

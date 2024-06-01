@@ -119,9 +119,11 @@ Kết quả khi chạy chương trình:
 ```
 
 ## Sơ đồ lớp
+
 ![alt text](../../../acyclic-visitor/etc/acyclic-visitor.png "Acyclic Visitor")
 
 ## Áp dụng
+
 Mẫu thiết kế này có thể được sử dụng trong các trường hợp:
 
 * Khi bạn cần thêm một hàm mới vào một hệ thống lớp hiện có mà không cần phải sửa đổi hoặc ảnh hưởng đến hệ thống đó.

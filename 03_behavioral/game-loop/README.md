@@ -1,13 +1,14 @@
 ---
-title: Game Loop 
+
+title: Game Loop
 category: Behavioral
 language: en
-tag:  
-    - Concurrency
-    - Event-driven
-    - Game programming
-    - Performance
----  
+tag:
+- Concurrency
+- Event-driven
+- Game programming
+- Performance
+---
 
 ## Also known as
 
@@ -26,7 +27,7 @@ Real world example
 
 In plain words
 
-> Game Loop pattern ensures that game time progresses in equal speed in all different hardware setups. 
+> Game Loop pattern ensures that game time progresses in equal speed in all different hardware setups.
 
 Wikipedia says
 
@@ -39,19 +40,19 @@ Let's start with something simple. Here's `Bullet` class. Bullets will move in o
 ```java
 public class Bullet {
 
-  private float position;
+private float position;
 
-  public Bullet() {
-    position = 0.0f;
-  }
+public Bullet() {
+position = 0.0f;
+}
 
-  public float getPosition() {
-    return position;
-  }
+public float getPosition() {
+return position;
+}
 
-  public void setPosition(float position) {
-    this.position = position;
-  }
+public void setPosition(float position) {
+this.position = position;
+}
 }
 ```
 
@@ -60,20 +61,20 @@ public class Bullet {
 ```java
 public class GameController {
 
-  protected final Bullet bullet;
+protected final Bullet bullet;
 
-  public GameController() {
-    bullet = new Bullet();
-  }
+public GameController() {
+bullet = new Bullet();
+}
 
-  public void moveBullet(float offset) {
-    var currentPosition = bullet.getPosition();
-    bullet.setPosition(currentPosition + offset);
-  }
+public void moveBullet(float offset) {
+var currentPosition = bullet.getPosition();
+bullet.setPosition(currentPosition + offset);
+}
 
-  public float getBulletPosition() {
-    return bullet.getPosition();
-  }
+public float getBulletPosition() {
+return bullet.getPosition();
+}
 }
 ```
 
@@ -82,53 +83,53 @@ Now we introduce the game loop. Or actually in this demo we have 3 different gam
 ```java
 public enum GameStatus {
 
-  RUNNING, STOPPED
+RUNNING, STOPPED
 }
 
 public abstract class GameLoop {
 
-  protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-  protected volatile GameStatus status;
+protected volatile GameStatus status;
 
-  protected GameController controller;
+protected GameController controller;
 
-  private Thread gameThread;
+private Thread gameThread;
 
-  public GameLoop() {
-    controller = new GameController();
-    status = GameStatus.STOPPED;
-  }
+public GameLoop() {
+controller = new GameController();
+status = GameStatus.STOPPED;
+}
 
-  public void run() {
-    status = GameStatus.RUNNING;
-    gameThread = new Thread(this::processGameLoop);
-    gameThread.start();
-  }
+public void run() {
+status = GameStatus.RUNNING;
+gameThread = new Thread(this::processGameLoop);
+gameThread.start();
+}
 
-  public void stop() {
-    status = GameStatus.STOPPED;
-  }
+public void stop() {
+status = GameStatus.STOPPED;
+}
 
-  public boolean isGameRunning() {
-    return status == GameStatus.RUNNING;
-  }
+public boolean isGameRunning() {
+return status == GameStatus.RUNNING;
+}
 
-  protected void processInput() {
-    try {
-      var lag = new Random().nextInt(200) + 50;
-      Thread.sleep(lag);
-    } catch (InterruptedException e) {
-      logger.error(e.getMessage());
-    }
-  }
+protected void processInput() {
+try {
+var lag = new Random().nextInt(200) + 50;
+Thread.sleep(lag);
+} catch (InterruptedException e) {
+logger.error(e.getMessage());
+}
+}
 
-  protected void render() {
-    var position = controller.getBulletPosition();
-    logger.info("Current bullet position: " + position);
-  }
+protected void render() {
+var position = controller.getBulletPosition();
+logger.info("Current bullet position: " + position);
+}
 
-  protected abstract void processGameLoop();
+protected abstract void processGameLoop();
 }
 ```
 
@@ -137,18 +138,18 @@ Here's the first game loop implementation, `FrameBasedGameLoop`:
 ```java
 public class FrameBasedGameLoop extends GameLoop {
 
-  @Override
-  protected void processGameLoop() {
-    while (isGameRunning()) {
-      processInput();
-      update();
-      render();
-    }
-  }
+@Override
+protected void processGameLoop() {
+while (isGameRunning()) {
+processInput();
+update();
+render();
+}
+}
 
-  protected void update() {
-    controller.moveBullet(0.5f);
-  }
+protected void update() {
+controller.moveBullet(0.5f);
+}
 }
 ```
 Here's the next game loop implementation, `FixedStepGameLoop`:
@@ -156,57 +157,57 @@ Here's the next game loop implementation, `FixedStepGameLoop`:
 ```java
 public class FixedStepGameLoop extends GameLoop {
 
-  /**
-   * 20 ms per frame = 50 FPS.
-   */
-  private static final long MS_PER_FRAME = 20;
+/**
+* 20 ms per frame = 50 FPS.
+*/
+private static final long MS_PER_FRAME = 20;
 
-  @Override
-  protected void processGameLoop() {
-    var previousTime = System.currentTimeMillis();
-    var lag = 0L;
-    while (isGameRunning()) {
-      var currentTime = System.currentTimeMillis();
-      var elapsedTime = currentTime - previousTime;
-      previousTime = currentTime;
-      lag += elapsedTime;
+@Override
+protected void processGameLoop() {
+var previousTime = System.currentTimeMillis();
+var lag = 0L;
+while (isGameRunning()) {
+var currentTime = System.currentTimeMillis();
+var elapsedTime = currentTime - previousTime;
+previousTime = currentTime;
+lag += elapsedTime;
 
-      processInput();
+processInput();
 
-      while (lag >= MS_PER_FRAME) {
-        update();
-        lag -= MS_PER_FRAME;
-      }
+while (lag >= MS_PER_FRAME) {
+update();
+lag -= MS_PER_FRAME;
+}
 
-      render();
-    }
-  }
+render();
+}
+}
 
-  protected void update() {
-    controller.moveBullet(0.5f * MS_PER_FRAME / 1000);
-  }
+protected void update() {
+controller.moveBullet(0.5f * MS_PER_FRAME / 1000);
+}
 }
 ```
 And the last game loop implementation, `VariableStepGameLoop`:
 ```java
 public class VariableStepGameLoop extends GameLoop {
 
-  @Override
-  protected void processGameLoop() {
-    var lastFrameTime = System.currentTimeMillis();
-    while (isGameRunning()) {
-      processInput();
-      var currentFrameTime = System.currentTimeMillis();
-      var elapsedTime = currentFrameTime - lastFrameTime;
-      update(elapsedTime);
-      lastFrameTime = currentFrameTime;
-      render();
-    }
-  }
+@Override
+protected void processGameLoop() {
+var lastFrameTime = System.currentTimeMillis();
+while (isGameRunning()) {
+processInput();
+var currentFrameTime = System.currentTimeMillis();
+var elapsedTime = currentFrameTime - lastFrameTime;
+update(elapsedTime);
+lastFrameTime = currentFrameTime;
+render();
+}
+}
 
-  protected void update(Long elapsedTime) {
-    controller.moveBullet(0.5f * elapsedTime / 1000);
-  }
+protected void update(Long elapsedTime) {
+controller.moveBullet(0.5f * elapsedTime / 1000);
+}
 
 }
 ```
@@ -214,31 +215,31 @@ public class VariableStepGameLoop extends GameLoop {
 Finally, we show all the game loops in action.
 
 ```java
-    try {
-      LOGGER.info("Start frame-based game loop:");
-      var frameBasedGameLoop = new FrameBasedGameLoop();
-      frameBasedGameLoop.run();
-      Thread.sleep(GAME_LOOP_DURATION_TIME);
-      frameBasedGameLoop.stop();
-      LOGGER.info("Stop frame-based game loop.");
+try {
+LOGGER.info("Start frame-based game loop:");
+var frameBasedGameLoop = new FrameBasedGameLoop();
+frameBasedGameLoop.run();
+Thread.sleep(GAME_LOOP_DURATION_TIME);
+frameBasedGameLoop.stop();
+LOGGER.info("Stop frame-based game loop.");
 
-      LOGGER.info("Start variable-step game loop:");
-      var variableStepGameLoop = new VariableStepGameLoop();
-      variableStepGameLoop.run();
-      Thread.sleep(GAME_LOOP_DURATION_TIME);
-      variableStepGameLoop.stop();
-      LOGGER.info("Stop variable-step game loop.");
+LOGGER.info("Start variable-step game loop:");
+var variableStepGameLoop = new VariableStepGameLoop();
+variableStepGameLoop.run();
+Thread.sleep(GAME_LOOP_DURATION_TIME);
+variableStepGameLoop.stop();
+LOGGER.info("Stop variable-step game loop.");
 
-      LOGGER.info("Start fixed-step game loop:");
-      var fixedStepGameLoop = new FixedStepGameLoop();
-      fixedStepGameLoop.run();
-      Thread.sleep(GAME_LOOP_DURATION_TIME);
-      fixedStepGameLoop.stop();
-      LOGGER.info("Stop variable-step game loop.");
-      
-    } catch (InterruptedException e) {
-      LOGGER.error(e.getMessage());
-    }
+LOGGER.info("Start fixed-step game loop:");
+var fixedStepGameLoop = new FixedStepGameLoop();
+fixedStepGameLoop.run();
+Thread.sleep(GAME_LOOP_DURATION_TIME);
+fixedStepGameLoop.stop();
+LOGGER.info("Stop variable-step game loop.");
+
+} catch (InterruptedException e) {
+LOGGER.error(e.getMessage());
+}
 ```
 
 Program output:
@@ -327,7 +328,7 @@ Trade-offs:
 * [Observer](https://java-design-patterns.com/patterns/observer/): Useful in a game loop for event handling, where game entities can subscribe to and react to events (e.g., collision, scoring).
 
 ## Credits
-  
+
 * [Game Programming Patterns - Game Loop](http://gameprogrammingpatterns.com/game-loop.html)
 * [Game Programming Patterns](https://www.amazon.com/gp/product/0990582906/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=javadesignpat-20&creative=9325&linkCode=as2&creativeASIN=0990582906&linkId=1289749a703b3fe0e24cd8d604d7c40b)
 * [Game Engine Architecture, Third Edition](https://www.amazon.com/gp/product/1138035459/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=javadesignpat-20&creative=9325&linkCode=as2&creativeASIN=1138035459&linkId=94502746617211bc40e0ef49d29333ac)

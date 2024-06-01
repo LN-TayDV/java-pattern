@@ -32,7 +32,7 @@ estão familiarizados com os padrões.
 
 Este site apresenta padrões de projeto Java. As soluções foram desenvolvidas por
 programadores e arquitetos experientes da comunidade de código aberto. Os
-padrões podem ser acessados por meio de suas descrições de alto nível ou  por meio de seu
+padrões podem ser acessados por meio de suas descrições de alto nível ou por meio de seu
 Código fonte. Os exemplos de código-fonte são bem comentados e podem ser considerados como
 tutoriais de programação sobre como implementar um padrão específico. Nós usamos as mais
 populares tecnologias Java de código aberto comprovadas em batalhas.
@@ -49,11 +49,11 @@ Assim que estiver familiarizado com esses conceitos, você pode começar a se ap
 [padrões de projeto disponíveis](https://java-design-patterns.com/patterns/) por qualquer
 das seguintes abordagens
 
- - Pesquise um padrão específico por nome. Não consegue encontrar um? Informe um novo padrão [aqui](https://github.com/iluwatar/java-design-patterns/issues).
- - Usando tags como `Performance`,` Gang of Four` ou `Acesso de dados`.
- - Usando categorias de padrões, `Criacional`,` Comportamental` e outros.
+- Pesquise um padrão específico por nome. Não consegue encontrar um? Informe um novo padrão [aqui](https://github.com/iluwatar/java-design-patterns/issues).
+- Usando tags como `Performance`,` Gang of Four` ou `Acesso de dados`.
+- Usando categorias de padrões, `Criacional`,` Comportamental` e outros.
 
- Esperamos que você encontre as soluções orientadas a objetos apresentadas neste site úteis
+Esperamos que você encontre as soluções orientadas a objetos apresentadas neste site úteis
 em suas arquiteturas e divirta-se as aprendendo tanto quanto nos divertimos ao desenvolvê-las.
 
 # Como contribuir

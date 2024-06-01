@@ -7,6 +7,7 @@ tag:
 ---
 
 ## Propósito
+
 El patrón de elección (Leader pattern) del líder se utiliza habitualmente en el diseño de sistemas en la nube. Puede ayudar a garantizar que las instancias de tarea seleccionen la instancia líder correctamente y no entren en conflicto entre sí, causen contención por recursos compartidos o interfieran inadvertidamente con el trabajo que otras instancias de tarea están realizando.
 
 ## Explicación
@@ -230,7 +231,9 @@ public interface MessageManager {
 
 }
 ```
+
 These type of messages are used to pass among instances.
+
 ```java
 /**
  * Enum de tipo de mensaje.
@@ -322,6 +325,7 @@ public abstract class AbstractMessageManager implements MessageManager {
 ```
 
 Here the implementation of Ring Algorithm
+
 ```java
 /**
  * Implementación con algoritmo token ring. Las instancias en el sistema se organizan como un anillo.
@@ -500,6 +504,7 @@ public class RingMessageManager extends AbstractMessageManager {
 
 }
 ```
+
 ```java
 public static void main(String[] args) {
 
@@ -537,6 +542,7 @@ public static void main(String[] args) {
 ```
 
 The console output
+
 ```
 [Thread-1] INFO com.iluwatar.leaderelection.AbstractInstance - Instance 2 - Heartbeat Invoke Message handling...
 [Thread-1] INFO com.iluwatar.leaderelection.ring.RingInstance - Instance 2- Leader is not alive. Start election.
@@ -562,7 +568,9 @@ The console output
 [Thread-3] INFO com.iluwatar.leaderelection.AbstractInstance - Instance 4 - Heartbeat Invoke Message handling...
 [Thread-3] INFO com.iluwatar.leaderelection.ring.RingInstance - Instance 4- Leader is alive. Start next heartbeat in 5 second.
 ```
+
 Here the implementation of Bully algorithm
+
 ```java
 /**
  * Impelemetación con algoritmo bully. Cada instancia debe tener un id secuencial y es capaz de
@@ -787,6 +795,7 @@ public static void main(String[] args) {
 ```
 
 La salida de la consola
+
 ```
 [Thread-3] INFO com.iluwatar.leaderelection.AbstractInstance - Instance 4 - Heartbeat Invoke Message handling...
 [Thread-3] INFO com.iluwatar.leaderelection.bully.BullyInstance - Instance 4- Leader is alive.
@@ -817,9 +826,11 @@ La salida de la consola
 ```
 
 ## Diagrama de clases
+
 ![alt text](./etc/leader-election.urm.png "Leader Election pattern class diagram")
 
 ## Aplicabilidad
+
 Utilice este patrón cuando
 
 * las tareas en una aplicación distribuida, como una solución alojada en la nube, requieren una coordinación cuidadosa y no hay un líder natural.

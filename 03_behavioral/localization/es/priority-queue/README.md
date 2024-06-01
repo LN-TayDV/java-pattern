@@ -8,6 +8,7 @@ tag:
 ---
 
 ## Propósito
+
 Priorizar las peticiones enviadas a los servicios de forma que las peticiones con mayor prioridad se reciban y procesen más rápidamente que las de menor prioridad. Este patrón es útil en aplicaciones que ofrecen diferentes garantías de nivel de servicio a clientes individuales.
 
 ## Explicación
@@ -177,7 +178,6 @@ No Message ... waiting
 No Message ... waiting
 No Message ... waiting
 ```
-
 
 ## Diagrama de clases
 

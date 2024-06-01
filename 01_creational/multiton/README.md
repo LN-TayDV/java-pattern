@@ -20,7 +20,7 @@ The Multiton pattern is a variation of the Singleton design pattern that manages
 
 Real-world example
 
-> The Nazgûl, also called ringwraiths or the Nine Riders, are Sauron's most terrible servants. By definition, there's always nine of them.           
+> The Nazgûl, also called ringwraiths or the Nine Riders, are Sauron's most terrible servants. By definition, there's always nine of them.
 
 In plain words
 

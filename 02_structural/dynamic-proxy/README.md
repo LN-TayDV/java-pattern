@@ -35,7 +35,7 @@ Wikipedia says
 
 **Programmatic Example**
 
-This example demonstrates using the Dynamic Proxy pattern in Java to hit the public fake API [JSONPlaceholder](https://jsonplaceholder.typicode.com) for the resource `Album` through an interface. 
+This example demonstrates using the Dynamic Proxy pattern in Java to hit the public fake API [JSONPlaceholder](https://jsonplaceholder.typicode.com) for the resource `Album` through an interface.
 
 In this demo, the Dynamic Proxy pattern helps us run business logic through an interface without explicitly implementing that interface, leveraging Java Reflection.
 

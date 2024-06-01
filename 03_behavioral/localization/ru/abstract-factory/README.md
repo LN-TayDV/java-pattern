@@ -7,12 +7,15 @@ tag:
 ---
 
 ## Альтернативные названия
+
 Kit
 
 ## Цель
+
 Предоставление интерфейса для создания семейств взаимосвязанных или взаимозависимых объектов без указания их конкретных классов.
 
 ## Объяснение
+
 Пример из реального мира:
 > Представьте, что вы хотите создать королевство с замком, королём и армией. Эльфийскому королевству понадобится эльфийский замок, эльфийский король и эльфийская армия, в то время как оркскому королевству понадобится оркский замок, оркский король и оркская армия. Между объектами королевства существует взаимозависимость.
 
@@ -193,9 +196,11 @@ public static class FactoryMaker {
 ```
 
 ## Диаграмма классов
+
 ![Диаграмма классов паттерна проектирования абстрактная фабрика](../../../abstract-factory/etc/abstract-factory.urm.png)
 
 ## Применимость
+
 Используйте шаблон проектирования абстрактная фабрика, когда:
 
 - Система должна быть независимой от того, как создаются, составляются и представляются её продукты;
@@ -216,22 +221,27 @@ public static class FactoryMaker {
 - Элементы графического пользовательского интерфейса для различных операционных систем.
 
 ## Следствия
+
 - Внедрение зависимости в Java скрывает зависимости класса, приводящие к ошибкам времени выполнения, которые могли-бы быть обнаружены во времени компиляции;
 - Данный паттерн проектирования отлично справляется с задачей создания уже определённых объектов, но добавление новых может быть трудоёмким;
 - Код становится сложнее, чем ему следует из-за появления большого количества новых интерфейсов и классов, которые появляются вместе с этим паттерном проектирования.
 
 ## Руководства
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## Известные применения
+
 * [javax.xml.parsers.DocumentBuilderFactory](http://docs.oracle.com/javase/8/docs/api/javax/xml/parsers/DocumentBuilderFactory.html)
 * [javax.xml.transform.TransformerFactory](http://docs.oracle.com/javase/8/docs/api/javax/xml/transform/TransformerFactory.html#newInstance--)
 * [javax.xml.xpath.XPathFactory](http://docs.oracle.com/javase/8/docs/api/javax/xml/xpath/XPathFactory.html#newInstance--)
 
 ## Родственные паттерны проектирования
+
 * [Factory Method](https://java-design-patterns.com/patterns/factory-method/)
 * [Factory Kit](https://java-design-patterns.com/patterns/factory-kit/)
 
 ## Благодарности
+
 * [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.amazon.com/gp/product/0201633612/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0201633612&linkCode=as2&tag=javadesignpat-20&linkId=675d49790ce11db99d90bde47f1aeb59)
 * [Head First Design Patterns: A Brain-Friendly Guide](https://www.amazon.com/gp/product/0596007124/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596007124&linkCode=as2&tag=javadesignpat-20&linkId=6b8b6eea86021af6c8e3cd3fc382cb5b)

@@ -10,16 +10,16 @@ tag:
 
 ## Intention
 
-Regrouper les appels aux microservices en un seul endroit, la passerelle API. 
+Regrouper les appels aux microservices en un seul endroit, la passerelle API.
 L'utilisateur fait un seul appel à la passerelle API, qui appelle ensuite chaque microservice concerné.
 
 ## Explication
 
 Avec les pattrons microservices, un client peut avoir besoin de données provenant de plusieurs microservices différents.
-Si le client appelait directement chaque microservice, cela pourrait contribuer à allonger les temps de chargement, 
+Si le client appelait directement chaque microservice, cela pourrait contribuer à allonger les temps de chargement,
 puisque le client devrait faire une requete réseau pour chaque microservice appelé. En outre, le fait que le client appelle
 chaque microservice directement le lie à ce microservice - si les implémentations internes des microservices changent
-(par exemple, si deux microservices sont combinés) ou si l'emplacement (hôte et port) d'un microservice change, 
+(par exemple, si deux microservices sont combinés) ou si l'emplacement (hôte et port) d'un microservice change,
 alors chaque client qui utilise ces microservices doit être informé de l'existence de ce microservice.
 
 L'objectif du pattron API Gateway est d'atténuer certains de ces problèmes. Dans le pattron API Gateway une entité supplémentaire
@@ -40,10 +40,10 @@ En clair
 Wikipedia dit
 
 > La passerelle API est un serveur qui agit comme un front-end API, reçoit les requêtes API, applique des politiques de
-> limitation et de sécurité, transmet les requêtes au service back-end et renvoie la réponse au demandeur. 
+> limitation et de sécurité, transmet les requêtes au service back-end et renvoie la réponse au demandeur.
 > Une passerelle comprend souvent un moteur de transformation pour orchestrer et modifier les demandes et les réponses à la volée.
-> Une passerelle peut également fournir des fonctionnalités telles que la collecte de données analytiques et la mise en cache. 
-> La passerelle peut fournir des fonctionnalités pour prendre en charge l'authentification, l'autorisation, la sécurité, 
+> Une passerelle peut également fournir des fonctionnalités telles que la collecte de données analytiques et la mise en cache.
+> La passerelle peut fournir des fonctionnalités pour prendre en charge l'authentification, l'autorisation, la sécurité,
 > l'audit et la conformité réglementaire.
 
 **Exemple de programme**
@@ -142,6 +142,7 @@ public class ApiGateway {
 ```
 
 ## Diagramme de clqsses
+
 ![alt text](../../../api-gateway/etc/api-gateway.png "API Gateway")
 
 ## Application

@@ -78,6 +78,7 @@ Utilice el patrón Page Object cuando
 * Haga sus pruebas menos frágiles, y más legibles y robustas.
 
 ## Otro ejemplo con diagrama de clases
+
 ![alt text](./etc/page-object.png "Page Object")
 
 ## Créditos

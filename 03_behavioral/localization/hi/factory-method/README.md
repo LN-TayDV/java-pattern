@@ -7,7 +7,7 @@ tag:
   - Gang Of Four
 ---
 
-## वर्चुअल कन्स्ट्रक्टर के रूप में भी जाना जाता 
+## वर्चुअल कन्स्ट्रक्टर के रूप में भी जाना जाता
 
 ## हेतु
 
@@ -50,7 +50,8 @@ public class OrcBlacksmith implements Blacksmith {
   }
 }
 ```
-जब ग्राहक आते हैं, तो सही प्रकार के ब्लैकस्मिथ को बुलाया जाता है और अनुरोधित हथियार निर्मित किए जाते हैं  
+
+जब ग्राहक आते हैं, तो सही प्रकार के ब्लैकस्मिथ को बुलाया जाता है और अनुरोधित हथियार निर्मित किए जाते हैं
 
 ```java
 Blacksmith blacksmith = new OrcBlacksmith();
@@ -66,7 +67,9 @@ weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
 LOGGER.info("{} manufactured {}", blacksmith, weapon);
 
 ``` 
+
 प्रोग्राम का आउटपुट :
+
 ```text
 The orc blacksmith manufactured an orcish spear
 The orc blacksmith manufactured an orcish axe
@@ -74,6 +77,7 @@ The elf blacksmith manufactured an elven spear
 The elf blacksmith manufactured an elven axe
 
 ```
+
 ## क्लास डायग्राम
 
 ![alt text](./etc/factory-method.urm.png "Factory Method pattern class diagram")

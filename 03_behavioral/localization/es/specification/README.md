@@ -186,13 +186,14 @@ y alguna lógica booleana básica.
 
 **Comparación de los distintos enfoques**
 
-| Patrón | Uso | Pros | Contras |
-|---|---|---|---|
-| Especificación Codificada | Los criterios de selección son pocos y se conocen de antemano | + Fácil de implementar | - Inflexible |
-| | | + Expresivo |
-| Especificación Parametrizada | Los criterios de selección abarcan un amplio rango de valores (por ejemplo, masa, velocidad,...) | + Alguna flexibilidad | - Aún requiere clases de propósito especial |
-| Especificación Compuesta | Hay muchos criterios de selección que se pueden combinar de múltiples maneras, por lo tanto, no es factible crear una clase para cada selector | + Muy flexible, sin requerir muchas clases especializadas | - Algo más difícil de comprender |
-| | | + Admite operaciones lógicas | - Todavía necesitas crear las clases base utilizadas como hojas |
+| Patrón                       | Uso                                                                                                                                            | Pros                                                      | Contras                                                         |
+|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------------------|
+| Especificación Codificada    | Los criterios de selección son pocos y se conocen de antemano                                                                                  | + Fácil de implementar                                    | - Inflexible                                                    |
+|                              |                                                                                                                                                | + Expresivo                                               |
+| Especificación Parametrizada | Los criterios de selección abarcan un amplio rango de valores (por ejemplo, masa, velocidad,...)                                               | + Alguna flexibilidad                                     | - Aún requiere clases de propósito especial                     |
+| Especificación Compuesta     | Hay muchos criterios de selección que se pueden combinar de múltiples maneras, por lo tanto, no es factible crear una clase para cada selector | + Muy flexible, sin requerir muchas clases especializadas | - Algo más difícil de comprender                                |
+|                              |                                                                                                                                                | + Admite operaciones lógicas                              | - Todavía necesitas crear las clases base utilizadas como hojas |
+
 ## Class diagram
 
 ![alt text](./etc/specification.png "Specification")

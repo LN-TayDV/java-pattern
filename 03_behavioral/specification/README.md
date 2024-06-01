@@ -24,7 +24,7 @@ Encapsulate business rules and criteria that an object must satisfy to enable ch
 Real world example
 
 > Imagine you are organizing a conference and need to filter attendees based on specific criteria such as registration status, payment completion, and session interests.
-> 
+>
 > Using the Specification design pattern, you would create separate specifications for each criterion (e.g., "IsRegistered", "HasPaid", "IsInterestedInSessionX"). These specifications can be combined dynamically to filter attendees who meet all the required criteria, such as those who are registered, have completed their payment, and are interested in a particular session. This approach allows for flexible and reusable business rules, ensuring that the filtering logic can be easily adjusted as needed without changing the underlying attendee objects.
 
 In Plain Words

@@ -16,7 +16,7 @@ Il pattern Abstract Document consente di gestire proprietà aggiuntive e non sta
 
 Esempio del mondo reale
 
->  Prendiamo ad esempio un'auto composta da diverse parti. Tuttavia, non sappiamo se l'auto ha tutte le parti o solo alcune di esse. Le nostre auto sono dinamiche ed estremamente flessibili.
+> Prendiamo ad esempio un'auto composta da diverse parti. Tuttavia, non sappiamo se l'auto ha tutte le parti o solo alcune di esse. Le nostre auto sono dinamiche ed estremamente flessibili.
 
 In parole semplici
 
@@ -78,6 +78,7 @@ public abstract class AbstractDocument implements Document {
   ...
 }
 ```
+
 Successivamente definiamo un enum `Property` e un insieme di interfacce per tipo, prezzo, modello e parti. Questo ci permette di creare interfacce dall'aspetto statico per la nostra classe `Car`.
 
 ```java

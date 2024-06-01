@@ -15,7 +15,7 @@ tag:
 情境示例
 
 > 巫师们之在一个象牙塔中学习他们的魔法，并且始终使用同一座附魔的象牙塔。
-> 
+>
 > 这里的象牙塔是一个单例对象。
 
 通俗来说
@@ -77,11 +77,10 @@ enumIvoryTower2=com.iluwatar.singleton.EnumIvoryTower@1221555852
 * [java.awt.Desktop#getDesktop()](http://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#getDesktop--)
 * [java.lang.System#getSecurityManager()](http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#getSecurityManager--)
 
-
 ## 影响
 
 * 通过控制实例的创建和生命周期，违反了单一职责原则（SRP）。
-* 鼓励使用全局共享实例，组织了对象及其使用的资源被释放。     
+* 鼓励使用全局共享实例，组织了对象及其使用的资源被释放。
 * 代码变得耦合，给客户端的测试带来难度。
 * 单例模式的设计可能会使得子类化（继承）单例变得几乎不可能
 

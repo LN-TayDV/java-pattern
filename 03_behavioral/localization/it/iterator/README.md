@@ -11,6 +11,7 @@ tag:
 Cursor
 
 ## Intento
+
 Fornire un modo per accedere agli elementi di un oggetto aggregato in modo sequenziale senza esporre la sua rappresentazione sottostante.
 
 ## Spiegazione

@@ -25,8 +25,8 @@
 
 package com.iluwatar.dependency.injection.constructor;
 
-import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
 import com.iluwatar.dependency.injection.Wizard;
+import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
 import lombok.RequiredArgsConstructor;
 
 /**

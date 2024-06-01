@@ -79,7 +79,6 @@ Algunos casos típicos para Singleton:
 * [java.awt.Desktop#getDesktop()](http://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#getDesktop--)
 * [java.lang.System#getSecurityManager()](http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#getSecurityManager--)
 
-
 ## Consecuencias
 
 * Viola el Principio de Responsabilidad Única (Single Responsibility Principle - SRP) al controlar su creación y ciclo de vida.

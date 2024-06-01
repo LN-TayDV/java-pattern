@@ -21,11 +21,11 @@ To provide a default behavior for an object, avoiding the need for null checks a
 
 Real world example
 
-> We are building a binary tree from nodes. There are ordinary nodes and "empty" nodes. Traversing the tree normally should not cause errors, so we use null object pattern where necessary.            
+> We are building a binary tree from nodes. There are ordinary nodes and "empty" nodes. Traversing the tree normally should not cause errors, so we use null object pattern where necessary.
 
 In plain words
 
-> Null Object pattern handles "empty" objects gracefully.   
+> Null Object pattern handles "empty" objects gracefully.
 
 Wikipedia says
 

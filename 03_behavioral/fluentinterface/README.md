@@ -21,18 +21,18 @@ A fluent interface provides an easy-readable, flowing interface, that often mimi
 
 ## Explanation
 
-The Fluent Interface pattern is useful when you want to provide an easy readable, flowing API. Those 
+The Fluent Interface pattern is useful when you want to provide an easy readable, flowing API. Those
 interfaces tend to mimic domain specific languages, so they can nearly be read as human languages.
- 
+
 A fluent interface can be implemented using any of
- 
- * Method chaining - calling a method returns some object on which further methods can be called.
- * Static factory methods and imports.
- * Named parameters - can be simulated in Java using static factory methods.
+
+* Method chaining - calling a method returns some object on which further methods can be called.
+* Static factory methods and imports.
+* Named parameters - can be simulated in Java using static factory methods.
 
 Real world example
 
-> We need to select numbers based on different criteria from the list. It's a great chance to  utilize fluent interface pattern to provide readable easy-to-use developer experience. 
+> We need to select numbers based on different criteria from the list. It's a great chance to utilize fluent interface pattern to provide readable easy-to-use developer experience.
 
 In plain words
 
@@ -40,7 +40,7 @@ In plain words
 
 Wikipedia says
 
-> In software engineering, a fluent interface is an object-oriented API whose design relies extensively on method chaining. Its goal is to increase code legibility by creating a  domain-specific language (DSL).
+> In software engineering, a fluent interface is an object-oriented API whose design relies extensively on method chaining. Its goal is to increase code legibility by creating a domain-specific language (DSL).
 
 **Programmatic Example**
 
@@ -87,7 +87,7 @@ public class LazyFluentIterable<E> implements FluentIterable<E> {
 }
 ```
 
-Their usage is demonstrated with a simple number list that is filtered, transformed and collected. The 
+Their usage is demonstrated with a simple number list that is filtered, transformed and collected. The
 result is printed afterward.
 
 ```java

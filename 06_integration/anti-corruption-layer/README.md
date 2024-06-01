@@ -29,7 +29,7 @@ Implement a façade or adapter layer between different subsystems that don't sha
 Real-world example
 
 > Imagine a large retail company transitioning its inventory management system from an old legacy software to a new modern platform. The legacy system has been in use for decades and contains complex business rules and data formats that are incompatible with the new system. Instead of directly connecting the new system to the legacy one, the company implements an Anti-Corruption Layer (ACL).
-> 
+>
 > The ACL acts as a mediator, translating and adapting data between the two systems. When the new system requests inventory data, the ACL translates the request into a format the legacy system understands, retrieves the data, and then translates it back into a format suitable for the new system. This approach ensures that the new system remains unaffected by the intricacies of the legacy system, preventing corruption of data and business logic while facilitating a smooth transition.
 
 In plain words

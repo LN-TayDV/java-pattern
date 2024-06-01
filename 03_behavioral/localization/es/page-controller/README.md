@@ -63,6 +63,7 @@ public class SignupController {
   }
 }
 ```
+
 Aquí está el modelo y la vista de Signup que son manejados por el controlador de Signup.
 
 ```java
@@ -150,13 +151,17 @@ public class UserView {
 ```
 
 ## Diagrama de clases
+
 ![alt text](./etc/page-controller.urm.png)
 
 ## Aplicabilidad
+
 Utilice el patrón Page Controller cuando
+
 - implementas un sitio donde la mayor parte de la lógica del controlador es simple
 - implementa un sitio en el que determinadas acciones se gestionan con una página de servidor concreta
 
 ## Créditos
+
 - [Page Controller](https://www.martinfowler.com/eaaCatalog/pageController.html)
 - [Pattern of Enterprise Application Architecture](https://www.martinfowler.com/books/eaa.html)

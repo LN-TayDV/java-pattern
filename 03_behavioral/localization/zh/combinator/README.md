@@ -20,16 +20,16 @@ tag:
 真实世界例子
 
 > 在计算机科学中，组合逻辑被用作计算的简化模型，用于可计算性理论和证明理论。 尽管组合逻辑很简单，但它捕获了计算的许多基本特征。
-> 
+>
 
 通俗的说
 > 组合器允许从先前定义的“事物”创建新的“事物”。
-> 
+>
 
 维基百科说
 
 > 组合器是一个高阶函数，仅使用函数应用程序和之前定义的组合器来定义其参数的结果。
-> 
+>
 
 **程序示例**
 
@@ -178,11 +178,12 @@ the result of filtered query is [But we loved with a love that was more than lov
 
 现在我们可以设计我们的应用程序，使其具有查询查找功能`expandedFinder`, `specializedFinder`, `advancedFinder`, `filteredFinder`，这些功能均派生自`contains`, `or`, `not`, `and`。
 
-
 ## 类图
+
 ![alt text](./etc/combinator.urm.png "Combinator class diagram")
 
 ## 适用性
+
 在以下情况下使用组合器模式：
 
 - 您可以从更简单的值创建更复杂的值，但具有相同的类型（它们的组合）
@@ -193,7 +194,6 @@ the result of filtered query is [But we loved with a love that was more than lov
 - 组合阶段和应用阶段之间有明显的区别。
 - 首先构造一个实例，然后执行它。
 - 这使得该模式适用于并行环境。
-
 
 ## 现实世界的例子
 

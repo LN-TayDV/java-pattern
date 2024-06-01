@@ -25,16 +25,15 @@
 
 package com.iluwatar.factorykit;
 
-import java.util.ArrayList;
-
-import com.iluwatar.factorykit.weapon.types.Axe;
-import com.iluwatar.factorykit.weapon.types.Bow;
-import com.iluwatar.factorykit.weapon.types.Spear;
-import com.iluwatar.factorykit.weapon.types.Sword;
 import com.iluwatar.factorykit.weapon.factory.Builder;
 import com.iluwatar.factorykit.weapon.factory.Weapon;
 import com.iluwatar.factorykit.weapon.factory.WeaponFactory;
 import com.iluwatar.factorykit.weapon.factory.WeaponType;
+import com.iluwatar.factorykit.weapon.types.Axe;
+import com.iluwatar.factorykit.weapon.types.Bow;
+import com.iluwatar.factorykit.weapon.types.Spear;
+import com.iluwatar.factorykit.weapon.types.Sword;
+import java.util.ArrayList;
 import lombok.extern.slf4j.Slf4j;
 
 /**

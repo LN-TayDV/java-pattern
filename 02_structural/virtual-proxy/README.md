@@ -22,7 +22,7 @@ Provide a surrogate or placeholder for another object to control its creation an
 Real-world example
 
 > Imagine a high-end art gallery that showcases expensive and delicate pieces of art. To protect the actual artwork and reduce the risk of damage or theft, the gallery initially displays high-quality photographs of the artworks. When a serious buyer expresses genuine interest, the gallery then brings out the original artwork from a secure storage area for viewing.
-> 
+>
 > In this analogy, the high-quality photograph serves as the virtual proxy for the actual artwork. The real artwork is only fetched and displayed when truly necessary, thus saving resources and reducing risk, similar to how the Virtual Proxy pattern defers object creation until it is needed.
 
 In plain words

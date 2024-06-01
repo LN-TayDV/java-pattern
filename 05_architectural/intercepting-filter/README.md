@@ -106,7 +106,7 @@ public class NameFilter implements Filter {
 
 In this example, the `App` class sets up a `FilterManager` with various filters and assigns it to a `Client`. When the `Client` sends a request, the `FilterManager` applies all the filters to the request. This is a basic example of the Intercepting Filter pattern, where common processing tasks are encapsulated in filters and applied to requests in a standard manner.
 
-## Class diagram 
+## Class diagram
 
 ![Intercepting Filter](./etc/intercepting-filter.png "Intercepting Filter")
 

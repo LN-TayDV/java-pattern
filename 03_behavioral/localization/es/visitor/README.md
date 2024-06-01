@@ -17,7 +17,7 @@ Ejemplo del mundo real
 
 > Considere una estructura de árbol con unidades del ejército. El comandante tiene dos sargentos bajo él y cada sargento
 > tiene tres soldados bajo él. Dado que la jerarquía implementa el patrón visitante, podemos
-> crear fácilmente nuevos objetos que interactúen con el comandante, los sargentos, los soldados, o todos ellos. 
+> crear fácilmente nuevos objetos que interactúen con el comandante, los sargentos, los soldados, o todos ellos.
 
 
 Ejemplo del mundo real

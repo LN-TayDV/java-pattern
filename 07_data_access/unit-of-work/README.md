@@ -17,11 +17,11 @@ The Unit of Work pattern maintains a list of objects affected by a business tran
 
 Real-world example
 
-> Imagine a library where a librarian tracks all the books that are borrowed and returned throughout the day. Instead of updating the library's inventory system every time a single transaction occurs, the librarian keeps a list of all the changes and updates the system once at the end of the day. This approach ensures that all changes are processed together, maintaining the integrity of the inventory and reducing the number of individual updates needed. This is analogous to the Unit of Work pattern in software, where all changes to a set of objects are tracked and committed as a single transaction to maintain consistency and efficiency. 
+> Imagine a library where a librarian tracks all the books that are borrowed and returned throughout the day. Instead of updating the library's inventory system every time a single transaction occurs, the librarian keeps a list of all the changes and updates the system once at the end of the day. This approach ensures that all changes are processed together, maintaining the integrity of the inventory and reducing the number of individual updates needed. This is analogous to the Unit of Work pattern in software, where all changes to a set of objects are tracked and committed as a single transaction to maintain consistency and efficiency.
 
 In plain words
 
-> The Unit of Work pattern tracks changes to objects during a transaction and commits all changes as a single unit to ensure consistency and efficiency. 
+> The Unit of Work pattern tracks changes to objects during a transaction and commits all changes as a single unit to ensure consistency and efficiency.
 
 [MartinFowler.com](https://martinfowler.com/eaaCatalog/unitOfWork.html) says
 

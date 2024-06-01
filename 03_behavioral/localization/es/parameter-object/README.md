@@ -14,7 +14,6 @@ La sintaxis del lenguaje Java no permite declarar un método con un valor predef
 
 El Objeto Parámetro (Parameter Object) es simplemente un objeto envoltorio para todos los parámetros de un método. No es más que un POJO normal. La ventaja del Objeto Parámetro sobre una lista regular de parámetros de método es el hecho de que los campos de clase pueden tener valores por defecto. Una vez creada la clase envoltorio para la lista de parámetros del método, se crea también una clase constructora correspondiente. Normalmente es una clase estática interna. El paso final es utilizar el constructor para construir un nuevo objeto parámetro. Para aquellos parámetros que se omitan, se utilizarán sus valores por defecto.
 
-
 **Ejemplo programático**
 
 Aquí está la simple clase `SearchService` donde se utiliza la sobrecarga de métodos para los valores por defecto aquí. Para utilizar la sobrecarga de métodos, el número de argumentos o el tipo de argumento tiene que ser diferente.

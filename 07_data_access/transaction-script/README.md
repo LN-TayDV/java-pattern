@@ -22,7 +22,7 @@ Organize business logic by procedures where each procedure handles a single requ
 
 Real-world example
 
-> An analogous real-world example of the Transaction Script design pattern can be seen in a bank teller's daily operations. Imagine a bank where each transaction, such as depositing money, withdrawing cash, or transferring funds between accounts, is handled by a specific script-like procedure. Each procedure takes in the necessary details (e.g., account numbers, amounts) and performs the transaction in a straightforward, step-by-step manner. This ensures that each transaction is processed correctly and independently, without the need for a complex system of rules and interactions. This simple, organized approach allows bank tellers to efficiently manage a variety of transactions throughout the day. 
+> An analogous real-world example of the Transaction Script design pattern can be seen in a bank teller's daily operations. Imagine a bank where each transaction, such as depositing money, withdrawing cash, or transferring funds between accounts, is handled by a specific script-like procedure. Each procedure takes in the necessary details (e.g., account numbers, amounts) and performs the transaction in a straightforward, step-by-step manner. This ensures that each transaction is processed correctly and independently, without the need for a complex system of rules and interactions. This simple, organized approach allows bank tellers to efficiently manage a variety of transactions throughout the day.
 
 In plain words
 
@@ -90,7 +90,7 @@ public class Hotel {
 
 The `Hotel` class has two methods, one for booking and cancelling a room respectively. Each one of them handles a single transaction in the system, making `Hotel` implement the Transaction Script pattern.
 
-The `bookRoom` method consolidates all the needed steps like checking if the room is already booked or not, if not booked then books the room and updates the database by using the DAO. 
+The `bookRoom` method consolidates all the needed steps like checking if the room is already booked or not, if not booked then books the room and updates the database by using the DAO.
 
 The `cancelRoom` method consolidates steps like checking if the room is booked or not, if booked then calculates the refund amount and updates the database using the DAO.
 

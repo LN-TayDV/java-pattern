@@ -7,6 +7,7 @@ tag:
 ---
 
 ## Propósito
+
 El patrón de módulos se utiliza para implementar el concepto de módulos de software, definido por la programación modular, en un lenguaje de programación con soporte directo incompleto para el concepto.
 
 ## Explicación
@@ -152,9 +153,11 @@ Console Output: Hello, Module Pattern!
 ```
 
 ## Diagrama de clases
+
 ![alt text](./etc/module.png "Module")
 
 ## Aplicabilidad
+
 El patrón Módulo puede considerarse un patrón de creación y un patrón estructural. Gestiona la creación y organización de otros elementos, y los agrupa como lo hace el patrón estructural.
 
 Un objeto que aplica este patrón puede proporcionar el equivalente de un espacio de nombres, proporcionando el proceso de inicialización y finalización de una clase estática o de una clase con miembros estáticos con una sintaxis y una semántica más limpias y concisas.

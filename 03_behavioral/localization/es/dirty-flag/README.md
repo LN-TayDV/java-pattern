@@ -8,15 +8,19 @@ tag:
 ---
 
 ## También conocido como
+
 * IsDirty pattern
 
 ## Propósito
+
 Evitar la costosa readquisición de recursos. Los recursos conservan su identidad, se guardan en algún almacenamiento de acceso rápido y se reutilizan para evitar tener que adquirirlos de nuevo.
 
 ## Diagrama de clases
+
 ![alt text](./etc/dirty-flag.png "Dirty Flag")
 
 ## Aplicabilidad
+
 Utilice el patrón Dirty Flag cuando
 
 * La adquisición, inicialización y liberación repetitiva del mismo recurso causa una sobrecarga de rendimiento innecesaria.

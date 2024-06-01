@@ -25,9 +25,9 @@
 
 package com.iluwatar.presentationmodel;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Issue: Add at least one assertion to this test case.

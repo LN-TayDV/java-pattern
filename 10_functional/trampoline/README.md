@@ -28,7 +28,7 @@ Real-world example
 
 In plain words
 
-> Trampoline pattern allows recursion without running out of stack memory. 
+> Trampoline pattern allows recursion without running out of stack memory.
 
 Wikipedia says
 

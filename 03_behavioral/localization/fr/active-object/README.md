@@ -6,7 +6,6 @@ tag:
  - Performance
 ---
 
-
 ## Intention
 
 Le patron de conception des "active object" actifs dissocie l'exécution et l'invocation des méthodes pour les objets qui résident chacun dans leur fil de contrôle. L'objectif est d'introduire la concurrence en utilisant l'invocation asynchrone des méthodes et un planificateur pour traiter les demandes.
@@ -20,7 +19,6 @@ La classe qui met en œuvre le patron "active object", contiendra un mécanisme 
 > Les orques sont connus pour leur caractère sauvage et leur âme indomptable. Il semble qu'ils aient leur propre système de contrôle basé sur leur comportement antérieur.
 
 Pour mettre en œuvre une créature qui possède son propre mécanisme de contrôle et qui n'expose que son API et non l'exécution elle-même, nous pouvons utiliser le patron "active-object".
-
 
 **Exemple de programme**
 

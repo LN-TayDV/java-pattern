@@ -7,9 +7,11 @@ tag:
 ---
 
 ## También conocido como
+
 Application Model
 
 ## Propósito
+
 El modelo de presentación extrae el estado y el comportamiento de la vista a una clase modelo que forma parte de la presentación.
 
 ## Explicación
@@ -171,11 +173,12 @@ Podemos ejecutar la clase `App` para iniciar esta demo. la casilla de verificaci
 
 ![](./etc/result.png)
 
-
 ## Diagrama de clases
+
 ![](./etc/presentation-model.urm.png "presentation model")
 
 ## Aplicabilidad
+
 Utilice el patrón de modelo de presentación cuando
 
 * Probar una presentación a través de una ventana GUI es a menudo incómodo, y en algunos casos imposible.
@@ -183,7 +186,7 @@ Utilice el patrón de modelo de presentación cuando
 
 ## Patrones relacionados
 
-- [Supervising Controller](https://martinfowler.com/eaaDev/SupervisingPresenter.html) 
+- [Supervising Controller](https://martinfowler.com/eaaDev/SupervisingPresenter.html)
 - [Passive View](https://martinfowler.com/eaaDev/PassiveScreen.html)
 
 ## Créditos

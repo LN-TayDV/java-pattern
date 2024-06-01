@@ -9,13 +9,13 @@ tag:
 ## Intention
 
 Permettre l'ajout de nouvelles fonctions à des hiérarchies de classes existantes sans affecter ces hiérarchies et sans
-créer de cycles de dépendance gênants inhérents au pqtron de conception  GoF visitor.
+créer de cycles de dépendance gênants inhérents au pqtron de conception GoF visitor.
 
 ## Explication
 
 Exemple concret
 
-> Nous disposons d'une hiérarchie de classes de modems. Les modems de cette hiérarchie doivent être visités 
+> Nous disposons d'une hiérarchie de classes de modems. Les modems de cette hiérarchie doivent être visités
 > par un algorithme externe basé sur des critères de filtrage (s'agit-il d'un modem compatible Unix ou DOS).
 
 En clair
@@ -133,7 +133,7 @@ Ce patron de conception peut être utilisé:
 * Lorsqu'il existe des fonctions qui opèrent sur une hiérarchie, mais qui n'appartiennent pas à la hiérarchie elle-même. Par exemple, le problème ConfigureForDOS / ConfigureForUnix / ConfigureForX.
 * Lorsque vous devez éffectuer des opérations très différentes sur un objet en fonction de son type.
 * Lorsque la hiérarchie des classes visitées sera fréquemment étendue avec de nouveaux dérivés de la classe Element.
-*Lorsque la recompilation, l'interconnexion, le réessai ou la redistribution des dérivés de Element sont très coûteux.
+  *Lorsque la recompilation, l'interconnexion, le réessai ou la redistribution des dérivés de Element sont très coûteux.
 
 ## Tutoriel
 
@@ -147,7 +147,7 @@ Le bon côté:
 * Il n'est pas nécessaire de recompiler tous les visiteurs si un nouveau visiteur est ajouté.
 * Ne provoque pas d'échec de compilation chez les visiteurs existants si la hiérarchie des classes a un nouveau membre.
 
-Le mauvais : 
+Le mauvais :
 
 * viole le [principe de substitution de Liskov](https://java-design-patterns.com/principles/#liskov-substitution-principle) en montrant qu'il peut accepter tous les visiteurs alors qu'il ne s'intéresse en réalité qu'à certains d'entre eux.
 * Une hiérarchie parallèle de visiteurs doit être créée pour tous les membres de la hiérarchie des classes visitables.

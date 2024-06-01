@@ -27,7 +27,7 @@ Real-world example
 > - Flight details: Departure city, destination city, departure date, return date.
 > - Hotel details: Hotel name, check-in date, check-out date, room type.
 > - Car rental details: Pickup location, drop-off location, rental dates, car type.
-> 
+>
 > In this analogy, the comprehensive form is the parameter object. It groups together all related details (parameters) into a single entity, making the booking process more streamlined and manageable. The travel agent (method) only needs to handle one form (parameter object) instead of juggling multiple pieces of information.
 
 In plain words

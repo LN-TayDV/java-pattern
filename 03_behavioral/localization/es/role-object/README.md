@@ -7,17 +7,21 @@ tag:
 ---
 
 ## También conocido como
+
 Patrón Post, Patrón Extension Object
 
 ## Propósito
+
 Adaptar un objeto a las necesidades de diferentes clientes mediante objetos de rol adjuntos de forma transparente, cada uno de los cuales representa un papel
 que el objeto debe desempeñar en el contexto de ese cliente. El objeto gestiona su conjunto de roles de forma dinámica. Al representar los roles como
 objetos individuales, los distintos contextos se mantienen separados y se simplifica la configuración del sistema.
 
 ## Diagrama de clases
+
 ![alt text](./etc/role-object.urm.png "Role Object pattern class diagram")
 
 ## Aplicabilidad
+
 Utiliza el patrón Objeto Rol, si:
 
 - Quieres manejar una abstracción clave en diferentes contextos y no quieres poner las interfaces específicas de contexto resultantes en la misma interfaz de clase.

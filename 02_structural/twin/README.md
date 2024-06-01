@@ -19,11 +19,11 @@ Real-world example
 
 > An analogous real-world example of the Twin design pattern can be found in the relationship between a driver and a driving simulator. Imagine a driver (the first class) and a driving simulator (the second class) that both need to interact with the same set of vehicle controls (steering, acceleration, braking) and receive the same feedback (speed, engine status).
 >
-> Despite performing similar functions, the driver and the simulator cannot share a common base class because they operate in fundamentally different environments—one in the physical world and the other in a virtual environment. Instead, they are "twinned" to ensure consistent interaction with the vehicle controls and feedback mechanisms. This setup allows improvements or changes to be made to the simulator without affecting the driver and vice versa, maintaining the system's overall flexibility and resilience. 
+> Despite performing similar functions, the driver and the simulator cannot share a common base class because they operate in fundamentally different environments—one in the physical world and the other in a virtual environment. Instead, they are "twinned" to ensure consistent interaction with the vehicle controls and feedback mechanisms. This setup allows improvements or changes to be made to the simulator without affecting the driver and vice versa, maintaining the system's overall flexibility and resilience.
 
 In plain words
 
-> It provides a way to form two closely coupled subclasses that can act as a twin class having two ends. 
+> It provides a way to form two closely coupled subclasses that can act as a twin class having two ends.
 
 Wikipedia says
 

@@ -7,9 +7,11 @@ tag:
 ---
 
 ## Propósito
+
 Un filtro de intercepción es un útil patrón de diseño Java que se utiliza cuando se desea preprocesar o postprocesar una petición en una aplicación. Estos filtros se crean y se aplican a la solicitud antes de que se le da a la aplicación de destino. Algunos ejemplos de uso incluyen la autenticación, que es necesario procesar antes de que la solicitud se entregue a la aplicación.
 
 ## Explicación
+
 Ejemplo del mundo real
 > Un ejemplo de uso del patrón de diseño Filtro Interceptor es relevante a la hora de realizar una plataforma de comercio electrónico. Es importante implementar varios filtros para la autenticación de la cuenta, la autenticación del pago, el registro y el almacenamiento en caché. Los tipos de filtros importantes en este ejemplo son los filtros de autenticación, registro, seguridad y almacenamiento en caché.
 
@@ -20,6 +22,7 @@ Wikipedia dice
 > El filtro de intercepción es un patrón de Java que crea filtros conectables para procesar servicios comunes de una manera estándar sin necesidad de realizar cambios en el código de procesamiento de solicitudes.
 
 ## Ejemplo Programático
+
 Como ejemplo, podemos crear una clase Filtro básica y definir un Filtro de Autenticación. Al filtro le falta lógica, pero
 
 ```java
@@ -68,6 +71,7 @@ public class AuthenticationFilterExample {
     }
 }
 ```
+
 Este es un ejemplo básico de cómo implementar el esqueleto de un filtro. Falta la lógica de autenticación en AuthenticationFilterExample, pero se puede rellenar en los huecos.
 
 Además, el cliente puede ser configurado para ejecutar múltiples filtros en su solicitud utilizando un bucle For poblado con filtros como se puede ver a continuación:
@@ -128,12 +132,15 @@ public class MultipleFiltersExample {
     }
 }
 ```
+
 Este método permite manipular y comprobar los datos de forma rápida y sencilla antes de autenticar un inicio de sesión o finalizar otro tipo de acción.
 
 ## Diagrama de clases
+
 ![alt text](./etc/intercepting-filter.png "Intercepting Filter")
 
 ## Aplicabilidad
+
 Utilice el patrón Filtro interceptor cuando
 
 * Un programa necesita preprocesar o postprocesar datos
@@ -143,6 +150,7 @@ Utilice el patrón Filtro interceptor cuando
 * Desea implementar un manejo específico de excepciones
 
 ## Consecuencias
+
 Consecuencias de la aplicación del filtro de interceptación
 
 * Aumento de la complejidad del código, disminuyendo la facilidad de lectura

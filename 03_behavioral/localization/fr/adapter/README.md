@@ -7,9 +7,11 @@ tag:
 ---
 
 ## Également connu sous le nom de
+
 Wrapper
 
 ## Intention
+
 Convertir l'interface d'une classe en une autre interface attendue par les clients. Adapter permet à des classes de travailler ensemble
 qui ne pourraient pas fonctionner autrement en raison d'interfaces incompatibles.
 
@@ -27,7 +29,7 @@ En clair
 
 Wikipedia dit
 
-> En génie logiciel, le pattron de conception  adapter est un pattron de conception logicielle qui permet d'utiliser l'interface d'une classe existante comme une autre interface. Il est souvent utilisé pour faire fonctionner des classes existantes avec d'autres sans modifier leur code source.
+> En génie logiciel, le pattron de conception adapter est un pattron de conception logicielle qui permet d'utiliser l'interface d'une classe existante comme une autre interface. Il est souvent utilisé pour faire fonctionner des classes existantes avec d'autres sans modifier leur code source.
 
 **Exemple de programme**
 
@@ -92,9 +94,11 @@ captain.row();
 ```
 
 ## Diagramme des classes
+
 ![alt text](../../../adapter/etc/adapter.urm.png "Adapter class diagram")
 
 ## Application
+
 Utiliser le pattron de conception adapter lorsque
 
 * Vous souhaitez utiliser une classe existante, mais son interface ne correspond pas à celle dont vous avez besoin
@@ -109,17 +113,17 @@ Utiliser le pattron de conception adapter lorsque
 * [Baeldung](https://www.baeldung.com/java-adapter-pattern)
 
 ## Conséquences
+
 Les adaptateurs de classe et d'objet présentent différents avantages. Un adaptateur de classe :
 
-*	Adapte l'adaptateur à la cible en s'engageant dans une classe concrète d'adaptateur. Par conséquent, un adaptateur de classe ne fonctionnera pas si nous voulons adapter une classe et toutes ses sous-classes.
-*	Permet à l'adaptateur de surcharger certains comportements de l'adaptaté puisque l'adaptateur est une sous-classe de l'adaptaté.
-*	N'introduit qu'un seul objet, et aucune indirection de pointeur supplémentaire n'est nécessaire pour accéder à l'adaptateur.
+* Adapte l'adaptateur à la cible en s'engageant dans une classe concrète d'adaptateur. Par conséquent, un adaptateur de classe ne fonctionnera pas si nous voulons adapter une classe et toutes ses sous-classes.
+* Permet à l'adaptateur de surcharger certains comportements de l'adaptaté puisque l'adaptateur est une sous-classe de l'adaptaté.
+* N'introduit qu'un seul objet, et aucune indirection de pointeur supplémentaire n'est nécessaire pour accéder à l'adaptateur.
 
 Un adaptateur d'objet :
 
-*	Permet à un seul adaptateur de travailler avec de nombreux adaptatés, c'est-à-dire l'adaptateur lui-même et toutes ses sous-classes (le cas échéant). L'adaptateur peut également ajouter des fonctionnalités à tous les adaptatés en même temps.
-*	Rend plus difficile la modification du comportement de l'adapté. Il faudra créer des sous classes de l'adapta et faire en sorte que l'adaptateur se réfère à la sous-classe plutôt qu'à l'adapté lui-même.
-
+* Permet à un seul adaptateur de travailler avec de nombreux adaptatés, c'est-à-dire l'adaptateur lui-même et toutes ses sous-classes (le cas échéant). L'adaptateur peut également ajouter des fonctionnalités à tous les adaptatés en même temps.
+* Rend plus difficile la modification du comportement de l'adapté. Il faudra créer des sous classes de l'adapta et faire en sorte que l'adaptateur se réfère à la sous-classe plutôt qu'à l'adapté lui-même.
 
 ## Utilisations connues
 
@@ -127,7 +131,6 @@ Un adaptateur d'objet :
 * [java.util.Collections#list()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#list-java.util.Enumeration-)
 * [java.util.Collections#enumeration()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#enumeration-java.util.Collection-)
 * [javax.xml.bind.annotation.adapters.XMLAdapter](http://docs.oracle.com/javase/8/docs/api/javax/xml/bind/annotation/adapters/XmlAdapter.html#marshal-BoundType-)
-
 
 ## Crédits
 

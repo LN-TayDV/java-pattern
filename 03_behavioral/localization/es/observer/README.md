@@ -99,6 +99,7 @@ public class Weather {
   }
 }
 ```
+
 Aquí está el ejemplo completo en acción.
 
 ```java

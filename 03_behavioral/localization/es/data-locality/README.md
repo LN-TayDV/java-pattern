@@ -8,11 +8,13 @@ tag:
 ---
 
 ## Propósito
+
 Acelera el acceso a la memoria organizando los datos para aprovechar la caché de la CPU.
 
 Las CPU modernas disponen de cachés para acelerar el acceso a la memoria. Éstas pueden acceder mucho más rápido a la memoria adyacente a la memoria a la que se ha accedido recientemente. Aprovéchate de ello para mejorar el rendimiento aumentando la localidad de los datos, manteniéndolos en memoria contigua en el orden en que los procesas.
 
 ## Diagrama de clases
+
 ![alt text](./etc/data-locality.urm.png "Data Locality pattern class diagram")
 
 ## Aplicabilidad

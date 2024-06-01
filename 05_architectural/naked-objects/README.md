@@ -110,14 +110,14 @@ This example demonstrates how the Naked Objects pattern can be implemented in a 
 
 ## Consequences
 
-Benefits: 
+Benefits:
 
 * Rapid development
 * Improved maintainability
 * Easy domain understanding
 * Alignment between the UI and business model
 
-Trade-offs: 
+Trade-offs:
 
 * Reduced UI flexibility
 * Potential over-exposure of the domain model

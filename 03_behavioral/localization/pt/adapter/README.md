@@ -7,9 +7,11 @@ tag:
 ---
 
 ## Também conhecido como
+
 Wrapper
 
 ## Propósito
+
 Converter a interface de uma classe em outra que o cliente espera.
 O padrão Adapter permite que uma classe funcione em conjunto com outras classes que não poderiam por problemas de imcompatibilidade de interfaces.
 
@@ -92,9 +94,11 @@ captain.row();
 ```
 
 ## Diagrama de classes
+
 ![alt text](./etc/adapter.urm.png "Diagrama de classes do Adapter")
 
 ## Aplicabilidade
+
 Use o padrão Adapter quando
 
 * Você quer usar uma classe existente, e sua interface não combina exatamente com o que você precisa
@@ -109,16 +113,17 @@ Use o padrão Adapter quando
 * [Baeldung](https://www.baeldung.com/java-adapter-pattern)
 
 ## Consequências
+
 Classes e objetos adapter tem diferentes prós e contras. Uma classe adapter
 
-* 	Converte o objeto adaptado para o alvo por meio de uma classe concreta. Como consequência, uma classe adapter não irá funcionar se desejamos adaptar uma classe e todas as suas subclasses.
-* 	Deixa o Adapter sobrescrever algum comportamento da classe adaptada já que o Adapter é uma subclasse da classe adaptada.
-*	Introduz apenas um objeto, e nenhum ponteiro indireto é necessário para obter a classe adaptada.
+* Converte o objeto adaptado para o alvo por meio de uma classe concreta. Como consequência, uma classe adapter não irá funcionar se desejamos adaptar uma classe e todas as suas subclasses.
+* Deixa o Adapter sobrescrever algum comportamento da classe adaptada já que o Adapter é uma subclasse da classe adaptada.
+* Introduz apenas um objeto, e nenhum ponteiro indireto é necessário para obter a classe adaptada.
 
 Um objeto adapter
 
-*	Permite um único adaptador funcionar com vários objetos adaptados, isto é, o objeto adaptado em si e todas as suas subclasses (se houver). O adapter também pode adicionar funcionalidade a todas os objetos adaptados de uma vez só.
-*	Torna mais difícil sobrescrever o comportamento do objeto adaptado. Isso irá requerer geração de subclasses para o objeto adaptado e fazer o adapter se referir a essa subclasse em vez do objeto adaptado em si.
+* Permite um único adaptador funcionar com vários objetos adaptados, isto é, o objeto adaptado em si e todas as suas subclasses (se houver). O adapter também pode adicionar funcionalidade a todas os objetos adaptados de uma vez só.
+* Torna mais difícil sobrescrever o comportamento do objeto adaptado. Isso irá requerer geração de subclasses para o objeto adaptado e fazer o adapter se referir a essa subclasse em vez do objeto adaptado em si.
 
 ## Exemplos do mundo real
 
@@ -126,7 +131,6 @@ Um objeto adapter
 * [java.util.Collections#list()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#list-java.util.Enumeration-)
 * [java.util.Collections#enumeration()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#enumeration-java.util.Collection-)
 * [javax.xml.bind.annotation.adapters.XMLAdapter](http://docs.oracle.com/javase/8/docs/api/javax/xml/bind/annotation/adapters/XmlAdapter.html#marshal-BoundType-)
-
 
 ## Créditos
 

@@ -143,6 +143,7 @@ This is the elven Army!
 Maintenant, nous pouvons concevoir une fabrique pour nos différentes fabriques de royaumes. Dans cet exemple, nous avons créé `FactoryMaker`, responsable de retourner une instance de `ElfKingdomFactory` ou de `OrcKingdomFactory`.  
 Le client peut utiliser `FactoryMaker` pour créer la fabrique concrète désirée qui, à son tour, produira différents objets concrets (dérivés de `Army`, `King`, `Castle`).  
 Dans cet exemple, nous avons également utilisé une énumération pour paramétrer le type de fabrique de royaume que le client va demander.
+
 ```java
 public static class FactoryMaker {
 
@@ -177,7 +178,6 @@ public static class FactoryMaker {
 ## Diagramme de classes
 
 ![alt text](../../../abstract-factory/etc/abstract-factory.urm.png "Abstract Factory class diagram")
-
 
 ## Application
 

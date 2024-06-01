@@ -11,6 +11,7 @@ tag:
 Cursor
 
 ## Propósito
+
 Proporcionar una forma de acceder a los elementos de un objeto agregado secuencialmente sin exponer su
 representación subyacente.
 
@@ -18,18 +19,18 @@ representación subyacente.
 
 Ejemplo del mundo real
 
-> El cofre del tesoro contiene un conjunto de objetos mágicos. Hay múltiples tipos de artículos tales como anillos, 
-> Los objetos pueden buscarse por tipo utilizando un iterador que proporciona 
+> El cofre del tesoro contiene un conjunto de objetos mágicos. Hay múltiples tipos de artículos tales como anillos,
+> Los objetos pueden buscarse por tipo utilizando un iterador que proporciona
 > el cofre del tesoro.
 
 En palabras sencillas
 
-> Los contenedores pueden proporcionar una interfaz de iterador agnóstica de representación 
+> Los contenedores pueden proporcionar una interfaz de iterador agnóstica de representación
 > para proporcionar acceso a los elementos.
 
 Wikipedia dice
 
-> En programación orientada a objetos, el patrón iterador es un patrón de diseño en el que 
+> En programación orientada a objetos, el patrón iterador es un patrón de diseño en el que
 > se utiliza un iterador para recorrer un contenedor y acceder a sus elementos.
 
 **Ejemplo programático**
@@ -110,7 +111,7 @@ public interface Iterator<T> {
 }
 ```
 
-En el siguiente ejemplo, iteramos a través de los objetos de tipo anillo encontrados en el cofre. 
+En el siguiente ejemplo, iteramos a través de los objetos de tipo anillo encontrados en el cofre.
 
 ```java
 var itemIterator = TREASURE_CHEST.iterator(ItemType.RING);

@@ -175,7 +175,7 @@ Utilice el patrón Strategy cuando
 * Un algoritmo utiliza datos que los clientes no deberían conocer. Utilice el patrón Strategy para evitar exponer estructuras de datos complejas específicas del algoritmo.
 * Una clase define muchos comportamientos, y éstos aparecen como múltiples sentencias condicionales en sus operaciones. En lugar de muchas condicionales, mueva las ramas condicionales relacionadas a su propia clase Strategy.
 
-## Tutorial 
+## Tutorial
 
 * [Strategy Pattern Tutorial](https://www.journaldev.com/1754/strategy-design-pattern-in-java-example-tutorial)
 

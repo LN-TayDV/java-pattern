@@ -7,6 +7,7 @@ tag:
 ---
 
 ## Propósito
+
 El módulo de tablas organiza la lógica del dominio con una clase por tabla de la base de datos, y una única instancia de una clase contiene los distintos procedimientos que actuarán sobre los datos.
 
 ## Explicación

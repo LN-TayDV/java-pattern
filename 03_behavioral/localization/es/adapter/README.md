@@ -7,9 +7,11 @@ tag:
 ---
 
 ## También conocido como
+
 Wrapper
 
 ## Propósito
+
 Convertir la interfaz de una clase en otra que espera el cliente. El patrón Adapter permite a clases funcionar en conjunto con otras clases con las que no podrían de otra forma por problemas de compatibilidad.
 
 ## Explicación
@@ -91,9 +93,11 @@ captain.row();
 ```
 
 ## Diagrama de clases
+
 ![alt text](./etc/adapter.urm.png "Adapter class diagram")
 
 ## Aplicación
+
 Usa el patrón Adapter cuando
 
 * Quieres usar una clase existente y su interfaz no coincide con la que necesitas.
@@ -108,17 +112,17 @@ Usa el patrón Adapter cuando
 * [Baeldung](https://www.baeldung.com/java-adapter-pattern)
 
 ## Consecuencias
+
 Los adaptadores de clases y objetos tienen distintas cualidades. Un adaptador de clases
 
-*	Hace la adaptación quedando enlazado a una clase adaptada concreta. Como consecuencia un adaptador de clases no funcionará cuando queramos adaptar una clase y sus subclases.
-*	Permite al adaptador modificar el comportamiento de la clase adaptada porque el adaptador es una subclase de la clase adaptada.
-*	Usa un solo objeto y no es necesario usar punteros adicionales para referenciar la clase adaptada.
+* Hace la adaptación quedando enlazado a una clase adaptada concreta. Como consecuencia un adaptador de clases no funcionará cuando queramos adaptar una clase y sus subclases.
+* Permite al adaptador modificar el comportamiento de la clase adaptada porque el adaptador es una subclase de la clase adaptada.
+* Usa un solo objeto y no es necesario usar punteros adicionales para referenciar la clase adaptada.
 
 Un adaptador de objetos
 
-*	Permite a un solo adaptador trabajar con varias clases, esto es, con la clase adaptada y todas sus subclases (si tiene alguna). El adaptador también puede añadir funcionalidad a todas las clases adaptadas a la vez.
-*	Hace más complicado modificar el comportamiento de la clase adaptada. Sería necesario hacer una subclase de la clase a adaptar y hacer que el adaptador referencie la subclase en lugar de la clase a adaptar.
-
+* Permite a un solo adaptador trabajar con varias clases, esto es, con la clase adaptada y todas sus subclases (si tiene alguna). El adaptador también puede añadir funcionalidad a todas las clases adaptadas a la vez.
+* Hace más complicado modificar el comportamiento de la clase adaptada. Sería necesario hacer una subclase de la clase a adaptar y hacer que el adaptador referencie la subclase en lugar de la clase a adaptar.
 
 ## Ejemplos del mundo real
 
@@ -126,7 +130,6 @@ Un adaptador de objetos
 * [java.util.Collections#list()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#list-java.util.Enumeration-)
 * [java.util.Collections#enumeration()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#enumeration-java.util.Collection-)
 * [javax.xml.bind.annotation.adapters.XMLAdapter](http://docs.oracle.com/javase/8/docs/api/javax/xml/bind/annotation/adapters/XmlAdapter.html#marshal-BoundType-)
-
 
 ## Créditos
 

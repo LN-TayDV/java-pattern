@@ -12,7 +12,7 @@ Kit
 
 ## Mục tiêu
 
-Cung cấp giao diện (interface) để khởi tạo các đối tượng liên quan 
+Cung cấp giao diện (interface) để khởi tạo các đối tượng liên quan
 hoặc có phụ thuộc mà không cần chỉ định các lớp cụ thể của chúng.
 
 ## Giải thích
@@ -33,7 +33,7 @@ Wikipedia viết (tạm dịch)
 
 **Chương trình ví dụ**
 
-Sử dụng ví dụ về vương quốc đã nêu ở trên. 
+Sử dụng ví dụ về vương quốc đã nêu ở trên.
 Trước hết, chúng ta có một số giao diện (interface) và lớp (class) được hiện thực hóa cho các đối tượng trong vương quốc.
 
 ```java
@@ -183,6 +183,7 @@ public static class FactoryMaker {
 ![alt text](../../../abstract-factory/etc/abstract-factory.urm.png "Abstract Factory class diagram")
 
 ## Ứng dụng
+
 Sử dụng mẫu Nhà Máy Trừu Tượng khi
 
 * Hệ thống nên độc lập với cách mà nó khởi tạo/kết hợp/trình bày sản phẩm của nó.
@@ -209,7 +210,7 @@ Ví dụ về ca sử dụng
 
 ## Hướng dẫn
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## Thông dụng
 
@@ -223,5 +224,6 @@ Ví dụ về ca sử dụng
 * [Factory Kit](https://java-design-patterns.com/patterns/factory-kit/)
 
 ## Tham khảo
+
 * [Design Patterns: Elements of Reusable Object-Oriented Software](https://www.amazon.com/gp/product/0201633612/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0201633612&linkCode=as2&tag=javadesignpat-20&linkId=675d49790ce11db99d90bde47f1aeb59)
 * [Head First Design Patterns: A Brain-Friendly Guide](https://www.amazon.com/gp/product/0596007124/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0596007124&linkCode=as2&tag=javadesignpat-20&linkId=6b8b6eea86021af6c8e3cd3fc382cb5b)

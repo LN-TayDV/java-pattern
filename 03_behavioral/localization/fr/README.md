@@ -15,9 +15,9 @@
 
 # Introduction
 
-Les patrons de conception (design patterns) sont les meilleures 
+Les patrons de conception (design patterns) sont les meilleures
 pratiques formalisées qu’un programmeur peut utiliser pour résoudre
-des problèmes courants lors de la conception d’une application 
+des problèmes courants lors de la conception d’une application
 ou d’un système.
 
 Les patrons de conception peuvent accélérer le processus de
@@ -29,7 +29,7 @@ du code pour les développeurs et architectes familiers de ces concepts.
 
 # Commencer
 
-Ce site présente des patrons de conception Java. Les solutions ont été développées 
+Ce site présente des patrons de conception Java. Les solutions ont été développées
 par des développeurs et architectes expérimentés de la communauté open source.
 Les modèles peuvent être parcourus par leurs descriptions de haut niveau ou
 en regardant leur code source.
@@ -41,7 +41,7 @@ Avant de vous plonger dans le contenu, vous devriez vous familiariser avec diver
 [Principes de conception de logiciels](https://java-design-patterns.com/principles/).
 
 Tous les modèles doivent être aussi simples que possible.
-Vous devriez commencer par les principes KISS, YAGNI et 
+Vous devriez commencer par les principes KISS, YAGNI et
 Faites La Chose La Plus Simple Qui Fonctionne.
 La complexité et les modèles ne devraient être introduits
 que lorsqu’ils sont nécessaires pour une extensibilité pratique.
@@ -56,7 +56,7 @@ par n’importe laquelle des approches suivantes&nbsp;:
 - Utilisation des catégories de modèles, `Creational`, `Behavioral` et autres.
 
 Nous espérons que vous trouverez les solutions orientées objet présentées
-sur ce site utiles dans vos architectures et que vous aurez autant 
+sur ce site utiles dans vos architectures et que vous aurez autant
 de plaisir à les apprendre que nous en avons eu à les développer.
 
 # Comment contribuer

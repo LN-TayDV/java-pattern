@@ -120,7 +120,6 @@ public class OrcKingdomFactory implements KingdomFactory {
 
 Agora temos a fábrica abstrata que nos permite fazer uma família de objetos relacionados, ou seja, a fábrica do reino élfico cria castelo élfico, rei e exército, etc.
 
-
 ```java
 var factory = new ElfKingdomFactory();
 var castle = factory.createCastle();
@@ -139,7 +138,6 @@ This is the elven castle!
 This is the elven king!
 This is the elven Army!
 ```
-
 
 Agora, podemos projetar uma fábrica para nossas diferentes fábricas do reino. Neste exemplo, criamos o `FactoryMaker`, responsável por devolver uma instância de `ElfKingdomFactory` ou `OrcKingdomFactory`.
 O cliente pode usar o `FactoryMaker` para criar uma fatoração concreta, que uma vez, produzirá diferentes objetos concretos (derivados de `Army`, `King`, `Castle`).
@@ -180,7 +178,6 @@ public static class FactoryMaker {
 
 ![alt text](../../../abstract-factory/etc/abstract-factory.urm.png "Diagrama de Classes de Abstract Factory")
 
-
 ## Aplicabilidade
 
 Use o padrão Abstract Factory quando
@@ -210,7 +207,7 @@ Exemplos de casos de uso
 
 ## Tutoriais
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## Usos conhecidos
 

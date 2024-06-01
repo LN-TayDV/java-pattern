@@ -7,12 +7,15 @@ tag:
 ---
 
 ## 目的
+
 给定一种语言，请定义其语法的表示形式，以及使用该表示形式来解释该语言中的句子的解释器。
 
 ## 类图
+
 ![alt text](./etc/interpreter_1.png "Interpreter")
 
 ## 适用性
+
 有一种要解释的语言时，请使用解释器模式，并且可以将语言中的语句表示为抽象语法树。解释器模式在以下情况下效果最佳
 
 * 语法很简单。 对于复杂的语法，语法的类层次结构变得庞大且难以管理。 在这种情况下，解析器生成器之类的工具是更好的选择。 他们可以在不构建抽象语法树的情况下解释表达式，这可以节省空间并可能节省时间
@@ -24,7 +27,6 @@ tag:
 * [java.text.Normalizer](http://docs.oracle.com/javase/8/docs/api/java/text/Normalizer.html)
 * All subclasses of [java.text.Format](http://docs.oracle.com/javase/8/docs/api/java/text/Format.html)
 * [javax.el.ELResolver](http://docs.oracle.com/javaee/7/api/javax/el/ELResolver.html)
-
 
 ## 鸣谢
 

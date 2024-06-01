@@ -22,7 +22,7 @@ In parole semplici
 
 [WikiWikiWeb](https://wiki.c2.com/?AcyclicVisitor) dice
 
->Il pattern Acyclic Visitor consente di aggiungere nuove funzioni alle gerarchie di classi esistenti senza influire su tali gerarchie e senza creare i cicli di dipendenza che sono intrinseci al pattern Visitor dei Gang of Four. _(Testo tradotto dalla voce Acyclic Visitor da WikiWikiWeb in lingua inglese)._
+> Il pattern Acyclic Visitor consente di aggiungere nuove funzioni alle gerarchie di classi esistenti senza influire su tali gerarchie e senza creare i cicli di dipendenza che sono intrinseci al pattern Visitor dei Gang of Four. _(Testo tradotto dalla voce Acyclic Visitor da WikiWikiWeb in lingua inglese)._
 
 **Esempio di codice**
 
@@ -57,7 +57,6 @@ public class Hayes extends Modem {
   }
 }
 ```
-
 
 Successivamente introduciamo la gerarchia delle classi `ModemVisitor`.
 
@@ -127,8 +126,8 @@ Output del programma:
 
 Questo pattern può essere utilizzato nei seguenti casi:
 
-* Quando è necessario aggiungere una nuova funzione a una gerarchia esistente senza la necessità di modificarla o influenzarla. 
-* Quando ci sono funzioni che operano su una gerarchia, ma che non appartengono alla gerarchia stessa, ad esempio, il problema di ConfigureForDOS / ConfigureForUnix / ConfigureForX. 
+* Quando è necessario aggiungere una nuova funzione a una gerarchia esistente senza la necessità di modificarla o influenzarla.
+* Quando ci sono funzioni che operano su una gerarchia, ma che non appartengono alla gerarchia stessa, ad esempio, il problema di ConfigureForDOS / ConfigureForUnix / ConfigureForX.
 * Quando è necessario eseguire operazioni molto diverse su un oggetto a seconda del suo tipo.
 * Quando la gerarchia delle classi visitate sarà frequentemente estesa con nuovi derivati dalla classe Element.
 * Quando la ricompilazione, il relinking, il ritestare o la ridistribuzione dei derivati da Element è molto costoso.

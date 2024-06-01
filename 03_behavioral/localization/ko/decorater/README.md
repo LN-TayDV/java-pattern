@@ -25,7 +25,7 @@ Wrapper
 
 쉽게 설명하면
 
-> 데코레이터(Decorator) 패턴은 객체를 데코레이터(Decorater) 클래스의 객체로 감싸 런타임 시, 
+> 데코레이터(Decorator) 패턴은 객체를 데코레이터(Decorater) 클래스의 객체로 감싸 런타임 시,
 > 객체의 동작을 동적으로 변경할 수 있도록 합니다.
 
 Wikipedia에 의하면
@@ -150,12 +150,11 @@ Clubbed troll power: 20.
 
 ## 실제 사례
 
- * [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html),
- [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html), [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
- * [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
- * [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
- * [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
-
+* [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html),
+  [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html), [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
+* [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
+* [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
+* [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
 
 ## 크레딧
 

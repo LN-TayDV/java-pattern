@@ -188,28 +188,28 @@
             </plugins>
         </pluginManagement>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                <version>${maven-checkstyle-plugin.version}</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>validate</id>-->
-<!--                        <goals>-->
-<!--                            <goal>check</goal>-->
-<!--                        </goals>-->
-<!--                        <phase>validate</phase>-->
-<!--                        <configuration>-->
-<!--                            <configLocation>google_checks.xml</configLocation>-->
-<!--                            <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+            <!--                <version>${maven-checkstyle-plugin.version}</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>validate</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>check</goal>-->
+            <!--                        </goals>-->
+            <!--                        <phase>validate</phase>-->
+            <!--                        <configuration>-->
+            <!--                            <configLocation>google_checks.xml</configLocation>-->
+            <!--                            <suppressionsLocation>checkstyle-suppressions.xml</suppressionsLocation>-->
 
-<!--                            <failOnViolation>true</failOnViolation>-->
-<!--                            <violationSeverity>warning</violationSeverity>-->
-<!--                            <includeTestSourceDirectory>false</includeTestSourceDirectory>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--                            <failOnViolation>true</failOnViolation>-->
+            <!--                            <violationSeverity>warning</violationSeverity>-->
+            <!--                            <includeTestSourceDirectory>false</includeTestSourceDirectory>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>

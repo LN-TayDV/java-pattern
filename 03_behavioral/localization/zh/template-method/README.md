@@ -7,9 +7,11 @@ tag:
 ---
 
 ## 目的
+
 在一个操作中定义算法的骨架，将某些步骤推迟到子类。模板方法允许子类重新定义算法的某些步骤，而无需更改算法的结构。
 
 ## 解释
+
 真实世界例子
 
 > 偷东西的一般步骤是相同的。 首先，选择目标，然后以某种方式使其迷惑，最后，你偷走了该物品。然而这些步骤有很多实现方式。
@@ -106,6 +108,7 @@ public class HalflingThief {
   }
 }
 ```
+
 最后，我们展示半身人贼如何利用不同的偷窃方法。
 
 ```java
@@ -116,6 +119,7 @@ public class HalflingThief {
 ```
 
 ## 类图
+
 ![alt text](./etc/template_method_urm.png "Template Method")
 
 ## 适用性
@@ -132,9 +136,9 @@ public class HalflingThief {
 
 ## Java例子
 
-* [javax.servlet.GenericServlet.init](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/GenericServlet.html#init--): 
-Method `GenericServlet.init(ServletConfig config)` calls the parameterless method `GenericServlet.init()` which is intended to be overridden in subclasses.
-Method `GenericServlet.init(ServletConfig config)` is the template method in this example.
+* [javax.servlet.GenericServlet.init](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/GenericServlet.html#init--):
+  Method `GenericServlet.init(ServletConfig config)` calls the parameterless method `GenericServlet.init()` which is intended to be overridden in subclasses.
+  Method `GenericServlet.init(ServletConfig config)` is the template method in this example.
 
 ## 鸣谢
 

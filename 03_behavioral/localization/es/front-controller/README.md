@@ -7,14 +7,17 @@ tag:
 ---
 
 ## Propósito
+
 Introducir un gestor común para todas las solicitudes de un sitio web. De esta
 manera podemos encapsular funcionalidad común como la seguridad,
 internacionalización, enrutamiento y registro en un solo lugar.
 
 ## Diagrama de clases
+
 ![alt text](./etc/front-controller.png "Front Controller")
 
 ## Aplicabilidad
+
 Utilice el patrón del controlador frontal cuando
 
 * Desea encapsular la funcionalidad común de gestión de peticiones en un único lugar.

@@ -18,7 +18,7 @@ The Flyweight pattern's primary intent is to reduce the number of objects create
 
 Real-world example
 
-> Alchemist's shop has shelves full of magic potions. Many of the potions are the same so there is no need to create a new object for each of them. Instead, one object instance can represent  multiple shelf items so the memory footprint remains small.
+> Alchemist's shop has shelves full of magic potions. Many of the potions are the same so there is no need to create a new object for each of them. Instead, one object instance can represent multiple shelf items so the memory footprint remains small.
 
 In plain words
 

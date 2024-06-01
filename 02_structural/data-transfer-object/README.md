@@ -27,7 +27,7 @@ Real-world example
 
 In plain words
 
-> Using DTO relevant information can be fetched with a single backend query. 
+> Using DTO relevant information can be fetched with a single backend query.
 
 Wikipedia says
 

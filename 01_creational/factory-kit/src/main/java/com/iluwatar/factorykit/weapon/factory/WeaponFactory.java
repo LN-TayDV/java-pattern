@@ -45,7 +45,7 @@ public interface WeaponFactory {
      * @return factory with specified {@link Builder}s
      */
 
-     /*
+    /*
      * Phương thức factory trong interface WeaponFactory thực sự tạo ra một đối tượng của chính interface WeaponFactory.
      * Điều đặc biệt ở đây là phương thức này được đặt là static,
      * điều này có nghĩa là nó có thể được gọi trực tiếp từ interface WeaponFactory
@@ -85,7 +85,6 @@ public interface WeaponFactory {
      * Tóm lại, khi gọi phương thức create(WeaponType name) với một WeaponType cụ thể,
      * nó sẽ trả về đối tượng Weapon được tạo ra từ Supplier<Weapon> tương ứng với name từ map.
      */
-
     static WeaponFactory factory(Consumer<Builder> consumer) {
         var map = new HashMap<WeaponType, Supplier<Weapon>>();
         consumer.accept(map::put);

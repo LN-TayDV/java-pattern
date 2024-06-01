@@ -26,11 +26,11 @@ Real-world example
 > 2. **Yellow State**: Cars are warned that the light will soon turn red, so they should prepare to stop.
 > 3. **Red State**: Cars must stop and wait for the light to turn green.
 >
-> In this scenario, the traffic light uses the State design pattern. Each state (Green, Yellow, Red) is represented by a different object that defines what happens in that particular state. The traffic light (context) delegates the behavior to the current state object. When the state changes (e.g., from Green to Yellow), the traffic light updates its state object and changes its behavior accordingly. 
+> In this scenario, the traffic light uses the State design pattern. Each state (Green, Yellow, Red) is represented by a different object that defines what happens in that particular state. The traffic light (context) delegates the behavior to the current state object. When the state changes (e.g., from Green to Yellow), the traffic light updates its state object and changes its behavior accordingly.
 
 In plain words
 
-> State pattern allows an object to change its behavior. 
+> State pattern allows an object to change its behavior.
 
 Wikipedia says
 

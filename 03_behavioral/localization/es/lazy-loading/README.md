@@ -7,14 +7,17 @@ tag:
 ---
 
 ## Propósito
+
 La carga diferida (*Lazy loading* en inglés) es un patrón de diseño comúnmente usado para diferir
 la inicialización de un objeto hasta el punto en que se necesita. Puede
 contribuir a la eficiencia en la operación del programa si se usa de manera adecuada.
 
 ## Diagrama de clases
+
 ![alt text](./etc/lazy-loading.png "Lazy Loading")
 
 ## Aplicabilidad
+
 Utilice el modelo de Carga Diferida cuando:
 
 * La carga anticipada es costosa o el objeto a cargar podría no ser necesario en absoluto

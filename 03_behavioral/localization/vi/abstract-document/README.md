@@ -17,7 +17,7 @@ Mẫu này sử dụng khái niệm "đặc tính" (thuật ngữ gốc: "trait"
 
 Ví dụ thực tế
 
->  Chiếc ô tô có thể bao gồm nhiều thành phần. Tuy nhiên, chúng ta không biết liệu một chiếc ô tô cụ thể có thể chứa những thành phần nào, tất cả hay chỉ một vài thành phần nhất định. Có thể nói rằng, những chiếc ô tô này là động và rất linh hoạt.
+> Chiếc ô tô có thể bao gồm nhiều thành phần. Tuy nhiên, chúng ta không biết liệu một chiếc ô tô cụ thể có thể chứa những thành phần nào, tất cả hay chỉ một vài thành phần nhất định. Có thể nói rằng, những chiếc ô tô này là động và rất linh hoạt.
 
 Một cách đơn giản
 
@@ -30,8 +30,8 @@ Wikipedia viết (tạm dịch)
 
 **Chương trình ví dụ**
 
-Đầu tiên, định nghĩa lớp cơ sở `Document` và `AbstractDocument`. 
-2 lớp này định nghĩa đối tượng sẽ giữ bảng thuộc tính và các đối tượng con có kiểu bất kì. 
+Đầu tiên, định nghĩa lớp cơ sở `Document` và `AbstractDocument`.
+2 lớp này định nghĩa đối tượng sẽ giữ bảng thuộc tính và các đối tượng con có kiểu bất kì.
 
 ```java
 public interface Document {
@@ -125,7 +125,7 @@ public class Car extends AbstractDocument implements HasModel, HasPrice, HasPart
 }
 ```
 
-Và cuối cùng là cách khởi tạo và sử dụng `Car` trong một ví dụ hoàn chỉnh. 
+Và cuối cùng là cách khởi tạo và sử dụng `Car` trong một ví dụ hoàn chỉnh.
 
 ```java
     LOGGER.info("Constructing parts and car");

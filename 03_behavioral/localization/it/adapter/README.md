@@ -7,9 +7,11 @@ tag:
 ---
 
 ## Anche conosciuto come
+
 Wrapper
 
 ## Intento
+
 Convertire l'interfaccia di una classe in un'altra interfaccia attesa dal cliente. Il pattern Adapter consente a classi di collaborare con altre classi con cui altrimenti non potrebbero farlo a causa di problemi di compatibilità.
 
 ## Spiegazione
@@ -65,6 +67,7 @@ public class Captain {
 ```
 
 Ora immaginiamo che i pirati stiano arrivando e il nostro capitano debba scappare, ma è disponibile solo una barca da pesca. Dobbiamo creare un adattatore che consenta al capitano di navigare con la barca da pesca con le sue abilità di saper utilizzare le barche a remi.
+
 ```java
 @Slf4j
 public class FishingBoatAdapter implements RowingBoat {
@@ -90,9 +93,11 @@ captain.row();
 ```
 
 ## Diagramma delle classi
+
 ![alt text](../../../adapter/etc/adapter.urm.png "Adapter class diagram")
 
 ## Applicabilità
+
 Utilizza il pattern Adapter quando
 
 * Vuoi utilizzare una classe esistente, ma la sua interfaccia non corrisponde a quella di cui hai bisogno
@@ -107,18 +112,18 @@ Utilizza il pattern Adapter quando
 * [Baeldung](https://www.baeldung.com/java-adapter-pattern)
 * [GeeksforGeeks](https://www.geeksforgeeks.org/adapter-pattern/)
 
-
 ## Conseguenze
+
 Gli adapter di classe e oggetti comportano scelte diverse. Un adapter di classe
 
-*   Effettua l'adattamento rimanendo legato a una classe adattata specifica. Di conseguenza, un adapter di classe non funzionerà quando desideriamo adattare una classe e le sue sottoclassi.
-*   Permette all'Adapater di modificare il comportamento della classe adattata perché l'adpater è una sottoclasse della classe adattata.  
-*   Utilizza un solo oggetto e non richiede l'uso di puntatori aggiuntivi per fare riferimento alla classe adattata.
+* Effettua l'adattamento rimanendo legato a una classe adattata specifica. Di conseguenza, un adapter di classe non funzionerà quando desideriamo adattare una classe e le sue sottoclassi.
+* Permette all'Adapater di modificare il comportamento della classe adattata perché l'adpater è una sottoclasse della classe adattata.
+* Utilizza un solo oggetto e non richiede l'uso di puntatori aggiuntivi per fare riferimento alla classe adattata.
 
-Un adapter di oggetto	
+Un adapter di oggetto
 
-*   Permette a un singolo Adapter di lavorare con diverse classi adattate, ovvero con la classe adattata e tutte le sue sottoclassi (se ne ha). L'Adapter può anche aggiungere funzionalità a tutte le classi adattate contemporaneamente.
-*   Rende più complicata la modifica del comportamento della classe adattata. Sarebbe necessario creare una sottoclasse della classe da adattare e far sì che l'Adapter faccia riferimento alla sottoclasse anziché alla classe da adattare.
+* Permette a un singolo Adapter di lavorare con diverse classi adattate, ovvero con la classe adattata e tutte le sue sottoclassi (se ne ha). L'Adapter può anche aggiungere funzionalità a tutte le classi adattate contemporaneamente.
+* Rende più complicata la modifica del comportamento della classe adattata. Sarebbe necessario creare una sottoclasse della classe da adattare e far sì che l'Adapter faccia riferimento alla sottoclasse anziché alla classe da adattare.
 
 ## Esempi del mondo reale
 
@@ -126,7 +131,6 @@ Un adapter di oggetto
 * [java.util.Collections#list()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#list-java.util.Enumeration-)
 * [java.util.Collections#enumeration()](https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#enumeration-java.util.Collection-)
 * [javax.xml.bind.annotation.adapters.XMLAdapter](http://docs.oracle.com/javase/8/docs/api/javax/xml/bind/annotation/adapters/XmlAdapter.html#marshal-BoundType-)
-
 
 ## Collegamenti esterni
 

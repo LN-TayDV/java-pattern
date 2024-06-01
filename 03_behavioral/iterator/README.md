@@ -111,7 +111,7 @@ public interface Iterator<T> {
 }
 ```
 
-In the following example, we iterate through the ring-type items found in the chest. 
+In the following example, we iterate through the ring-type items found in the chest.
 
 ```java
 var itemIterator = TREASURE_CHEST.iterator(ItemType.RING);

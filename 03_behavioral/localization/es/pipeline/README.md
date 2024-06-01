@@ -29,6 +29,7 @@ Wikipedia dice
 **Ejemplo programático**
 
 Las etapas de nuestro pipeline se llaman `Handler`s.
+
 ```java
 interface Handler<I, O> {
   O process(I input);

@@ -179,11 +179,12 @@ the result of filtered query is [But we loved with a love that was more than lov
 
 अब हम अपने ऐप को `expandedFinder`, `specializedFinder`, `advancedFinder`, `filteredFinder` खोजने वाले प्रश्नों के साथ डिज़ाइन कर सकते हैं, जो सभी `contains`, `or`, `not`, `and` से प्राप्त होते हैं।
 
-
 ## क्लास डायग्राम
+
 ![alt text](../../../combinator/etc/combinator.urm.png "Combinator class diagram")
 
 ## प्रयोज्यता
+
 कॉम्बिनेटर पैटर्न का उपयोग तब करें जब:
 
 - आप अधिक सादे मानों से अधिक जटिल मान बनाने में सक्षम हैं, लेकिन उनका प्रकार समान है (उनका संयोजन)
@@ -194,7 +195,6 @@ the result of filtered query is [But we loved with a love that was more than lov
 - संयोजन और अनुप्रयोग चरण के बीच स्पष्ट अंतर है।
 - पहले एक इंस्टेंस बनाता है और फिर उसे निष्पादित करता है।
 - यह पैटर्न को समानांतर वातावरण में लागू बनाता है।
-
 
 ## वास्तविक दुनिया के उदाहरण
 

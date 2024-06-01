@@ -177,8 +177,6 @@ hammer.unwield();
 // The item's glow fades.
 ```
 
-
-
 ## 类图
 
 ![alt text](./etc/bridge.urm.png "Bridge class diagram")

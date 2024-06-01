@@ -145,8 +145,8 @@ El patrón Template Method debería utilizarse
 ## Usos conocidos
 
 * [javax.servlet.GenericServlet.init](https://jakarta.ee/specifications/servlet/4.0/apidocs/javax/servlet/GenericServlet.html#init--):
-El método `GenericServlet.init(ServletConfig config)` llama al método sin parámetros `GenericServlet.init()` que está pensado para ser sobreescrito en subclases.
-El método `GenericServlet.init(ServletConfig config)` es el método plantilla en este ejemplo.
+  El método `GenericServlet.init(ServletConfig config)` llama al método sin parámetros `GenericServlet.init()` que está pensado para ser sobreescrito en subclases.
+  El método `GenericServlet.init(ServletConfig config)` es el método plantilla en este ejemplo.
 
 ## Créditos
 

@@ -61,6 +61,7 @@ public class Pen extends MyProduct {
   private String color;
 }
 ```
+
 Valores del discriminador
 
 - Dado que los registros de todas las entidades estarán en la misma tabla, Hibernate necesita una forma de diferenciarlos.
@@ -78,6 +79,7 @@ public class MyProduct {
   // ...
 }
 ```
+
 - Aquí hemos optado por diferenciar las entidades de la subclase MyProduct mediante una columna entera llamada product_type.
 
 - A continuación, tenemos que indicar a Hibernate qué valor tendrá cada registro de subclase para la columna product_type:
@@ -89,6 +91,7 @@ public class Book extends MyProduct {
   // ...
 }
 ```
+
 ```java
 @Entity
 @DiscriminatorValue("2")
@@ -99,8 +102,8 @@ public class Pen extends MyProduct {
 
 - Hibernate añade otros dos valores predefinidos que puede tomar la anotación: null y not null:
 
-  - @DiscriminatorValue("null") significa que cualquier fila sin valor discriminador se asignará a la clase de entidad con esta anotación; esto puede aplicarse a la clase raíz de la jerarquía.
-  - @DiscriminatorValue("not null"): cualquier fila con un valor discriminador que no coincida con ninguno de los asociados a las definiciones de entidad se asignará a la clase con esta anotación.
+    - @DiscriminatorValue("null") significa que cualquier fila sin valor discriminador se asignará a la clase de entidad con esta anotación; esto puede aplicarse a la clase raíz de la jerarquía.
+    - @DiscriminatorValue("not null"): cualquier fila con un valor discriminador que no coincida con ninguno de los asociados a las definiciones de entidad se asignará a la clase con esta anotación.
 
 ## Diagrama de clases
 
@@ -111,10 +114,12 @@ public class Pen extends MyProduct {
 Utilice el patrón Singleton cuando
 
 ## Use STI Cuando Las Subclases Tienen Los Mismos Campos/Columnas Pero Diferente Comportamiento
+
 - Una buena indicación de que STI es correcto es cuando las diferentes subclases tienen los mismos campos/columnas pero diferentes métodos. En el ejemplo de cuentas anterior, esperamos que todas las columnas de la base de datos sean utilizadas por cada subclase. De lo contrario, habrá muchas columnas nulas en la base de datos.
   <br><br>
+
 * Utilizar STI cuando esperamos realizar consultas en todas las subclases
-  - Otra buena indicación de que STI es correcto es si esperamos realizar consultas a través de todas las clases. Por ejemplo, si queremos encontrar las 10 cuentas con los saldos más altos en todas las clases, STI nos permite utilizar sólo una consulta, mientras que MTI requerirá manipulación en memoria.
+    - Otra buena indicación de que STI es correcto es si esperamos realizar consultas a través de todas las clases. Por ejemplo, si queremos encontrar las 10 cuentas con los saldos más altos en todas las clases, STI nos permite utilizar sólo una consulta, mientras que MTI requerirá manipulación en memoria.
 
 ### Tutoriales
 

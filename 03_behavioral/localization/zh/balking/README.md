@@ -112,7 +112,6 @@ public interface DelayProvider {
 
 ## 适用性
 
-
 使用止步模式当
 
 * 您只想在对象处于特定状态时才对其调用操作

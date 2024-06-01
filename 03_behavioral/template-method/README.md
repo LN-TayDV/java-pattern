@@ -26,7 +26,7 @@ Real-world example
 
 In plain words
 
-> Template Method pattern outlines the general steps in the parent class and lets the concrete child implementations define the details. 
+> Template Method pattern outlines the general steps in the parent class and lets the concrete child implementations define the details.
 
 Wikipedia says
 
@@ -37,7 +37,6 @@ Wikipedia says
 Our programmatic example is about thieves and stealing. The general steps in stealing an item are the same. First, you pick the target, next you confuse him somehow and finally, you steal the item. However, there are many ways to implement these steps.
 
 Let's first introduce the template method class `StealingMethod` along with its concrete implementations `SubtleMethod` and `HitAndRunMethod`. To make sure that subclasses don’t override the template method, the template method (in our case method `steal`) should be declared `final`, otherwise the skeleton defined in the base class could be overridden in subclasses.
-
 
 ```java
 @Slf4j

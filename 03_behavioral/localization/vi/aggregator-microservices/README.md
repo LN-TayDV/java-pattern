@@ -9,6 +9,7 @@ tag:
 ---
 
 ## Mục Đích
+
 Người dùng chỉ cần thực hiện một lần gọi duy nhất đến dịch vụ tổng hợp, sau đó dịch vụ tổng hợp sẽ gọi dịch vụ con tương ứng.
 
 ## Giải Thích
@@ -89,10 +90,11 @@ curl http://localhost:50004/product
 ```
 
 ## Sơ Đồ Lớp
+
 ![alt text](../../../aggregator-microservices/aggregator-service/etc/aggregator-service.png "Aggregator Microservice")
 
-
 ## Các Trường Hợp Sử Dụng
+
 Sử dụng mẫu Microservices Tổng Hợp khi bạn cần một API chung cho các dịch vụ Microservices khác nhau, bất kể thiết bị của khách hàng.
 
 ## Người Đóng Góp

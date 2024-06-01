@@ -1,12 +1,12 @@
 title: Notification
 category: Behavioral
-language: en 
+language: en
 tags:
-    - Asynchronous
-    - Decoupling
-    - Event-driven
-    - Messaging
-    - Publish/subscribe
+- Asynchronous
+- Decoupling
+- Event-driven
+- Messaging
+- Publish/subscribe
 ---
 
 ## Also known as

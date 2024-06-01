@@ -23,9 +23,9 @@ The Layered Architecture pattern helps organize applications into groups of subt
 Real world example
 
 > Imagine constructing a modern high-rise building, which is analogous to using the Layered Architecture pattern in software development. Just as a building is divided into layers such as the foundation, structural floors, residential floors, and the rooftop, each with specific functions and built using different materials and techniques, a software application can be similarly structured.
-> 
-> In this analogy, the foundation represents the data layer, responsible for managing database operations. The structural floors are akin to the service layer, which contains business logic and rules. The residential floors parallel the presentation layer, which deals with user interfaces and interactions. Finally, the rooftop could be seen as the API layer, allowing external systems to communicate with the application. 
-> 
+>
+> In this analogy, the foundation represents the data layer, responsible for managing database operations. The structural floors are akin to the service layer, which contains business logic and rules. The residential floors parallel the presentation layer, which deals with user interfaces and interactions. Finally, the rooftop could be seen as the API layer, allowing external systems to communicate with the application.
+>
 > Just as each floor in a building is constructed to support the layers above and below, each software layer supports seamless interaction with its neighboring layers while maintaining a degree of independence. This structure allows for easy maintenance and updates, such as refurbishing the interiors (presentation layer) without affecting the underlying structures (business logic and data layers).
 
 In plain words

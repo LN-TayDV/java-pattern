@@ -22,7 +22,7 @@ Define a family of algorithms, encapsulate each one, and make them interchangeab
 
 Real-world example
 
-> An analogous real-world example of the Strategy design pattern is the navigation systems in cars. Different navigation algorithms (such as shortest route, fastest route, and scenic route) can be used to determine the best path from one location to another. Each algorithm encapsulates a specific strategy for calculating the route. The user (client) can switch between these algorithms based on their preferences without changing the navigation system itself. This allows for flexible and interchangeable navigation strategies within the same system. 
+> An analogous real-world example of the Strategy design pattern is the navigation systems in cars. Different navigation algorithms (such as shortest route, fastest route, and scenic route) can be used to determine the best path from one location to another. Each algorithm encapsulates a specific strategy for calculating the route. The user (client) can switch between these algorithms based on their preferences without changing the navigation system itself. This allows for flexible and interchangeable navigation strategies within the same system.
 
 In plain words
 

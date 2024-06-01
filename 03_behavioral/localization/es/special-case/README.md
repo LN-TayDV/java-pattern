@@ -355,7 +355,7 @@ Utilice el patrón Special Case cuando:
   para una instancia de clase en particular, o el mismo comportamiento después de una comprobación nula.
 * Devuelve un objeto real que realiza el comportamiento real, en lugar de un objeto nulo que no realiza nada.
 
-## Tutorial 
+## Tutorial
 
 * [Special Case Tutorial](https://www.codinghelmet.com/articles/reduce-cyclomatic-complexity-special-case)
 

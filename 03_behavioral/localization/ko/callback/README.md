@@ -3,7 +3,9 @@ title: Callback
 category: Idiom  
 language: ko  
 tag:
+
 - Reactive
+
 ---  
 
 ## 의도
@@ -30,30 +32,43 @@ tag:
 콜백은 하나의 메서드를 가지고 있는 단순한 인터페이스이다.
 
 ```java  
-public interface Callback {  
-  
-  void call();}  
+public interface Callback {
+
+    void call();
+}  
 ```  
 
 다음으로 작업의 실행이 끝나고 나서 콜백을 실행시킬 Task 클래스를 정의한다.
 
 ```java  
-public abstract class Task {  
-  
-  final void executeWith(Callback callback) {    execute();    Optional.ofNullable(callback).ifPresent(Callback::call);  }  
-  public abstract void execute();}  
-  
-@Slf4j  
-public final class SimpleTask extends Task {  
-  
-  @Override  public void execute() {    LOGGER.info("우선순위의 작업을 마친 이후 콜백 메서드를 호출한다.");  
-  }}  
+public abstract class Task {
+
+    final void executeWith(Callback callback) {
+        execute();
+        Optional.ofNullable(callback).ifPresent(Callback::call);
+    }
+
+    public abstract void execute();
+}
+
+@Slf4j
+public final class SimpleTask extends Task {
+
+    @Override
+    public void execute() {
+        LOGGER.info("우선순위의 작업을 마친 이후 콜백 메서드를 호출한다.");
+    }
+}  
 ```  
 
 마지막으로, 다음은 작업을 실행한 후 마쳤을 때 콜백을 받는 방법의 예시이다.
 
 ```java  
-    var task = new SimpleTask();    task.executeWith(() -> LOGGER.info("완료되었음."));  
+    var task = new SimpleTask();    task.
+
+executeWith(() ->LOGGER.
+
+info("완료되었음."));  
 ```  
 
 ## 클래스 다이어그램

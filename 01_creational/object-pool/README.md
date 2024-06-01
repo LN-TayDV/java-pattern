@@ -23,11 +23,11 @@ The Object Pool design pattern manages a pool of reusable objects, optimizing re
 
 Real world example
 
-> In our war game we need to use oliphaunts, massive and mythic beasts, but the problem is that they are extremely expensive to create. The solution is to create a pool of them, track which ones are in-use, and instead of disposing them re-use the instances.   
+> In our war game we need to use oliphaunts, massive and mythic beasts, but the problem is that they are extremely expensive to create. The solution is to create a pool of them, track which ones are in-use, and instead of disposing them re-use the instances.
 
 In plain words
 
-> Object Pool manages a set of instances instead of creating and destroying them on demand. 
+> Object Pool manages a set of instances instead of creating and destroying them on demand.
 
 Wikipedia says
 

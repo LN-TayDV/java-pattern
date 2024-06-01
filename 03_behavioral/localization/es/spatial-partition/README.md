@@ -9,7 +9,7 @@ tag:
 
 ## Propósito
 
-Como se explica en el libro  [Game Programming Patterns](http://gameprogrammingpatterns.com/spatial-partition.html) 
+Como se explica en el libro  [Game Programming Patterns](http://gameprogrammingpatterns.com/spatial-partition.html)
 por Bob Nystrom, spatial partition pattern ayuda a localizar eficazmente los objetos almacenándolos en una
 estructura de datos organizada por sus posiciones.
 

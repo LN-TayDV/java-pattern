@@ -38,12 +38,12 @@ Wikipedia says
 
 **Programmatic Example**
 
-The Event-Driven Architecture (EDA) pattern in this module is implemented using several key classes and concepts:  
+The Event-Driven Architecture (EDA) pattern in this module is implemented using several key classes and concepts:
 
-* Event: This is an abstract class that represents an event. It's the base class for all types of events that can occur in the system.  
-* UserCreatedEvent and UserUpdatedEvent: These are concrete classes that extend the Event class. They represent specific types of events that can occur in the system, namely the creation and updating of a user.  
-* EventDispatcher: This class is responsible for dispatching events to their respective handlers. It maintains a mapping of event types to handlers.  
-* UserCreatedEventHandler and UserUpdatedEventHandler: These are the handler classes for the UserCreatedEvent and UserUpdatedEvent respectively. They contain the logic to execute when these events occur.  
+* Event: This is an abstract class that represents an event. It's the base class for all types of events that can occur in the system.
+* UserCreatedEvent and UserUpdatedEvent: These are concrete classes that extend the Event class. They represent specific types of events that can occur in the system, namely the creation and updating of a user.
+* EventDispatcher: This class is responsible for dispatching events to their respective handlers. It maintains a mapping of event types to handlers.
+* UserCreatedEventHandler and UserUpdatedEventHandler: These are the handler classes for the UserCreatedEvent and UserUpdatedEvent respectively. They contain the logic to execute when these events occur.
 
 First, we'll define the `Event` abstract class and the concrete event classes `UserCreatedEvent` and `UserUpdatedEvent`.
 

@@ -1,10 +1,11 @@
 <!-- the line below needs to be an empty line C: (its because kramdown isnt
      that smart and dearly wants an empty line before a heading to be able to
      display it as such, e.g. website) -->
-     
+
      # जावा मध्ये डिझाइन नमुने लागू केले
      
      ![Java CI](https://github.com/iluwatar/java-design-patterns/workflows/Java%20CI/badge.svg)
+
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/iluwatar/java-design-patterns/master/LICENSE.md)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=iluwatar_java-design-patterns&metric=ncloc)](https://sonarcloud.io/dashboard?id=iluwatar_java-design-patterns)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=iluwatar_java-design-patterns&metric=coverage)](https://sonarcloud.io/dashboard?id=iluwatar_java-design-patterns)
@@ -51,12 +52,13 @@ Read in different language : [**zh**](localization/zh/README.md), [**ko**](local
 [उपलब्ध डिझाइन नमुने](https://java-design-patterns.com/patterns/) कोणत्याही
 खालील दृष्टिकोनांपैकी
 
- - नावाने विशिष्ट नमुना शोधा. एक शोधू शकत नाही? कृपया नवीन नमुना [येथे] (https://github.com/iluwatar/java-design-patterns/issues) नोंदवा.
- - `परफॉर्मन्स`, `गँग ऑफ फोर` किंवा `डेटा ऍक्सेस` यासारखे टॅग वापरणे.
- - पॅटर्न श्रेण्या, `सृजनात्मक`, `वर्तणूक` आणि इतर वापरणे.
+- नावाने विशिष्ट नमुना शोधा. एक शोधू शकत नाही? कृपया नवीन नमुना [येथे] (https://github.com/iluwatar/java-design-patterns/issues) नोंदवा.
+- `परफॉर्मन्स`, `गँग ऑफ फोर` किंवा `डेटा ऍक्सेस` यासारखे टॅग वापरणे.
+- पॅटर्न श्रेण्या, `सृजनात्मक`, `वर्तणूक` आणि इतर वापरणे.
 
 आशा आहे की, तुम्हाला या साइटवर सादर केलेले ऑब्जेक्ट-ओरिएंटेड उपाय उपयुक्त वाटतील
 तुमच्या आर्किटेक्चर्समध्ये आणि त्यांना विकसित करताना आम्हाला जेवढी मजा आली तेवढीच ती शिकण्यात मजा करा.
+
 # योगदान कसे द्यावे
 
 तुम्ही प्रकल्पात योगदान देण्यास इच्छुक असाल तर तुम्हाला संबंधित माहिती मिळेल

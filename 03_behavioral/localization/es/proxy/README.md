@@ -147,8 +147,8 @@ Típicamente, el patrón proxy se utiliza para
 
 * [java.lang.reflect.Proxy](http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Proxy.html)
 * [Apache Commons Proxy](https://commons.apache.org/proper/commons-proxy/)
-* Mocking frameworks [Mockito](https://site.mockito.org/), 
-[Powermock](https://powermock.github.io/), [EasyMock](https://easymock.org/)
+* Mocking frameworks [Mockito](https://site.mockito.org/),
+  [Powermock](https://powermock.github.io/), [EasyMock](https://easymock.org/)
 * [UIAppearance](https://developer.apple.com/documentation/uikit/uiappearance)
 
 ## Patrones relacionados

@@ -41,7 +41,7 @@ public class Java8Holder {
 
     public Heavy getHeavy() {
         return heavy.get();
-    }    private Supplier<Heavy> heavy = this::createAndCacheHeavy;
+    }
 
     private synchronized Heavy createAndCacheHeavy() {
         class HeavyFactory implements Supplier<Heavy> {
@@ -58,7 +58,7 @@ public class Java8Holder {
         }
 
         return heavy.get();
-    }
+    }    private Supplier<Heavy> heavy = this::createAndCacheHeavy;
 
 
 

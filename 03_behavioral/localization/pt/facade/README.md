@@ -82,8 +82,8 @@ public abstract class DwarvenMineWorker {
 }
 ```
 
-Então nós temos as classes concretas anão `DwarvenTunnelDigger`, `DwarvenGoldDigger` and 
-`DwarvenCartOperator`: 
+Então nós temos as classes concretas anão `DwarvenTunnelDigger`, `DwarvenGoldDigger` and
+`DwarvenCartOperator`:
 
 ```java
 @Slf4j
@@ -130,7 +130,7 @@ public class DwarvenCartOperator extends DwarvenMineWorker {
 
 ```
 
-Para operar todos esses mineradores de ouro temos o `DwarvenGoldmineFacade`: 
+Para operar todos esses mineradores de ouro temos o `DwarvenGoldmineFacade`:
 
 ```java
 public class DwarvenGoldmineFacade {
@@ -201,16 +201,16 @@ Saída do programa:
 Use o padrão facade quando
 
 * Você quer prover uma simples interface para um subsistema complexo. Subsistemas frequentemente
-vão ficando mais complexos conforme eles evoluem. A maioria dos padrões, quando aplicada, resulta
-em classes menores e mais numerosas. Isso faz com que o subsistema se torne mais reusável e mais
-fácil de customizar, mas também torna mais difícil de usar para clientes que não precisam de
-customização.
+  vão ficando mais complexos conforme eles evoluem. A maioria dos padrões, quando aplicada, resulta
+  em classes menores e mais numerosas. Isso faz com que o subsistema se torne mais reusável e mais
+  fácil de customizar, mas também torna mais difícil de usar para clientes que não precisam de
+  customização.
 * Há muitas dependências entre clientes e as classes de implementação de uma abstração. Introduza
-um facade para desacoplar o subsistema de clientes e outros subsistemas, portanto promovendo independência
-e portabilidade para o subsistema.
+  um facade para desacoplar o subsistema de clientes e outros subsistemas, portanto promovendo independência
+  e portabilidade para o subsistema.
 * Você quer subdividir em camadas o seu subsistema. Use um facade para definir um ponto de entrada
-para cada nível de subsistema. Se o subsistema é dependente, então você pode simplificar as dependências
-entre eles, fazendo-os se comunicarem entre si apenas pelos facades.
+  para cada nível de subsistema. Se o subsistema é dependente, então você pode simplificar as dependências
+  entre eles, fazendo-os se comunicarem entre si apenas pelos facades.
 
 ## Créditos
 

@@ -22,11 +22,11 @@ Transparently retry certain operations that involve communication with external 
 
 Real world example
 
-> Imagine you're a delivery driver attempting to deliver a package to a customer's house. You ring the doorbell, but no one answers. Instead of leaving immediately, you wait for a few minutes and try again, repeating this process a few times. This is similar to the Retry pattern in software, where a system retries a failed operation (e.g., making a network request) a certain number of times before finally giving up, in hopes that the issue (e.g., transient network glitch) will be resolved and the operation will succeed. 
+> Imagine you're a delivery driver attempting to deliver a package to a customer's house. You ring the doorbell, but no one answers. Instead of leaving immediately, you wait for a few minutes and try again, repeating this process a few times. This is similar to the Retry pattern in software, where a system retries a failed operation (e.g., making a network request) a certain number of times before finally giving up, in hopes that the issue (e.g., transient network glitch) will be resolved and the operation will succeed.
 
 In plain words
 
-> Retry pattern transparently retries failed operations over network. 
+> Retry pattern transparently retries failed operations over network.
 
 [Microsoft documentation](https://docs.microsoft.com/en-us/azure/architecture/patterns/retry) says
 

@@ -203,6 +203,8 @@ remoto.
 * [Designing Distributed Systems: Patterns and Paradigms for Scalable, Reliable Services](https://www.amazon.com/s?k=designing+distributed+systems&sprefix=designing+distri%2Caps%2C156&linkCode=ll2&tag=javadesignpat-20&linkId=a12581e625462f9038557b01794e5341&language=en_US&ref_=as_li_ss_tl)
 
 ## Notas del traductor
+
 (*) La versión original en inglés de la documentación de Microsoft hace referencia al término resiliencia y
 en su traducción al español lo traduce como resistencia, aunque enlaza al apartado patrones de confiabilidad. Véase:
+
 * [Versión de la Documentación para el Patrón Ambassador de Microsoft en español.](https://learn.microsoft.com/es-es/azure/architecture/patterns/ambassador)

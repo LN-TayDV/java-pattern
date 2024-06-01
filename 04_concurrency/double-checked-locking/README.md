@@ -29,7 +29,7 @@ Wikipedia says
 
 **Programmatic Example**
 
-The Double-Checked Locking pattern is used in the `HolderThreadSafe` class to ensure that the `Heavy` object is only created once, even when accessed from multiple threads.  Here's how it works:
+The Double-Checked Locking pattern is used in the `HolderThreadSafe` class to ensure that the `Heavy` object is only created once, even when accessed from multiple threads. Here's how it works:
 
 1. Check if the object is initialized (first check): If it is, return it immediately.
 

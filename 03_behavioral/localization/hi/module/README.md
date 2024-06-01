@@ -13,7 +13,6 @@ tag:
 
 ## क्लास डायग्राम
 
-
 ![alt text](../../../module/etc/module.png "Module class diagram")
 
 ## प्रयोज्यता

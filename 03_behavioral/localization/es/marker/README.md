@@ -7,12 +7,15 @@ tag:
 ---
 
 ## Propósito
+
 Utilización de interfaces vacías como marcadores para distinguir objetos con un tratamiento especial.
 
 ## Diagrama de clases
+
 ![alt text](./etc/MarkerDiagram.png "Marker Interface")
 
 ## Aplicabilidad
+
 Utilice el patrón de interfaz de marcador cuando
 
 * Desea identificar los objetos especiales de los objetos normales (para tratarlos de forma diferente)

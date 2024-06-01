@@ -15,12 +15,12 @@ différents types de documents.
 ## Explication
 
 Le patron de conception "Abstract Document" permet de gérer des propriétés supplémentaires non statiques. Ce modèle
-utilise le concept de traits pour assurer la sécurité des types et séparer les propriétés des différentes 
+utilise le concept de traits pour assurer la sécurité des types et séparer les propriétés des différentes
 classes dans un ensemble d'interfaces
 
 Exemple concret
 
->  Prenons l'exemple d'une voiture composée de plusieurs pièces. Cependant, nous ne savons pas si la voiture en question possède réellement toutes les pièces ou seulement certaines d'entre elles. Nos voitures sont dynamiques et extrêmement flexibles.
+> Prenons l'exemple d'une voiture composée de plusieurs pièces. Cependant, nous ne savons pas si la voiture en question possède réellement toutes les pièces ou seulement certaines d'entre elles. Nos voitures sont dynamiques et extrêmement flexibles.
 
 En clair
 
@@ -29,7 +29,7 @@ En clair
 Wikipedia dit
 
 > Un patron de conception structurelle orienté objet pour organiser des objets comme clé-valeur faiblement typés et exposer des données à l'aide de vues typées. L'objectif de ce modèle est d'atteindre un haut degré de flexibilité entre les composants
-dans un langage fortement typé où de nouvelles propriétés peuvent être ajoutées à l'arbre d'objets à la volée, sans perdre le soutien de la sécurité de type.
+> dans un langage fortement typé où de nouvelles propriétés peuvent être ajoutées à l'arbre d'objets à la volée, sans perdre le soutien de la sécurité de type.
 
 **Exemple de programme**
 
@@ -78,6 +78,7 @@ public abstract class AbstractDocument implements Document {
   ...
 }
 ```
+
 Ensuite, nous définissons une enumération  `Property` et un ensemble d'interfaces pour le type, le prix, le modèle et les pièces. Cela nous permet de créer une interface statique pour notre classe `Car`.
 
 ```java
@@ -172,7 +173,7 @@ Enfin, voici comment nous construisons et utilisons la "voiture" dans un exemple
 
 ## Application
 
-Ce modèle est particulièrement utile dans les scénarios où vous avez différents types de documents qui partagent des attributs ou des comportements communs, mais qui ont également des attributs ou des comportements uniques,  spécifiques à leurs types individuels. Voici quelques
+Ce modèle est particulièrement utile dans les scénarios où vous avez différents types de documents qui partagent des attributs ou des comportements communs, mais qui ont également des attributs ou des comportements uniques, spécifiques à leurs types individuels. Voici quelques
 Voici quelques scénarios dans lesquels le patron de conception Abstract Document peut s'appliquer :
 
 * Systèmes de gestion de contenu (SGC) : dans un SGC (CMS en anglais), vous pouvez avoir différents types de contenu tels que des articles, des images, des vidéos, etc. Chaque type de contenu peut avoir des attributs communs tels que la date de création, l'auteur et les balises, mais aussi des attributs spécifiques tels que les dimensions de l'image pour les images ou la durée de la vidéo pour les vidéos.

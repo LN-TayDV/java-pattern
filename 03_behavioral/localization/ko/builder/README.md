@@ -6,7 +6,7 @@ tag:
 - Gang of Four
 ---
 
-## 의도 
+## 의도
 
 동일한 구성 프로세스가 다른 표현을 생성할 수 있도록 복잡한 객체의 구성을 해당 표현과 분리합니다.
 
@@ -36,7 +36,6 @@ public Hero(Profession profession, String name, HairType hairType, HairColor hai
 **코드 예제**
 
 올바른 대안은 빌더 패턴을 사용하는 것입니다. 우선, 우리는 우리가 창조하고 싶은 영웅을 가지고 있습니다. :
-
 
 ```java
 public final class Hero {
@@ -104,7 +103,6 @@ public final class Hero {
 ```
 
 그런 다음, 다음과 같이 사용할 수 있습니다.
-
 
 ```java
 var mage = new Hero.Builder(Profession.MAGE, "Riobard").withHairColor(HairColor.BLACK).withWeapon(Weapon.DAGGER).build();

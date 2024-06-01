@@ -8,7 +8,7 @@ tag:
 
 ## Intention
 
-Le pattron de conception Balking est utilisé pour empêcher un objet d'exécuter un certain code 
+Le pattron de conception Balking est utilisé pour empêcher un objet d'exécuter un certain code
 s'il est dans un état incomplet ou inapproprié.
 
 ## Explication
@@ -25,7 +25,7 @@ En clair
 Wikipedia dit
 
 > Le pattron de conception balking est un pattron de conception de logiciel qui n'exécute une action sur un objet que
-> lorsque l'objet se trouve dans un état particulier. Par exemple, si un objet lit des fichiers ZIP et qu'une méthode 
+> lorsque l'objet se trouve dans un état particulier. Par exemple, si un objet lit des fichiers ZIP et qu'une méthode
 > appelante invoque une méthode get sur l'objet alors que le fichier ZIP n'est pas ouvert, l'objet rejette la demande.
 
 **Exemple de programme**

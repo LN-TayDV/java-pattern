@@ -39,13 +39,13 @@ tag:
 
 4. 创建一个仅具有此应用程序必要权限的IAM用户。
 
-   * 点击 `用户`
-   * 点击 `添加用户`. 选择你想要的 `用户名`， `接入类型`应该是 `编程式接入`. 点击 `下一步: 权限`.
-   * 选择 `直接附加已存在的策略`. 选择 `AmazonS3FullAccess` 和 `CloudFrontFullAccess`. Click `下一步: 标签`.
-   * 没有需要的标签, 所以直接点击 `下一步: 回顾`.
-   * 检查呈现的信息，没问题的话点击`创建用户`
-   * 完成这个示例所需要的`访问秘钥Id`和`访问秘钥密码`将会呈现在你面前，请妥善保管。
-   * 点击 `关闭`.
+    * 点击 `用户`
+    * 点击 `添加用户`. 选择你想要的 `用户名`， `接入类型`应该是 `编程式接入`. 点击 `下一步: 权限`.
+    * 选择 `直接附加已存在的策略`. 选择 `AmazonS3FullAccess` 和 `CloudFrontFullAccess`. Click `下一步: 标签`.
+    * 没有需要的标签, 所以直接点击 `下一步: 回顾`.
+    * 检查呈现的信息，没问题的话点击`创建用户`
+    * 完成这个示例所需要的`访问秘钥Id`和`访问秘钥密码`将会呈现在你面前，请妥善保管。
+    * 点击 `关闭`.
 
 5. [安装AWS 命令行工具 (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv1.html) 来获得编程式访问AWS云。
 
@@ -54,18 +54,18 @@ tag:
 7. 为web站点创建AWS S3 bucket。 注意S3 bucket名字必须要在全球范围内唯一。
 
 
-   *  语法是 `aws s3 mb <bucket name>`  [说明书](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html#using-s3-commands-managing-buckets-creating)
-   * 比如 `aws s3 mb s3://my-static-website-jh34jsjmg`
-   * 使用列出现有存储桶的命令`aws s3 ls`验证存储桶是否已成功创建
+* 语法是 `aws s3 mb <bucket name>`  [说明书](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html#using-s3-commands-managing-buckets-creating)
+* 比如 `aws s3 mb s3://my-static-website-jh34jsjmg`
+* 使用列出现有存储桶的命令`aws s3 ls`验证存储桶是否已成功创建
 
 8. 使用命令`aws s3 website`来配置bucket作为web站点。  [说明书](https://docs.aws.amazon.com/cli/latest/reference/s3/website.html).
 
-   * 比如`aws s3 website s3://my-static-website-jh34jsjmg --index-document index.html --error-document error.html`
+    * 比如`aws s3 website s3://my-static-website-jh34jsjmg --index-document index.html --error-document error.html`
 
 9. 上传内容到bucket中。
-   * 首先创建内容，至少包含`index.html`和`error.html`文档。
-   * 上传内容到你的bucket中。 [说明书](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html#using-s3-commands-managing-objects-copy)
-   * 比如`aws s3 cp index.html s3://my-static-website-jh34jsjmg` and `aws s3 cp error.html s3://my-static-website-jh34jsjmg`
+    * 首先创建内容，至少包含`index.html`和`error.html`文档。
+    * 上传内容到你的bucket中。 [说明书](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-s3-commands.html#using-s3-commands-managing-objects-copy)
+    * 比如`aws s3 cp index.html s3://my-static-website-jh34jsjmg` and `aws s3 cp error.html s3://my-static-website-jh34jsjmg`
 
 10. 然后我们需要设置bucket的策略以允许读取访问。
 

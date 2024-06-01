@@ -7,6 +7,7 @@ tag:
 ---
 
 ## 目的
+
 回调是一部分被当为参数来传递给其他代码的可执行代码，接收方的代码可以在一些方便的时候来调用它。
 
 ## 解释
@@ -18,7 +19,7 @@ tag:
 通俗的讲
 
 
-> 回调是一个用来传递给调用者的方法，它将在定义的时刻被调用。 
+> 回调是一个用来传递给调用者的方法，它将在定义的时刻被调用。
 
 维基百科说
 
@@ -65,11 +66,15 @@ public final class SimpleTask extends Task {
     var task = new SimpleTask();
     task.executeWith(() -> LOGGER.info("I'm done now."));
 ```
+
 ## 类图
+
 ![alt text](./etc/callback.png "Callback")
 
 ## 适用性
+
 使用回调模式当
+
 * 当一些同步或异步架构动作必须在一些定义好的活动执行后执行时。
 
 ## Java例子

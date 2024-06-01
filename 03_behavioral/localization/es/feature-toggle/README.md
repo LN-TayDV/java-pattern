@@ -7,12 +7,15 @@ tag:
 ---
 
 ## También conocido como
+
 Feature Flag
 
 ## Propósito
+
 Técnica utilizada en el desarrollo de software para controlar y gestionar el despliegue de características o funcionalidades específicas en un programa sin cambiar el código. Puede actuar como un interruptor de encendido/apagado de funciones en función del estado o las propiedades de otros valores del programa. Esto es similar a las pruebas A/B, en las que las funciones se despliegan en función de propiedades como la ubicación o el dispositivo. La implementación de este patrón de diseño puede aumentar la complejidad del código, y es importante recordar eliminar el código redundante si este patrón de diseño se utiliza para eliminar gradualmente un sistema o característica.
 
 ## Explicación
+
 Ejemplo del mundo real
 > Este patrón de diseño funciona realmente bien en cualquier tipo de desarrollo, en particular en el desarrollo móvil. Digamos que quieres introducir una característica como el modo oscuro, pero quieres asegurarte de que la característica funciona correctamente y no quieres desplegar la característica a todo el mundo inmediatamente. Escribes el código y lo desactivas por defecto. A partir de aquí, es fácil activar el código para usuarios específicos basándose en criterios de selección, o aleatoriamente. Esto también permitirá que la función se desactive fácilmente sin ningún cambio drástico en el código, o cualquier necesidad de redistribución o actualizaciones.
 
@@ -45,12 +48,15 @@ public class FeatureToggleExample {
     }
 }
 ```
+
 El código muestra lo sencillo que es aplicar este patrón de diseño, y los criterios pueden refinarse o ampliarse aún más si los desarrolladores así lo deciden.
 
 ## Diagrama de clases
+
 ![alt text](./etc/feature-toggle.png "Feature Toggle")
 
 ## Aplicabilidad
+
 Utilice el patrón de alternancia de funciones cuando
 
 * Dar diferentes características a diferentes usuarios.
@@ -62,6 +68,7 @@ Utilice el patrón de alternancia de funciones cuando
 * Despliegue "oculto", liberando una característica en código para pruebas designadas, pero sin ponerla a disposición del público.
 
 ## Consecuencias
+
 Consecuencias del uso del patrón de alternancia de funciones
 
 * Aumenta la complejidad del código

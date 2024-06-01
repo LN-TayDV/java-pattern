@@ -12,28 +12,33 @@ tag:
 # Health Check Pattern
 
 ## También conocido como
+
 Health Monitoring, Service Health Check
 
 ## Propósito
+
 Garantizar la estabilidad y resistencia de los servicios en una arquitectura de microservicios proporcionando una forma de supervisar y diagnosticar su estado.
 
 ## Explicación
+
 En la arquitectura de microservicios, es crítico comprobar continuamente la salud de los servicios individuales. El Health Check Pattern es un mecanismo para que los microservicios expongan su estado de salud. Este patrón se implementa incluyendo un punto final de comprobación de salud en los microservicios que devuelve el estado actual del servicio. Esto es vital para mantener la resistencia del sistema y la disponibilidad operativa.
 
 Para obtener más información, consulte el patrón API Health Check en [Microservices.io](https://microservices.io/patterns/observability/health-check-api.html).
 
-
 ## Ejemplo del mundo real
+
 En un entorno nativo en la nube, como Kubernetes o AWS ECS, las comprobaciones de estado se utilizan para garantizar que los contenedores se ejecutan correctamente. Si un servicio falla su chequeo de salud, puede ser reiniciado o reemplazado automáticamente, asegurando alta disponibilidad y resiliencia.
 
 ## En pocas palabras
+
 El patrón de comprobación de la salud es como una visita periódica al médico para los servicios en una arquitectura de microservicios. Ayuda en la detección temprana de problemas y asegura que los servicios estén sanos y disponibles.
 
-
 ## Ejemplo Programático
+
 Aquí, se proporcionan ejemplos detallados de implementaciones de chequeo de salud en un entorno de microservicios.
 
 ### AsynchronousHealthChecker
+
 Un componente de comprobación de salud asíncrono que ejecuta comprobaciones de salud en un hilo separado.
 
 ```java
@@ -85,6 +90,7 @@ Un componente de comprobación de salud asíncrono que ejecuta comprobaciones de
 ```
 
 ### CpuHealthIndicator
+
 Un indicador de salud que comprueba la salud de la CPU del sistema.
 
 ```java
@@ -139,9 +145,8 @@ Un indicador de salud que comprueba la salud de la CPU del sistema.
 
 ```
 
-
-
 ### CustomHealthIndicator
+
 Un indicador de estado personalizado que comprueba periódicamente el estado de una base de datos y almacena en caché el resultado. Aprovecha un comprobador de estado asíncrono para realizar las comprobaciones de estado.
 
 - `AsynchronousHealthChecker`: Un componente para realizar comprobaciones de estado de forma asíncrona.
@@ -209,6 +214,7 @@ public void evictHealthCache() {
 ```
 
 ### DatabaseTransactionHealthIndicator
+
 Un indicador de salud que comprueba la salud de las transacciones de la base de datos intentando realizar una transacción de prueba utilizando un mecanismo de reintento.
 
 - Repositorio de comprobaciones de estado**: Un repositorio para realizar comprobaciones de salud en la base de datos.
@@ -244,8 +250,8 @@ public Health health() {
 }
 ```
 
-
 ### GarbageCollectionHealthIndicator
+
 Un indicador de salud personalizado que comprueba el estado de recogida de basura de la aplicación e informa del estado de salud en consecuencia.
 
 ```java
@@ -271,6 +277,7 @@ Un indicador de salud personalizado que comprueba el estado de recogida de basur
 ```
 
 ### MemoryHealthIndicator
+
 Un indicador de salud personalizado que comprueba el uso de memoria de la aplicación e informa del estado de salud en consecuencia.
 
 ```java
@@ -325,20 +332,22 @@ Un indicador de salud personalizado que comprueba el uso de memoria de la aplica
 }
 ```
 
-
-
 ## Usando Spring Boot Actuator para Comprobaciones de Salud
+
 Spring Boot Actuator proporciona una funcionalidad de comprobación de salud incorporada que puede integrarse fácilmente en su aplicación. Añadiendo la dependencia Spring Boot Actuator, puede exponer la información de comprobación de estado a través de un punto final predefinido, normalmente `/actuator/health`.
 
 ## Salida
+
 Esto muestra la salida del patrón de comprobación de salud utilizando una petición GET al punto final de salud de Actuator.
 
 ### HTTP GET Request
+
 ```
 curl -X GET "http://localhost:6161/actuator/health"
 ```
 
 ### Output
+
 ```json
 {
     "status": "UP",
@@ -417,35 +426,45 @@ curl -X GET "http://localhost:6161/actuator/health"
 ```
 
 ## Diagrama de clases
+
 ![Health Check Pattern](./etc/health-check.png)
 
 ## Aplicabilidad
+
 Utilice el Patrón de Comprobación de Salud cuando:
+
 - Tienes una aplicación compuesta por múltiples servicios y necesitas monitorizar la salud de cada servicio individualmente.
 - Desea implementar la recuperación o sustitución automática de servicios basándose en el estado de salud.
 - Está empleando herramientas de orquestación o automatización que se basan en comprobaciones de estado para gestionar instancias de servicio.
 
 ## Tutoriales
+
 - Implementación de Health Checks en Java usando Spring Boot Actuator.
 
 ## Usos conocidos
+
 - Kubernetes Liveness y Readiness Probes
 - Comprobaciones de estado de AWS Elastic Load Balancing
 - Actuador Spring Boot
 
 ## Consecuencias
+
 **Pros:**
+
 - Mejora la tolerancia a fallos del sistema detectando fallos y permitiendo una rápida recuperación.
 - Mejora la visibilidad del estado del sistema para la supervisión operativa y las alertas.
 
 **Contras:**
+
 - Añade complejidad a la implementación del servicio.
 - Requiere una estrategia para gestionar los fallos en cascada cuando los servicios dependientes no están en buen estado.
 
 ## Patrones relacionados
+
 - Circuit Breaker
 - Retry Pattern
 - Timeout Pattern
 
 ## Créditos
+
 Inspirado en el patrón Health Check API de [microservices.io](https://microservices.io/patterns/observability/health-check-api.html), y el tema [#2695](https://github.com/iluwatar/java-design-patterns/issues/2695) en el repositorio de patrones de diseño Java de iluwatar.

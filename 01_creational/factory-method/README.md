@@ -78,6 +78,7 @@ public static void main(String[] args) {
 ```
 
 Program output:
+
 ```
 06:40:07.269 [main] INFO com.iluwatar.factory.method.App -- The orc blacksmith manufactured an orcish spear
 06:40:07.271 [main] INFO com.iluwatar.factory.method.App -- The orc blacksmith manufactured an orcish axe

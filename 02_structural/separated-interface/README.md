@@ -29,11 +29,11 @@ In plain words
 
 > Defines a client interface separate from its implementation to allow for flexible and interchangeable components.
 
-A client code may abstract some specific functionality to an interface, and define the definition of 
-the interface as an SPI ([Service Programming Interface](https://en.wikipedia.org/wiki/Service_provider_interface) 
-is an API intended and open to be implemented or extended by a third party). Another package may 
-implement this interface definition with a concrete logic, which will be injected into the client 
-code at runtime (with a third class, injecting the implementation in the client) or at compile time 
+A client code may abstract some specific functionality to an interface, and define the definition of
+the interface as an SPI ([Service Programming Interface](https://en.wikipedia.org/wiki/Service_provider_interface)
+is an API intended and open to be implemented or extended by a third party). Another package may
+implement this interface definition with a concrete logic, which will be injected into the client
+code at runtime (with a third class, injecting the implementation in the client) or at compile time
 (using Plugin pattern with some configurable file).
 
 **Programmatic Example**

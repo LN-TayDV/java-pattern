@@ -120,7 +120,6 @@ public class OrcKingdomFactory implements KingdomFactory {
 
 Ahora tenemos la factoría abstracta que nos permite hacer familias de objetos relacionados por ejemplo la factoría del reino élfico `ElfKingdomFactory` crea el castillo `castle`, rey `king` y ejército `army` etc.
 
-
 ```java
 var factory = new ElfKingdomFactory();
 var castle = factory.createCastle();
@@ -179,7 +178,6 @@ public static class FactoryMaker {
 
 ![alt text](./etc/abstract-factory.urm.png "Diagrama de Clases de Abstract Factory")
 
-
 ## Aplicación
 
 Usar el patrón Abstract Factory cuando
@@ -209,7 +207,7 @@ Ejemplos de casos de uso
 
 ## Tutoriales
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## Usos conocidos
 

@@ -20,7 +20,7 @@ Fornecer um substituto para controlar o acesso ao objeto original
 Exemplo de mundo real
 
 > Imagine uma torre onde magos locais vão estudar os seus feitiços. A torre de marfim consegue ser
-> acedida através de uma proxy que garante que apenas os três primeiros magos podem entrar. Aqui a proxy 
+> acedida através de uma proxy que garante que apenas os três primeiros magos podem entrar. Aqui a proxy
 > representa a funcionalidade da torre e adiciona controlo de acesso a ela.
 
 Em palavras simples
@@ -31,8 +31,8 @@ Wikipedia diz
 
 > Uma proxy, na sua forma mais genérica, é uma classe a funcionar como interface para algo.
 > Uma proxy é um wrapper ou objeto agente que está a ser chamado pelo cliente para aceder ao verdadeiro
-> objeto por detrás das cortinas. O uso de uma proxy pode ser apenas redirecionar para o objeto real, ou 
-> pode fornecer lógica adicional. Numa proxy, funcionalidade extra também pode ser fornecida, por exemplo apanhar 
+> objeto por detrás das cortinas. O uso de uma proxy pode ser apenas redirecionar para o objeto real, ou
+> pode fornecer lógica adicional. Numa proxy, funcionalidade extra também pode ser fornecida, por exemplo apanhar
 > operações no objeto real que gastam muitos recursos, ou verificar precondições antes
 > das operações no objeto real serem invocadas.
 
@@ -152,8 +152,8 @@ Tipicamente, o padrão proxy é usado para
 
 * [java.lang.reflect.Proxy](http://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Proxy.html)
 * [Apache Commons Proxy](https://commons.apache.org/proper/commons-proxy/)
-* Frameworks para Mocking [Mockito](https://site.mockito.org/), 
-[Powermock](https://powermock.github.io/), [EasyMock](https://easymock.org/)
+* Frameworks para Mocking [Mockito](https://site.mockito.org/),
+  [Powermock](https://powermock.github.io/), [EasyMock](https://easymock.org/)
 * UIKit's da Apple [UIAppearance](https://developer.apple.com/documentation/uikit/uiappearance)
 
 ## Padrões relacionados

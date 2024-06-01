@@ -164,7 +164,6 @@ public static class FactoryMaker {
 
 ![alt text](./etc/abstract-factory.urm.png "Abstract Factory class diagram")
 
-
 ## 适用性
 
 在以下情况下使用抽象工厂模式
@@ -194,7 +193,7 @@ public static class FactoryMaker {
 
 ## 教程
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## 已知使用
 

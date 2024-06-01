@@ -22,7 +22,7 @@ Manage user session data on the server-side to maintain state across multiple cl
 
 Real-world example
 
-> Imagine a hotel where each guest is given a unique room key card upon check-in. This key card stores the guest's personal preferences, such as preferred room temperature, wake-up call times, and minibar choices. Whenever the guest interacts with hotel services, such as ordering room service or accessing the gym, the system retrieves their preferences using the information on the key card. The hotel’s central server maintains these preferences, ensuring consistent and personalized service throughout the guest's stay. Similarly, the Server Session design pattern manages user data on the server, providing a seamless experience across multiple interactions within a web application. 
+> Imagine a hotel where each guest is given a unique room key card upon check-in. This key card stores the guest's personal preferences, such as preferred room temperature, wake-up call times, and minibar choices. Whenever the guest interacts with hotel services, such as ordering room service or accessing the gym, the system retrieves their preferences using the information on the key card. The hotel’s central server maintains these preferences, ensuring consistent and personalized service throughout the guest's stay. Similarly, the Server Session design pattern manages user data on the server, providing a seamless experience across multiple interactions within a web application.
 
 In plain words
 
@@ -140,7 +140,7 @@ This is a basic example of the Server Session design pattern. The actual impleme
 
 ## Tutorials
 
-* [JavaScript Cookies vs Local Storage vs Session Storage -  Web Dev Simplified](https://www.youtube.com/watch?v=GihQAC1I39Q&pp=ygUMaHR0cCBzZXNzaW9u)
+* [JavaScript Cookies vs Local Storage vs Session Storage - Web Dev Simplified](https://www.youtube.com/watch?v=GihQAC1I39Q&pp=ygUMaHR0cCBzZXNzaW9u)
 * [Web App Pentesting - HTTP Cookies & Sessions - Hackersploit](https://www.youtube.com/watch?v=zHBpJA5XfDk)
 
 ## Known Uses

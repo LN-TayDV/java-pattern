@@ -7,6 +7,7 @@ tag:
 ---
 
 ## Propósito
+
 Twin pattern es un patrón de diseño que proporciona una solución estándar para simular herencia múltiple en java
 
 ## Explicación
@@ -27,7 +28,6 @@ Wikipedia dice
 
 Tomemos nuestro ejemplo anterior de la bola de juego. Consideremos que tenemos un juego en el que la pelota necesita ser tanto un `GameItem` como un `Thread`.
 En primer lugar, tenemos la clase `GameItem` dada a continuación y la clase `Thread`.
-
 
 ```java
 
@@ -141,11 +141,12 @@ ballThread.setTwin(ballItem);
 
 ```
 
-
 ## Diagrama de clases
+
 ![alt text](./etc/twin.png "Twin")
 
 ## Aplicabilidad
+
 Utilice el lenguaje Twin
 
 * Para simular herencia múltiple en un lenguaje que no soporta esta característica.

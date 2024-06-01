@@ -9,9 +9,11 @@ tag:
 # Extention Objects Pattern
 
 ## Propósito
+
 Anticipar que la interfaz de un objeto debe ampliarse en el futuro. Las interfaces adicionales se definen mediante objetos de extensión (Extension objects).
 
 ## Explicación
+
 Ejemplo real
 
 > Suponga que está desarrollando un juego basado en Java para un cliente y, en mitad del proceso de desarrollo, le sugieren nuevas funcionalidades. El patrón Extension Objects permite a su programa adaptarse a cambios imprevistos con una refactorización mínima, especialmente al integrar funcionalidades adicionales en su proyecto.
@@ -50,6 +52,7 @@ public class App {
     }
 }
 ```
+
 Clase de enemigo con acciones iniciales y extensiones.
 
 ```java
@@ -110,6 +113,7 @@ class Entity {
     }
 }
 ```
+
 Interfaz EntityExtension que utilizará EnemyExtension.
 
 ```java
@@ -117,6 +121,7 @@ interface EntityExtension {
     void extendedAction();
 }
 ```
+
 Salida del programa:
 
 ```markdown
@@ -124,12 +129,15 @@ Enemy performs the initial action.
 Enemy wants to attack you.
 Enemy has advanced towards you!
 ```
+
 En este ejemplo, el patrón de Objetos de Extensión permite a la entidad enemiga realizar acciones iniciales únicas y acciones avanzadas cuando se aplican extensiones específicas. Este patrón proporciona flexibilidad y extensibilidad a la base de código a la vez que minimiza la necesidad de realizar cambios importantes en el código.
 
 ## Diagrama de clases
+
 ![Extension_objects](./etc/extension_obj.png "Extension objects")
 
 ## Aplicabilidad
+
 Utilice el patrón de Objetos de Extensión (Extension objects) cuando:
 
 * Necesita soportar la adición de interfaces nuevas o imprevistas a clases existentes y no quieres impactar a clientes que no necesitan esta nueva interfaz. Los objetos de extensión te permiten mantener juntas operaciones relacionadas definiéndolas en una clase separada

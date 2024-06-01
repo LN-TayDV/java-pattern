@@ -51,9 +51,9 @@ Once you are familiar with these concepts you can start drilling down into the
 [available design patterns](https://java-design-patterns.com/patterns/) by any
 of the following approaches
 
- - Search for a specific pattern by name. Can't find one? Please report a new pattern [here](https://github.com/iluwatar/java-design-patterns/issues).
- - Using tags such as `Performance`, `Gang of Four` or `Data access`.
- - Using pattern categories, `Creational`, `Behavioral`, and others.
+- Search for a specific pattern by name. Can't find one? Please report a new pattern [here](https://github.com/iluwatar/java-design-patterns/issues).
+- Using tags such as `Performance`, `Gang of Four` or `Data access`.
+- Using pattern categories, `Creational`, `Behavioral`, and others.
 
 Hopefully, you find the object-oriented solutions presented on this site useful
 in your architectures and have as much fun learning them as we had while developing them.

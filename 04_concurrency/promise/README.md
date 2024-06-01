@@ -24,7 +24,7 @@ The Promise design pattern is used to handle asynchronous operations by providin
 Real-world example
 
 > In an online pizza ordering system, when a customer places an order, the system immediately acknowledges the order and provides a tracking number (the promise). The pizza preparation and delivery process happens asynchronously in the background. The customer can check the status of their order at any time using the tracking number. Once the pizza is prepared and out for delivery, the customer receives a notification (promise resolved) about the delivery status. If there are any issues, such as an unavailable ingredient or delivery delay, the customer is notified about the error (promise rejected).
-> 
+>
 > This analogy illustrates how the Promise design pattern manages asynchronous tasks, decoupling the initial request from the eventual outcome, and handling both results and errors efficiently.
 
 In plain words

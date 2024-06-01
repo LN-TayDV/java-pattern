@@ -10,17 +10,16 @@ tag:
 
 Bir sınıfın yalnızca bir örneğine sahip olduğundan emin olun ve ona global bir erişim noktası sağlayın.
 
-
 ## Açıklama
 
 Örnek
 
 > Büyücülerin büyülerini çalıstıkları tek bir fildişi kule olabilir. Aynı büyülü fildişi kule,
 > büyücüler tarafından her zaman kullanılır. Buradaki fildişi kulesi singleton tasarım desenine örnektir.
-Özetle
+> Özetle
 
 > Belirli bir sınıftan yalnızca bir nesnenin oluşturulmasını sağlar.
-Wikipedia açıklaması
+> Wikipedia açıklaması
 
 
 
@@ -32,6 +31,7 @@ Wikipedia açıklaması
 Joshua Bloch, Effective Java 2nd Edition p.18
 
 > Enum singleton tasarım desenini uygulamak için en iyi yoldur.
+
 ```java
 public enum EnumIvoryTower {
   INSTANCE
@@ -68,7 +68,6 @@ Singleton tasarım deseni şu durumlarda kullanılmalıdır
 * [java.lang.Runtime#getRuntime()](http://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#getRuntime%28%29)
 * [java.awt.Desktop#getDesktop()](http://docs.oracle.com/javase/8/docs/api/java/awt/Desktop.html#getDesktop--)
 * [java.lang.System#getSecurityManager()](http://docs.oracle.com/javase/8/docs/api/java/lang/System.html#getSecurityManager--)
-
 
 ## Sonuçlar
 

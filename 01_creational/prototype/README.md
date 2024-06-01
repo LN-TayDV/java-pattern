@@ -9,7 +9,7 @@ tag:
     - Polymorphism
 ---
 
-## Also known as 
+## Also known as
 
 * Clone
 

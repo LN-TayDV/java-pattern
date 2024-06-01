@@ -98,7 +98,7 @@ public class Commander {
     private final long messageTime;
     private final long employeeTime;
     private int queueItems = 0;
-        //keeping track here only so don't need access to queue db to get this
+    //keeping track here only so don't need access to queue db to get this
     private boolean finalSiteMsgShown;
 
     Commander(EmployeeHandle empDb, PaymentService paymentService, ShippingService shippingService,

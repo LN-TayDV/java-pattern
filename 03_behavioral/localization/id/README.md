@@ -28,10 +28,9 @@ Design patterns dapat mempercepat proses pengembangan dengan menyediakan kode ya
 Menggunakan kembali design patterns membantu mencegah masalah-masalah kecil yang dapat menyebabkan masalah yang lebih besar, dan juga meningkatkan keterbacaan kode untuk programmer dan arsitek yang
 familiar dengan pola.
 
-
 # Mulai
 
-Situs ini menampilkan Design Patterns pada Java. Solusi-solusi yang terdapat pada situs ini telah dikembangkan oleh programmer dan arsitek  yang berpengalaman dari komunitas open source. Pola-polanya dapat dilihat pada deskripsi atau dengan melihat source code mereka. Contoh-contoh source code memiliki komentar yang baik dan dapat dianggap sebagai tutorial pemrograman tentang cara menerapkan pola tertentu. Kami menggunakan teknologi Java open source yang populer dan telah terbukti.
+Situs ini menampilkan Design Patterns pada Java. Solusi-solusi yang terdapat pada situs ini telah dikembangkan oleh programmer dan arsitek yang berpengalaman dari komunitas open source. Pola-polanya dapat dilihat pada deskripsi atau dengan melihat source code mereka. Contoh-contoh source code memiliki komentar yang baik dan dapat dianggap sebagai tutorial pemrograman tentang cara menerapkan pola tertentu. Kami menggunakan teknologi Java open source yang populer dan telah terbukti.
 
 Sebelum anda masuk kedalam materinya, anda harus familiar dengan macam-macam [Software Design Principles](https://java-design-patterns.com/principles/).
 
@@ -41,9 +40,9 @@ kemungkinan diperpanjang.
 Setelah Anda terbiasa dengan konsep-konsep ini, Anda dapat mulai belajar
 [design patterns yang tersedia](https://java-design-patterns.com/patterns/) menggunakan cara-cara berikut
 
- - Cari spesifik pattern berdasarkan namanya. Apabila tidak menemukannya tolong lapor pattern baru [disini](https://github.com/iluwatar/java-design-patterns/issues).
- - Gunakan tag-tag seperti `Performance`, `Gang of Four` atau `Data access`.
- - Gunakan kategori dari pattern, `Creational`, `Behavioral`, dan sebagainya.
+- Cari spesifik pattern berdasarkan namanya. Apabila tidak menemukannya tolong lapor pattern baru [disini](https://github.com/iluwatar/java-design-patterns/issues).
+- Gunakan tag-tag seperti `Performance`, `Gang of Four` atau `Data access`.
+- Gunakan kategori dari pattern, `Creational`, `Behavioral`, dan sebagainya.
 
 Semoga Anda menemukan solusi Object-Oriented yang bermanfaat untuk arsitektur Anda dari yang disajikan di situs ini dan mempelajarinya dengan senang seperti kami mengembangkannya.
 

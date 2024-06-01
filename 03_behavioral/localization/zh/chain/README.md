@@ -7,6 +7,7 @@ tag:
 ---
 
 ## 目的
+
 通过给多个对象一个处理请求的机会，避免请求的发送者和它的接收者耦合。串联接收对象并在链条中传递请求直到一个对象处理它。
 
 ## 解释
@@ -136,9 +137,11 @@ king.makeRequest(new Request(RequestType.COLLECT_TAX, "collect tax")); // Orc so
 ```
 
 ## 类图
+
 ![alt text](./etc/chain-of-responsibility.urm.png "Chain of Responsibility class diagram")
 
 ## 适用性
+
 使用责任链模式当
 
 * 多于一个对象可能要处理请求，并且处理器并不知道一个优先级。处理器应自动确定。

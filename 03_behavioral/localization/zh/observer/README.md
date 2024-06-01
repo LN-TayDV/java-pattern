@@ -8,6 +8,7 @@ tag:
 ---
 
 ## Also known as
+
 ## 又被称为
 
 家属，发布订阅模式
@@ -126,9 +127,11 @@ public class Weather {
 ```
 
 ## Class diagram
+
 ![alt text](./etc/observer.png "Observer")
 
 ## 应用
+
 在下面任何一种情况下都可以使用观察者模式
 
 * 当抽象具有两个方面时，一个方面依赖于另一个方面。将这些方面封装在单独的对象中，可以使你分别进行更改和重用

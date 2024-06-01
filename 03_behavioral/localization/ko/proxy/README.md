@@ -11,7 +11,7 @@ tag:
 
 Surrogate
 
-## 의도 
+## 의도
 
 다른 객체에 대한 접근을 제어할 수 있는 대리인 또는 자리 표시자(placeholder)를 제공합니다.
 
@@ -51,7 +51,6 @@ public class IvoryTower implements WizardTower {
 ```
 
 그리고 간단한 `Wizard` 클래스입니다.
-
 
 ```java
 public class Wizard {
@@ -125,7 +124,6 @@ Brown wizard is not allowed to enter!
 ## 적용 가능성
 
 프록시는 단순한 포인터보다 더 다재다능하거나 정교한 오브젝트 참조가 필요할 때마다 적용할 수 있습니다. 다음은 프록시 패턴을 적용할 수 있는 몇 가지 일반적인 상황입니다.
-
 
 * 원격 프록시는 다른 주소 공간에 있는 체의 로컬 대리자를 제공합니다.
 * 가상 프록시는 요청 시 값비싼 개체를 생성합니다.

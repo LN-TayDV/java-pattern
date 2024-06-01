@@ -33,7 +33,7 @@ Wikipedia says
 
 **Programmatic Example**
 
-Taking our stew cooking example from above. First, we have a `Stew` class where its data is not protected by private class data, making the stew's ingredient mutable to class methods. 
+Taking our stew cooking example from above. First, we have a `Stew` class where its data is not protected by private class data, making the stew's ingredient mutable to class methods.
 
 ```java
 @Slf4j

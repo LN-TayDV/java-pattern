@@ -110,7 +110,6 @@ Use the Half-Sync/Half-Async pattern in scenarios where:
 * The system needs to effectively utilize multicore architectures to balance tasks between asynchronous and synchronous processing.
 * Decoupling of asynchronous tasks from synchronous processing is necessary to simplify the design and implementation.
 
-
 ## Known uses
 
 * [BSD Unix networking subsystem](https://www.dre.vanderbilt.edu/~schmidt/PDF/PLoP-95.pdf)

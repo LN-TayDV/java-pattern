@@ -7,6 +7,7 @@ tag:
 ---
 
 ## Propósito
+
 Servant se utiliza para proporcionar algún comportamiento a un grupo de clases.
 En lugar de definir ese comportamiento en cada clase - o cuando no podemos factorizar
 este comportamiento en la clase padre común - se define una vez en el Servant.
@@ -85,7 +86,9 @@ interface Royalty {
     boolean getMood();
 }
 ```
+
 La clase King implementa la interfaz Royalty.
+
 ```java
 public class King implements Royalty {
 
@@ -124,7 +127,9 @@ public class King implements Royalty {
     }
 }
 ```
+
 La clase Queen implementa la interfaz Royalty.
+
 ```java
 public class Queen implements Royalty {
 
@@ -221,11 +226,12 @@ Jenkins will live another day
 Poor Travis. His days are numbered
 ```
 
-
 ## Diagrama de clases
+
 ![alt text](./etc/servant-pattern.png "Servant")
 
 ## Aplicabilidad
+
 Utiliza el patrón Servant cuando
 
 * Cuando queremos que algunos objetos realicen una acción común y no queremos definir esta acción como un método en cada clase.

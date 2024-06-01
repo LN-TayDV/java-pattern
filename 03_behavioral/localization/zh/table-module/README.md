@@ -7,9 +7,11 @@ tag:
 ---
 
 ## 又被称为
+
 表模块
 
 ## Intent
+
 表模块模式将域逻辑按数据库中的每个表组织为一个类，并且一个类的单个实例包含将对数据执行的各种过程。
 
 ## Explanation
@@ -117,6 +119,7 @@ deleteSchema(dataSource);
 ![](etc/table-module.urm.png "table module")
 
 ## 应用
+
 使用表模块模式当：
 
 - 域逻辑简单且数据呈表格形式。

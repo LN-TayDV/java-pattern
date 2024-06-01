@@ -17,7 +17,7 @@ Metadata Mapping is designed to manage the mapping between database records and 
 
 Real world example
 
-> Hibernate ORM Tool uses Metadata Mapping Pattern to specify the mapping between classes and tables either using XML or annotations in code. 
+> Hibernate ORM Tool uses Metadata Mapping Pattern to specify the mapping between classes and tables either using XML or annotations in code.
 
 In plain words
 

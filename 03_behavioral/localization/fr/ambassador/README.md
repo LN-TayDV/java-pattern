@@ -17,28 +17,28 @@ Exemple concret
 
 > Un service distant a de nombreux clients qui accèdent à une fonction qu'il fournit. Le service est une application
 > ancienne qu'il est impossible de mettre à jour. Le grand nombre de requêtes des utilisateurs entraîne des problèmes de
-> connectivité. De nouvelles règles relatives à la fréquence des requêtes doivent être mises en œuvre, ainsi que des 
+> connectivité. De nouvelles règles relatives à la fréquence des requêtes doivent être mises en œuvre, ainsi que des
 > contrôles de latence et une journalisation côté client.
 
 En clair
 
->Avec le modèle Ambassador, nous pouvons mettre en œuvre des interrogations moins fréquentes de la part des clients,
+> Avec le modèle Ambassador, nous pouvons mettre en œuvre des interrogations moins fréquentes de la part des clients,
 > ainsi que des contrôles de latence et une journalisation.
 
 La documentation de Microsoft indique que
 
 > Un service ambassadeur peut être considéré comme un mandataire hors processus qui se trouve au même endroit que le client.
-> Ce pattron peut être utile pour décharger les tâches courantes de connectivité client telles que la surveillance, 
+> Ce pattron peut être utile pour décharger les tâches courantes de connectivité client telles que la surveillance,
 > la journalisation, le routage, la sécurité (comme TLS) et les modèles de résilience d'une manière indépendante du langage.
-> Il est souvent utilisé avec des applications anciennes ou d'autres applications difficiles à modifier, afin d'étendre 
+> Il est souvent utilisé avec des applications anciennes ou d'autres applications difficiles à modifier, afin d'étendre
 > leurs capacités de mise en réseau. Il peut également permettre à une équipe spécialisée de mettre en œuvre ces fonctionnalités.
 
 **Exemple de programme**
 
 En gardant en mémoire l'introduction ci-dessus, nous reproduirons cette fonctionnalité dans ce exemple. Nous avons une interface
 implémentée par un service distant aussi bien que service ambassadeur
-We have an interface implemented 
-by the remote service as well as the ambassador service :
+We have an interface implemented
+by the remote service as well as the ambassador service:
 
 ```java
 interface RemoteServiceInterface {
@@ -177,8 +177,8 @@ Service result: -1
 ## Application
 
 * Le pattron ambassador s'applique lorsque l'on travaille avec un service distant existant qui ne peut pas être modifié ou
-qui serait extrêmement difficile à modifier. Les fonctions de connectivité peuvent être mises en œuvre sur le client sans
-qu'il soit nécessaire d'apporter des modifications au service distant.
+  qui serait extrêmement difficile à modifier. Les fonctions de connectivité peuvent être mises en œuvre sur le client sans
+  qu'il soit nécessaire d'apporter des modifications au service distant.
 * Ambassador fournit une interface locale pour un service distant.
 * Ambassador assure la journalisation, la coupure de circuit, les tentatives et la sécurité sur le client.
 

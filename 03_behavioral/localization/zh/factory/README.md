@@ -77,6 +77,7 @@ public enum CarType {
   }
 }
 ```
+
 接着我们实现了一个静态方法  `getCar` 用于封装工厂类 `CarsFactory`  创建 `Car` 具体对象实例的细节。
 
 ```java

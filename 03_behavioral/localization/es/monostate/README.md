@@ -7,15 +7,19 @@ tag:
 ---
 
 ## También conocido como
+
 Borg
 
 ## Propósito
+
 Impone un comportamiento como compartir el mismo estado entre todas las instancias.
 
 ## Diagrama de Clases
+
 ![alt text](./etc/monostate.png "MonoState")
 
 ## Applicability
+
 Utilice el patrón Monostate cuando
 
 * El mismo estado debe ser compartido por todas las instancias de una clase.

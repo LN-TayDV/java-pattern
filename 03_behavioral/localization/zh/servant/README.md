@@ -7,6 +7,7 @@ tag:
 ---
 
 ## 含义
+
 仆人类被用于向一组类提供一些行为，区别于在每个类定义行为-或者当我们无法排除
 公共父类中的这种行为，这些行为在仆人类被定义一次
 
@@ -80,7 +81,9 @@ interface Royalty {
     boolean getMood();
 }
 ```
+
 国王类正在实现皇家接口
+
 ```java
 public class King implements Royalty {
 
@@ -119,7 +122,9 @@ public class King implements Royalty {
     }
 }
 ```
+
 女王类正在实现皇家接口
+
 ```java
 public class Queen implements Royalty {
 
@@ -216,11 +221,12 @@ Jenkins will live another day
 Poor Travis. His days are numbered
 ```
 
-
 ## 类图
+
 ![alt text](./etc/servant-pattern.png "Servant")
 
 ## 适用场景
+
 在什么时候使用仆人模式
 
 * 当我们希望某些对象执行一个公共操作并且不想将该操作定义为每个类中的方法时

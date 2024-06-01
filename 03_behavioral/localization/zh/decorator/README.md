@@ -8,9 +8,11 @@ tag:
 ---
 
 ## 或称
+
 包装器
 
 ## 目的
+
 动态的为对象附加额外的职责。装饰器为子类提供了灵活的替代方案，以扩展功能。
 
 ## 解释
@@ -103,9 +105,11 @@ clubbedTroll.fleeBattle(); // The troll shrieks in horror and runs away!
 ```
 
 ## 类图
+
 ![alt text](./etc/decorator.urm.png "Decorator pattern class diagram")
 
 ## 适用性
+
 使用装饰者
 
 * 动态透明地向单个对象添加职责，即不影响其他对象
@@ -113,15 +117,16 @@ clubbedTroll.fleeBattle(); // The troll shrieks in horror and runs away!
 * 当通过子类化进行扩展是不切实际的。有时可能会有大量的独立扩展，并且会产生大量的子类来支持每种组合。 否则类定义可能被隐藏或无法用于子类化。
 
 ## 教程
+
 * [Decorator Pattern Tutorial](https://www.journaldev.com/1540/decorator-design-pattern-in-java-example)
 
 ## Java世界的例子
- * [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html),
- [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html) and [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
- * [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
- * [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
- * [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
 
+* [java.io.InputStream](http://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html), [java.io.OutputStream](http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html),
+  [java.io.Reader](http://docs.oracle.com/javase/8/docs/api/java/io/Reader.html) and [java.io.Writer](http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html)
+* [java.util.Collections#synchronizedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#synchronizedCollection-java.util.Collection-)
+* [java.util.Collections#unmodifiableXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#unmodifiableCollection-java.util.Collection-)
+* [java.util.Collections#checkedXXX()](http://docs.oracle.com/javase/8/docs/api/java/util/Collections.html#checkedCollection-java.util.Collection-java.lang.Class-)
 
 ## 鸣谢
 

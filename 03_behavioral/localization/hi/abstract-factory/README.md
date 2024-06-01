@@ -27,7 +27,7 @@ tag:
 
 विकिपीडिया कहता है
 
-> अमूर्त फ़ैक्टरी पैटर्न व्यक्तिगत फ़ैक्टरियों के एक समूह को समाहित करने का एक तरीका प्रदान करता है, जिनके ठोस वर्गों को निर्दिष्ट किए बिना एक सामान्य विषय है। 
+> अमूर्त फ़ैक्टरी पैटर्न व्यक्तिगत फ़ैक्टरियों के एक समूह को समाहित करने का एक तरीका प्रदान करता है, जिनके ठोस वर्गों को निर्दिष्ट किए बिना एक सामान्य विषय है।
 
 **Programmatic Example**
 
@@ -180,7 +180,6 @@ public static class FactoryMaker {
 
 ![alt text](../../../abstract-factory/etc/abstract-factory.urm.png "Abstract Factory class diagram")
 
-
 ## प्रयोज्यता
 
 एब्सट्रैक्ट फ़ैक्टरी पैटर्न का उपयोग कब करें
@@ -196,7 +195,7 @@ public static class FactoryMaker {
 * जब आपको उत्पादों के बीच निरंतरता की आवश्यकता हो
 * प्रोग्राम में नए उत्पादों या उत्पादों के समूह को जोड़ते समय आप मौजूदा कोड को बदलना नहीं चाहते हैं।
 
-उदाहरण उपयोग के मामले	
+उदाहरण उपयोग के मामले
 
 * रनटाइम पर FileSystemAcmeService या DatabaseAcmeService या NetworkAcmeService के उपयुक्त कार्यान्वयन के लिए कॉल करने का चयन करना।
 * यूनिट टेस्ट केस लिखना बहुत आसान हो जाता है
@@ -210,7 +209,7 @@ public static class FactoryMaker {
 
 ## ट्यूटोरियल
 
-* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java) 
+* [Abstract Factory Pattern Tutorial](https://www.journaldev.com/1418/abstract-factory-design-pattern-in-java)
 
 ## ज्ञात उपयोग
 

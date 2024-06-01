@@ -42,10 +42,10 @@ public class Rectangle {
 
     boolean intersectsWith(Rectangle r) {
         return
-               !(r.getLeft() > getRight()
-            || r.getRight() < getLeft()
-            || r.getTop() > getBottom()
-            || r.getBottom() < getTop());
+            !(r.getLeft() > getRight()
+                || r.getRight() < getLeft()
+                || r.getTop() > getBottom()
+                || r.getBottom() < getTop());
     }
 
     @Override

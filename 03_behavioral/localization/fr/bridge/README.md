@@ -18,19 +18,19 @@ Découpler une abstraction de son implémentation afin que les deux puissent var
 
 Exemple concret
 
-> Considérons que vous avez une arme avec différents enchantements, et que vous êtes censé permettre de mélanger 
+> Considérons que vous avez une arme avec différents enchantements, et que vous êtes censé permettre de mélanger
 > différentes armes avec différents enchantements. Que feriez-vous ? Créer plusieurs copies de chaque arme pour chacun
-> des enchantements ou simplement créer un enchantement séparé et l'appliquer à l'arme en fonction des besoins ? 
+> des enchantements ou simplement créer un enchantement séparé et l'appliquer à l'arme en fonction des besoins ?
 > Le pattron de concepetion Bridge pattern vous permet de faire la deuxième solution.
 
 En clair
 
-> Bridge pattern consiste à préférer la composition à l'héritage. Les détails de la mise en œuvre(implémentation) 
+> Bridge pattern consiste à préférer la composition à l'héritage. Les détails de la mise en œuvre(implémentation)
 > sont transférés d'une hiérarchie à un autre objet ayant une hiérarchie distincte.
 
 Wikipedia dit
 
-> Bridge pattern est un patron de conception utilisé en génie logiciel qui vise à "découpler une abstraction de sa 
+> Bridge pattern est un patron de conception utilisé en génie logiciel qui vise à "découpler une abstraction de sa
 > mise en œuvre(son implémention) de manière à ce que les deux puissent varier de manière indépendante"
 
 **Exemple de programme**

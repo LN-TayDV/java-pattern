@@ -28,7 +28,7 @@ pila.
 
 Ejemplo del mundo real
 
-> Un cálculo Fibonacci recursivo sin el problema de desbordamiento de pila utilizando el patrón Trampoline.       
+> Un cálculo Fibonacci recursivo sin el problema de desbordamiento de pila utilizando el patrón Trampoline.
 
 En palabras sencillas
 

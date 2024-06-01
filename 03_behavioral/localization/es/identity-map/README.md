@@ -146,7 +146,7 @@ public class IdentityMap {
   db.insert(person1);
 ```
 
-* Ahora vamos a crear un objeto person finder y buscar a la persona con personNationalId = 1(supongamos que el objeto personFinder ya tiene la db y un IdentityMap adjunto):  
+* Ahora vamos a crear un objeto person finder y buscar a la persona con personNationalId = 1(supongamos que el objeto personFinder ya tiene la db y un IdentityMap adjunto):
 
 ```java
   PersonFinder finder = new PersonFinder();
@@ -177,6 +177,7 @@ public class IdNotFoundException extends RuntimeException {
   }
 }
 ```
+
 ## Diagrama de clases
 
 ![alt text](./etc/IdentityMap.png "Identity Map Pattern")

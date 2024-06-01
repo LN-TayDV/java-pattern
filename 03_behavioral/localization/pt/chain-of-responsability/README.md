@@ -27,9 +27,9 @@ Em outras palavras
 
 Wikipedia diz
 
-> Em orientação a objetos, Chain of Responsibility é um padrão cuja principal função é evitar a dependência 
+> Em orientação a objetos, Chain of Responsibility é um padrão cuja principal função é evitar a dependência
 > entre um objeto receptor e um objeto solicitante. Consiste em uma série de objetos receptores e de objetos
-> de solicitação, onde cada objeto de solicitação possui uma lógica interna que separa quais são tipos de 
+> de solicitação, onde cada objeto de solicitação possui uma lógica interna que separa quais são tipos de
 > objetos receptores que podem ser manipulados. O restante é passado para os próximos objetos de solicitação da cadeia.
 
 **Exemplo de programação**
