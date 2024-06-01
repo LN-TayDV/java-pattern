@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.abstractfactory;
+package com.iluwatar.abstractfactory.kingdoms.elements;
 
 /**
  * Army interface.

@@ -23,19 +23,21 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.abstractfactory.orc;
+package com.iluwatar.abstractfactory.factory;
 
-import com.iluwatar.abstractfactory.Army;
+import com.iluwatar.abstractfactory.kingdoms.elements.Army;
+import com.iluwatar.abstractfactory.kingdoms.elements.Castle;
+import com.iluwatar.abstractfactory.kingdoms.elements.King;
 
 /**
- * OrcArmy.
+ * KingdomFactory factory interface.
  */
-public class OrcArmy implements Army {
+public interface KingdomFactory {
 
-    static final String DESCRIPTION = "This is the orc army!";
+    Castle createCastle();
 
-    @Override
-    public String getDescription() {
-        return DESCRIPTION;
-    }
+    King createKing();
+
+    Army createArmy();
+
 }

@@ -28,12 +28,14 @@ package com.iluwatar.abstractfactory;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.iluwatar.abstractfactory.elf.ElfArmy;
-import com.iluwatar.abstractfactory.elf.ElfCastle;
-import com.iluwatar.abstractfactory.elf.ElfKing;
-import com.iluwatar.abstractfactory.orc.OrcArmy;
-import com.iluwatar.abstractfactory.orc.OrcCastle;
-import com.iluwatar.abstractfactory.orc.OrcKing;
+import com.iluwatar.abstractfactory.factory.KingdomType;
+import com.iluwatar.abstractfactory.kingdoms.elf.ElfArmy;
+import com.iluwatar.abstractfactory.kingdoms.elf.ElfCastle;
+import com.iluwatar.abstractfactory.kingdoms.elf.ElfKing;
+import com.iluwatar.abstractfactory.kingdoms.Kingdom;
+import com.iluwatar.abstractfactory.kingdoms.orc.OrcArmy;
+import com.iluwatar.abstractfactory.kingdoms.orc.OrcCastle;
+import com.iluwatar.abstractfactory.kingdoms.orc.OrcKing;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -45,14 +47,14 @@ class AbstractFactoryTest {
 
     @Test
     void verifyKingCreation() {
-        app.createKingdom(Kingdom.FactoryMaker.KingdomType.ELF);
+        app.createKingdom(KingdomType.ELF);
         final var kingdom = app.getKingdom();
 
         final var elfKing = kingdom.getKing();
         assertTrue(elfKing instanceof ElfKing);
         assertEquals(ElfKing.DESCRIPTION, elfKing.getDescription());
 
-        app.createKingdom(Kingdom.FactoryMaker.KingdomType.ORC);
+        app.createKingdom(KingdomType.ORC);
         final var orcKing = kingdom.getKing();
         assertTrue(orcKing instanceof OrcKing);
         assertEquals(OrcKing.DESCRIPTION, orcKing.getDescription());
@@ -60,14 +62,14 @@ class AbstractFactoryTest {
 
     @Test
     void verifyCastleCreation() {
-        app.createKingdom(Kingdom.FactoryMaker.KingdomType.ELF);
+        app.createKingdom(KingdomType.ELF);
         final var kingdom = app.getKingdom();
 
         final var elfCastle = kingdom.getCastle();
         assertTrue(elfCastle instanceof ElfCastle);
         assertEquals(ElfCastle.DESCRIPTION, elfCastle.getDescription());
 
-        app.createKingdom(Kingdom.FactoryMaker.KingdomType.ORC);
+        app.createKingdom(KingdomType.ORC);
         final var orcCastle = kingdom.getCastle();
         assertTrue(orcCastle instanceof OrcCastle);
         assertEquals(OrcCastle.DESCRIPTION, orcCastle.getDescription());
@@ -75,15 +77,15 @@ class AbstractFactoryTest {
 
     @Test
     void verifyArmyCreation() {
-        app.createKingdom(Kingdom.FactoryMaker.KingdomType.ELF);
+        app.createKingdom(KingdomType.ELF);
         final var kingdom = app.getKingdom();
 
         final var elfArmy = kingdom.getArmy();
-        assertTrue(elfArmy instanceof com.iluwatar.abstractfactory.elf.ElfArmy.ElfArmy);
-        assertEquals(com.iluwatar.abstractfactory.elf.ElfArmy.ElfArmy.DESCRIPTION,
+        assertTrue(elfArmy instanceof ElfArmy);
+        assertEquals(ElfArmy.DESCRIPTION,
             elfArmy.getDescription());
 
-        app.createKingdom(Kingdom.FactoryMaker.KingdomType.ORC);
+        app.createKingdom(KingdomType.ORC);
         final var orcArmy = kingdom.getArmy();
         assertTrue(orcArmy instanceof OrcArmy);
         assertEquals(OrcArmy.DESCRIPTION, orcArmy.getDescription());
@@ -91,7 +93,7 @@ class AbstractFactoryTest {
 
     @Test
     void verifyElfKingdomCreation() {
-        app.createKingdom(Kingdom.FactoryMaker.KingdomType.ELF);
+        app.createKingdom(KingdomType.ELF);
         final var kingdom = app.getKingdom();
 
         final var king = kingdom.getKing();
@@ -101,13 +103,13 @@ class AbstractFactoryTest {
         assertEquals(ElfKing.DESCRIPTION, king.getDescription());
         assertTrue(castle instanceof ElfCastle);
         assertEquals(ElfCastle.DESCRIPTION, castle.getDescription());
-        assertTrue(army instanceof com.iluwatar.abstractfactory.elf.ElfArmy.ElfArmy);
-        assertEquals(ElfArmy.ElfArmy.DESCRIPTION, army.getDescription());
+        assertTrue(army instanceof ElfArmy);
+        assertEquals(ElfArmy.DESCRIPTION, army.getDescription());
     }
 
     @Test
     void verifyOrcKingdomCreation() {
-        app.createKingdom(Kingdom.FactoryMaker.KingdomType.ORC);
+        app.createKingdom(KingdomType.ORC);
         final var kingdom = app.getKingdom();
 
         final var king = kingdom.getKing();

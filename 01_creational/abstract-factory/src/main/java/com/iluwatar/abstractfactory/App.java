@@ -25,8 +25,12 @@
 
 package com.iluwatar.abstractfactory;
 
-import com.iluwatar.abstractfactory.elf.ElfKingdomFactory;
-import com.iluwatar.abstractfactory.orc.OrcKingdomFactory;
+import com.iluwatar.abstractfactory.factory.kingdom.impl.ElfKingdomFactory;
+import com.iluwatar.abstractfactory.factory.FactoryMaker;
+import com.iluwatar.abstractfactory.factory.KingdomType;
+import com.iluwatar.abstractfactory.kingdoms.Kingdom;
+import com.iluwatar.abstractfactory.factory.KingdomFactory;
+import com.iluwatar.abstractfactory.factory.kingdom.impl.OrcKingdomFactory;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -63,13 +67,13 @@ public class App implements Runnable {
     @Override
     public void run() {
         LOGGER.info("elf kingdom");
-        createKingdom(Kingdom.FactoryMaker.KingdomType.ELF);
+        createKingdom(KingdomType.ELF);
         LOGGER.info(kingdom.getArmy().getDescription());
         LOGGER.info(kingdom.getCastle().getDescription());
         LOGGER.info(kingdom.getKing().getDescription());
 
         LOGGER.info("orc kingdom");
-        createKingdom(Kingdom.FactoryMaker.KingdomType.ORC);
+        createKingdom(KingdomType.ORC);
         LOGGER.info(kingdom.getArmy().getDescription());
         LOGGER.info(kingdom.getCastle().getDescription());
         LOGGER.info(kingdom.getKing().getDescription());
@@ -80,8 +84,8 @@ public class App implements Runnable {
      *
      * @param kingdomType type of Kingdom
      */
-    public void createKingdom(final Kingdom.FactoryMaker.KingdomType kingdomType) {
-        final KingdomFactory kingdomFactory = Kingdom.FactoryMaker.makeFactory(kingdomType);
+    public void createKingdom(final KingdomType kingdomType) {
+        final KingdomFactory kingdomFactory = FactoryMaker.makeFactory(kingdomType);
         kingdom.setKing(kingdomFactory.createKing());
         kingdom.setCastle(kingdomFactory.createCastle());
         kingdom.setArmy(kingdomFactory.createArmy());

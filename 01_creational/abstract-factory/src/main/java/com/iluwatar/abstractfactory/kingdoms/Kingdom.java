@@ -23,19 +23,25 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.abstractfactory.elf;
+package com.iluwatar.abstractfactory.kingdoms;
 
-import com.iluwatar.abstractfactory.Castle;
+import com.iluwatar.abstractfactory.factory.KingdomFactory;
+import com.iluwatar.abstractfactory.kingdoms.elements.Army;
+import com.iluwatar.abstractfactory.kingdoms.elements.Castle;
+import com.iluwatar.abstractfactory.kingdoms.elements.King;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * ElfCastle.
+ * Helper class to manufacture {@link KingdomFactory} beans.
  */
-public class ElfCastle implements Castle {
+@Getter
+@Setter
+public class Kingdom {
 
-    static final String DESCRIPTION = "This is the elven castle!";
+    private King king;
 
-    @Override
-    public String getDescription() {
-        return DESCRIPTION;
-    }
+    private Castle castle;
+
+    private Army army;
 }

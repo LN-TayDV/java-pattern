@@ -23,44 +23,12 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.abstractfactory;
-
-import com.iluwatar.abstractfactory.elf.ElfKingdomFactory;
-import com.iluwatar.abstractfactory.orc.OrcKingdomFactory;
-import lombok.Getter;
-import lombok.Setter;
+package com.iluwatar.abstractfactory.kingdoms.elements;
 
 /**
- * Helper class to manufacture {@link KingdomFactory} beans.
+ * King interface.
  */
-@Getter
-@Setter
-public class Kingdom {
+public interface King {
 
-    private King king;
-    private Castle castle;
-    private Army army;
-
-    /**
-     * The factory of kingdom factories.
-     */
-    public static class FactoryMaker {
-
-        /**
-         * The factory method to create KingdomFactory concrete objects.
-         */
-        public static KingdomFactory makeFactory(KingdomType type) {
-            return switch (type) {
-                case ELF -> new ElfKingdomFactory();
-                case ORC -> new OrcKingdomFactory();
-            };
-        }
-
-        /**
-         * Enumeration for the different types of Kingdoms.
-         */
-        public enum KingdomType {
-            ELF, ORC
-        }
-    }
+    String getDescription();
 }

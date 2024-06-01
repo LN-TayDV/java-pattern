@@ -23,16 +23,16 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.abstractfactory.orc;
+package com.iluwatar.abstractfactory.kingdoms.elf;
 
-import com.iluwatar.abstractfactory.King;
+import com.iluwatar.abstractfactory.kingdoms.elements.King;
 
 /**
- * OrcKing.
+ * ElfKing.
  */
-public class OrcKing implements King {
+public class ElfKing implements King {
 
-    static final String DESCRIPTION = "This is the orc king!";
+    public  static final String DESCRIPTION = "This is the elven king!";
 
     @Override
     public String getDescription() {

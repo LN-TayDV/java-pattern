@@ -23,12 +23,19 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.abstractfactory;
+package com.iluwatar.abstractfactory.kingdoms.orc;
+
+import com.iluwatar.abstractfactory.kingdoms.elements.King;
 
 /**
- * Castle interface.
+ * OrcKing.
  */
-public interface Castle {
+public class OrcKing implements King {
 
-    String getDescription();
+    public static final String DESCRIPTION = "This is the orc king!";
+
+    @Override
+    public String getDescription() {
+        return DESCRIPTION;
+    }
 }

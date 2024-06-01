@@ -23,19 +23,12 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.abstractfactory.elf;
-
-import com.iluwatar.abstractfactory.Army;
+package com.iluwatar.abstractfactory.kingdoms.elements;
 
 /**
- * ElfArmy.
+ * Castle interface.
  */
-public class ElfArmy implements Army {
+public interface Castle {
 
-    static final String DESCRIPTION = "This is the elven army!";
-
-    @Override
-    public String getDescription() {
-        return DESCRIPTION;
-    }
+    String getDescription();
 }
