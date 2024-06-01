@@ -27,6 +27,11 @@ package com.iluwatar.dependency.injection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.iluwatar.dependency.injection.setter.AdvancedSorceress;
+import com.iluwatar.dependency.injection.tobacco.OldTobyTobacco;
+import com.iluwatar.dependency.injection.tobacco.RivendellTobacco;
+import com.iluwatar.dependency.injection.tobacco.SecondBreakfastTobacco;
+import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
 import com.iluwatar.dependency.injection.utils.InMemoryAppender;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;

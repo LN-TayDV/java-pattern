@@ -23,8 +23,10 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection;
+package com.iluwatar.dependency.injection.setter;
 
+import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
+import com.iluwatar.dependency.injection.Wizard;
 import javax.inject.Inject;
 
 /**

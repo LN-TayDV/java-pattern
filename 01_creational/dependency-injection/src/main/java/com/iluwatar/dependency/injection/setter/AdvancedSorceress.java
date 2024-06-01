@@ -23,10 +23,23 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection;
+package com.iluwatar.dependency.injection.setter;
+
+import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
+import com.iluwatar.dependency.injection.Wizard;
+import lombok.Setter;
 
 /**
- * RivendellTobacco concrete {@link Tobacco} implementation.
+ * AdvancedSorceress implements inversion of control. It depends on abstraction that can be injected
+ * through its setter.
  */
-public class RivendellTobacco extends Tobacco {
+@Setter
+public class AdvancedSorceress implements Wizard {
+
+    private Tobacco tobacco;
+
+    @Override
+    public void smoke() {
+        tobacco.smoke(this);
+    }
 }

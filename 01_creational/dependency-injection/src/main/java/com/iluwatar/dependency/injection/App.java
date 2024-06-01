@@ -26,6 +26,12 @@
 package com.iluwatar.dependency.injection;
 
 import com.google.inject.Guice;
+import com.iluwatar.dependency.injection.setter.GuiceWizard;
+import com.iluwatar.dependency.injection.constructor.SimpleWizard;
+import com.iluwatar.dependency.injection.setter.AdvancedSorceress;
+import com.iluwatar.dependency.injection.constructor.AdvancedWizard;
+import com.iluwatar.dependency.injection.tobacco.SecondBreakfastTobacco;
+import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
 
 /**
  * Dependency Injection pattern deals with how objects handle their dependencies. The pattern

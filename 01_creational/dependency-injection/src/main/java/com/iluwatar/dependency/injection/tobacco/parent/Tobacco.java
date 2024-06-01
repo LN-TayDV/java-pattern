@@ -23,17 +23,21 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection;
+package com.iluwatar.dependency.injection.tobacco.parent;
+
+import com.iluwatar.dependency.injection.Wizard;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * Naive Wizard implementation violating the inversion of control principle. It should depend on
- * abstraction instead.
+ * Tobacco abstraction.
  */
-public class SimpleWizard implements Wizard {
+@Slf4j
+public abstract class Tobacco {
 
-    private final OldTobyTobacco tobacco = new OldTobyTobacco();
-
-    public void smoke() {
-        tobacco.smoke(this);
+    public void smoke(Wizard wizard) {
+        LOGGER.info("{} smoking {}",
+            wizard.getClass().getSimpleName(),
+            this.getClass().getSimpleName()
+        );
     }
 }

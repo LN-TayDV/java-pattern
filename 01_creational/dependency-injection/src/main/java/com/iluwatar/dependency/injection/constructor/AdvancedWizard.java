@@ -23,10 +23,23 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection;
+package com.iluwatar.dependency.injection.constructor;
+
+import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
+import com.iluwatar.dependency.injection.Wizard;
+import lombok.RequiredArgsConstructor;
 
 /**
- * OldTobyTobacco concrete {@link Tobacco} implementation.
+ * AdvancedWizard implements inversion of control. It depends on abstraction that can be injected
+ * through its constructor.
  */
-public class OldTobyTobacco extends Tobacco {
+@RequiredArgsConstructor
+public class AdvancedWizard implements Wizard {
+
+    private final Tobacco tobacco;
+
+    @Override
+    public void smoke() {
+        tobacco.smoke(this);
+    }
 }

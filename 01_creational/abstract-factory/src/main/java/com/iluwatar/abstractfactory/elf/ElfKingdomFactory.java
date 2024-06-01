@@ -47,7 +47,7 @@ public class ElfKingdomFactory implements KingdomFactory {
 
     @Override
     public Army createArmy() {
-        return new ElfArmy.ElfArmy();
+        return new ElfArmy();
     }
 
 }

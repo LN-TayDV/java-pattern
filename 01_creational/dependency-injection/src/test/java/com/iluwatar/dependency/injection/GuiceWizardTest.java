@@ -29,6 +29,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
+import com.iluwatar.dependency.injection.setter.GuiceWizard;
+import com.iluwatar.dependency.injection.tobacco.OldTobyTobacco;
+import com.iluwatar.dependency.injection.tobacco.RivendellTobacco;
+import com.iluwatar.dependency.injection.tobacco.SecondBreakfastTobacco;
+import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
 import com.iluwatar.dependency.injection.utils.InMemoryAppender;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;

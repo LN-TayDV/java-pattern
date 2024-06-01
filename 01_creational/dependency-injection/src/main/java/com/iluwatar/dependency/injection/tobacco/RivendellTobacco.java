@@ -23,18 +23,12 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection;
+package com.iluwatar.dependency.injection.tobacco;
 
-import lombok.extern.slf4j.Slf4j;
+import com.iluwatar.dependency.injection.tobacco.parent.Tobacco;
 
 /**
- * Tobacco abstraction.
+ * RivendellTobacco concrete {@link Tobacco} implementation.
  */
-@Slf4j
-public abstract class Tobacco {
-
-    public void smoke(Wizard wizard) {
-        LOGGER.info("{} smoking {}", wizard.getClass().getSimpleName(),
-            this.getClass().getSimpleName());
-    }
+public class RivendellTobacco extends Tobacco {
 }

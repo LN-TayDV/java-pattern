@@ -41,9 +41,11 @@ public class Rectangle {
     private final int bottom;
 
     boolean intersectsWith(Rectangle r) {
-        return !(r.getLeft() > getRight() || r.getRight() < getLeft() || r.getTop() > getBottom() ||
-            r
-                .getBottom() < getTop());
+        return
+               !(r.getLeft() > getRight()
+            || r.getRight() < getLeft()
+            || r.getTop() > getBottom()
+            || r.getBottom() < getTop());
     }
 
     @Override

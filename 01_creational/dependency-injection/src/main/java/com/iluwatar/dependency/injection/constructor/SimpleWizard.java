@@ -23,20 +23,19 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.dependency.injection;
+package com.iluwatar.dependency.injection.constructor;
 
-import lombok.Setter;
+import com.iluwatar.dependency.injection.tobacco.OldTobyTobacco;
+import com.iluwatar.dependency.injection.Wizard;
 
 /**
- * AdvancedSorceress implements inversion of control. It depends on abstraction that can be injected
- * through its setter.
+ * Naive Wizard implementation violating the inversion of control principle. It should depend on
+ * abstraction instead.
  */
-@Setter
-public class AdvancedSorceress implements Wizard {
+public class SimpleWizard implements Wizard {
 
-    private Tobacco tobacco;
+    private final OldTobyTobacco tobacco = new OldTobyTobacco();
 
-    @Override
     public void smoke() {
         tobacco.smoke(this);
     }
