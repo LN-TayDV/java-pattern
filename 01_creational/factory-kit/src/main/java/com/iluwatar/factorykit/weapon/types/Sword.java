@@ -23,14 +23,16 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit;
+package com.iluwatar.factorykit.weapon.types;
+
+import com.iluwatar.factorykit.weapon.factory.Weapon;
 
 /**
- * Class representing Spear.
+ * Class representing Swords.
  */
-public class Spear implements Weapon {
+public class Sword implements Weapon {
     @Override
     public String toString() {
-        return "Spear";
+        return "Sword";
     }
 }

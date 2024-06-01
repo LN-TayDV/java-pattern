@@ -23,10 +23,14 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit;
+package com.iluwatar.factorykit.weapon.factory;
 
 /**
- * Interface representing weapon.
+ * Enumerates {@link Weapon} types.
  */
-public interface Weapon {
+public enum WeaponType {
+    SWORD,
+    AXE,
+    BOW,
+    SPEAR
 }

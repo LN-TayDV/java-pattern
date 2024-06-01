@@ -23,13 +23,16 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit;
+package com.iluwatar.factorykit.weapon.types;
 
-import java.util.function.Supplier;
+import com.iluwatar.factorykit.weapon.factory.Weapon;
 
 /**
- * Functional interface that allows adding builder with name to the factory.
+ * Class representing Spear.
  */
-public interface Builder {
-    void add(WeaponType name, Supplier<Weapon> supplier);
+public class Spear implements Weapon {
+    @Override
+    public String toString() {
+        return "Spear";
+    }
 }

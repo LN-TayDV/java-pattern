@@ -23,14 +23,10 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factorykit;
+package com.iluwatar.factorykit.weapon.factory;
 
 /**
- * Class representing Bows.
+ * Interface representing weapon.
  */
-public class Bow implements Weapon {
-    @Override
-    public String toString() {
-        return "Bow";
-    }
+public interface Weapon {
 }
