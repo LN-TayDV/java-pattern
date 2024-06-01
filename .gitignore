@@ -73,6 +73,3 @@ target/*
 *.css
 *.js
 *.csv
-.project
-.classpath
-.settings
