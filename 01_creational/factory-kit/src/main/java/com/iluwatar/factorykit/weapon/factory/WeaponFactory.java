@@ -49,7 +49,7 @@ public interface WeaponFactory {
      * Phương thức factory trong interface WeaponFactory thực sự tạo ra một đối tượng của chính interface WeaponFactory.
      * Điều đặc biệt ở đây là phương thức này được đặt là static,
      * điều này có nghĩa là nó có thể được gọi trực tiếp từ interface WeaponFactory
-@@ -56,6 +58,38 @@ public interface WeaponFactory {
+
      * Thay vào đó, bạn có thể gọi trực tiếp phương thức factory từ interface WeaponFactory
      * để tạo ra một đối tượng WeaponFactory mới, chưa cần đến bất kỳ lớp triển khai cụ thể nào.
      */
