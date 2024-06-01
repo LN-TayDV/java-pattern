@@ -25,6 +25,11 @@
 
 package com.iluwatar.factory.method;
 
+import com.iluwatar.factory.method.factory.Blacksmith;
+import com.iluwatar.factory.method.factory.ElfBlacksmith;
+import com.iluwatar.factory.method.factory.OrcBlacksmith;
+import com.iluwatar.factory.method.factory.WeaponType;
+import com.iluwatar.factory.method.weapon.Weapon;
 import lombok.extern.slf4j.Slf4j;
 
 /**

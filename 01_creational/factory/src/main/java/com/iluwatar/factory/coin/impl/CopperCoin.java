@@ -23,13 +23,19 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factory.method;
+package com.iluwatar.factory.coin.impl;
+
+import com.iluwatar.factory.Coin;
 
 /**
- * Weapon interface.
+ * CopperCoin implementation.
  */
-public interface Weapon {
+public class CopperCoin implements Coin {
 
-    WeaponType weaponType();
+    static final String DESCRIPTION = "This is a copper coin.";
 
+    @Override
+    public String getDescription() {
+        return DESCRIPTION;
+    }
 }

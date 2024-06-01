@@ -23,17 +23,15 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factory;
+package com.iluwatar.factory.method.factory;
+
+import com.iluwatar.factory.method.weapon.Weapon;
 
 /**
- * GoldCoin implementation.
+ * The interface containing method for producing objects.
  */
-public class GoldCoin implements Coin {
+public interface Blacksmith {
 
-    static final String DESCRIPTION = "This is a gold coin.";
+    Weapon manufactureWeapon(WeaponType weaponType);
 
-    @Override
-    public String getDescription() {
-        return DESCRIPTION;
-    }
 }

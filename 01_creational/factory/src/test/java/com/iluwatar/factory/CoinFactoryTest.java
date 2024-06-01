@@ -27,6 +27,7 @@ package com.iluwatar.factory;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.iluwatar.factory.coin.impl.GoldCoin;
 import org.junit.jupiter.api.Test;
 
 class CoinFactoryTest {

@@ -23,15 +23,18 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factory.method;
+package com.iluwatar.factory.method.weapon.impl;
+
+import com.iluwatar.factory.method.factory.WeaponType;
+import com.iluwatar.factory.method.weapon.Weapon;
 
 /**
- * ElfWeapon.
+ * OrcWeapon.
  */
-public record ElfWeapon(WeaponType weaponType) implements Weapon {
+public record OrcWeapon(WeaponType weaponType) implements Weapon {
 
     @Override
     public String toString() {
-        return "an elven " + weaponType;
+        return "an orcish " + weaponType;
     }
 }

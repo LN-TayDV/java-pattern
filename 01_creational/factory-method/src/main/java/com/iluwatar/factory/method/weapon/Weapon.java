@@ -23,32 +23,15 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factory.method;
+package com.iluwatar.factory.method.weapon;
 
-import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.Map;
+import com.iluwatar.factory.method.factory.WeaponType;
 
 /**
- * Concrete subclass for creating new objects.
+ * Weapon interface.
  */
-public class ElfBlacksmith implements Blacksmith {
+public interface Weapon {
 
-    private static final Map<WeaponType, ElfWeapon> ELFARSENAL;
+    WeaponType weaponType();
 
-    static {
-        ELFARSENAL = new EnumMap<>(WeaponType.class);
-        Arrays.stream(WeaponType.values())
-            .forEach(type -> ELFARSENAL.put(type, new ElfWeapon(type)));
-    }
-
-    @Override
-    public Weapon manufactureWeapon(WeaponType weaponType) {
-        return ELFARSENAL.get(weaponType);
-    }
-
-    @Override
-    public String toString() {
-        return "The elf blacksmith";
-    }
 }

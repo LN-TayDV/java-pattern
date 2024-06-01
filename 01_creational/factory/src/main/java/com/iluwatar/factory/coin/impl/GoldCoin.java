@@ -23,32 +23,19 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factory.method;
+package com.iluwatar.factory.coin.impl;
 
-import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.Map;
+import com.iluwatar.factory.Coin;
 
 /**
- * Concrete subclass for creating new objects.
+ * GoldCoin implementation.
  */
-public class OrcBlacksmith implements Blacksmith {
+public class GoldCoin implements Coin {
 
-    private static final Map<WeaponType, OrcWeapon> ORCARSENAL;
-
-    static {
-        ORCARSENAL = new EnumMap<>(WeaponType.class);
-        Arrays.stream(WeaponType.values())
-            .forEach(type -> ORCARSENAL.put(type, new OrcWeapon(type)));
-    }
+    static final String DESCRIPTION = "This is a gold coin.";
 
     @Override
-    public Weapon manufactureWeapon(WeaponType weaponType) {
-        return ORCARSENAL.get(weaponType);
-    }
-
-    @Override
-    public String toString() {
-        return "The orc blacksmith";
+    public String getDescription() {
+        return DESCRIPTION;
     }
 }

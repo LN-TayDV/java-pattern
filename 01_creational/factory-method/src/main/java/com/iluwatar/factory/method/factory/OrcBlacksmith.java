@@ -23,17 +23,35 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factory;
+package com.iluwatar.factory.method.factory;
+
+import com.iluwatar.factory.method.weapon.Weapon;
+import com.iluwatar.factory.method.weapon.impl.OrcWeapon;
+
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.Map;
 
 /**
- * CopperCoin implementation.
+ * Concrete subclass for creating new objects.
  */
-public class CopperCoin implements Coin {
+public class OrcBlacksmith implements Blacksmith {
 
-    static final String DESCRIPTION = "This is a copper coin.";
+    private static final Map<WeaponType, OrcWeapon> ORCARSENAL;
+
+    static {
+        ORCARSENAL = new EnumMap<>(WeaponType.class);
+        Arrays.stream(WeaponType.values())
+            .forEach(type -> ORCARSENAL.put(type, new OrcWeapon(type)));
+    }
 
     @Override
-    public String getDescription() {
-        return DESCRIPTION;
+    public Weapon manufactureWeapon(WeaponType weaponType) {
+        return ORCARSENAL.get(weaponType);
+    }
+
+    @Override
+    public String toString() {
+        return "The orc blacksmith";
     }
 }

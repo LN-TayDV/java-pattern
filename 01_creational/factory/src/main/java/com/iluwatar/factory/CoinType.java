@@ -26,6 +26,8 @@
 package com.iluwatar.factory;
 
 import java.util.function.Supplier;
+import com.iluwatar.factory.coin.impl.CopperCoin;
+import com.iluwatar.factory.coin.impl.GoldCoin;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

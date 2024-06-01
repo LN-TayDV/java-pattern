@@ -23,15 +23,25 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factory.method;
+package com.iluwatar.factory.method.factory;
+
+import lombok.RequiredArgsConstructor;
 
 /**
- * OrcWeapon.
+ * WeaponType enumeration.
  */
-public record OrcWeapon(WeaponType weaponType) implements Weapon {
+@RequiredArgsConstructor
+public enum WeaponType {
+
+    SHORT_SWORD("short sword"),
+    SPEAR("spear"),
+    AXE("axe"),
+    UNDEFINED("");
+
+    private final String title;
 
     @Override
     public String toString() {
-        return "an orcish " + weaponType;
+        return title;
     }
 }

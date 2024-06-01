@@ -23,25 +23,34 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.factory.method;
+package com.iluwatar.factory.method.factory;
 
-import lombok.RequiredArgsConstructor;
+import com.iluwatar.factory.method.weapon.Weapon;
+import com.iluwatar.factory.method.weapon.impl.ElfWeapon;
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.Map;
 
 /**
- * WeaponType enumeration.
+ * Concrete subclass for creating new objects.
  */
-@RequiredArgsConstructor
-public enum WeaponType {
+public class ElfBlacksmith implements Blacksmith {
 
-    SHORT_SWORD("short sword"),
-    SPEAR("spear"),
-    AXE("axe"),
-    UNDEFINED("");
+    private static final Map<WeaponType, ElfWeapon> ELFARSENAL;
 
-    private final String title;
+    static {
+        ELFARSENAL = new EnumMap<>(WeaponType.class);
+        Arrays.stream(WeaponType.values())
+            .forEach(type -> ELFARSENAL.put(type, new ElfWeapon(type)));
+    }
+
+    @Override
+    public Weapon manufactureWeapon(WeaponType weaponType) {
+        return ELFARSENAL.get(weaponType);
+    }
 
     @Override
     public String toString() {
-        return title;
+        return "The elf blacksmith";
     }
 }

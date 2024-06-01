@@ -46,8 +46,40 @@ public class LoadBalancer {
         }
     }
 
+    /*
+     * Tại sao sử dụng synchronized?
+     * Tránh điều kiện race (race condition):
+     * Điều kiện race xảy ra khi nhiều luồng truy cập và thay đổi cùng một tài nguyên chia sẻ
+     * mà không được đồng bộ hóa đúng cách, dẫn đến các kết quả không mong muốn.
+     *
+     * Đảm bảo tính nhất quán của dữ liệu:
+     * Synchronized giúp đảm bảo rằng dữ liệu không bị thay đổi đồng thời bởi nhiều luồng,
+     * giữ cho dữ liệu luôn nhất quán.
+     *
+     * Đảm bảo an toàn cho luồng (thread-safe):
+     * Đồng bộ hóa các phương thức và khối mã giúp đảm bảo rằng chỉ một luồng có thể
+     * truy cập tài nguyên chia sẻ tại một thời điểm, ngăn chặn các vấn đề về đồng bộ hóa.
+     */
+
     /**
-     * Add new server.
+     * 1. Sử dụng Collections Synchronized Wrappers
+     * Java cung cấp các phương thức trong lớp Collections để tạo ra các collection đồng bộ hóa từ các collection không đồng bộ.
+     * Các phương thức này bao gồm synchronizedList(), synchronizedSet(), synchronizedMap(), v.v.
+     *
+     * 2. Sử dụng các lớp trong java.util.concurrent
+     * Java cung cấp các lớp trong gói java.util.concurrent được thiết kế để làm việc trong môi trường đa luồng.
+     * Một số lớp thông dụng bao gồm:
+     *
+     * ConcurrentHashMap: Một triển khai thread-safe của HashMap.
+     * CopyOnWriteArrayList:
+     * Một triển khai thread-safe của ArrayList.
+     *
+     * CopyOnWriteArraySet:
+     * Một triển khai thread-safe của HashSet.
+     *
+     * BlockingQueue:
+     * Một hàng đợi thread-safe với các triển khai như ArrayBlockingQueue, LinkedBlockingQueue,
+     * PriorityBlockingQueue, v.v.
      */
     public final void addServer(Server server) {
         synchronized (SERVERS) {
