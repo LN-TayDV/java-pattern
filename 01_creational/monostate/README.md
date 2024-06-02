@@ -97,6 +97,38 @@ Use the Monostate pattern when
 
 6. **Consistent Configuration or State Management:** In scenarios where you need consistent configuration management or state management across different parts of an application, Monostate provides a pattern to ensure all parts of the system are in sync.
 
+
+Sử dụng mẫu Monostate khi:
+
+1. **Trạng thái chia sẻ giữa các đối tượng:**
+Tất cả các đối tượng của một lớp phải chia sẻ cùng một trạng thái.
+Các thay đổi ở một đối tượng nên được phản ánh ở tất cả các đối tượng khác.
+
+2. **Sử dụng minh bạch:** 
+Khác với Singleton, có thể ít minh bạch hơn khi sử dụng,
+Monostate cho phép cách chia sẻ trạng thái một cách minh bạch hơn giữa các đối tượng.
+Các khách hàng tương tác với các đối tượng của lớp Monostate như thể chúng là các đối tượng bình thường, 
+không biết đến trạng thái chia sẻ.
+
+3. **Linh hoạt trong việc kế thừa:**
+Monostate cung cấp một lợi thế so với Singleton khi nói đến mở rộng hành vi thông qua các lớp con. 
+Các lớp con của một lớp Monostate có thể giới thiệu thêm hành vi mới hoặc thay đổi hành vi hiện có 
+trong khi vẫn chia sẻ cùng một trạng thái với các đối tượng của lớp cơ sở.
+Điều này cho phép các hành vi động và đa dạng ở các phần khác nhau của ứng dụng,
+đồng thời duy trì một trạng thái chia sẻ.
+
+4. **Tránh các biến toàn cục:** 
+Mẫu này áp dụng khi bạn muốn tránh các biến toàn cục nhưng vẫn cần một trạng thái chia sẻ giữa nhiều đối tượng.
+
+5. **Tích hợp với các hệ thống hiện có:**
+Monostate có thể dễ dàng tích hợp vào các hệ thống hiện có mà mong muốn 
+làm việc với các đối tượng thay vì một đối tượng toàn cục duy nhất. 
+Điều này có thể dẫn đến một quá trình chuyển đổi mượt mà hơn khi tái cấu trúc mã để sử dụng trạng thái chia sẻ.
+
+6. **Quản lý cấu hình hoặc trạng thái nhất quán:** 
+Trong các tình huống mà bạn cần quản lý cấu hình nhất quán hoặc quản lý trạng thái nhất quán 
+trên các phần khác nhau của ứng dụng, Monostate cung cấp một mẫu để đảm bảo tất cả các phần của hệ thống luôn đồng bộ.
+7. 
 ## Known uses
 
 * Configuration settings that need to be shared and accessible by various parts of an application.
