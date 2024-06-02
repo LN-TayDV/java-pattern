@@ -28,10 +28,18 @@ package com.iluwatar.singleton.lazily;
 /**
  * <p>Triển khai Singleton theo Bill Pugh.</p>
  *
- * <p>Triển khai này của mẫu thiết kế singleton tận dụng các đảm bảo của mô hình bộ nhớ Java về khởi tạo lớp.
- * Mỗi lớp chỉ được khởi tạo một lần, khi nó được sử dụng lần đầu tiên. Nếu lớp chưa được sử dụng, nó sẽ không
- * được tải vào bộ nhớ và không có bộ nhớ nào sẽ được cấp phát cho một thể hiện tĩnh. Điều này làm cho thể hiện
- * singleton được tải lười (lazy-loaded) và an toàn với luồng.</p>
+ * <p>
+ *      Triển khai này của mẫu thiết kế singleton tận dụng các đảm bảo của mô hình bộ nhớ Java về khởi tạo lớp.
+ *      Mỗi lớp chỉ được khởi tạo một lần, khi nó được sử dụng lần đầu tiên.
+ *
+ *      Nếu lớp chưa được sử dụng, nó sẽ không được tải vào bộ nhớ
+ *      và không có bộ nhớ nào sẽ được cấp phát cho một thể hiện tĩnh.
+ *
+ *      Điều này làm cho thể hiện singleton được tải lười (lazy-loaded) và an toàn với luồng.
+ * </p>
+ *
+ * public: Lớp này có thể được truy cập từ bất kỳ đâu.
+ * final: Lớp này không thể bị kế thừa. Điều này ngăn cản việc tạo các lớp con có thể phá vỡ tính chất Singleton.
  */
 public final class BillPughImplementation {
 
@@ -47,14 +55,17 @@ public final class BillPughImplementation {
     /**
      * Phương thức công khai để truy cập thể hiện singleton.
      *
-     * <p>
      * Khi phương thức này được gọi, InstanceHolder sẽ được tải vào bộ nhớ và tạo ra thể hiện Singleton.
      * Phương thức này cung cấp một điểm truy cập toàn cục cho thể hiện singleton.
-     * </p>
      *
-     * @return thể hiện của lớp.
+     * public: Phương thức này có thể được truy cập từ bất kỳ đâu.
+     *
+     * static: Phương thức này là tĩnh, có thể được gọi mà không cần khởi tạo lớp BillPughImplementation.
+     * Nó cung cấp một điểm truy cập toàn cục đến instance duy nhất của Singleton.
+     *
+     * Phương thức này trả về instance duy nhất của BillPughImplementation thông qua InstanceHolder.
+     *
      */
-    // điểm truy cập toàn cục
     public static BillPughImplementation getInstance() {
         return InstanceHolder.instance;
     }
@@ -62,6 +73,13 @@ public final class BillPughImplementation {
     /**
      * InstanceHolder là một lớp tĩnh bên trong, và nó giữ thể hiện Singleton.
      * Nó không được tải vào bộ nhớ cho đến khi phương thức getInstance() được gọi.
+     *
+     * private: Lớp tĩnh bên trong này chỉ có thể truy cập từ bên trong lớp BillPughImplementation.
+     *
+     * static: Lớp này là tĩnh, đảm bảo rằng nó chỉ được tải vào bộ nhớ một lần khi cần thiết.
+     *
+     * Điều này làm cho instance của Singleton được tạo ra một cách lười (lazy-loaded) và an toàn với luồng.
+     *
      */
     private static class InstanceHolder {
         /**
@@ -69,8 +87,17 @@ public final class BillPughImplementation {
          *
          * Biến tĩnh này được khởi tạo khi InstanceHolder được tải vào bộ nhớ, đảm bảo rằng chỉ có một
          * thể hiện duy nhất của BillPughImplementation được tạo ra.
+         *
+         * private: Biến này chỉ có thể truy cập từ bên trong lớp InstanceHolder.
+         *
+         * static: Biến này là tĩnh, thuộc về lớp InstanceHolder chứ không phải bất kỳ instance nào của lớp đó.
+         * Nó được khởi tạo khi lớp InstanceHolder được tải vào bộ nhớ.
+         *
+         * final: Biến này là hằng số. Một khi được khởi tạo, giá trị của nó không thể thay đổi.
+         * Điều này đảm bảo rằng instance của Singleton không thể bị thay đổi sau khi được khởi tạo.
          */
         private static final BillPughImplementation instance = new BillPughImplementation();
     }
 }
+
 

@@ -42,7 +42,6 @@ public final class ThreadSafeLazyLoadedIvoryTower {
 
     /**
      * Constructor riêng tư để ngăn chặn việc khởi tạo từ bên ngoài lớp.
-     *
      * Ngăn chặn việc tạo đối tượng từ bên ngoài lớp để đảm bảo chỉ có một thể hiện duy nhất.
      * Kiểm tra `instance` để bảo vệ chống lại việc khởi tạo thông qua reflection.
      * Nếu `instance` đã tồn tại, ném ra ngoại lệ `IllegalStateException`.
@@ -55,15 +54,12 @@ public final class ThreadSafeLazyLoadedIvoryTower {
 
     /**
      * Thể hiện không được tạo ra cho đến khi phương thức này được gọi lần đầu tiên.
-     *
      * `public static synchronized` để đảm bảo phương thức có thể được truy cập từ bất kỳ đâu và
      * chỉ một luồng có thể thực thi nó tại một thời điểm.
      *
      * Kiểm tra `instance`, nếu nó là `null`, tạo một thể hiện mới và gán cho `instance`.
      *
      * Trả về thể hiện duy nhất của lớp.
-     *
-     * @return một thể hiện của lớp.
      */
     public static synchronized ThreadSafeLazyLoadedIvoryTower getInstance() {
         if (instance == null) {

@@ -32,6 +32,8 @@ import com.iluwatar.singleton.lazily.InitializingOnDemandHolderIdiom;
 import com.iluwatar.singleton.on.demand.ThreadSafeDoubleCheckLocking;
 import com.iluwatar.singleton.on.demand.ThreadSafeLazyLoadedIvoryTower;
 import lombok.extern.slf4j.Slf4j;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * <p>Singleton pattern ensures that the class can have only one existing instance per Java
@@ -115,37 +117,49 @@ public class App {
         // eagerly initialized singleton
         var ivoryTower1 = IvoryTower.getInstance();
         var ivoryTower2 = IvoryTower.getInstance();
-        LOGGER.info("ivoryTower1={}", ivoryTower1);
-        LOGGER.info("ivoryTower2={}", ivoryTower2);
+        LOGGER.info("ivoryTower1 = {}", ivoryTower1);
+        LOGGER.info("ivoryTower2 = {}", ivoryTower2);
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // lazily initialized singleton
         var threadSafeIvoryTower1 = ThreadSafeLazyLoadedIvoryTower.getInstance();
         var threadSafeIvoryTower2 = ThreadSafeLazyLoadedIvoryTower.getInstance();
-        LOGGER.info("threadSafeIvoryTower1={}", threadSafeIvoryTower1);
-        LOGGER.info("threadSafeIvoryTower2={}", threadSafeIvoryTower2);
+        LOGGER.info("threadSafeIvoryTower1 = {}", threadSafeIvoryTower1);
+        LOGGER.info("threadSafeIvoryTower2 = {}", threadSafeIvoryTower2);
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // enum singleton
         var enumIvoryTower1 = EnumIvoryTower.INSTANCE;
         var enumIvoryTower2 = EnumIvoryTower.INSTANCE;
-        LOGGER.info("enumIvoryTower1={}", enumIvoryTower1);
-        LOGGER.info("enumIvoryTower2={}", enumIvoryTower2);
+        LOGGER.info("enumIvoryTower1 = {}", enumIvoryTower1);
+        LOGGER.info("enumIvoryTower2 = {}", enumIvoryTower2);
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // double-checked locking
         var dcl1 = ThreadSafeDoubleCheckLocking.getInstance();
-        LOGGER.info(dcl1.toString());
+        LOGGER.info("double-checked locking 01 = {}", dcl1.toString());
         var dcl2 = ThreadSafeDoubleCheckLocking.getInstance();
-        LOGGER.info(dcl2.toString());
+        LOGGER.info("double-checked locking 02 = {}", dcl2.toString());
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // initialize on demand holder idiom
         var demandHolderIdiom = InitializingOnDemandHolderIdiom.getInstance();
-        LOGGER.info(demandHolderIdiom.toString());
+        LOGGER.info("initializeOnDemandHolderIdiom-01 = {}", demandHolderIdiom.toString());
         var demandHolderIdiom2 = InitializingOnDemandHolderIdiom.getInstance();
-        LOGGER.info(demandHolderIdiom2.toString());
+        LOGGER.info("initializeOnDemandHolderIdiom-02 = {}", demandHolderIdiom2.toString());
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // initialize singleton using Bill Pugh's implementation
         var billPughSingleton = BillPughImplementation.getInstance();
-        LOGGER.info(billPughSingleton.toString());
+        LOGGER.info("initializeSingletonUsingBillPughImpl-01 = {}", billPughSingleton.toString());
         var billPughSingleton2 = BillPughImplementation.getInstance();
-        LOGGER.info(billPughSingleton2.toString());
+        LOGGER.info("initializeSingletonUsingBillPughImpl-02 = {}",billPughSingleton2.toString());
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
     }
 }
