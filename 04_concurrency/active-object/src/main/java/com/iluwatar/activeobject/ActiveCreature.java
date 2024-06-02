@@ -33,21 +33,49 @@ public abstract class ActiveCreature {
     /**
      * Constructor and initialization.
      * Constructor và khởi tạo.
+     *
+     * Trong mỗi vòng lặp của bạn, bạn tạo ra một đối tượng ActiveCreature mới.
+     * Mỗi đối tượng này chứa một hàng đợi (requests) để lưu trữ các nhiệm vụ (hoặc hành động) sắp được thực thi.
+     * Khi bạn gọi phương thức eat() hoặc roam() trên một đối tượng ActiveCreature,
+     * một nhiệm vụ tương ứng sẽ được tạo và đưa vào hàng đợi của đối tượng đó.
+     *
+     * Dưới đây là cách hoạt động cụ thể:
+     *
+     * Mỗi vòng lặp tạo một đối tượng mới: Mỗi khi vòng lặp chạy một đối tượng ActiveCreature mới được tạo ra.
+     * Điều này đảm bảo rằng mỗi đối tượng sẽ có riêng một hàng đợi requests.
+     *
+     * Mỗi đối tượng sử dụng hàng đợi của riêng mình: Mỗi khi bạn gọi phương thức eat() hoặc roam()
+     * trên một đối tượng ActiveCreature, một nhiệm vụ mới sẽ được tạo và thêm vào hàng đợi của đối tượng đó.
+     * Do mỗi đối tượng có riêng một hàng đợi, nên các nhiệm vụ sẽ không bị nhầm lẫn giữa các đối tượng khác nhau.
+     *
+     * Luồng của mỗi đối tượng thực thi từ hàng đợi của riêng mình:
+     * Mỗi luồng chạy của đối tượng ActiveCreature sẽ lặp qua hàng đợi của đối tượng đó
+     * và thực thi các nhiệm vụ trong đúng thứ tự mà chúng được thêm vào hàng đợi.
+     * Điều này đảm bảo rằng các hành động của mỗi đối tượng sẽ được thực hiện theo đúng thứ tự mà chúng được gọi.
      */
     protected ActiveCreature(String name) {
         this.name = name; // Gán tên của sinh vật.
         this.status = 0; // Khởi tạo trạng thái của luồng thực thi.
         this.requests = new LinkedBlockingQueue<>(); // Khởi tạo một hàng đợi để lưu trữ các nhiệm vụ.
         thread = new Thread(() -> { // Tạo một luồng mới.
+
             boolean infinite = true; // Cờ để kiểm soát vòng lặp.
+
             while (infinite) { // Vòng lặp vô hạn.
+
                 try {
+
                     requests.take().run(); // Lấy một nhiệm vụ từ hàng đợi và thực thi.
+
                 } catch (InterruptedException e) { // Xử lý ngoại lệ khi luồng bị gián đoạn.
+
                     if (this.status != 0) { // Kiểm tra nếu trạng thái khác không.
+
                         logger.error("Thread was interrupted. --> {}", e.getMessage()); // Ghi log lỗi nếu luồng bị gián đoạn.
                     }
+
                     infinite = false; // Thoát khỏi vòng lặp.
+
                     Thread.currentThread().interrupt(); // Đánh dấu là luồng bị gián đoạn.
                 }
             }
