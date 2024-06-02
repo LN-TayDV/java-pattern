@@ -52,6 +52,22 @@ import lombok.extern.slf4j.Slf4j;
  * cloning the existing ones. The factory's prototype objects are given as
  * constructor parameters.
  */
+
+/**
+ * Mẫu Prototype là một mẫu thiết kế trong phát triển phần mềm.
+ * Nó được sử dụng khi loại đối tượng cần tạo ra được xác định bởi một đối tượng mẫu (prototype),
+ * đối tượng này được sao chép để tạo ra các đối tượng mới. Mẫu này được sử dụng để:
+ *
+ * Tránh việc tạo ra các lớp con của một đối tượng tạo (object creator) trong ứng dụng khách,
+ * tương tự như mẫu abstract factory.
+ *
+ * Tránh chi phí cố hữu của việc tạo ra một đối tượng mới
+ * theo cách thông thường (ví dụ: sử dụng từ khóa 'new').
+ *
+ * Trong ví dụ này, chúng ta có một lớp nhà máy ({@link HeroFactoryImpl})
+ * sản xuất các đối tượng bằng cách sao chép các đối tượng hiện có.
+ * Các đối tượng mẫu của nhà máy này được cung cấp dưới dạng các tham số của constructor.
+ */
 @Slf4j
 public class App {
 
@@ -62,9 +78,10 @@ public class App {
      */
     public static void main(String[] args) {
         var factory = new HeroFactoryImpl(
-                new ElfMage("cooking"),
-                new ElfWarlord("cleaning"),
-                new ElfBeast("protecting"));
+            new ElfMage("cooking"),
+            new ElfWarlord("cleaning"),
+            new ElfBeast("protecting")
+        );
 
         var mage = factory.createMage();
         var warlord = factory.createWarlord();
@@ -76,9 +93,10 @@ public class App {
 
         /* -------------------------------------------- */
         factory = new HeroFactoryImpl(
-                new OrcMage("axe"),
-                new OrcWarlord("sword"),
-                new OrcBeast("laser"));
+            new OrcMage("axe"),
+            new OrcWarlord("sword"),
+            new OrcBeast("laser")
+        );
 
         mage = factory.createMage();
         warlord = factory.createWarlord();
