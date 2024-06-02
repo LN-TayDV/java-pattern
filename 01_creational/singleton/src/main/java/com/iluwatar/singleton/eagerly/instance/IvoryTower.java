@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.singleton;
+package com.iluwatar.singleton.eagerly.instance;
 
 /**
  * Singleton class. Eagerly initialized static instance guarantees thread safety.

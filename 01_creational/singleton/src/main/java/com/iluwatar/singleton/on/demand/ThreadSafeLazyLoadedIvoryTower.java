@@ -23,33 +23,47 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.singleton;
+package com.iluwatar.singleton.on.demand;
 
 /**
- * <p>Thread-safe Singleton class. The instance is lazily initialized and thus needs synchronization
- * mechanism.</p>
+ * <p>Lớp Singleton an toàn với luồng.
+ * Thể hiện (instance) được khởi tạo một cách lười biếng và do đó cần cơ chế đồng bộ hóa.</p>
  */
 public final class ThreadSafeLazyLoadedIvoryTower {
 
     /**
-     * Singleton instance of the class, declared as volatile to ensure atomic access by multiple threads.
+     * Thể hiện Singleton của lớp, được khai báo là volatile để đảm bảo truy cập nguyên tử bởi nhiều luồng.
+     *
+     * `private` chỉ ra rằng biến chỉ có thể được truy cập bên trong lớp.
+     * `static` biến này thuộc về lớp, không phải đối tượng của lớp.
+     * `volatile` đảm bảo mọi thay đổi đối với biến này sẽ được nhìn thấy ngay lập tức bởi tất cả các luồng.
      */
     private static volatile ThreadSafeLazyLoadedIvoryTower instance;
 
     /**
-     * Private constructor to prevent instantiation from outside the class.
+     * Constructor riêng tư để ngăn chặn việc khởi tạo từ bên ngoài lớp.
+     *
+     * Ngăn chặn việc tạo đối tượng từ bên ngoài lớp để đảm bảo chỉ có một thể hiện duy nhất.
+     * Kiểm tra `instance` để bảo vệ chống lại việc khởi tạo thông qua reflection.
+     * Nếu `instance` đã tồn tại, ném ra ngoại lệ `IllegalStateException`.
      */
     private ThreadSafeLazyLoadedIvoryTower() {
-        // Protect against instantiation via reflection
         if (instance != null) {
-            throw new IllegalStateException("Already initialized.");
+            throw new IllegalStateException("Đã được khởi tạo.");
         }
     }
 
     /**
-     * The instance doesn't get created until the method is called for the first time.
+     * Thể hiện không được tạo ra cho đến khi phương thức này được gọi lần đầu tiên.
      *
-     * @return an instance of the class.
+     * `public static synchronized` để đảm bảo phương thức có thể được truy cập từ bất kỳ đâu và
+     * chỉ một luồng có thể thực thi nó tại một thời điểm.
+     *
+     * Kiểm tra `instance`, nếu nó là `null`, tạo một thể hiện mới và gán cho `instance`.
+     *
+     * Trả về thể hiện duy nhất của lớp.
+     *
+     * @return một thể hiện của lớp.
      */
     public static synchronized ThreadSafeLazyLoadedIvoryTower getInstance() {
         if (instance == null) {

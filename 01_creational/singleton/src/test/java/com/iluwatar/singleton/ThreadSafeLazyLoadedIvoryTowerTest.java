@@ -25,6 +25,8 @@
 
 package com.iluwatar.singleton;
 
+import com.iluwatar.singleton.on.demand.ThreadSafeLazyLoadedIvoryTower;
+
 /**
  * ThreadSafeLazyLoadedIvoryTowerTest
  */

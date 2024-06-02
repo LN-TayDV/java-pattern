@@ -23,46 +23,51 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.singleton;
+package com.iluwatar.singleton.lazily;
 
 /**
- * <p>The Initialize-on-demand-holder idiom is a secure way of creating a lazy initialized singleton
- * object in Java.</p>
+ * <p>
+ *     Biểu tượng giữa các thuật ngữ là một cách an toàn để tạo một thể hiện singleton
+ *     được khởi tạo lười (lazy-initialized) trong Java.
+ * </p>
  *
- * <p>The technique is as lazy as possible and works in all known versions of Java. It takes
- * advantage of language guarantees about class initialization, and will therefore work correctly
- * in all Java-compliant compilers and virtual machines.</p>
+ * <p>
+ *     Kỹ thuật này là lười nhất có thể và hoạt động trong tất cả các phiên bản Java đã biết.
+ *      Nó tận dụng các bảo đảm về khởi tạo lớp trong ngôn ngữ,
+ *      và do đó sẽ hoạt động đúng trong tất cả các trình biên dịch và máy ảo Java tuân thủ chuẩn.
+ * </p>
  *
- * <p>The inner class is referenced no earlier (and therefore loaded no earlier by the class loader)
- * than the moment that getInstance() is called. Thus, this solution is thread-safe without
- * requiring special language constructs (i.e. volatile or synchronized).</p>
+ * <p>
+ *     Lớp bên trong không được tham chiếu trước (và do đó không được tải trước bởi bộ tải lớp)
+ *      cho đến thời điểm phương thức getInstance() được gọi.
+ *      Do đó, giải pháp này là an toàn với luồng mà không cần các cấu trúc ngôn ngữ đặc biệt
+ *      (ví dụ: volatile hoặc synchronized).
+ * </p>
  */
 public final class InitializingOnDemandHolderIdiom {
 
     /**
-     * Private constructor.
+     * Constructor riêng tư.
      */
     private InitializingOnDemandHolderIdiom() {
     }
 
     /**
-     * Singleton instance.
-     *
-     * @return Singleton instance
+     * Thể hiện singleton.
      */
     public static InitializingOnDemandHolderIdiom getInstance() {
         return HelperHolder.INSTANCE;
     }
 
     /**
-     * Provides the lazy-loaded Singleton instance.
+     * Cung cấp thể hiện Singleton được tải lười (lazy-loaded).
      */
     private static class HelperHolder {
-
         /**
-         * Singleton instance of the class.
+         * Thể hiện Singleton của lớp.
          */
         private static final InitializingOnDemandHolderIdiom INSTANCE =
             new InitializingOnDemandHolderIdiom();
     }
 }
+
