@@ -150,7 +150,9 @@ Orcish wolf attacks with laser
 
 * When the classes to instantiate are specified at run-time, for example, by dynamic loading.
 * To avoid building a class hierarchy of factories that parallels the class hierarchy of products.
-* When instances of a class can have one of only a few different combinations of state. It may be more convenient to install a corresponding number of prototypes and clone them rather than instantiating the class manually, each time with the appropriate state.
+* When instances of a class can have one of only a few different combinations of state. 
+It may be more convenient to install a corresponding number of prototypes and clone them rather
+than instantiating the class manually, each time with the appropriate state.
 * When object creation is expensive compared to cloning.
 * When the concrete classes to instantiate are unknown until runtime.
 

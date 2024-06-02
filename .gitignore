@@ -63,10 +63,9 @@ fish2.out
 *.exec
 ./TEST.*.xml
 *.gif
-target/*
+target/
 *.puml
 *TEST*.xml
-*.txt
 *.properties
 *.lst
 *.html

@@ -55,8 +55,8 @@ Then in order to use:
 The console output
 
 ```
-enumIvoryTower1=com.iluwatar.singleton.EnumIvoryTower@1221555852
-enumIvoryTower2=com.iluwatar.singleton.EnumIvoryTower@1221555852
+enumIvoryTower1=com.iluwatar.singleton.enums.EnumIvoryTower@1221555852
+enumIvoryTower2=com.iluwatar.singleton.enums.EnumIvoryTower@1221555852
 ```
 
 ## Class diagram
