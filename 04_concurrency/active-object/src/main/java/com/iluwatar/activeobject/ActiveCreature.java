@@ -64,6 +64,23 @@ public abstract class ActiveCreature {
             while (infinite) { // Vòng lặp vô hạn.
 
                 try {
+                    /**
+                     * Trong mã của bạn, requests.take().run();
+                     * được gọi trong một luồng riêng biệt, được tạo ra từ hàm khởi tạo của lớp ActiveCreature.
+                     * Đoạn mã đó là một vòng lặp vô hạn trong luồng mới này, được bắt đầu khi bạn gọi thread.start().
+                     *
+                     * requests.take() là một phương thức của LinkedBlockingQueue, nó chờ và lấy một phần tử từ hàng đợi requests.
+                     *
+                     * Đợi và Lấy Nhiệm Vụ:
+                     * Phương thức take() của LinkedBlockingQueue sẽ chờ đợi
+                     * nếu hàng đợi đang trống và sẽ lấy ra và loại bỏ phần tử đầu tiên (nhiệm vụ) từ hàng đợi khi có sẵn.
+                     *
+                     * Thực Thi Nhiệm Vụ:
+                     * Phần tử được lấy ra từ hàng đợi requests là một đối tượng Runnable(một hành động được đóng gói trong một đối tượng).
+                     * Phương thức run() của đối tượng Runnable này sẽ được gọi,
+                     * thực hiện hành động cụ thể mà đối tượng Runnable đại diện cho.
+                     * Trong trường hợp này, các nhiệm vụ được thêm vào hàng đợi requests là các lambda expression biểu diễn các hành động eat() và roam().
+                     */
 
                     requests.take().run(); // Lấy một nhiệm vụ từ hàng đợi và thực thi.
 
