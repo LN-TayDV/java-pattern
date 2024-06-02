@@ -70,7 +70,9 @@ public class LoadBalancer {
      * Java cung cấp các lớp trong gói java.util.concurrent được thiết kế để làm việc trong môi trường đa luồng.
      * Một số lớp thông dụng bao gồm:
      *
-     * ConcurrentHashMap: Một triển khai thread-safe của HashMap.
+     * ConcurrentHashMap:
+     * Một triển khai thread-safe của HashMap.
+     *
      * CopyOnWriteArrayList:
      * Một triển khai thread-safe của ArrayList.
      *
