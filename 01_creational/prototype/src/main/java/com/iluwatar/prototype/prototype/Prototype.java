@@ -23,28 +23,23 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.prototype;
 
-import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * OrcMage.
+ * Prototype.
  */
-@EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
-public class OrcMage extends Mage {
+@Slf4j
+public abstract class Prototype<T> implements Cloneable {
 
-    private final String weapon;
-
-    public OrcMage(OrcMage orcMage) {
-        super(orcMage);
-        this.weapon = orcMage.weapon;
+    /**
+     * Object a shallow copy of this object or null if this object is not Cloneable.
+     */
+    @SuppressWarnings("unchecked")
+    @SneakyThrows
+    public T copy() {
+        return (T) super.clone();
     }
-
-    @Override
-    public String toString() {
-        return "Orcish mage attacks with " + weapon;
-    }
-
 }

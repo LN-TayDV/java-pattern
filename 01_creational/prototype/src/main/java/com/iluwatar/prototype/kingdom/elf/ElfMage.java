@@ -23,39 +23,30 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.kingdom.elf;
 
+import com.iluwatar.prototype.prototype.Mage;
+
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Concrete factory class.
+ * ElfMage.
  */
+@EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
-public class HeroFactoryImpl implements HeroFactory {
+public class ElfMage extends Mage {
 
-    private final Mage mage;
-    private final Warlord warlord;
-    private final Beast beast;
+    private final String helpType;
 
-    /**
-     * Create mage.
-     */
-    public Mage createMage() {
-        return mage.copy();
+    public ElfMage(ElfMage elfMage) {
+        super(elfMage);
+        this.helpType = elfMage.helpType;
     }
 
-    /**
-     * Create warlord.
-     */
-    public Warlord createWarlord() {
-        return warlord.copy();
-    }
-
-    /**
-     * Create beast.
-     */
-    public Beast createBeast() {
-        return beast.copy();
+    @Override
+    public String toString() {
+        return "Elven mage helps in " + helpType;
     }
 
 }

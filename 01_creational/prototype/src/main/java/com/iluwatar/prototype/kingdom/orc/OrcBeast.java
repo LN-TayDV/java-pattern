@@ -23,28 +23,30 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.kingdom.orc;
+
+import com.iluwatar.prototype.prototype.Beast;
 
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 /**
- * ElfBeast.
+ * OrcBeast.
  */
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @RequiredArgsConstructor
-public class ElfBeast extends Beast {
+public class OrcBeast extends Beast {
 
-    private final String helpType;
+    private final String weapon;
 
-    public ElfBeast(ElfBeast elfBeast) {
-        super(elfBeast);
-        this.helpType = elfBeast.helpType;
+    public OrcBeast(OrcBeast orcBeast) {
+        super(orcBeast);
+        this.weapon = orcBeast.weapon;
     }
 
     @Override
     public String toString() {
-        return "Elven eagle helps in " + helpType;
+        return "Orcish wolf attacks with " + weapon;
     }
 
 }

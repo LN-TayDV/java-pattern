@@ -23,27 +23,19 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.prototype;
 
 import lombok.EqualsAndHashCode;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
- * ElfWarlord.
+ * Beast.
  */
-@EqualsAndHashCode(callSuper = true)
-@RequiredArgsConstructor
-public class ElfWarlord extends Warlord {
+@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+public abstract class Beast extends Prototype<Beast> {
 
-    private final String helpType;
-
-    public ElfWarlord(ElfWarlord elfWarlord) {
-        super(elfWarlord);
-        this.helpType = elfWarlord.helpType;
+    public Beast(Beast source) {
     }
 
-    @Override
-    public String toString() {
-        return "Elven warlord helps in " + helpType;
-    }
 }

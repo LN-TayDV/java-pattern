@@ -23,19 +23,19 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.prototype;
 
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * Beast.
+ * Warlord.
  */
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor
-public abstract class Beast extends Prototype<Beast> {
+public abstract class Warlord extends Prototype<Warlord> {
 
-    public Beast(Beast source) {
+    public Warlord(Warlord source) {
     }
 
 }

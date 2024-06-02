@@ -23,19 +23,21 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.factory;
 
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.iluwatar.prototype.prototype.Beast;
+import com.iluwatar.prototype.prototype.Mage;
+import com.iluwatar.prototype.prototype.Warlord;
 
 /**
- * Mage.
+ * Interface for the factory class.
  */
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-public abstract class Mage extends Prototype<Mage> {
+public interface HeroFactory {
 
-    public Mage(Mage source) {
-    }
+    Mage createMage();
+
+    Warlord createWarlord();
+
+    Beast createBeast();
 
 }
