@@ -23,23 +23,29 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.kingdom.elf;
 
-import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
+import com.iluwatar.prototype.prototype.Warlord;
+
+import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
 
 /**
- * Prototype.
+ * ElfWarlord.
  */
-@Slf4j
-public abstract class Prototype<T> implements Cloneable {
+@EqualsAndHashCode(callSuper = true)
+@RequiredArgsConstructor
+public class ElfWarlord extends Warlord {
 
-    /**
-     * Object a shallow copy of this object or null if this object is not Cloneable.
-     */
-    @SuppressWarnings("unchecked")
-    @SneakyThrows
-    public T copy() {
-        return (T) super.clone();
+    private final String helpType;
+
+    public ElfWarlord(ElfWarlord elfWarlord) {
+        super(elfWarlord);
+        this.helpType = elfWarlord.helpType;
+    }
+
+    @Override
+    public String toString() {
+        return "Elven warlord helps in " + helpType;
     }
 }

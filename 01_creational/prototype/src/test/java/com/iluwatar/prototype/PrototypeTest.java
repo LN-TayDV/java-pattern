@@ -35,6 +35,14 @@ import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import com.iluwatar.prototype.kingdom.elf.ElfBeast;
+import com.iluwatar.prototype.kingdom.elf.ElfMage;
+import com.iluwatar.prototype.kingdom.elf.ElfWarlord;
+import com.iluwatar.prototype.kingdom.orc.OrcBeast;
+import com.iluwatar.prototype.kingdom.orc.OrcMage;
+import com.iluwatar.prototype.kingdom.orc.OrcWarlord;
+import com.iluwatar.prototype.prototype.Prototype;
+
 /**
  * PrototypeTest
  *
@@ -43,13 +51,12 @@ import org.junit.jupiter.params.provider.MethodSource;
 class PrototypeTest<P extends Prototype<P>> {
     static Collection<Object[]> dataProvider() {
         return List.of(
-            new Object[] {new OrcBeast("axe"), "Orcish wolf attacks with axe"},
-            new Object[] {new OrcMage("sword"), "Orcish mage attacks with sword"},
-            new Object[] {new OrcWarlord("laser"), "Orcish warlord attacks with laser"},
-            new Object[] {new ElfBeast("cooking"), "Elven eagle helps in cooking"},
-            new Object[] {new ElfMage("cleaning"), "Elven mage helps in cleaning"},
-            new Object[] {new ElfWarlord("protecting"), "Elven warlord helps in protecting"}
-        );
+                new Object[] { new OrcBeast("axe"), "Orcish wolf attacks with axe" },
+                new Object[] { new OrcMage("sword"), "Orcish mage attacks with sword" },
+                new Object[] { new OrcWarlord("laser"), "Orcish warlord attacks with laser" },
+                new Object[] { new ElfBeast("cooking"), "Elven eagle helps in cooking" },
+                new Object[] { new ElfMage("cleaning"), "Elven mage helps in cleaning" },
+                new Object[] { new ElfWarlord("protecting"), "Elven warlord helps in protecting" });
     }
 
     @ParameterizedTest

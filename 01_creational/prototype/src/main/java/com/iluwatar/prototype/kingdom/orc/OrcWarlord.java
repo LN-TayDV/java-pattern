@@ -23,28 +23,30 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.kingdom.orc;
+
+import com.iluwatar.prototype.prototype.Warlord;
 
 import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 /**
- * ElfMage.
+ * OrcWarlord.
  */
 @EqualsAndHashCode(callSuper = true)
 @RequiredArgsConstructor
-public class ElfMage extends Mage {
+public class OrcWarlord extends Warlord {
 
-    private final String helpType;
+    private final String weapon;
 
-    public ElfMage(ElfMage elfMage) {
-        super(elfMage);
-        this.helpType = elfMage.helpType;
+    public OrcWarlord(OrcWarlord orcWarlord) {
+        super(orcWarlord);
+        this.weapon = orcWarlord.weapon;
     }
 
     @Override
     public String toString() {
-        return "Elven mage helps in " + helpType;
+        return "Orcish warlord attacks with " + weapon;
     }
 
 }

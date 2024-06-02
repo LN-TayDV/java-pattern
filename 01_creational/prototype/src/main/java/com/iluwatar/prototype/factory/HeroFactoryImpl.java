@@ -23,19 +23,43 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.prototype;
+package com.iluwatar.prototype.factory;
 
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import com.iluwatar.prototype.prototype.Beast;
+import com.iluwatar.prototype.prototype.Mage;
+import com.iluwatar.prototype.prototype.Warlord;
+
+import lombok.RequiredArgsConstructor;
 
 /**
- * Warlord.
+ * Concrete factory class.
  */
-@EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
-public abstract class Warlord extends Prototype<Warlord> {
+@RequiredArgsConstructor
+public class HeroFactoryImpl implements HeroFactory {
 
-    public Warlord(Warlord source) {
+    private final Mage mage;
+    private final Warlord warlord;
+    private final Beast beast;
+
+    /**
+     * Create mage.
+     */
+    public Mage createMage() {
+        return mage.copy();
+    }
+
+    /**
+     * Create warlord.
+     */
+    public Warlord createWarlord() {
+        return warlord.copy();
+    }
+
+    /**
+     * Create beast.
+     */
+    public Beast createBeast() {
+        return beast.copy();
     }
 
 }
