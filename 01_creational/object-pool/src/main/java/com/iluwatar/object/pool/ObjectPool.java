@@ -33,6 +33,37 @@ import java.util.Set;
  *
  * @param <T> Type T of Object in the Pool
  */
+/**
+ * 
+ * Lớp ObjectPool
+ * Lớp ObjectPool là một lớp trừu tượng tổng quát (generic) quản lý một nhóm các
+ * đối tượng kiểu T.
+ * Nó đảm bảo rằng các đối tượng được tái sử dụng một cách hiệu quả thay vì được
+ * tạo ra và hủy bỏ thường xuyên.
+ * 
+ * Các Trường (Fields)
+ * 
+ * available: Một tập hợp các đối tượng hiện có sẵn để sử dụng.
+ * inUse: Một tập hợp các đối tượng hiện đang được sử dụng.
+ * Các Phương thức (Methods)
+ * 
+ * create: Một phương thức trừu tượng mà các lớp con cần triển khai để định
+ * nghĩa cách thức tạo đối tượng mới.
+ * 
+ * checkOut: Một phương thức đồng bộ để lấy một đối tượng từ bể (pool).
+ * 
+ * Nếu không có đối tượng nào có sẵn, một đối tượng mới sẽ được tạo và thêm vào
+ * tập hợp available.
+ * Một đối tượng có sẵn sẽ được lấy ra khỏi tập hợp, xóa khỏi available, thêm
+ * vào inUse, và trả về.
+ * checkIn: Một phương thức đồng bộ để trả lại một đối tượng vào bể.
+ * 
+ * Đối tượng được xóa khỏi inUse và thêm trở lại vào available.
+ * 
+ * toString: Một phương thức đồng bộ để cung cấp một biểu diễn chuỗi của trạng
+ * thái hiện tại của bể,
+ * cho thấy số lượng đối tượng có sẵn và đang sử dụng.
+ */
 public abstract class ObjectPool<T> {
 
     private final Set<T> available = new HashSet<>();

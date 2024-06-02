@@ -28,21 +28,34 @@ package com.iluwatar.object.pool;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * When it is necessary to work with a large number of objects that are particularly expensive to
- * instantiate and each object is only needed for a short period of time, the performance of an
- * entire application may be adversely affected. An object pool design pattern may be deemed
+ * When it is necessary to work with a large number of objects that are
+ * particularly expensive to
+ * instantiate and each object is only needed for a short period of time, the
+ * performance of an
+ * entire application may be adversely affected. An object pool design pattern
+ * may be deemed
  * desirable in cases such as these.
  *
- * <p>The object pool design pattern creates a set of objects that may be reused. When a new object
- * is needed, it is requested from the pool. If a previously prepared object is available it is
- * returned immediately, avoiding the instantiation cost. If no objects are present in the pool, a
- * new item is created and returned. When the object has been used and is no longer needed, it is
- * returned to the pool, allowing it to be used again in the future without repeating the
- * computationally expensive instantiation process. It is important to note that once an object has
+ * <p>
+ * The object pool design pattern creates a set of objects that may be reused.
+ * When a new object
+ * is needed, it is requested from the pool. If a previously prepared object is
+ * available it is
+ * returned immediately, avoiding the instantiation cost. If no objects are
+ * present in the pool, a
+ * new item is created and returned. When the object has been used and is no
+ * longer needed, it is
+ * returned to the pool, allowing it to be used again in the future without
+ * repeating the
+ * computationally expensive instantiation process. It is important to note that
+ * once an object has
  * been used and returned, existing references will become invalid.
  *
- * <p>In this example we have created {@link OliphauntPool} inheriting from generic {@link
- * ObjectPool}. {@link Oliphaunt}s can be checked out from the pool and later returned to it. The
+ * <p>
+ * In this example we have created {@link OliphauntPool} inheriting from generic
+ * {@link
+ * ObjectPool}. {@link Oliphaunt}s can be checked out from the pool and later
+ * returned to it. The
  * pool tracks created instances and their status (available, inUse).
  */
 @Slf4j
@@ -54,26 +67,31 @@ public class App {
      * @param args command line args
      */
     public static void main(String[] args) {
+
         var pool = new OliphauntPool();
         LOGGER.info(pool.toString());
-        var oliphaunt1 = pool.checkOut();
-        String checkedOut = "Checked out {}";
 
+        var oliphaunt1 = pool.checkOut(); // Mượn một đối tượng từ bể
+        String checkedOut = "Checked out {}";
         LOGGER.info(checkedOut, oliphaunt1);
         LOGGER.info(pool.toString());
-        var oliphaunt2 = pool.checkOut();
+
+        var oliphaunt2 = pool.checkOut(); // Mượn đối tượng thứ hai
         LOGGER.info(checkedOut, oliphaunt2);
-        var oliphaunt3 = pool.checkOut();
+
+        var oliphaunt3 = pool.checkOut(); // Mượn đối tượng thứ ba
         LOGGER.info(checkedOut, oliphaunt3);
         LOGGER.info(pool.toString());
-        LOGGER.info("Checking in {}", oliphaunt1);
+
+        LOGGER.info("Checking in {}", oliphaunt1); // Trả lại đối tượng đầu tiên
         pool.checkIn(oliphaunt1);
-        LOGGER.info("Checking in {}", oliphaunt2);
+        LOGGER.info("Checking in {}", oliphaunt2); // Trả lại đối tượng thứ hai
         pool.checkIn(oliphaunt2);
         LOGGER.info(pool.toString());
-        var oliphaunt4 = pool.checkOut();
+
+        var oliphaunt4 = pool.checkOut(); // Mượn đối tượng thứ tư
         LOGGER.info(checkedOut, oliphaunt4);
-        var oliphaunt5 = pool.checkOut();
+        var oliphaunt5 = pool.checkOut(); // Mượn đối tượng thứ năm
         LOGGER.info(checkedOut, oliphaunt5);
         LOGGER.info(pool.toString());
     }

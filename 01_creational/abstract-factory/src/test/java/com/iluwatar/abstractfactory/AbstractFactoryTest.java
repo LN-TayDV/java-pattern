@@ -25,18 +25,17 @@
 
 package com.iluwatar.abstractfactory;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 import com.iluwatar.abstractfactory.factory.KingdomType;
 import com.iluwatar.abstractfactory.kingdoms.elf.ElfArmy;
 import com.iluwatar.abstractfactory.kingdoms.elf.ElfCastle;
 import com.iluwatar.abstractfactory.kingdoms.elf.ElfKing;
-import com.iluwatar.abstractfactory.kingdoms.Kingdom;
 import com.iluwatar.abstractfactory.kingdoms.orc.OrcArmy;
 import com.iluwatar.abstractfactory.kingdoms.orc.OrcCastle;
 import com.iluwatar.abstractfactory.kingdoms.orc.OrcKing;
-import org.junit.jupiter.api.Test;
 
 /**
  * Tests for abstract factory.
@@ -83,7 +82,7 @@ class AbstractFactoryTest {
         final var elfArmy = kingdom.getArmy();
         assertTrue(elfArmy instanceof ElfArmy);
         assertEquals(ElfArmy.DESCRIPTION,
-            elfArmy.getDescription());
+                elfArmy.getDescription());
 
         app.createKingdom(KingdomType.ORC);
         final var orcArmy = kingdom.getArmy();

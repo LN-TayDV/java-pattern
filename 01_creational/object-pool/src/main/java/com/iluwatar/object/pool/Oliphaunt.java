@@ -26,10 +26,34 @@
 package com.iluwatar.object.pool;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * Oliphaunts are expensive to create.
+ */
+
+/**
+ * Lớp Oliphaunt
+ * Lớp Oliphaunt đại diện cho một loại đối tượng cụ thể có thể được quản lý bởi
+ * bể.
+ * 
+ * Các Trường (Fields)
+ * 
+ * counter: Một biến đếm kiểu AtomicInteger để đếm số lượng đối tượng Oliphaunt
+ * được tạo ra.
+ * id: Một ID duy nhất cho mỗi đối tượng Oliphaunt.
+ * Các Phương thức (Methods)
+ * 
+ * Oliphaunt: Hàm khởi tạo cho Oliphaunt.
+ * 
+ * ID của đối tượng được tăng tự động bằng cách sử dụng counter.
+ * Gây ra một độ trễ 1 giây (giả lập việc tạo đối tượng đắt đỏ).
+ * Nếu xảy ra lỗi gián đoạn, lỗi sẽ được ghi lại bằng logger.
+ * getId: Trả về ID của đối tượng Oliphaunt.
+ * 
+ * toString: Trả về một biểu diễn chuỗi của đối tượng Oliphaunt, bao gồm ID của
+ * nó.
  */
 @Slf4j
 public class Oliphaunt {
