@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.backtracking;
+package com.iluwatar.algorithm.backtracking.nqueens;
 
 public class NQueens {
     // Kiểm tra xem có thể đặt quân hậu tại vị trí [row, col] hay không

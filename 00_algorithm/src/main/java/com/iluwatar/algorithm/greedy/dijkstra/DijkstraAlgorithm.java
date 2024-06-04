@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.greedy;
+package com.iluwatar.algorithm.greedy.dijkstra;
 
 import java.util.*;
 

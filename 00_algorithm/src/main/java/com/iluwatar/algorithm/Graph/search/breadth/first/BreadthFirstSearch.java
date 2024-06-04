@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.Graph.search;
+package com.iluwatar.algorithm.Graph.search.breadth.first;
 
 import java.util.*;
 

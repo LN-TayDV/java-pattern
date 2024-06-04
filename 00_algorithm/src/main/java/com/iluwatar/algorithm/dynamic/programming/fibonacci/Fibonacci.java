@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.dynamic.programming;
+package com.iluwatar.algorithm.dynamic.programming.fibonacci;
 
 public class Fibonacci {
     // Phương thức để tính số Fibonacci thứ n

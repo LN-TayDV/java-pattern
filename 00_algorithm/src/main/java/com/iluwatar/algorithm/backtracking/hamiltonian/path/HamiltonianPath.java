@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.backtracking;
+package com.iluwatar.algorithm.backtracking.hamiltonian.path;
 
 public class HamiltonianPath {
     private int V, pathCount;

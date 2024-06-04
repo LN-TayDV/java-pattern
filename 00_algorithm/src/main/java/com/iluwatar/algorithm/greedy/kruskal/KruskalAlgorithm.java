@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.greedy;
+package com.iluwatar.algorithm.greedy.kruskal;
 
 import java.util.Arrays;
 

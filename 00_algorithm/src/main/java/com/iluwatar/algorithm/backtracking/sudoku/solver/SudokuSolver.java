@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.backtracking;
+package com.iluwatar.algorithm.backtracking.sudoku.solver;
 
 public class SudokuSolver {
     // Kiểm tra xem có thể đặt số num vào vị trí [row, col] hay không

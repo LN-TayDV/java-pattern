@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.optimization;
+package com.iluwatar.algorithm.optimization.hill.climbing;
 
 import java.util.Random;
 

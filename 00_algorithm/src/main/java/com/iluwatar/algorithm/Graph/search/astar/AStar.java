@@ -1,39 +1,6 @@
-package com.iluwatar.algorithm.Graph.search;
+package com.iluwatar.algorithm.Graph.search.astar;
 
 import java.util.*;
-
-class Node implements Comparable<Node> {
-    public final String value;
-    public double gScores;
-    public final double hScores;
-    public double fScores = 0;
-    public ArrayList<Edge> adjacencies = new ArrayList<>();
-    public Node parent;
-
-    public Node(String val, double hVal) {
-        value = val;
-        hScores = hVal;
-    }
-
-    public String toString() {
-        return value;
-    }
-
-    @Override
-    public int compareTo(Node o) {
-        return Double.compare(this.fScores, o.fScores);
-    }
-}
-
-class Edge {
-    public final double cost;
-    public final Node target;
-
-    public Edge(Node targetNode, double costVal) {
-        target = targetNode;
-        cost = costVal;
-    }
-}
 
 public class AStar {
 

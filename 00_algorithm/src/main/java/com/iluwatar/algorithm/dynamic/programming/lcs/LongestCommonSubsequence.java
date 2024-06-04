@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.dynamic.programming;
+package com.iluwatar.algorithm.dynamic.programming.lcs;
 
 public class LongestCommonSubsequence {
     // Phương thức để tính độ dài của longest common subsequence

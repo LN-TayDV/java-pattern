@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.optimization;
+package com.iluwatar.algorithm.optimization.genetic;
 
 import java.util.Arrays;
 import java.util.Random;
