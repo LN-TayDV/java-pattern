@@ -1,4 +1,4 @@
-package com.iluwatar.algorithm.dynamic.programming.knapsack;
+package com.iluwatar.algorithm.Graph.search.astar.programming.knapsack;
 
 public class Knapsack {
     // Phương thức để tính giá trị tối đa mà knapsack có thể chứa
