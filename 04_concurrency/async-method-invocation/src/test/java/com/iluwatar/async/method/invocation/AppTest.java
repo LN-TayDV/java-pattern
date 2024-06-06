@@ -27,6 +27,7 @@ package com.iluwatar.async.method.invocation;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
+import com.iluwatar.async.method.invocation.generic.App;
 import org.junit.jupiter.api.Test;
 
 /**

@@ -23,9 +23,14 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.async.method.invocation;
+package com.iluwatar.async.method.invocation.generic;
 
 import java.util.concurrent.Callable;
+
+import com.iluwatar.async.method.invocation.generic.AsyncCallback;
+import com.iluwatar.async.method.invocation.generic.AsyncExecutor;
+import com.iluwatar.async.method.invocation.generic.AsyncResult;
+import com.iluwatar.async.method.invocation.generic.ThreadAsyncExecutor;
 import lombok.extern.slf4j.Slf4j;
 
 /**

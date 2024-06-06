@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-package com.iluwatar.async.method.invocation;
+package com.iluwatar.async.method.invocation.generic;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
