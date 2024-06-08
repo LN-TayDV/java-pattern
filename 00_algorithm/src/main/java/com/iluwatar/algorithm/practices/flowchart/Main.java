@@ -294,7 +294,7 @@ public class Main {
         if (n == 1) {
             return Math.sqrt(1);  // Trường hợp cơ sở: √1 = 1
         } else {
-            return Math.pow(factorial(n) + test38(n - 1), (double) 1 / (n + 1));
+            return Math.pow(factorial(n) + test39(n - 1), (double) 1 / (n + 1));
         }
     }
 
