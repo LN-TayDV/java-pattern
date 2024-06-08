@@ -70,7 +70,7 @@ public class Main {
             test67(4.0, 5.0),
             test68(4.0, 5.0),
             test69(4.0, 5.0),
-            test70(4.0, 5.0),
+            test70(5.0),
             test71(4.0, 5.0),
             test72(4.0, 5.0),
             test73(4.0, 5.0),
@@ -411,11 +411,11 @@ public class Main {
         }
     }
 
-    public static double test70 (double x, double n) {
+    public static double test70 (double n) {
         if (n == 1.0) {
             return 1.0;  // Trường hợp cơ sở: √1 = 1
         } else {
-            return  test70(x, n - 1) + Math.pow(-1.0, n + 1) * (1 / sum((int) n));
+            return  test70(n - 1) + Math.pow(-1.0, n + 1) * (1 / sum((int) n));
         }
     }
 
