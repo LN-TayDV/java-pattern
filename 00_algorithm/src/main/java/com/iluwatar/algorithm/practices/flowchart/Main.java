@@ -25,6 +25,8 @@
 package com.iluwatar.algorithm.practices.flowchart;
 
 import lombok.extern.slf4j.Slf4j;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
@@ -58,10 +60,26 @@ public class Main {
             test15(3), test16(2,4), test17(2,4), test18(0,0), test19(0,0)
         );*/
 
-        print(
+        /*print(
             test33(4),  test34(4),  test36(5), test37(5), test38(4),
             test39(4),  test40(1, 4), test41(4)
+        );*/
+
+        print(
+            test64(4.0, 5.0),
+            test67(4.0, 5.0),
+            test68(4.0, 5.0),
+            test69(4.0, 5.0),
+            test70(4.0, 5.0),
+            test71(4.0, 5.0),
+            test72(4.0, 5.0),
+            test73(4.0, 5.0),
+            test74(4.0, 5.0)
         );
+
+       /* test65(4.0,9.0, 4.0).forEach(result -> log(" X = {} ", result));
+
+        test66(-4.0,20.0, -4.0).forEach(result -> log(" X = {} ", result));*/
     }
 
     /**
@@ -297,6 +315,142 @@ public class Main {
         }
     }
 
+    /**
+     * 64 -> 74
+     */
+    public static double test64(double a, double b ) {
+        // ax + b = 0
+        return (-b / a);
+    }
+
+    public static List<Double> test65 (double a, double b, double c) {
+        // Giải phương trình bậc hai:
+
+        double denta = Math.pow(b, 2) - (4 * a * c);
+
+        if(denta > 0) {
+            double x1 = (-b + Math.sqrt(denta)) / (2 * a);
+
+            double x2 = (-b - Math.sqrt(denta)) / (2 * a);
+
+            return List.of(x1, x2);
+
+        } else if (denta == 0) {
+
+            double x = (-b) / (2 * a);
+
+            return List.of(x);
+
+        } else {
+
+            return Collections.emptyList();
+        }
+    }
+
+    public static List<Double> test66 (double a, double b, double c) {
+        // Giải phương trình bậc bốn: a^2 = t ( t > = 0)
+
+        double denta = Math.pow(b, 2) - (4 * a * c);
+
+        if(denta > 0.0) {
+            double t1 = (-b + Math.sqrt(denta)) / (2 * a);
+
+            double t2 = (-b - Math.sqrt(denta)) / (2 * a);
+
+            var result = new ArrayList<Double>();
+
+            if(t1 >= 0.0) {
+                result.add(Math.sqrt(t1));
+                result.add(-Math.sqrt(t1));
+            }
+
+            if(t2 >= 0.0) {
+                result.add(Math.sqrt(t2));
+                result.add(-Math.sqrt(t2));
+            }
+
+            return result;
+
+        } else if (denta == 0.0) {
+
+            double t = (-b) / (2 * a);
+
+            var result = new ArrayList<Double>();
+
+            if(t >= 0.0) {
+                result.add(Math.sqrt(t));
+                result.add(-Math.sqrt(t));
+            }
+            return result;
+        } else {
+            return Collections.emptyList();
+        }
+    }
+
+    public static double test67 (double x, double n) {
+        if (n == 1.0) {
+            return x;  // Trường hợp cơ sở: √1 = 1
+        } else {
+            return  test67(x, n - 1) + Math.pow(-1.0, n + 1) * Math.pow(x, n);
+        }
+    }
+
+    public static double test68 (double x, double n) {
+        if (n == 1.0) {
+            return (-1.0) * Math.pow(x, 2);
+        } else {
+            return  test68(x, n - 1) + Math.pow(-1.0, n) * Math.pow(x, 2 * n);
+        }
+    }
+
+    public static double test69 (double x, double n) {
+        if (n == 1.0) {
+            return x;  // Trường hợp cơ sở: √1 = 1
+        } else {
+            return  test69(x, n - 1) + Math.pow(-1.0, n) * Math.pow(x, (2 * n) - 1.0);
+        }
+    }
+
+    public static double test70 (double x, double n) {
+        if (n == 1.0) {
+            return 1.0;  // Trường hợp cơ sở: √1 = 1
+        } else {
+            return  test70(x, n - 1) + Math.pow(-1.0, n + 1) * (1 / sum((int) n));
+        }
+    }
+
+    public static double test71 (double x, double n) {
+        if (n == 1.0) {
+            return -x;  // Trường hợp cơ sở: √1 = 1
+        } else {
+            return  test71(x, n - 1) + Math.pow(-1.0, n) * (Math.pow(x, n) / sum((int) n));
+        }
+    }
+
+    public static double test72 (double x, double n) {
+        if (n == 1.0) {
+            return -x;  // Trường hợp cơ sở: √1 = 1
+        } else {
+            return  test72(x, n - 1) + Math.pow(-1.0, n) * (Math.pow(x, n) / factorial((int) n ));
+        }
+    }
+
+    public static double test73 (double x, double n) {
+        if (n == 1.0) {
+            return -1.0;  // Trường hợp cơ sở: √1 = 1
+        } else {
+            return  test73(x, n - 1) + Math.pow(-1.0, n + 1) * (Math.pow(x, 2 * n) / factorial((int) (2 * n)));
+        }
+    }
+
+    public static double test74 (double x, double n) {
+        if (n == 1.0) {
+            return 1.0;  // Trường hợp cơ sở: √1 = 1
+        } else {
+            return  test74(x, n - 1) +
+                Math.pow(-1.0, n + 1) * (Math.pow(x, (2 * n) + 1) / factorial((int) ((2 * n) + 1)));
+        }
+    }
 
 
     public static double sum (int n) {
