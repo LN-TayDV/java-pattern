@@ -42,8 +42,27 @@ public class WashingMachine {
 
     /**
      * Creates a new instance of WashingMachine.
+     * ----------------------------------------------
+     * trong Java bạn có thể gọi một constructor từ một constructor khác trong cùng một lớp.
+     * Quy trình này được gọi là "constructor chaining".
+     * Điều này cho phép bạn tái sử dụng mã khởi tạo và giảm sự lặp lại trong mã của bạn.
      */
     public WashingMachine() {
+        /* Cách 1 :*/
+//        this(new DelayProvider() {
+//            @Override
+//            public void executeAfterDelay(long interval, TimeUnit timeUnit, Runnable task) {
+//                try {
+//                    Thread.sleep(timeUnit.toMillis(interval));
+//                } catch (InterruptedException ie) {
+//                    LOGGER.error("", ie);
+//                    Thread.currentThread().interrupt();
+//                }
+//                task.run();
+//            }
+//        });
+
+        /* Cách 2 : use lamda */
         this((interval, timeUnit, task) -> {
             try {
                 Thread.sleep(timeUnit.toMillis(interval));
