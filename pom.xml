@@ -73,6 +73,7 @@
         <module>11_resource_management</module>
         <module>12_resilience</module>
         <module>13_messaging</module>
+        <module>00_java_core</module>
     </modules>
     <repositories>
         <repository>
