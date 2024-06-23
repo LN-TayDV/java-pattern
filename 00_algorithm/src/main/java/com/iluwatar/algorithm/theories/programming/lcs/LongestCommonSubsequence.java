@@ -22,37 +22,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.algorithm.theories.search.astar.programming.knapsack;
+package com.iluwatar.algorithm.theories.programming.lcs;
 
-public class Knapsack {
-    // Phương thức để tính giá trị tối đa mà knapsack có thể chứa
-    public static int knapsack(int W, int[] weights, int[] values, int n) {
-        // Tạo một mảng 2D để lưu trữ giá trị tối đa có thể đạt được
-        int[][] dp = new int[n + 1][W + 1];
+public class LongestCommonSubsequence {
+    // Phương thức để tính độ dài của longest common subsequence
+    public static int lcs(String X, String Y) {
+        int m = X.length();
+        int n = Y.length();
 
-        // Tính toán giá trị tối đa có thể đạt được cho mỗi trọng lượng và số lượng mục
-        for (int i = 0; i <= n; i++) {
-            for (int w = 0; w <= W; w++) {
-                if (i == 0 || w == 0)
-                    dp[i][w] = 0;
-                else if (weights[i - 1] <= w)
-                    dp[i][w] = Math.max(values[i - 1] + dp[i - 1][w - weights[i - 1]], dp[i - 1][w]);
+        int[][] dp = new int[m + 1][n + 1];
+
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (i == 0 || j == 0)
+                    dp[i][j] = 0;
+                else if (X.charAt(i - 1) == Y.charAt(j - 1))
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
                 else
-                    dp[i][w] = dp[i - 1][w];
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
             }
         }
 
-        // Trả về giá trị tối đa có thể đạt được
-        return dp[n][W];
+        return dp[m][n];
     }
 
     public static void main(String[] args) {
-        int[] values = {60, 100, 120}; // Giá trị của các mục
-        int[] weights = {10, 20, 30}; // Trọng lượng của các mục
-        int W = 50; // Trọng lượng tối đa của knapsack
-        int n = values.length; // Số lượng mục
+        String X = "AGGTAB";
+        String Y = "GXTXAYB";
 
-        System.out.println("Giá trị tối đa mà knapsack có thể chứa là: " + knapsack(W, weights, values, n));
+        System.out.println("Độ dài của longest common subsequence là: " + lcs(X, Y));
     }
 }
 

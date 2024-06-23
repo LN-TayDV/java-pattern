@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.algorithm.theories.search.astar.programming.fibonacci;
+package com.iluwatar.algorithm.theories.programming.fibonacci;
 
 public class Fibonacci {
     // Phương thức để tính số Fibonacci thứ n
