@@ -49,7 +49,7 @@ import lombok.extern.slf4j.Slf4j;
  * might want to clear the flag.
  *
  * <p>In this example, the {@link DataFetcher} holds the <i>dirty flag</i>. It fetches and
- * re-fetches from <i>world.txt</i> when needed. {@link World} mainly serves the data to the
+ * re-fetches from <i>world_02.txt</i> when needed. {@link World} mainly serves the data to the
  * front-end.
  */
 @Slf4j

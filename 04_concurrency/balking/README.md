@@ -155,3 +155,30 @@ Trade-offs:
 * [Concurrent Programming in Java : Design Principles and Patterns](https://amzn.to/4dIBqxL)
 * [Java Concurrency in Practice](https://amzn.to/4aRMruW)
 * [Patterns in Java: A Catalog of Reusable Design Patterns Illustrated with UML](https://amzn.to/4bOtzwF)
+
+
+## Áp dụng
+
+Sử dụng mẫu Balking khi:
+
+* Bạn muốn gọi một hành động trên một đối tượng chỉ khi nó đang ở trong một trạng thái cụ thể.
+* Các đối tượng thường chỉ ở trong một trạng thái dễ bị trì hoãn tạm thời nhưng trong một khoảng thời gian không xác định.
+* Trong các ứng dụng đa luồng nơi một số hành động chỉ nên tiếp tục khi các điều kiện cụ thể được đáp ứng, và những điều kiện này được dự kiến sẽ thay đổi theo thời gian do các yếu tố bên ngoài hoặc các hoạt động đồng thời.
+
+## Các ứng dụng đã biết:
+
+* Quản lý nguồn, nơi nguồn lực chỉ được cấp phát nếu chúng ở trong trạng thái hợp lệ để cấp phát.
+* Quản lý luồng, nơi các luồng chỉ tiếp tục với các nhiệm vụ nếu các điều kiện cụ thể (như sẵn có nhiệm vụ hoặc khóa tài nguyên) được đáp ứng.
+
+## Hậu quả:
+
+Lợi ích:
+
+* Giảm thiểu việc mua khóa không cần thiết trong các tình huống khi hành động không thể tiếp tục, cải thiện hiệu suất trong các ứng dụng đồng thời.
+* Khuyến khích sự phân tách rõ ràng giữa quản lý trạng thái và hành vi, dẫn đến mã sạch hơn.
+* Đơn giản hóa việc xử lý các hoạt động chỉ nên được thực hiện dưới điều kiện cụ thể mà không làm rối mã gọi với các kiểm tra trạng thái.
+
+Trade-offs:
+
+* Có thể giới thiệu sự phức tạp bằng cách ẩn điều kiện dưới đó hành động được thực hiện hoặc bị bỏ qua, có thể làm cho hệ thống khó gỡ lỗi và hiểu.
+* Có thể dẫn đến việc bỏ lỡ cơ hội hoặc hành động nếu các thay đổi trạng thái không được giám sát đúng cách hoặc nếu điều kiện balking quá hạn chế.

@@ -42,8 +42,27 @@ public class WashingMachine {
 
     /**
      * Creates a new instance of WashingMachine.
+     * ----------------------------------------------
+     * trong Java bạn có thể gọi một constructor từ một constructor khác trong cùng một lớp.
+     * Quy trình này được gọi là "constructor chaining".
+     * Điều này cho phép bạn tái sử dụng mã khởi tạo và giảm sự lặp lại trong mã của bạn.
      */
     public WashingMachine() {
+        /* Cách 1 :*/
+//        this(new DelayProvider() {
+//            @Override
+//            public void executeAfterDelay(long interval, TimeUnit timeUnit, Runnable task) {
+//                try {
+//                    Thread.sleep(timeUnit.toMillis(interval));
+//                } catch (InterruptedException ie) {
+//                    LOGGER.error("", ie);
+//                    Thread.currentThread().interrupt();
+//                }
+//                task.run();
+//            }
+//        });
+
+        /* Cách 2 : use lamda */
         this((interval, timeUnit, task) -> {
             try {
                 Thread.sleep(timeUnit.toMillis(interval));
@@ -66,6 +85,24 @@ public class WashingMachine {
 
     /**
      * Method responsible for washing if the object is in appropriate state.
+     * --------------------------------------------------------------------
+     * Trong trường hợp đầu tiên, khi bạn tạo ra 3 instance của `WashingMachine`
+     * và mỗi instance gọi phương thức `wash()` một lần,
+     * mỗi instance sẽ có riêng của nó và việc gọi `wash()` trên mỗi instance sẽ xảy ra độc lập với các instance khác.
+     * Khi một instance gọi `wash()`, nó sẽ đặt trạng thái của máy giặt thành "đang giặt"
+     * và sau đó kết thúc việc giặt sau một khoảng thời gian nhất định.
+     * Các instance khác không bị ảnh hưởng và vẫn có thể gọi `wash()` của chính mình một cách độc lập.
+     *
+     * Trong trường hợp thứ hai, khi bạn tạo ra một instance của `WashingMachine`
+     * nhưng gọi phương thức `wash()` ba lần,
+     * chỉ có một luồng có thể thực hiện một phương thức `wash()` tại một thời điểm do sự đồng bộ hóa.
+     * Khi bạn gọi `wash()` lần đầu tiên, nó sẽ đặt trạng thái của máy giặt thành "đang giặt"
+     * và sau đó kết thúc việc giặt sau một khoảng thời gian nhất định.
+     * Cho đến khi `wash()` đầu tiên kết thúc, thì luồng mới có thể gọi `wash()` lần thứ hai.
+     * Quy trình này tiếp tục cho đến khi tất cả các lần gọi `wash()` đã hoàn thành.
+     *
+     * Như vậy, trong cả hai trường hợp, việc đồng bộ hóa sẽ đảm bảo rằng các hoạt động `wash()`
+     * trên mỗi instance hoặc trên cùng một instance sẽ được thực hiện một cách an toàn và theo đúng thứ tự.
      */
     public void wash() {
         synchronized (this) {

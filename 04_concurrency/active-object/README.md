@@ -212,3 +212,42 @@ Trade-offs:
 * [Learning Concurrent Programming in Scala](https://amzn.to/3UE07nV)
 * [Pattern Languages of Program Design 3](https://amzn.to/3OI1j61)
 * [Pattern-Oriented Software Architecture Volume 2: Patterns for Concurrent and Networked Objects](https://amzn.to/3UgC24V)
+
+
+
+## Áp dụng
+
+* Khi bạn cần thực hiện các hoạt động chạy lâu mà không chặn luồng chính.
+* Khi bạn cần tương tác với các nguồn tài nguyên bên ngoài một cách bất đồng bộ.
+* Khi bạn muốn cải thiện tính phản hồi của ứng dụng của bạn.
+* Khi bạn cần quản lý các nhiệm vụ đồng thời một cách modul và dễ bảo trì.
+
+## Hướng dẫn
+
+* [Android và Java Concurrency: Mẫu Active Object(Douglas Schmidt)](https://www.youtube.com/watch?v=Cd8t2u5Qmvc)
+
+## Các ứng dụng đã biết
+
+* Hệ thống giao dịch thời gian thực nơi các yêu cầu giao dịch được xử lý bất đồng bộ.
+* Giao diện người dùng đồ họa nơi các tác vụ chạy lâu được thực hiện trong nền mà không làm đóng băng giao diện người dùng.
+* Lập trình game để xử lý cập nhật đồng thời của trạng thái trò chơi hoặc tính toán trí tuệ nhân tạo.
+
+## Hậu quả
+
+Lợi ích:
+
+* Cải thiện tính phản hồi của luồng chính.
+* Đóng gói các vấn đề về đồng thời trong các đối tượng.
+* Thúc đẩy tổ chức mã tốt hơn và dễ bảo trì.
+* Cung cấp tính an toàn luồng và tránh các vấn đề truy cập trạng thái chia sẻ.
+
+Nhược điểm:
+
+* Giới thiệu chi phí thêm do truyền tin và quản lý luồng.
+* Có thể không phù hợp cho tất cả các loại vấn đề về đồng thời.
+
+## Các mẫu tương quan
+
+* [Lệnh](https://java-design-patterns.com/patterns/command/): Đóng gói một yêu cầu thành một đối tượng, tương tự như cách mẫu Active Object đóng gói các cuộc gọi phương thức.
+* [Promise](https://java-design-patterns.com/patterns/promise/): Cung cấp một phương tiện để nhận kết quả của một cuộc gọi phương thức bất đồng bộ, thường được sử dụng cùng với Active Object.
+* [Proxy](https://java-design-patterns.com/patterns/proxy/): Mẫu Active Object có thể sử dụng một proxy để xử lý các cuộc gọi phương thức một cách bất đồng bộ.

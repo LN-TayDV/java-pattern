@@ -57,6 +57,34 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @see <a href="http://rdafbn.blogspot.co.uk/2012/07/step-builder-pattern_28.html">http://rdafbn.blogspot.co.uk/2012/07/step-builder-pattern_28.html</a>
  */
+
+/**
+ * Dưới đây là mô tả và phân tích chi tiết của mẫu thiết kế Step Builder:
+ *
+ * ### Mô tả:
+ * Mẫu Step Builder là một phần mở rộng của mẫu Builder mà hoàn toàn hướng dẫn người dùng
+ * qua quá trình tạo ra đối tượng mà không có cơ hội nhầm lẫn.
+ *
+ * Trải nghiệm của người dùng sẽ được cải thiện nhiều bởi việc chỉ hiển thị
+ * các phương thức bước tiếp theo có sẵn,
+ * KHÔNG có phương thức build cho đến khi là thời điểm thích hợp để xây dựng đối tượng.
+ *
+ * ### Cài đặt:
+ * Các bước cài đặt mẫu Step Builder như sau:
+ * - Viết các bước tạo ra đối tượng dưới dạng các lớp hoặc giao diện nội bộ,
+ *    trong đó mỗi phương thức biết được những gì có thể hiển thị tiếp theo.
+ * - Thực hiện tất cả các giao diện của bước trong một lớp tĩnh nội bộ.
+ * - Bước cuối cùng là BuildStep, chịu trách nhiệm tạo ra đối tượng bạn cần xây dựng.
+ *
+ * ### Sự áp dụng:
+ * Sử dụng mẫu Step Builder khi:
+ * - Thuật toán tạo ra một đối tượng phức tạp phải độc lập với các phần tạo nên đối tượng và cách chúng được lắp ráp.
+ * - Quá trình xây dựng phải cho phép các biểu diễn khác nhau cho đối tượng được xây dựng
+ * khi quá trình xây dựng đơn hàng là quan trọng.
+ *
+ * ### Tham khảo:
+ * Xem thêm tại: [Step Builder Pattern](http://rdafbn.blogspot.co.uk/2012/07/step-builder-pattern_28.html)
+ */
 @Slf4j
 public class App {
 

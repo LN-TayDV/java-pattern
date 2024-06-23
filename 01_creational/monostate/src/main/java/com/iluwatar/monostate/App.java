@@ -38,6 +38,25 @@ package com.iluwatar.monostate;
  * LoadBalancer is created and a new request is made to it, then it will select the third server as
  * the second load balancer has already selected the second server.
  */
+
+/**
+ * Mẫu thiết kế MonoState đảm bảo rằng tất cả các thể hiện của lớp sẽ có cùng một trạng thái.
+ * Điều này có thể được sử dụng như một thay thế trực tiếp của mẫu Singleton.
+ *
+ * Trong ví dụ sau, lớp LoadBalancer đại diện cho logic ứng dụng.
+ * Nó chứa một loạt các Máy chủ, mà có thể xử lý các yêu cầu của kiểu Request.
+ *
+ * Hai thể hiện của LoadBalancer được tạo ra.
+ *
+ * Khi một yêu cầu được thực hiện đến một máy chủ thông qua LoadBalancer đầu tiên,
+ * thay đổi trạng thái trong LoadBalancer đầu tiên ảnh hưởng đến thứ hai.
+ *
+ * Vì vậy, nếu LoadBalancer đầu tiên chọn Server 1,
+ * thì LoadBalancer thứ hai trong một yêu cầu mới sẽ chọn Server thứ hai.
+ *
+ * Nếu một LoadBalancer thứ ba được tạo ra và một yêu cầu mới được thực hiện đến nó,
+ * thì nó sẽ chọn máy chủ thứ ba vì LoadBalancer thứ hai đã chọn máy chủ thứ hai.
+ */
 public class App {
     /**
      * Program entry point.

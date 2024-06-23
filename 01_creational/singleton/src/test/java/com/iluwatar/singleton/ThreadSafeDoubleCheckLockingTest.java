@@ -28,6 +28,8 @@ package com.iluwatar.singleton;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.lang.reflect.InvocationTargetException;
+
+import com.iluwatar.singleton.on.demand.ThreadSafeDoubleCheckLocking;
 import org.junit.jupiter.api.Test;
 
 /**

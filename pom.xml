@@ -59,6 +59,7 @@
     </properties>
     <modules>
         <!-- 01_creational     -->
+        <module>00_algorithm</module>
         <module>01_creational</module>
         <module>02_structural</module>
         <module>03_behavioral</module>

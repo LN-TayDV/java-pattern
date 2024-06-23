@@ -29,6 +29,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +41,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DataFetcher {
 
-    private static final String FILENAME = "world.txt";
+    private static final String FILENAME = "world_02.txt";
     private long lastFetched;
 
     public DataFetcher() {
@@ -61,16 +63,24 @@ public class DataFetcher {
      */
     public List<String> fetch() {
         var classLoader = getClass().getClassLoader();
-        var file = new File(classLoader.getResource(FILENAME).getFile());
 
-        if (isDirty(file.lastModified())) {
-            LOGGER.info(FILENAME + " is dirty! Re-fetching file content...");
-            try (var br = new BufferedReader(new FileReader(file))) {
-                return br.lines()
-                    .collect(Collectors.collectingAndThen(Collectors.toList(), List::copyOf));
-            } catch (IOException e) {
-                LOGGER.error("An error occurred: ", e);
+        // Use InputStream to load the resource file
+        try (InputStream inputStream = classLoader.getResourceAsStream(FILENAME);
+             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+
+            if (inputStream == null) {
+                LOGGER.error("File not found: " + FILENAME);
+                return List.of();
             }
+
+            // Check if file is dirty by comparing the last modification timestamp
+            var fileUrl = classLoader.getResource(FILENAME);
+            if (fileUrl != null && isDirty(new File(fileUrl.getFile()).lastModified())) {
+                LOGGER.info(FILENAME + " is dirty! Re-fetching file content...");
+                return br.lines().collect(Collectors.collectingAndThen(Collectors.toList(), List::copyOf));
+            }
+        } catch (IOException e) {
+            LOGGER.error("An error occurred: ", e);
         }
 
         return List.of();

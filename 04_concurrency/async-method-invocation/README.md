@@ -201,3 +201,36 @@ Related Patterns:
 * [Design Patterns: Elements of Reusable Object-Oriented Software](https://amzn.to/3Ti1N4f)
 * [Effective Java](https://amzn.to/4cGk2Jz)
 * [Java Concurrency in Practice](https://amzn.to/4ab97VU)
+
+## Ứng dụng
+
+Sử dụng mẫu gọi phương thức bất đồng bộ khi:
+
+* Các hoạt động không cần hoàn thành trước khi tiếp tục với các bước tiếp theo trong chương trình.
+* Cho các nhiệm vụ tốn tài nguyên hoặc mất thời gian, như thao tác IO, yêu cầu mạng, hoặc tính toán phức tạp, nơi làm cho hoạt động đồng bộ sẽ ảnh hưởng đáng kể đến hiệu suất hoặc trải nghiệm người dùng.
+* Trong các ứng dụng GUI để ngăn chặn đóng băng hoặc không phản hồi trong các nhiệm vụ chạy lâu.
+* Trong các ứng dụng web cho các thao tác IO không chặn.
+
+## Các ứng dụng đã biết
+
+* Các máy chủ web xử lý yêu cầu HTTP bất đồng bộ để cải thiện thực hiện và giảm độ trễ.
+* Ứng dụng máy tính để bàn và di động sử dụng các luồng nền để thực hiện các hoạt động mất thời gian mà không chặn giao diện người dùng.
+* Kiến trúc microservices trong đó các dịch vụ thực hiện giao tiếp bất đồng bộ thông qua hàng đợi tin nhắn hoặc luồng sự kiện.
+* [FutureTask](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html)
+* [CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
+* [ExecutorService](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html)
+* [Mẫu Asynchronous Pattern dựa trên nhiệm vụ](https://msdn.microsoft.com/en-us/library/hh873175.aspx)
+
+## Hậu quả
+
+Lợi ích:
+
+* Phản hồi cải thiện: Luồng chính hoặc dòng ứng dụng vẫn không bị chặn, cải thiện trải nghiệm người dùng trong ứng dụng GUI và phản hồi tổng thể.
+* Sử dụng tài nguyên tốt hơn: Bằng cách cho phép thực hiện song song, các tài nguyên hệ thống (như CPU và IO) được sử dụng hiệu quả hơn, có thể cải thiện hiệu suất của ứng dụng.
+* Khả năng mở rộng: Dễ dàng mở rộng ứng dụng, vì nhiệm vụ có thể được phân phối trên các tài nguyên có sẵn một cách hiệu quả hơn.
+
+Nhược điểm:
+
+* Phức tạp: Giới thiệu các hoạt động bất đồng bộ có thể làm phức tạp mã nguồn, làm cho nó khó hiểu, gỡ lỗi và bảo trì hơn.
+* Quản lý tài nguyên: Yêu cầu quản lý cẩn thận các luồng hoặc ngữ cảnh thực thi, có thể gây ra chi phí và vấn đề cạn kiệt tài nguyên tiềm ẩn.
+* Xử lý lỗi: Các hoạt động bất đồng bộ có thể làm cho xử lý lỗi trở nên phức tạp hơn, vì các ngoại lệ có thể xảy ra trong các luồng khác nhau hoặc vào các thời điểm khác nhau.

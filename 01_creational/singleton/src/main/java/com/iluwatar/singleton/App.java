@@ -25,7 +25,15 @@
 
 package com.iluwatar.singleton;
 
+import com.iluwatar.singleton.eagerly.enums.EnumIvoryTower;
+import com.iluwatar.singleton.eagerly.instance.IvoryTower;
+import com.iluwatar.singleton.lazily.BillPughImplementation;
+import com.iluwatar.singleton.lazily.InitializingOnDemandHolderIdiom;
+import com.iluwatar.singleton.on.demand.ThreadSafeDoubleCheckLocking;
+import com.iluwatar.singleton.on.demand.ThreadSafeLazyLoadedIvoryTower;
 import lombok.extern.slf4j.Slf4j;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * <p>Singleton pattern ensures that the class can have only one existing instance per Java
@@ -62,6 +70,40 @@ import lombok.extern.slf4j.Slf4j;
  * {@link InitializingOnDemandHolderIdiom}. However, this implementation requires at least Java 8
  * API level to work.</p>
  */
+
+/**
+ * Mẫu Singleton đảm bảo rằng lớp chỉ có thể có một thể hiện duy nhất cho mỗi bộ tải lớp Java
+ * và cung cấp quyền truy cập toàn cục cho nó.
+ *
+ * Một trong những rủi ro của mẫu này là lỗi xuất hiện khi thiết lập Singleton trong môi trường phân tán
+ * có thể khó gỡ lỗi vì nó sẽ hoạt động tốt nếu bạn gỡ lỗi với một bộ tải lớp duy nhất.
+ * Ngoài ra, những vấn đề này có thể xuất hiện một thời gian sau khi triển khai Singleton,
+ * vì chúng có thể bắt đầu đồng bộ và chỉ trở thành không đồng bộ theo thời gian,
+ * do đó có thể không rõ tại sao bạn lại thấy những thay đổi nhất định trong hành vi.
+ *
+ * Có nhiều cách để triển khai Singleton. Cách đầu tiên là khởi tạo instance sớm trong {@link IvoryTower}.
+ * Khởi tạo sớm ngụ ý rằng triển khai này an toàn với luồng (thread-safe).
+ * Nếu bạn có thể chấp nhận việc từ bỏ quyền kiểm soát thời điểm khởi tạo, thì triển khai này sẽ phù hợp với bạn.
+ *
+ * Lựa chọn khác để triển khai Singleton khởi tạo sớm là Singleton dựa trên enum.
+ * Ví dụ có thể tìm thấy trong {@link EnumIvoryTower}.
+ * Ban đầu, mã trông ngắn gọn và đơn giản.
+ * Tuy nhiên, bạn nên biết về những nhược điểm bao gồm việc cam kết với chiến lược triển khai,
+ * mở rộng lớp enum, khả năng tuần tự hóa, và các hạn chế trong việc mã hóa.
+ * Những điều này được thảo luận rộng rãi trên
+ * Stack Overflow: http://programmers.stackexchange.com/questions/179386/what-are-the-downsides-of-implementing-a-singleton-with-javas-enum
+ *
+ * {@link ThreadSafeLazyLoadedIvoryTower} là một triển khai Singleton được khởi tạo khi cần.
+ * Nhược điểm là truy cập rất chậm vì toàn bộ phương thức truy cập được đồng bộ hóa.
+ *
+ * Một triển khai Singleton khác được khởi tạo khi cần có thể được tìm thấy trong {@link ThreadSafeDoubleCheckLocking}.
+ * Nó nhanh hơn một chút so với {@link ThreadSafeLazyLoadedIvoryTower} vì nó không đồng bộ hóa toàn bộ phương thức truy cập
+ * mà chỉ đồng bộ hóa các phần nội bộ của phương thức dựa trên các điều kiện cụ thể.
+ *
+ * Một cách khác để triển khai Singleton được khởi tạo lười biếng và an toàn với luồng
+ * có thể được tìm thấy trong {@link InitializingOnDemandHolderIdiom}.
+ * Tuy nhiên, triển khai này yêu cầu ít nhất Java API cấp 8 để hoạt động.
+ */
 @Slf4j
 public class App {
 
@@ -75,37 +117,49 @@ public class App {
         // eagerly initialized singleton
         var ivoryTower1 = IvoryTower.getInstance();
         var ivoryTower2 = IvoryTower.getInstance();
-        LOGGER.info("ivoryTower1={}", ivoryTower1);
-        LOGGER.info("ivoryTower2={}", ivoryTower2);
+        LOGGER.info("ivoryTower1 = {}", ivoryTower1);
+        LOGGER.info("ivoryTower2 = {}", ivoryTower2);
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // lazily initialized singleton
         var threadSafeIvoryTower1 = ThreadSafeLazyLoadedIvoryTower.getInstance();
         var threadSafeIvoryTower2 = ThreadSafeLazyLoadedIvoryTower.getInstance();
-        LOGGER.info("threadSafeIvoryTower1={}", threadSafeIvoryTower1);
-        LOGGER.info("threadSafeIvoryTower2={}", threadSafeIvoryTower2);
+        LOGGER.info("threadSafeIvoryTower1 = {}", threadSafeIvoryTower1);
+        LOGGER.info("threadSafeIvoryTower2 = {}", threadSafeIvoryTower2);
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // enum singleton
         var enumIvoryTower1 = EnumIvoryTower.INSTANCE;
         var enumIvoryTower2 = EnumIvoryTower.INSTANCE;
-        LOGGER.info("enumIvoryTower1={}", enumIvoryTower1);
-        LOGGER.info("enumIvoryTower2={}", enumIvoryTower2);
+        LOGGER.info("enumIvoryTower1 = {}", enumIvoryTower1);
+        LOGGER.info("enumIvoryTower2 = {}", enumIvoryTower2);
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // double-checked locking
         var dcl1 = ThreadSafeDoubleCheckLocking.getInstance();
-        LOGGER.info(dcl1.toString());
+        LOGGER.info("double-checked locking 01 = {}", dcl1.toString());
         var dcl2 = ThreadSafeDoubleCheckLocking.getInstance();
-        LOGGER.info(dcl2.toString());
+        LOGGER.info("double-checked locking 02 = {}", dcl2.toString());
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // initialize on demand holder idiom
         var demandHolderIdiom = InitializingOnDemandHolderIdiom.getInstance();
-        LOGGER.info(demandHolderIdiom.toString());
+        LOGGER.info("initializeOnDemandHolderIdiom-01 = {}", demandHolderIdiom.toString());
         var demandHolderIdiom2 = InitializingOnDemandHolderIdiom.getInstance();
-        LOGGER.info(demandHolderIdiom2.toString());
+        LOGGER.info("initializeOnDemandHolderIdiom-02 = {}", demandHolderIdiom2.toString());
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
 
         // initialize singleton using Bill Pugh's implementation
         var billPughSingleton = BillPughImplementation.getInstance();
-        LOGGER.info(billPughSingleton.toString());
+        LOGGER.info("initializeSingletonUsingBillPughImpl-01 = {}", billPughSingleton.toString());
         var billPughSingleton2 = BillPughImplementation.getInstance();
-        LOGGER.info(billPughSingleton2.toString());
+        LOGGER.info("initializeSingletonUsingBillPughImpl-02 = {}",billPughSingleton2.toString());
+
+        LOGGER.info("{}", IntStream.range(1, 100).boxed().map(e -> "-").collect(Collectors.joining()));
     }
 }

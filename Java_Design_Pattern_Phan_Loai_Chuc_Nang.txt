@@ -1,0 +1,129 @@
+====
+    This project is licensed under the MIT license. Module model-view-viewmodel is using ZK framework licensed under LGPL (see lgpl-3.0.txt).
+
+    The MIT License
+    Copyright © 2014-2022 Ilkka Seppälä
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+====
+
+### Creational Patterns:
+
+| Tên chức năng   | Patterns           | Ý nghĩa                                   |
+|-----------------|--------------------|--------------------------------------------|
+| Creational      | Abstract Factory,  | Tạo ra đối tượng và khởi tạo chúng một cách linh hoạt và hiệu quả. |
+                    Builder,
+                    Factory Method,
+                    Prototype,
+                    Singleton
+
+### Structural Patterns:
+
+| Tên chức năng   | Patterns           | Ý nghĩa                                   |
+|-----------------|--------------------|--------------------------------------------|
+| Structural      | Adapter,            | Xây dựng cấu trúc đối tượng phức tạp một cách linh hoạt và dễ dàng sử dụng. |
+                    Bridge,
+                    Composite,
+                    Decorator,
+                    Facade,
+                    Flyweight,
+                    Proxy
+
+
+### Behavioral Patterns:
+
+| Tên chức năng   | Patterns                 | Ý nghĩa                                   |
+|-----------------|------------------------- |--------------------------------------------|
+| Behavioral      | Chain of Responsibility, | Quản lý cách các đối tượng tương tác và truy cập dữ liệu giữa chúng một cách linh hoạt và dễ dàng mở rộng. |
+                     Command,
+                     Interpreter,
+                     Iterator,
+                     Mediator,
+                     Memento,
+                     Observer,
+                     State,
+                     Strategy,
+                     Template Method,
+                     Visitor
+
+### Concurrency Patterns:
+
+| Tên chức năng   | Patterns               | Ý nghĩa                                   |
+|-----------------|------------------------|--------------------------------------------|
+| Concurrency     | Active Object,          | Quản lý và điều phối các luồng thực thi để đảm bảo hiệu suất và an toàn. |
+                   Balking,
+                   Double-Checked Locking,
+                   Guarded Suspension,
+                   Half-Sync/Half-Async,
+                   Leader-Followers,
+                   Monitor,
+                   Reactor,
+                   Scheduler,
+                   Thread-Specific Storage
+
+### Architectural Patterns:
+
+| Tên chức năng   | Patterns                            | Ý nghĩa                                   |
+|-----------------|-------------------------------------|--------------------------------------------|
+| Architectural   | Hexagonal,                           | Xác định cấu trúc tổng thể của hệ thống và cách các thành phần tương tác với nhau. |
+                   Layered Architecture,
+                   Microservices,
+                   Model-View-Controller (MVC),
+                   Model-View-Presenter (MVP),
+                   Model-View-ViewModel (MVVM),
+                   Pipes and Filters,
+                   Service-Oriented Architecture (SOA)
+
+### Other Patterns:
+
+| Tên chức năng   | Patterns           | Ý nghĩa                                   |
+|-----------------|--------------------|--------------------------------------------|
+| Other           | Dirty Flag,         | Các mẫu khác không thuộc vào các loại chức năng cụ thể. |
+                    Event Aggregator,
+                    Null Object,
+                    Repository,
+                    Saga,
+                    Specification,
+                    Unit of Work
+
+### Miscellaneous:
+
+| Tên chức năng   | Patterns                                       | Ý nghĩa                                   |
+|-----------------|------------------------------------------------|--------------------------------------------|
+| Miscellaneous   | Arrange-Act-Assert,                             | Các mẫu không thuộc nhóm cụ thể hoặc có chức năng đa dạng. |
+                   Data Transfer Object (DTO),
+                   Execute Around,
+                   Extension Objects,
+                   Fluent Interface,
+                   Front Controller,
+                   Game Loop,
+                   Metadata Mapping,
+                   Object Pool,
+                   Poison Pill,
+                   Presentation Model,
+                   Producer-Consumer,
+                   Promise,
+                   Resource Acquisition Is Initialization (RAII),
+                   Step Builder,
+                   Strangler,
+                   Tolerant Reader,
+                   Trampoline,
+                   Transaction Script,
+                   Twin
+
