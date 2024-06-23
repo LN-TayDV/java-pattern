@@ -140,17 +140,17 @@ Then we are ready to launch some rockets to see how everything works together.
 Here's the program console output.
 
 ```
-21:47:08.227[executor-2]INFO com.iluwatar.async.method.invocation.App-Space rocket<test> launched successfully
-21:47:08.269[main]INFO com.iluwatar.async.method.invocation.App-Mission command is sipping coffee
-21:47:08.318[executor-4]INFO com.iluwatar.async.method.invocation.App-Space rocket<20>launched successfully
-21:47:08.335[executor-4]INFO com.iluwatar.async.method.invocation.App-Deploying lunar rover<20>
-21:47:08.414[executor-1]INFO com.iluwatar.async.method.invocation.App-Space rocket<10>launched successfully
-21:47:08.519[executor-5]INFO com.iluwatar.async.method.invocation.App-Space rocket<callback> launched successfully
-21:47:08.519[executor-5]INFO com.iluwatar.async.method.invocation.App-Deploying lunar rover<callback>
-21:47:08.616[executor-3]INFO com.iluwatar.async.method.invocation.App-Space rocket<50>launched successfully
-21:47:08.617[main]INFO com.iluwatar.async.method.invocation.App-Space rocket<10>launch complete
-21:47:08.617[main]INFO com.iluwatar.async.method.invocation.App-Space rocket<test> launch complete
-21:47:08.618[main]INFO com.iluwatar.async.method.invocation.App-Space rocket<50>launch complete
+21:47:08.227[executor-2]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<test> launched successfully
+21:47:08.269[main]INFO com.iluwatar.async.method.invocation.generic.App-Mission command is sipping coffee
+21:47:08.318[executor-4]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<20>launched successfully
+21:47:08.335[executor-4]INFO com.iluwatar.async.method.invocation.generic.App-Deploying lunar rover<20>
+21:47:08.414[executor-1]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<10>launched successfully
+21:47:08.519[executor-5]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<callback> launched successfully
+21:47:08.519[executor-5]INFO com.iluwatar.async.method.invocation.generic.App-Deploying lunar rover<callback>
+21:47:08.616[executor-3]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<50>launched successfully
+21:47:08.617[main]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<10>launch complete
+21:47:08.617[main]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<test> launch complete
+21:47:08.618[main]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<50>launch complete
 ```
 
 # Class diagram

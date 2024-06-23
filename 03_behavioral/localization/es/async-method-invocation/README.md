@@ -135,17 +135,17 @@ public static void main(String[] args) throws Exception {
 Aquí está la salida de la consola del programa.
 
 ```java
-21:47:08.227 [executor-2] INFO com.iluwatar.async.method.invocation.App - Cohete espacial <prueba> lanzado con éxito
-21:47:08.269 [main] INFO com.iluwatar.async.method.invocation.App - El comandante de la misión está bebiendo café
-21:47:08.318 [executor-4] INFO com.iluwatar.async.method.invocation.App - Cohete espacial <20> lanzado con éxito
-21:47:08.335 [executor-4] INFO com.iluwatar.async.method.invocation.App Desplegando el rover lunar <20>
-21:47:08.414 [executor-1] INFO com.iluwatar.async.method.invocation.App  - Cohete espacial <10> lanzado con éxito
-21:47:08.519 [executor-5] INFO com.iluwatar.async.method.invocation.App - Cohete espacial <devolución de llamada callback> lanzado con éxito
-21:47:08.519 [executor-5] INFO com.iluwatar.async.method.invocation.App - Implementando el vehículo lunar <devolución de llamada callback>
-21:47:08.616 [executor-3] INFO com.iluwatar.async.method.invocation.App - Cohete espacial <50> lanzado con éxito
-21:47:08.617 [main] INFO com.iluwatar.async.method.invocation.App - Lanzamiento del cohete espacial <10> completado
-21:47:08.617 [main] INFO com.iluwatar.async.method.invocation.App - Lanzamiento de cohete espacial <prueba> completado
-21:47:08.618 [main] INFO com.iluwatar.async.method.invocation.App - Lanzamiento del cohete espacial <50> completado
+21:47:08.227 [executor-2] INFO com.iluwatar.async.method.invocation.generic.App - Cohete espacial <prueba> lanzado con éxito
+21:47:08.269 [main] INFO com.iluwatar.async.method.invocation.generic.App - El comandante de la misión está bebiendo café
+21:47:08.318 [executor-4] INFO com.iluwatar.async.method.invocation.generic.App - Cohete espacial <20> lanzado con éxito
+21:47:08.335 [executor-4] INFO com.iluwatar.async.method.invocation.generic.App Desplegando el rover lunar <20>
+21:47:08.414 [executor-1] INFO com.iluwatar.async.method.invocation.generic.App  - Cohete espacial <10> lanzado con éxito
+21:47:08.519 [executor-5] INFO com.iluwatar.async.method.invocation.generic.App - Cohete espacial <devolución de llamada callback> lanzado con éxito
+21:47:08.519 [executor-5] INFO com.iluwatar.async.method.invocation.generic.App - Implementando el vehículo lunar <devolución de llamada callback>
+21:47:08.616 [executor-3] INFO com.iluwatar.async.method.invocation.generic.App - Cohete espacial <50> lanzado con éxito
+21:47:08.617 [main] INFO com.iluwatar.async.method.invocation.generic.App - Lanzamiento del cohete espacial <10> completado
+21:47:08.617 [main] INFO com.iluwatar.async.method.invocation.generic.App - Lanzamiento de cohete espacial <prueba> completado
+21:47:08.618 [main] INFO com.iluwatar.async.method.invocation.generic.App - Lanzamiento del cohete espacial <50> completado
 ```
 
 # Diagrama de clase
