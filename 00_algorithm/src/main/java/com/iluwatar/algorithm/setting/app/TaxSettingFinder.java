@@ -9,7 +9,11 @@ import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistory;
 import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistoryItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.BonusTaxSetting;
 import com.iluwatar.algorithm.setting.dom.income.tax.DeductionSetting;
+import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSetting;
 import com.iluwatar.algorithm.setting.dom.income.tax.SalaryTaxSetting;
+import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.BonusItem;
+import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.DeductionItem;
+import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.SalaryItem;
 import java.util.Arrays;
 
 public class TaxSettingFinder {
@@ -45,17 +49,17 @@ public class TaxSettingFinder {
         }
 
         @Override
-        public SalaryTaxSetting getSalaryTaxSettings(IncomeTaxSettingHistoryItem historyItem) {
+        public IncomeTaxSetting<SalaryItem> getSalaryTaxSettings(IncomeTaxSettingHistoryItem historyItem) {
             return incomeTaxSettingRepository.getSalaryTaxSetting(cid, historyItem);
         }
 
         @Override
-        public BonusTaxSetting getBonusTaxSettings(IncomeTaxSettingHistoryItem historyItem) {
+        public IncomeTaxSetting<BonusItem> getBonusTaxSettings(IncomeTaxSettingHistoryItem historyItem) {
             return incomeTaxSettingRepository.getBonusTaxSetting(cid, historyItem);
         }
 
         @Override
-        public DeductionSetting getDeductionSettings(IncomeTaxSettingHistoryItem historyItem) {
+        public IncomeTaxSetting<DeductionItem> getDeductionSettings(IncomeTaxSettingHistoryItem historyItem) {
             return incomeTaxSettingRepository.getDeductionSetting(cid, historyItem);
         }
     }

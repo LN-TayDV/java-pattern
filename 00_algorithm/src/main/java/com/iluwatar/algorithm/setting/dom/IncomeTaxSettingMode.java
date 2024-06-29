@@ -25,17 +25,17 @@ public enum IncomeTaxSettingMode {
 
     public final int value;
 
-    public final BiFunction<Require, IncomeTaxSettingHistoryItem, IncomeTaxSetting> incomeTaxSetting;
+    public final BiFunction<Require, IncomeTaxSettingHistoryItem, IncomeTaxSetting<?>> incomeTaxSetting;
 
     public interface Require {
 
         IncomeTaxSettingHistory incomeTaxSettingHistories(String cid);
 
-        SalaryTaxSetting getSalaryTaxSettings (IncomeTaxSettingHistoryItem historyItem);
+        IncomeTaxSetting<SalaryItem> getSalaryTaxSettings(IncomeTaxSettingHistoryItem historyItem);
 
-        BonusTaxSetting getBonusTaxSettings (IncomeTaxSettingHistoryItem historyItem);
+        IncomeTaxSetting<BonusItem> getBonusTaxSettings(IncomeTaxSettingHistoryItem historyItem);
 
-        DeductionSetting getDeductionSettings (IncomeTaxSettingHistoryItem historyItem);
+        IncomeTaxSetting<DeductionItem> getDeductionSettings(IncomeTaxSettingHistoryItem historyItem);
 
     }
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SalaryTaxSetting extends IncomeTaxSetting<SalaryItem> {
+public class SalaryTaxSetting implements IncomeTaxSetting<SalaryItem> {
 
     private List<SalaryItem> salaryItems;
 

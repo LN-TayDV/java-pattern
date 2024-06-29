@@ -1,6 +1,7 @@
 package com.iluwatar.algorithm.setting.app.dto;
 
 import com.iluwatar.algorithm.setting.app.dto.itemstype.DeductionItemDto;
+import com.iluwatar.algorithm.setting.dom.income.tax.DeductionSetting;
 import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSetting;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.DeductionItem;
 import lombok.Data;
@@ -11,8 +12,8 @@ public class DeductionDto extends IncomeTaxSettingDto<DeductionItem, List<Deduct
 
     List<DeductionItemDto> deductionItemDtos;
 
-    public DeductionDto(IncomeTaxSetting<DeductionItem> domain) {
-        this.deductionItemDtos = this.get(domain);
+    public DeductionDto(IncomeTaxSetting<?> domain) {
+        this.deductionItemDtos = this.get((DeductionSetting) domain);
     }
 
     @Override

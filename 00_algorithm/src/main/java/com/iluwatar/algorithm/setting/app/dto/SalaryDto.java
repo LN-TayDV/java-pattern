@@ -2,6 +2,7 @@ package com.iluwatar.algorithm.setting.app.dto;
 
 import com.iluwatar.algorithm.setting.app.dto.itemstype.SalaryItemDto;
 import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSetting;
+import com.iluwatar.algorithm.setting.dom.income.tax.SalaryTaxSetting;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.DeductionItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.SalaryItem;
 import lombok.Getter;
@@ -14,8 +15,8 @@ public class SalaryDto extends IncomeTaxSettingDto<SalaryItem, List<SalaryItemDt
 
     private  List<SalaryItemDto> salaryItems;
 
-    public SalaryDto(IncomeTaxSetting<SalaryItem> domains) {
-        this.salaryItems = this.get(domains);
+    public SalaryDto(IncomeTaxSetting<?> domains) {
+        this.salaryItems = this.get((SalaryTaxSetting) domains);
     }
 
     @Override
