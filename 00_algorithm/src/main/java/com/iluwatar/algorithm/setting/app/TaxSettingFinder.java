@@ -25,7 +25,7 @@ public class TaxSettingFinder {
 
     private IncomeTaxSettingRepository incomeTaxSettingRepository;
 
-    public Object get (String historyId, int modeValue) {
+    public List<Object> get (String historyId, int modeValue) {
 
         var require = new RequireImpl();
 

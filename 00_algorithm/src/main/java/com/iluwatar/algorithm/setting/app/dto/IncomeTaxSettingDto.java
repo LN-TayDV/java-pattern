@@ -12,8 +12,9 @@ public abstract class IncomeTaxSettingDto<D, R> {
         this.domain = domain;
     }
 
-    public List<R> get() {
-        return this.domain.get().stream()
+    public List<Object> get() {
+        return this.domain.get()
+            .stream()
             .map(this::toDTO)
             .collect(Collectors.toList());
     }
