@@ -35,28 +35,30 @@ public class TaxSettingFinder {
             .getIncomeTaxSettingHistoryItems()
             .stream().filter(e -> e.equals(historyId)).findAny().get();
 
-        return switch (mode) {
+        var result =  switch (mode) {
             case BONUS -> new IncomeTaxSettingDto<BonusItem, BonusItemDto>((BonusTaxSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
                 @Override
-                public List<BonusItemDto> get(IncomeTaxSetting<BonusItem> domain) {
-                    return domain.get().stream().map(e -> new BonusItemDto()).toList();
+                protected BonusItemDto toDTO(BonusItem domainObject) {
+                    return new BonusItemDto(domainObject);
                 }
             };
 
             case SALARY -> new IncomeTaxSettingDto<SalaryItem, SalaryItemDto>((SalaryTaxSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
                 @Override
-                public List<SalaryItemDto> get(IncomeTaxSetting<SalaryItem> domain) {
-                    return domain.get().stream().map(e -> new SalaryItemDto()).toList();
+                protected SalaryItemDto toDTO(SalaryItem domainObject) {
+                    return new SalaryItemDto(domainObject);
                 }
             };
 
             case DEDUCTION -> new IncomeTaxSettingDto<DeductionItem, DeductionItemDto>((DeductionSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
                 @Override
-                public List<DeductionItemDto> get(IncomeTaxSetting<DeductionItem> domain) {
-                    return domain.get().stream().map(e -> new DeductionItemDto()).toList();
+                protected DeductionItemDto toDTO(DeductionItem domainObject) {
+                    return new DeductionItemDto(domainObject);
                 }
             };
         };
+
+        return result.get();
     }
 
     private class RequireImpl implements IncomeTaxSettingMode.Require {
