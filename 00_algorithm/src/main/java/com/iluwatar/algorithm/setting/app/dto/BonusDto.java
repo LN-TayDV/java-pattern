@@ -19,6 +19,7 @@ public class BonusDto extends IncomeTaxSettingDto<BonusItem, List<BonusItemDto>>
     }
 
 
+    @Override
     public List<BonusItemDto> get(IncomeTaxSetting<BonusItem> domain) {
         return domain.get().stream().map(e -> new BonusItemDto()).toList();
     }
