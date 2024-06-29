@@ -1,8 +1,9 @@
 package com.iluwatar.algorithm.setting.app;
 
-import com.iluwatar.algorithm.setting.app.dto.BonusDto;
-import com.iluwatar.algorithm.setting.app.dto.DeductionDto;
-import com.iluwatar.algorithm.setting.app.dto.SalaryDto;
+import com.iluwatar.algorithm.setting.app.dto.IncomeTaxSettingDto;
+import com.iluwatar.algorithm.setting.app.dto.itemstype.BonusItemDto;
+import com.iluwatar.algorithm.setting.app.dto.itemstype.DeductionItemDto;
+import com.iluwatar.algorithm.setting.app.dto.itemstype.SalaryItemDto;
 import com.iluwatar.algorithm.setting.dom.IncomeTaxSettingMode;
 import com.iluwatar.algorithm.setting.dom.IncomeTaxSettingRepository;
 import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistory;
@@ -15,6 +16,7 @@ import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.BonusItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.DeductionItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.SalaryItem;
 import java.util.Arrays;
+import java.util.List;
 
 public class TaxSettingFinder {
 
@@ -35,9 +37,26 @@ public class TaxSettingFinder {
             .stream().filter(e -> e.equals(historyId)).findAny().get();
 
         return switch (mode) {
-            case BONUS -> new BonusDto(mode.incomeTaxSetting.apply(require, historyItem));
-            case SALARY -> new SalaryDto(mode.incomeTaxSetting.apply(require, historyItem));
-            case DEDUCTION -> new DeductionDto(mode.incomeTaxSetting.apply(require, historyItem));
+            case BONUS -> new IncomeTaxSettingDto<BonusItem, List<BonusItemDto>>((BonusTaxSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
+                @Override
+                public List<BonusItemDto> get(IncomeTaxSetting<BonusItem> domain) {
+                    return domain.get().stream().map(e -> new BonusItemDto()).toList();
+                }
+            };
+
+            case SALARY -> new IncomeTaxSettingDto<SalaryItem, List<SalaryItemDto>>((SalaryTaxSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
+                @Override
+                public List<SalaryItemDto> get(IncomeTaxSetting<SalaryItem> domain) {
+                    return domain.get().stream().map(e -> new SalaryItemDto()).toList();
+                }
+            };
+
+            case DEDUCTION -> new IncomeTaxSettingDto<DeductionItem, List<DeductionItemDto>>((DeductionSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
+                @Override
+                public List<DeductionItemDto> get(IncomeTaxSetting<DeductionItem> domain) {
+                    return domain.get().stream().map(e -> new DeductionItemDto()).toList();
+                }
+            };
         };
     }
 
