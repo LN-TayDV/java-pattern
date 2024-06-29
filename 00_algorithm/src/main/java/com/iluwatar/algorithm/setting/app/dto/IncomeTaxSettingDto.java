@@ -7,5 +7,5 @@ public abstract class IncomeTaxSettingDto<D, R> {
 
     public IncomeTaxSettingDto(IncomeTaxSetting<D> domain) {}
 
-    public abstract R get(IncomeTaxSetting<D> domain);
+    public abstract List<R> get(IncomeTaxSetting<D> domain);
 }
