@@ -25,7 +25,6 @@ public class TaxSettingFinder {
 
     private IncomeTaxSettingRepository incomeTaxSettingRepository;
 
-    @SuppressWarnings("unchecked")
     public Object get (String historyId, int modeValue) {
 
         var require = new RequireImpl();
