@@ -1,4 +1,16 @@
 package com.iluwatar.algorithm.setting.dom.income.tax;
 
-public class BonusTaxSetting implements IncomeTaxSetting {
+import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.BonusItem;
+import lombok.Data;
+import java.util.List;
+
+@Data
+public class BonusTaxSetting extends IncomeTaxSetting<BonusItem> {
+
+    private  List<BonusItem> bonusItems;
+
+    @Override
+    public List<BonusItem> get() {
+        return this.bonusItems;
+    }
 }

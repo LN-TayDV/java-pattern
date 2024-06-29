@@ -1,8 +1,10 @@
 package com.iluwatar.algorithm.setting.app;
 
+import com.iluwatar.algorithm.setting.app.dto.BonusDto;
+import com.iluwatar.algorithm.setting.app.dto.DeductionDto;
+import com.iluwatar.algorithm.setting.app.dto.SalaryDto;
 import com.iluwatar.algorithm.setting.dom.IncomeTaxSettingMode;
 import com.iluwatar.algorithm.setting.dom.IncomeTaxSettingRepository;
-import com.iluwatar.algorithm.setting.dom.IncomeTaxSettingService;
 import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistory;
 import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistoryItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.BonusTaxSetting;
@@ -17,17 +19,25 @@ public class TaxSettingFinder {
 
     private IncomeTaxSettingRepository incomeTaxSettingRepository;
 
+    @SuppressWarnings("unchecked")
     public Object get (String historyId, int modeValue) {
 
         var require = new RequireImpl();
 
         IncomeTaxSettingMode mode = Arrays.stream(IncomeTaxSettingMode.values()).filter(e -> e.value == modeValue).findFirst().get();
 
-        return IncomeTaxSettingService.create(require, cid, historyId, mode);
+        var historyItem = require.incomeTaxSettingHistories(cid)
+            .getIncomeTaxSettingHistoryItems()
+            .stream().filter(e -> e.equals(historyId)).findAny().get();
 
+        return switch (mode) {
+            case BONUS -> new BonusDto(mode.incomeTaxSetting.apply(require, historyItem));
+            case SALARY -> new SalaryDto(mode.incomeTaxSetting.apply(require, historyItem));
+            case DEDUCTION -> new DeductionDto(mode.incomeTaxSetting.apply(require, historyItem));
+        };
     }
 
-    private class RequireImpl implements IncomeTaxSettingService.Require {
+    private class RequireImpl implements IncomeTaxSettingMode.Require {
 
         @Override
         public IncomeTaxSettingHistory incomeTaxSettingHistories(String cid) {

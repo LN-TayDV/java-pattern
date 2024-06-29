@@ -1,4 +1,16 @@
 package com.iluwatar.algorithm.setting.dom.income.tax;
 
-public class DeductionSetting implements IncomeTaxSetting {
+import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.DeductionItem;
+import lombok.Data;
+import java.util.List;
+
+@Data
+public class DeductionSetting extends IncomeTaxSetting<DeductionItem> {
+
+    List<DeductionItem> deductionItems;
+
+    @Override
+    public List<DeductionItem> get() {
+        return this.deductionItems;
+    }
 }
