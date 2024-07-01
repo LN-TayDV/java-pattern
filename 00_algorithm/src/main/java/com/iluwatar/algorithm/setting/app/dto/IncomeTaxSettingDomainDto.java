@@ -1,15 +1,16 @@
 package com.iluwatar.algorithm.setting.app.dto;
 
-import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSetting;
+import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSettingDomain;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class IncomeTaxSettingDto<D, R> {
+public abstract class IncomeTaxSettingDomainDto<D, R> {
 
-    private IncomeTaxSetting<D> domain;
+    private final IncomeTaxSettingDomain<? extends D> domain;
 
-    public IncomeTaxSettingDto(IncomeTaxSetting<D> domain) {
-        this.domain = domain;
+    @SuppressWarnings("unchecked")
+    public IncomeTaxSettingDomainDto(IncomeTaxSettingDomain<?> domain) {
+        this.domain = (IncomeTaxSettingDomain<? extends D>) domain;
     }
 
     public List<Object> get() {
@@ -23,7 +24,7 @@ public abstract class IncomeTaxSettingDto<D, R> {
     protected abstract R toDTO(D domainObject);
 
     // Getter for the domain object
-    public IncomeTaxSetting<D> getDomain() {
+    public IncomeTaxSettingDomain<? extends D> getDomain() {
         return this.domain;
     }
 }

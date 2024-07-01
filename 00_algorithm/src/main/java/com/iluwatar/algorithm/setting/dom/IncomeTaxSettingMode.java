@@ -2,10 +2,7 @@ package com.iluwatar.algorithm.setting.dom;
 
 import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistory;
 import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistoryItem;
-import com.iluwatar.algorithm.setting.dom.income.tax.BonusTaxSetting;
-import com.iluwatar.algorithm.setting.dom.income.tax.DeductionSetting;
-import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSetting;
-import com.iluwatar.algorithm.setting.dom.income.tax.SalaryTaxSetting;
+import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSettingDomain;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.BonusItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.DeductionItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.SalaryItem;
@@ -25,17 +22,17 @@ public enum IncomeTaxSettingMode {
 
     public final int value;
 
-    public final BiFunction<Require, IncomeTaxSettingHistoryItem, IncomeTaxSetting<?>> incomeTaxSetting;
+    public final BiFunction<Require, IncomeTaxSettingHistoryItem, IncomeTaxSettingDomain<?>> incomeTaxSetting;
 
     public interface Require {
 
         IncomeTaxSettingHistory incomeTaxSettingHistories(String cid);
 
-        IncomeTaxSetting<SalaryItem> getSalaryTaxSettings(IncomeTaxSettingHistoryItem historyItem);
+        IncomeTaxSettingDomain<SalaryItem> getSalaryTaxSettings(IncomeTaxSettingHistoryItem historyItem);
 
-        IncomeTaxSetting<BonusItem> getBonusTaxSettings(IncomeTaxSettingHistoryItem historyItem);
+        IncomeTaxSettingDomain<BonusItem> getBonusTaxSettings(IncomeTaxSettingHistoryItem historyItem);
 
-        IncomeTaxSetting<DeductionItem> getDeductionSettings(IncomeTaxSettingHistoryItem historyItem);
+        IncomeTaxSettingDomain<DeductionItem> getDeductionSettings(IncomeTaxSettingHistoryItem historyItem);
 
     }
 }

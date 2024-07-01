@@ -1,22 +1,22 @@
 package com.iluwatar.algorithm.setting.app;
 
-import com.iluwatar.algorithm.setting.app.dto.IncomeTaxSettingDto;
+import com.iluwatar.algorithm.setting.app.dto.IncomeTaxSettingDomainDto;
 import com.iluwatar.algorithm.setting.app.dto.itemstype.BonusItemDto;
 import com.iluwatar.algorithm.setting.app.dto.itemstype.DeductionItemDto;
 import com.iluwatar.algorithm.setting.app.dto.itemstype.SalaryItemDto;
+import com.iluwatar.algorithm.setting.dom.IncomeTaxSetting;
 import com.iluwatar.algorithm.setting.dom.IncomeTaxSettingMode;
 import com.iluwatar.algorithm.setting.dom.IncomeTaxSettingRepository;
 import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistory;
 import com.iluwatar.algorithm.setting.dom.history.IncomeTaxSettingHistoryItem;
-import com.iluwatar.algorithm.setting.dom.income.tax.BonusTaxSetting;
-import com.iluwatar.algorithm.setting.dom.income.tax.DeductionSetting;
-import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSetting;
-import com.iluwatar.algorithm.setting.dom.income.tax.SalaryTaxSetting;
+import com.iluwatar.algorithm.setting.dom.income.tax.BonusTaxSettingDomain;
+import com.iluwatar.algorithm.setting.dom.income.tax.DeductionSettingDomain;
+import com.iluwatar.algorithm.setting.dom.income.tax.IncomeTaxSettingDomain;
+import com.iluwatar.algorithm.setting.dom.income.tax.SalaryTaxSettingDomain;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.BonusItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.DeductionItem;
 import com.iluwatar.algorithm.setting.dom.income.tax.domain.onbjects.SalaryItem;
 import java.util.Arrays;
-import java.util.List;
 
 public class TaxSettingFinder {
 
@@ -25,7 +25,7 @@ public class TaxSettingFinder {
 
     private IncomeTaxSettingRepository incomeTaxSettingRepository;
 
-    public List<Object> get (String historyId, int modeValue) {
+    public IncomeTaxSettingDto get (String historyId, int modeValue) {
 
         var require = new RequireImpl();
 
@@ -35,22 +35,24 @@ public class TaxSettingFinder {
             .getIncomeTaxSettingHistoryItems()
             .stream().filter(e -> e.equals(historyId)).findAny().get();
 
-        var result =  switch (mode) {
-            case BONUS -> new IncomeTaxSettingDto<BonusItem, BonusItemDto>((BonusTaxSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
+        var setting = IncomeTaxSetting.create(require, cid, mode, historyItem);
+
+        var domainItem =  switch (mode) {
+            case BONUS -> new IncomeTaxSettingDomainDto<BonusItem, BonusItemDto>(setting.getIncomeTaxSetting()) {
                 @Override
                 protected BonusItemDto toDTO(BonusItem domainObject) {
                     return new BonusItemDto(domainObject);
                 }
             };
 
-            case SALARY -> new IncomeTaxSettingDto<SalaryItem, SalaryItemDto>((SalaryTaxSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
+            case SALARY -> new IncomeTaxSettingDomainDto<SalaryItem, SalaryItemDto>(setting.getIncomeTaxSetting()) {
                 @Override
                 protected SalaryItemDto toDTO(SalaryItem domainObject) {
                     return new SalaryItemDto(domainObject);
                 }
             };
 
-            case DEDUCTION -> new IncomeTaxSettingDto<DeductionItem, DeductionItemDto>((DeductionSetting) mode.incomeTaxSetting.apply(require, historyItem)) {
+            case DEDUCTION -> new IncomeTaxSettingDomainDto<DeductionItem, DeductionItemDto>(setting.getIncomeTaxSetting()) {
                 @Override
                 protected DeductionItemDto toDTO(DeductionItem domainObject) {
                     return new DeductionItemDto(domainObject);
@@ -58,10 +60,14 @@ public class TaxSettingFinder {
             };
         };
 
-        return result.get();
+        return new IncomeTaxSettingDto(
+            setting.getIncomeTaxSettingHistory(),
+            domainItem.get(),
+            setting.getPayment()
+        );
     }
 
-    private class RequireImpl implements IncomeTaxSettingMode.Require {
+    private class RequireImpl implements IncomeTaxSetting.Require {
 
         @Override
         public IncomeTaxSettingHistory incomeTaxSettingHistories(String cid) {
@@ -69,17 +75,17 @@ public class TaxSettingFinder {
         }
 
         @Override
-        public IncomeTaxSetting<SalaryItem> getSalaryTaxSettings(IncomeTaxSettingHistoryItem historyItem) {
+        public IncomeTaxSettingDomain<SalaryItem> getSalaryTaxSettings(IncomeTaxSettingHistoryItem historyItem) {
             return incomeTaxSettingRepository.getSalaryTaxSetting(cid, historyItem);
         }
 
         @Override
-        public IncomeTaxSetting<BonusItem> getBonusTaxSettings(IncomeTaxSettingHistoryItem historyItem) {
+        public IncomeTaxSettingDomain<BonusItem> getBonusTaxSettings(IncomeTaxSettingHistoryItem historyItem) {
             return incomeTaxSettingRepository.getBonusTaxSetting(cid, historyItem);
         }
 
         @Override
-        public IncomeTaxSetting<DeductionItem> getDeductionSettings(IncomeTaxSettingHistoryItem historyItem) {
+        public IncomeTaxSettingDomain<DeductionItem> getDeductionSettings(IncomeTaxSettingHistoryItem historyItem) {
             return incomeTaxSettingRepository.getDeductionSetting(cid, historyItem);
         }
     }
