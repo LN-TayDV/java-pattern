@@ -1,7 +1,5 @@
 package com.iluwatar.async.method.invocation.lamda.async.callback;
 
-import lombok.Setter;
-import java.util.Objects;
 import java.util.function.Consumer;
 
 public class AsyncCallback implements Callback {
