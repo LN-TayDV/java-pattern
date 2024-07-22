@@ -24,7 +24,7 @@ public class Test {
         TestImpl entity = new TestImpl();
 
         Stream.of(entity.getClass().getMethods())
-            .filter(mt -> mt.getName().startsWith("set"))
+            .filter(mt -> mt.getName().startsWith("set") && targetValueMap.containsKey(mt.getName()))
             .forEach(mt -> {
                 targetValueMap.getOrDefault(mt.getName(), Optional.empty()).ifPresent(targetValue -> {
                     try {
