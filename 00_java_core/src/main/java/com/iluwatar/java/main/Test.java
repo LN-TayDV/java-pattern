@@ -15,20 +15,20 @@ public class Test {
 
         String codeName = "Code";
 
-        Map<String, Optional<Integer>> nameValue = testRepoList.stream()
+        Map<String, Optional<Integer>> targetValueMap = testRepoList.stream()
             .collect(Collectors.toMap(
                 e -> "set" + codeName + String.format("%02d", testRepoList.indexOf(e) + 1),
                 Optional::of
             ));
 
-        TestImpl test = new TestImpl();
+        TestImpl entity = new TestImpl();
 
-        Stream.of(test.getClass().getMethods())
+        Stream.of(entity.getClass().getMethods())
             .filter(mt -> mt.getName().startsWith("set"))
             .forEach(mt -> {
-                nameValue.getOrDefault(mt.getName(), Optional.empty()).ifPresent(value -> {
+                targetValueMap.getOrDefault(mt.getName(), Optional.empty()).ifPresent(targetValue -> {
                     try {
-                        mt.invoke(test, value);  // Truyền đối tượng test vào đây
+                        mt.invoke(entity, targetValue);  // Truyền đối tượng test vào đây
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();
                     }
