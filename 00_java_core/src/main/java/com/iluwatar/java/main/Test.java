@@ -3,6 +3,7 @@ package com.iluwatar.java.main;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,10 +15,10 @@ public class Test {
 
         String codeName = "Code";
 
-        Map<String, Integer> nameValue = testRepoList.stream()
+        Map<String, Optional<Integer>> nameValue = testRepoList.stream()
             .collect(Collectors.toMap(
                 e -> "set" + codeName + String.format("%02d", testRepoList.indexOf(e) + 1),
-                e -> e
+                Optional::of
             ));
 
         TestImpl test = new TestImpl();
@@ -25,14 +26,13 @@ public class Test {
         Stream.of(test.getClass().getMethods())
             .filter(mt -> mt.getName().startsWith("set"))
             .forEach(mt -> {
-                Integer value = nameValue.getOrDefault(mt.getName(), null);
-                if(value != null) {
+                nameValue.getOrDefault(mt.getName(), Optional.empty()).ifPresent(value -> {
                     try {
                         mt.invoke(test, value);  // Truyền đối tượng test vào đây
                     } catch (IllegalAccessException | InvocationTargetException e) {
                         e.printStackTrace();
                     }
-                }
+                });
             });
 
         System.out.println(test);
