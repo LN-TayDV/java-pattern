@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BonusTaxSettingDomain implements IncomeTaxSettingDomain<BonusItem> {
+public class BonusTaxSettingDomain extends IncomeTaxSettingDomain<BonusItem> {
 
     private  List<BonusItem> bonusItems;
 

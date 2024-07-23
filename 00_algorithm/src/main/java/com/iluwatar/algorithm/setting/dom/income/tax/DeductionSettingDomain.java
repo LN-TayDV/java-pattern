@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class DeductionSettingDomain implements IncomeTaxSettingDomain<DeductionItem> {
+public class DeductionSettingDomain extends IncomeTaxSettingDomain<DeductionItem> {
 
     List<DeductionItem> deductionItems;
 
