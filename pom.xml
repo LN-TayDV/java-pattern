@@ -74,6 +74,7 @@
         <module>12_resilience</module>
         <module>13_messaging</module>
         <module>00_java_core</module>
+        <module>14_spring_core</module>
     </modules>
     <repositories>
         <repository>
