@@ -12,21 +12,25 @@ public class MessageDigestFactoryBean implements FactoryBean<MessageDigest>, Ini
 
     @Override
     public MessageDigest getObject() throws Exception {
-        return null;
+        return messageDigest;
     }
 
     @Override
-    public Class<?> getObjectType() {
-        return null;
+    public Class<MessageDigest> getObjectType() {
+        return MessageDigest.class;
     }
 
     @Override
     public boolean isSingleton() {
-        return FactoryBean.super.isSingleton();
+        return true;
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        messageDigest = MessageDigest.getInstance(algorithmName);
+    }
 
+    public void setAlgorithmName(String algorithmName) {
+        this.algorithmName = algorithmName;
     }
 }
