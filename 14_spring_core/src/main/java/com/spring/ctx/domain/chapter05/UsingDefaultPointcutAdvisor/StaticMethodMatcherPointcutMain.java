@@ -1,5 +1,8 @@
 package com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor;
 
+import com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor.types.GoodGuitarist;
+import com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor.types.GreatGuitarist;
+import com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor.types.Singer;
 import org.aopalliance.aop.Advice;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.ClassFilter;
@@ -7,7 +10,6 @@ import org.springframework.aop.Pointcut;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
-import reactor.util.annotation.NonNullApi;
 import java.lang.reflect.Method;
 
 public class StaticMethodMatcherPointcutMain {

@@ -1,4 +1,4 @@
-package com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor;
+package com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor.types;
 
 import lombok.extern.slf4j.Slf4j;
 
