@@ -1,4 +1,4 @@
-package com.spring.ctx.domain.chapter05.CreatingAdviceProgrammatically;
+package com.spring.ctx.domain.chapter05.usage.poincuts.advisor.CreatingAdviceProgrammatically;
 
 import jakarta.annotation.Nonnull;
 import lombok.extern.slf4j.Slf4j;

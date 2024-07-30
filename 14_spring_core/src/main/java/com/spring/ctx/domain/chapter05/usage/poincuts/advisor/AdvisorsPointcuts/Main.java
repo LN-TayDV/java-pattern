@@ -1,4 +1,4 @@
-package com.spring.ctx.domain.chapter05.AdvisorsPointcuts;
+package com.spring.ctx.domain.chapter05.usage.poincuts.advisor.AdvisorsPointcuts;
 
 import java.lang.reflect.Method;
 

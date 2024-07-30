@@ -1,7 +1,7 @@
-package com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor;
+package com.spring.ctx.domain.chapter05.usage.poincuts.advisor.UsingDefaultPointcutAdvisor;
 
-import com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor.types.GoodGuitarist;
-import com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor.types.Singer;
+import com.spring.ctx.domain.chapter05.usage.poincuts.advisor.UsingDefaultPointcutAdvisor.types.GoodGuitarist;
+import com.spring.ctx.domain.chapter05.usage.poincuts.advisor.UsingDefaultPointcutAdvisor.types.Singer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.ClassFilter;

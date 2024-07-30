@@ -59,8 +59,8 @@ public class Test {
             return e;
         }
 
-        public int getValue() {
-            return this.test03.get().value;
+        public Test03 getValue() {
+            return this.test03.get();
         }
 
         public void setValue (int value) {
@@ -77,8 +77,8 @@ public class Test {
     }
 
     public static void main(String[] args) {
-       var test = Test01.of(2, 2);
-       System.out.println(test);
+        var test = Test01.of(2, 3);
+        System.out.println(test);
         System.out.println(test.getValue());
     }
 
@@ -102,8 +102,7 @@ public class Test {
         TestImpl entity = new TestImpl();
 
         Stream.of(entity.getClass().getMethods())
-            .filter(
-                mt -> mt.getName().startsWith("set") && targetValueMap.containsKey(mt.getName()))
+            .filter(mt -> mt.getName().startsWith("set") && targetValueMap.containsKey(mt.getName()))
             .forEach(mt -> {
                 targetValueMap.getOrDefault(mt.getName(), Optional.empty())
                     .ifPresent(targetValue -> {

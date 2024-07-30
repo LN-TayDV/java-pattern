@@ -1,6 +1,5 @@
-package com.spring.ctx.domain.chapter05.UsingDefaultPointcutAdvisor.types;
+package com.spring.ctx.domain.chapter05.usage.poincuts.advisor.UsingDefaultPointcutAdvisor.types;
 
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
