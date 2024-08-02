@@ -75,6 +75,7 @@
         <module>13_messaging</module>
         <module>00_java_core</module>
         <module>14_spring_core</module>
+        <module>15_jakartar_ee</module>
     </modules>
     <repositories>
         <repository>
