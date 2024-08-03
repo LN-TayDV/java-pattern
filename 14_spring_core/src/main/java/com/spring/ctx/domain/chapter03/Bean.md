@@ -138,3 +138,71 @@ public class MyController {
 - **`@Autowired`**: Được sử dụng để tự động tiêm phụ thuộc vào các bean đã được quản lý bởi Spring.
 
 Mỗi loại annotation có vai trò riêng và có thể được sử dụng cùng nhau để tạo ra một ứng dụng Spring rõ ràng và dễ bảo trì.
+
+
+Đúng vậy, khi bạn sử dụng `@Service`, `@Repository`, `@Controller`, hoặc `@Component`, Spring sẽ tự động phát hiện và tạo các bean từ các lớp này nhờ vào cơ chế quét lớp (classpath scanning) và tự động đăng ký chúng vào ngữ cảnh ứng dụng. Tuy nhiên, có những tình huống mà việc sử dụng `@Bean` trong lớp cấu hình (`@Configuration`) vẫn cần thiết. Dưới đây là một số lý do:
+
+### 1. **Tạo Bean với Cấu Hình Phức Tạp**
+
+Khi bạn cần cấu hình phức tạp hoặc cần khởi tạo bean với các tham số đặc biệt, việc sử dụng phương thức `@Bean` cho phép bạn cấu hình bean một cách chi tiết hơn.
+
+**Ví dụ**:
+```java
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public MyService myService() {
+        MyService myService = new MyService();
+        myService.setSomeProperty("value");
+        return myService;
+    }
+}
+```
+
+### 2. **Tạo Bean với Dependencies Khác**
+
+Khi bean cần phụ thuộc vào các bean khác hoặc cần các tham số cấu hình từ bên ngoài, việc sử dụng `@Bean` cho phép bạn dễ dàng cấu hình các phụ thuộc này.
+
+**Ví dụ**:
+```java
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public MyService myService(OtherDependency otherDependency) {
+        return new MyService(otherDependency);
+    }
+}
+```
+
+### 3. **Quản Lý Bean Từ Các Thư Viện Bên Ngoài**
+
+Nếu bạn đang làm việc với các thư viện bên ngoài không được tự động phát hiện (như các lớp từ thư viện của bên thứ ba), bạn có thể cần định nghĩa các bean bằng cách sử dụng phương thức `@Bean`.
+
+**Ví dụ**:
+```java
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public ThirdPartyService thirdPartyService() {
+        return new ThirdPartyService();
+    }
+}
+```
+
+### 4. **Cần Tinh Chỉnh Bean**
+
+Nếu bạn cần tinh chỉnh hoặc cấu hình lại các bean đã được tạo ra bởi các lớp sử dụng các annotation như `@Service`, bạn có thể sử dụng `@Bean` để thay thế hoặc mở rộng cấu hình của chúng.
+
+### 5. **Tính Tương Thích và Khả Năng Tinh Chỉnh**
+
+Việc sử dụng `@Bean` có thể giúp bạn dễ dàng kiểm soát và tinh chỉnh cấu hình của các bean, đặc biệt trong các tình huống mà bạn cần khả năng linh hoạt cao hơn so với việc chỉ sử dụng `@Service` hoặc các annotation tương tự.
+
+### Tóm Lại
+
+- **`@Service`, `@Repository`, `@Controller`, `@Component`**: Tự động phát hiện và đăng ký các bean trong ngữ cảnh ứng dụng.
+- **`@Bean`**: Cung cấp khả năng cấu hình chi tiết, xử lý phụ thuộc phức tạp, và quản lý các bean từ thư viện bên ngoài.
+
+Việc sử dụng `@Bean` và các annotation như `@Service` có thể được kết hợp trong các tình huống khác nhau tùy thuộc vào yêu cầu của ứng dụng và cách bạn muốn cấu hình các bean của mình.
