@@ -538,3 +538,17 @@ This project is licensed under the terms of the MIT license.
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+Desktop License Key:
+(start)LnCFYt2DrZbpH7vIqL7bg9ePRQBa4uJVFtyMeJa55v3G2EGS+hTAcmHovKQsIN/Ay4IgJBdYV9tB
+0TQbM3SAHuA54kdhgPgbbEhfQKAxkKrtspKV25ZK3NhxMYTEttx2YwqdsXr+m3mGvrVBnNyDrqWC
++NP59cxyW9dti0sNZ9evHzi4bsy8GNYqdgpSObkFI93QwjGk0mEBCh5qv3xMHgcVqnnKifc10a6t
+AtbJ8Pc+xjXT8dhkvCRjdLblTi2tf6k+OKS7J7L8vhRonsqoCXBb0l/jSHUEfuinhGnnXVBi4Iwo
+eWswB5WmR6ywZGiKC5w7wxLynCyuGZsUy5Fjc72eCmfPjdyUXZqtb8m7jc62w2a1YywdjTfXUNp8
+6QDSwJIK//HmMwlNk3l9TwnTDuOKVZobwxafNrgG7HtUxou+aFSdfN2pSrrLnudpHChHzZQ9ovJ1
+2jmYQ8lMRd6gmGfJJtDHUgZK/vB8ZDt0HAgQ1aH+4bds/zBOzxqY7nO7ZUJtEc7WzqVHlNcIlamq
+CZ7jsKlFEUuJ7ynr7cJbaHeGw5KFzoRjKzMjpzfEP3RI/I8bvcOejIqhgymENzN7vwx4LoUOq+Vs
+anVVR4uyHrJsf2+R0uITdRFT+3p2KIm//tnR9S/ngBW3rWDVIKPX32n8LQpx1EV+1pYLlR1NdbVh
+c4dVwy5SdnnUc+lWQwQGNG89OdsgAU1sHjwGA85Phc2JSgb+lPCSHFADOAcK7jMRhUfYWJL7tqXT
+bZqcM4apsHQgU0oR/PV4eeEJGs98SaoV4REB3GJZGapreTPn5+yYQ/xEkJsQP8Wi9VOvHW7CnvKT
+g9qInmremB2gZNvZ4w==(end)
