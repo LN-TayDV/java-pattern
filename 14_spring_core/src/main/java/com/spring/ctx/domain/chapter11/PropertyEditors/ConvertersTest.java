@@ -22,15 +22,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.database.access.chapter09.transaction.management.transaction.status;
 
-import org.springframework.transaction.TransactionException;
+package com.spring.ctx.domain.chapter11.PropertyEditors;
 
-public interface SavepointManager {
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.spring.ctx.domain.chapter11.AppConfig;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-    Object createSavepoint() throws TransactionException;
+@Slf4j
+public class ConvertersTest {
 
-    void rollbackToSavepoint(Object savepoint) throws TransactionException;
+    private static final ObjectMapper mapper = new ObjectMapper();
 
-    void releaseSavepoint(Object savepoint) throws TransactionException;
+    static {
+        mapper.registerModule(new JavaTimeModule());
+    }
+
+    @SneakyThrows
+    public static void main(String[] args) {
+
+        try (var ctx = new AnnotationConfigApplicationContext(AppConfig.class,
+            CustomRegistrarCfg.class)) {
+
+            var springBlogger = ctx.getBean("springBlogger", Blogger.class);
+            String springBloggerJson = mapper.writeValueAsString(springBlogger);
+            LOGGER.info("SpringBlogger info: {}", springBloggerJson);
+
+            var awsBlogger = ctx.getBean("awsBlogger", Blogger.class);
+            String awsBloggerJson = mapper.writeValueAsString(awsBlogger);
+            LOGGER.info("AwsBlogger info: {}", awsBloggerJson);
+        }
+
+    }
 }

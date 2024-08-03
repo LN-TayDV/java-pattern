@@ -22,51 +22,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.database.access.chapter06.jdbc.connection.dataSource;
 
-import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.dbcp2.BasicDataSource;
+package com.spring.ctx.domain.chapter11;
+
+import com.spring.ctx.domain.chapter11.PropertyEditors.Blogger;
+import java.net.URL;
+import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import javax.sql.DataSource;
 
+@PropertySource("classpath:blogger.properties")
 @Configuration
-@PropertySource("classpath:db/jdbc.properties")
-@Slf4j
-public class BasicDataSourceCfg {
+public class AppConfig {
 
-    @Value("${driverClassName}")
-    private String driverClassName;
+    @Bean
+    public Blogger awsBlogger(@Value("Alex") String firstName,
+                              @Value("DeBrie") String lastName,
+                              @Value("https://www.alexdebrie.com") URL personalSite,
+                              @Value("1980-01-02") LocalDate birthDate) throws Exception {
+        return new Blogger(firstName, lastName, birthDate, personalSite);
+    }
 
-    @Value("${url}")
-    private String url;
-
-    @Value("${username}")
-    private String username;
-
-    @Value("${password}")
-    private String password;
-
-    @Bean(name = "basicDataSource", destroyMethod = "close")
-    public DataSource dataSource() {
-        if(username.equals("ADMIN")) {
-            username = "postgres";
-        }
-        try {
-            var dataSource = new BasicDataSource();
-            dataSource.setDriverClassName(driverClassName);
-            dataSource.setUrl(url);
-            dataSource.setUsername(username);
-            dataSource.setPassword(password);
-
-            LOGGER.info("dataSource: {}, {}, {}, {} ", driverClassName, url, username, password);
-
-            return dataSource;
-        } catch (Exception e) {
-            LOGGER.error("DBCP DataSource bean cannot be created!", e);
-            return null;
-        }
+    @Bean
+    public Blogger springBlogger(@Value("${springBlogger.firstName}") String firstName,
+                                 @Value("${springBlogger.lastName}") String lastName,
+                                 @Value("${springBlogger.personalSite}") URL personalSite,
+                                 @Value("${springBlogger.birthDate}") LocalDate birthDate)
+        throws Exception {
+        return new Blogger(firstName, lastName, birthDate, personalSite);
     }
 }

@@ -22,15 +22,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.database.access.chapter09.transaction.management.transaction.status;
 
-import org.springframework.transaction.TransactionException;
+package com.spring.ctx.domain.chapter11.type.conversion;
 
-public interface SavepointManager {
+import com.spring.ctx.domain.chapter11.AppConfig;
+import java.util.HashSet;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.support.ConversionServiceFactoryBean;
 
-    Object createSavepoint() throws TransactionException;
+@Configuration
+@ComponentScan(basePackages = {
+    "com.spring.ctx.domain.chapter11.type.conversion"
+})
+@Import(AppConfig.class)
+public class ConverterCfg {
 
-    void rollbackToSavepoint(Object savepoint) throws TransactionException;
+    @Bean
+    public ConversionServiceFactoryBean conversionService() {
 
-    void releaseSavepoint(Object savepoint) throws TransactionException;
+        var conversionServiceFactoryBean = new ConversionServiceFactoryBean();
+
+        var convs = new HashSet<>();
+
+        convs.add(new LocalDateConverter());
+        convs.add(new SimpleBlogger.BloggerToSimpleBloggerConverter());
+
+        conversionServiceFactoryBean.setConverters(convs);
+
+        conversionServiceFactoryBean.afterPropertiesSet();
+
+        return conversionServiceFactoryBean;
+    }
 }

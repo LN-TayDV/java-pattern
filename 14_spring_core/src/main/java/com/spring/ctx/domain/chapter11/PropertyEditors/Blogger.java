@@ -22,15 +22,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.database.access.chapter09.transaction.management.transaction.status;
 
-import org.springframework.transaction.TransactionException;
+package com.spring.ctx.domain.chapter11.PropertyEditors;
 
-public interface SavepointManager {
+import java.net.URL;
+import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    Object createSavepoint() throws TransactionException;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Blogger {
 
-    void rollbackToSavepoint(Object savepoint) throws TransactionException;
-
-    void releaseSavepoint(Object savepoint) throws TransactionException;
+    String firstName;
+    String lastName;
+    LocalDate birthDate;
+    URL personalSite;
 }

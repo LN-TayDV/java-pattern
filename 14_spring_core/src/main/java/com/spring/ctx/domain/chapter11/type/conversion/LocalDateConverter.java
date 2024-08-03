@@ -22,15 +22,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.database.access.chapter09.transaction.management.transaction.status;
 
-import org.springframework.transaction.TransactionException;
+package com.spring.ctx.domain.chapter11.type.conversion;
 
-public interface SavepointManager {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import org.springframework.core.convert.converter.Converter;
 
-    Object createSavepoint() throws TransactionException;
+public class LocalDateConverter implements Converter<String, LocalDate> {
 
-    void rollbackToSavepoint(Object savepoint) throws TransactionException;
+    private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-    void releaseSavepoint(Object savepoint) throws TransactionException;
+    @Override
+    public LocalDate convert(String source) {
+        return LocalDate.parse(source, dateFormat);
+    }
 }

@@ -22,15 +22,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.database.access.chapter09.transaction.management.transaction.status;
 
-import org.springframework.transaction.TransactionException;
+package com.spring.ctx.domain.chapter11.PropertyEditors;
 
-public interface SavepointManager {
+import com.spring.ctx.domain.chapter11.AppConfig;
+import java.time.LocalDate;
+import org.springframework.beans.PropertyEditorRegistrar;
+import org.springframework.beans.factory.config.CustomEditorConfigurer;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
-    Object createSavepoint() throws TransactionException;
+@Configuration
+@ComponentScan(basePackages = "com.spring.ctx.domain.chapter11.PropertyEditors")
+@Import(AppConfig.class)
+public class CustomRegistrarCfg {
 
-    void rollbackToSavepoint(Object savepoint) throws TransactionException;
+    @Bean
+    public PropertyEditorRegistrar registrar() {
+        return registry -> registry.registerCustomEditor(LocalDate.class,
+            new LocalDatePropertyEditor());
+    }
 
-    void releaseSavepoint(Object savepoint) throws TransactionException;
+    @Bean
+    public CustomEditorConfigurer customEditorConfigurer() {
+
+        var cus = new CustomEditorConfigurer();
+
+        var registrars = new PropertyEditorRegistrar[1];
+
+        registrars[0] = registrar();
+
+        cus.setPropertyEditorRegistrars(registrars);
+
+        return cus;
+    }
 }

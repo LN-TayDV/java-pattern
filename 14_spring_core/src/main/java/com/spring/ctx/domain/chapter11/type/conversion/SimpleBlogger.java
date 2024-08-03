@@ -22,15 +22,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.database.access.chapter09.transaction.management.transaction.status;
 
-import org.springframework.transaction.TransactionException;
+package com.spring.ctx.domain.chapter11.type.conversion;
 
-public interface SavepointManager {
+import com.spring.ctx.domain.chapter11.PropertyEditors.Blogger;
+import java.net.URL;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.core.convert.converter.Converter;
 
-    Object createSavepoint() throws TransactionException;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class SimpleBlogger {
 
-    void rollbackToSavepoint(Object savepoint) throws TransactionException;
+    String fullName;
+    URL personalSite;
 
-    void releaseSavepoint(Object savepoint) throws TransactionException;
+    public static class BloggerToSimpleBloggerConverter
+        implements Converter<Blogger, SimpleBlogger> {
+
+        @Override
+        public SimpleBlogger convert(Blogger source) {
+            return new SimpleBlogger(
+                source.getFirstName() + " " + source.getLastName(),
+                source.getPersonalSite()
+            );
+        }
+    }
 }
