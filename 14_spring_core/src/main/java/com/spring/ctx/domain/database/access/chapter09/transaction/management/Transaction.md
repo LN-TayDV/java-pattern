@@ -83,7 +83,7 @@ Spring hỗ trợ nhiều loại Transaction Managers, tùy thuộc vào công n
 
 Hy vọng thông tin này giúp bạn hiểu rõ hơn về các mức độ cô lập trong quản lý giao dịch cơ sở dữ liệu!
 
-[//]: # ()
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Dưới đây là giải thích chi tiết về các chế độ truyền (propagation mode) trong Spring Framework và ý nghĩa của chúng:
 
