@@ -1,9 +1,9 @@
 package com.spring.ctx.domain.chapter11.validation.validation.constraints;
 
 import jakarta.validation.ConstraintViolation;
+import java.util.Set;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import java.util.Set;
 
 @Slf4j
 public class JakartaValidationTest {
@@ -29,10 +29,10 @@ public class JakartaValidationTest {
 
     }
 
-    private static void listViolations(Set <ConstraintViolation<SingerDomain>> violations) {
+    private static void listViolations(Set<ConstraintViolation<SingerDomain>> violations) {
         violations.forEach(violation ->
             LOGGER.info(
-                "Validation error for property: {} with value: {} with error message: {}" ,
+                "Validation error for property: {} with value: {} with error message: {}",
                 violation.getPropertyPath(),
                 violation.getInvalidValue(),
                 violation.getMessage()

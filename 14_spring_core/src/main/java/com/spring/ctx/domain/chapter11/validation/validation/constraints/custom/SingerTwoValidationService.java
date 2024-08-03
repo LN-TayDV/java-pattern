@@ -1,10 +1,9 @@
 package com.spring.ctx.domain.chapter11.validation.validation.constraints.custom;
 
-import com.spring.ctx.domain.chapter11.validation.validation.constraints.SingerDomain;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
-import org.springframework.stereotype.Service;
 import java.util.Set;
+import org.springframework.stereotype.Service;
 
 @Service("singerTwoValidationService")
 public class SingerTwoValidationService {

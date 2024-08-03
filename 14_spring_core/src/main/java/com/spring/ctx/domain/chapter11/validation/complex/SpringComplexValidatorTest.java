@@ -2,11 +2,11 @@ package com.spring.ctx.domain.chapter11.validation.complex;
 
 import com.spring.ctx.domain.chapter11.AppConfig;
 import com.spring.ctx.domain.chapter11.FormattingServiceCfg;
+import java.time.LocalDate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.ValidationUtils;
-import java.time.LocalDate;
 
 @Slf4j
 public class SpringComplexValidatorTest {
@@ -21,7 +21,8 @@ public class SpringComplexValidatorTest {
         )) {
             var address = new Address("221B", "UK");
 
-            var blogger = new BloggerWithAddress( null, "Mazzie", LocalDate.of(1973, 1, 1), null, address);
+            var blogger =
+                new BloggerWithAddress(null, "Mazzie", LocalDate.of(1973, 1, 1), null, address);
 
             var bloggerValidator = ctx.getBean(BloggerWithAddressValidator.class);
 

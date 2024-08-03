@@ -2,8 +2,8 @@ package com.spring.ctx.domain.chapter11.validation.validation.constraints;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
-import org.springframework.stereotype.Service;
 import java.util.Set;
+import org.springframework.stereotype.Service;
 
 @Service("singerValidationService")
 public class SingerValidationService {

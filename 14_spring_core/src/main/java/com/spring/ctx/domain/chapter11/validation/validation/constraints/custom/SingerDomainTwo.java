@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class SingerDomainTwo {
 
     @NotNull
-    @Size(min=2, max=60)
+    @Size(min = 2, max = 60)
     private String firstName;
 
     private String lastName;
@@ -24,12 +24,12 @@ public class SingerDomainTwo {
 
     private SingerDomain.Gender gender;
 
-    @AssertTrue(message="ERROR => [SingerDomainTwo]]! Individual singer should have gender and last name defined")
+    @AssertTrue(message = "ERROR => [SingerDomainTwo]]! Individual singer should have gender and last name defined")
     public boolean isCountrySinger() {
         return genre == null
             || (
-                !genre.equals(SingerDomain.Genre.COUNTRY)
+            !genre.equals(SingerDomain.Genre.COUNTRY)
                 || (gender != null && lastName != null)
-            );
+        );
     }
 }

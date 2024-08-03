@@ -13,7 +13,8 @@ public class BloggerWithAddressValidator implements Validator {
 
     public BloggerWithAddressValidator(Validator addressValidator) {
         if (!addressValidator.supports(Address.class)) {
-            throw new IllegalArgumentException("The supplied [Validator] must support the validation of [Address] instances.");
+            throw new IllegalArgumentException(
+                "The supplied [Validator] must support the validation of [Address] instances.");
         }
         this.addressValidator = addressValidator;
     }

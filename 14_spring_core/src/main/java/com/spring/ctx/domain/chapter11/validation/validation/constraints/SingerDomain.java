@@ -31,8 +31,7 @@ public class SingerDomain {
         POP("P"),
         JAZZ("J"),
         BLUES("B"),
-        COUNTRY("C")
-        ;
+        COUNTRY("C");
         private final String code;
 
         Genre(String code) {
@@ -47,8 +46,7 @@ public class SingerDomain {
     public enum Gender {
         MALE("M"),
         FEMALE("F"),
-        UNSPECIFIED("U")
-        ;
+        UNSPECIFIED("U");
 
         private final String code;
 

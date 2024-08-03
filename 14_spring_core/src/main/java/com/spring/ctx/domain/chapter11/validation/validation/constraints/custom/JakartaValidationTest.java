@@ -14,7 +14,7 @@ public class JakartaValidationTest {
     public static void main(String[] args) {
 
         testCountrySingerTwoValidation();
-        
+
     }
 
     static void testCountrySingeValidation() {
@@ -50,7 +50,8 @@ public class JakartaValidationTest {
             LOGGER.info(" assertEquals : {}", 1 == violations.size());
 
             violations.forEach(violation ->
-                LOGGER.info("Validation error for property: {} with value: {} with error message: {}" ,
+                LOGGER.info(
+                    "Validation error for property: {} with value: {} with error message: {}",
                     violation.getPropertyPath(),
                     violation.getInvalidValue(),
                     violation.getMessage()
