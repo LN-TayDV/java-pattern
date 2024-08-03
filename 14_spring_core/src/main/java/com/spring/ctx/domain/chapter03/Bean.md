@@ -84,3 +84,57 @@ public class MyComponent {
 - **`@Autowired`**: Tự động tiêm phụ thuộc vào các bean.
 
 Các annotation này giúp phân loại và tổ chức các lớp trong ứng dụng, làm cho mã nguồn dễ bảo trì và quản lý hơn.
+
+Bạn đúng là có thể sử dụng `@Autowired` để tự động tiêm phụ thuộc vào các bean đã được Spring quản lý. Tuy nhiên, việc sử dụng `@Bean` và các annotation khác như `@Service`, `@Repository`, và `@Controller` có những mục đích và lợi ích riêng. Dưới đây là lý do vì sao bạn vẫn cần sử dụng `@Bean` và các annotation chuyên biệt:
+
+### `@Bean`
+
+- **Mục đích**: Được sử dụng trong các lớp cấu hình (`@Configuration`) để định nghĩa các bean. Đây là cách để bạn có thể tạo và cấu hình các đối tượng mà Spring sẽ quản lý. `@Bean` cho phép bạn tạo bean từ các phương thức trong lớp cấu hình.
+- **Lợi ích**: Cung cấp một cách linh hoạt để cấu hình các bean, đặc biệt khi bạn cần cấu hình phức tạp hơn hoặc khi bạn cần tạo các bean không phải là các lớp tự động phát hiện được (như đối tượng của các thư viện bên ngoài).
+
+**Ví dụ**:
+```java
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+```
+
+### `@Component`, `@Service`, `@Repository`, `@Controller`
+
+- **Mục đích**: Những annotation này đều là các dạng chuyên biệt của `@Component`. Chúng giúp phân loại và đánh dấu các loại bean khác nhau trong ứng dụng.
+    - **`@Service`**: Đánh dấu một lớp là lớp dịch vụ, giúp tăng tính rõ ràng trong cấu trúc ứng dụng.
+    - **`@Repository`**: Đánh dấu một lớp là lớp truy cập dữ liệu, và cung cấp các tính năng bổ sung cho quản lý lỗi liên quan đến cơ sở dữ liệu.
+    - **`@Controller`**: Đánh dấu một lớp là lớp điều khiển trong ứng dụng web, chịu trách nhiệm xử lý các yêu cầu HTTP và trả về kết quả.
+
+**Ví dụ**:
+```java
+@Service
+public class MyService {
+    // Nội dung của lớp dịch vụ
+}
+
+@Repository
+public class MyRepository {
+    // Nội dung của lớp repository
+}
+
+@Controller
+public class MyController {
+    // Nội dung của lớp controller
+}
+```
+
+### Tóm lại
+
+- **`@Bean`**: Được sử dụng trong lớp cấu hình để định nghĩa và cấu hình các bean mà bạn muốn Spring quản lý. Cung cấp sự linh hoạt và khả năng cấu hình chi tiết.
+
+- **`@Component`, `@Service`, `@Repository`, `@Controller`**: Cung cấp cách phân loại các bean theo chức năng của chúng trong ứng dụng, giúp mã nguồn dễ hiểu hơn và dễ bảo trì hơn. Chúng cũng giúp tự động phát hiện và đăng ký các bean trong quá trình quét lớp.
+
+- **`@Autowired`**: Được sử dụng để tự động tiêm phụ thuộc vào các bean đã được quản lý bởi Spring.
+
+Mỗi loại annotation có vai trò riêng và có thể được sử dụng cùng nhau để tạo ra một ứng dụng Spring rõ ràng và dễ bảo trì.
