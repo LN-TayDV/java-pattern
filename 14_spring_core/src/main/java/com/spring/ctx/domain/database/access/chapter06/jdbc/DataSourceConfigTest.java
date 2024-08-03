@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.database.access.chapter06.jdbc.connection;
+package com.spring.ctx.domain.database.access.chapter06.jdbc;
 
 import com.spring.ctx.domain.database.access.chapter06.jdbc.connection.dataSource.JndiDataSourceCfg;
 import com.spring.ctx.domain.database.access.chapter06.jdbc.connection.dataSource.SimpleDataSourceCfg;
