@@ -28,41 +28,39 @@ package com.iluwatar.halfsynchalfasync;
 import java.util.concurrent.Callable;
 
 /**
- * Represents some computation that is performed asynchronously and its result. The computation is
- * typically done is background threads and the result is posted back in form of callback. The
- * callback does not implement {@code isComplete}, {@code cancel} as it is out of scope of this
- * pattern.
+ * Đại diện cho một số tính toán được thực hiện không đồng bộ và kết quả của nó. Tính toán
+ * thường được thực hiện trong các luồng nền và kết quả được gửi lại dưới dạng callback. Callback
+ * không triển khai {@code isComplete}, {@code cancel} vì nó không thuộc phạm vi của mẫu thiết kế này.
  *
- * @param <O> type of result
+ * @param <O> loại kết quả
  */
 public interface AsyncTask<O> extends Callable<O> {
     /**
-     * Is called in context of caller thread before call to {@link #call()}. Large tasks should not be
-     * performed in this method as it will block the caller thread. Small tasks such as validations
-     * can be performed here so that the performance penalty of context switching is not incurred in
-     * case of invalid requests.
+     * Được gọi trong ngữ cảnh của luồng caller trước khi gọi {@link #call()}. Các nhiệm vụ lớn không nên
+     * được thực hiện trong phương thức này vì nó sẽ chặn luồng caller. Các nhiệm vụ nhỏ như xác thực
+     * có thể được thực hiện ở đây để tránh chi phí chuyển ngữ cảnh trong trường hợp yêu cầu không hợp lệ.
      */
     void onPreCall();
 
     /**
-     * A callback called after the result is successfully computed by {@link #call()}. In our
-     * implementation this method is called in context of background thread but in some variants, such
-     * as Android where only UI thread can change the state of UI widgets, this method is called in
-     * context of UI thread.
+     * Một callback được gọi sau khi kết quả được tính toán thành công bởi {@link #call()}. Trong triển khai
+     * của chúng tôi, phương thức này được gọi trong ngữ cảnh của luồng nền nhưng trong một số biến thể, chẳng
+     * hạn như Android nơi chỉ luồng UI có thể thay đổi trạng thái của các widget giao diện người dùng, phương
+     * thức này được gọi trong ngữ cảnh của luồng UI.
      */
     void onPostCall(O result);
 
     /**
-     * A callback called if computing the task resulted in some exception. This method is called when
-     * either of {@link #call()} or {@link #onPreCall()} throw any exception.
+     * Một callback được gọi nếu việc tính toán nhiệm vụ dẫn đến một số ngoại lệ. Phương thức này được gọi khi
+     * {@link #call()} hoặc {@link #onPreCall()} ném ra bất kỳ ngoại lệ nào.
      *
-     * @param throwable error cause
+     * @param throwable nguyên nhân lỗi
      */
     void onError(Throwable throwable);
 
     /**
-     * This is where the computation of task should reside. This method is called in context of
-     * background thread.
+     * Đây là nơi tính toán của nhiệm vụ nên nằm. Phương thức này được gọi trong ngữ cảnh của
+     * luồng nền.
      */
     @Override
     O call() throws Exception;
