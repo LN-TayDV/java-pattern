@@ -22,46 +22,51 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.algorithm.theories.sort;
+package com.spring.ctx.domain.chapter12.task.execution.inJava.sort;
 
-public class MergeSort {
+import java.util.Random;
 
-    public static void mergeSort(int[] array, int left, int right) {
-        if (left < right) {
-            int mid = (left + right) / 2;
-            mergeSort(array, left, mid);
-            mergeSort(array, mid + 1, right);
-            merge(array, left, mid, right);
+public class QuickSort extends AbstractSort{
+
+    private static final Random RANDOM = new Random();
+
+    public QuickSort(int[] array) {
+        super(array);
+    }
+
+    @Override
+    public void sort(int[] array) {
+        QuickSort.quickSort(array, 0, array.length - 1);
+    }
+
+    public static void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            int pi = partition(array, low, high);
+            quickSort(array, low, pi - 1);
+            quickSort(array, pi + 1, high);
         }
     }
 
-    private static void merge(int[] array, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
-        int[] L = new int[n1];
-        int[] R = new int[n2];
-        System.arraycopy(array, left, L, 0, n1);
-        System.arraycopy(array, mid + 1, R, 0, n2);
-        int i = 0, j = 0, k = left;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                array[k] = L[i];
+    private static int partition(int[] array, int low, int high) {
+        // Chọn pivot ngẫu nhiên
+        int pivotIndex = low + RANDOM.nextInt(high - low + 1);
+        int pivot = array[pivotIndex];
+        swap(array, pivotIndex, high);
+
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (array[j] <= pivot) {
                 i++;
-            } else {
-                array[k] = R[j];
-                j++;
+                swap(array, i, j);
             }
-            k++;
         }
-        while (i < n1) {
-            array[k] = L[i];
-            i++;
-            k++;
-        }
-        while (j < n2) {
-            array[k] = R[j];
-            j++;
-            k++;
-        }
+        swap(array, i + 1, high);
+        return i + 1;
+    }
+
+    private static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }

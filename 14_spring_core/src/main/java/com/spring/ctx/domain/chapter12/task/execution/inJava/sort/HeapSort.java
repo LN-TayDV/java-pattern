@@ -22,46 +22,44 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.algorithm.theories.sort;
+package com.spring.ctx.domain.chapter12.task.execution.inJava.sort;
 
-public class MergeSort {
+public class HeapSort extends AbstractSort {
 
-    public static void mergeSort(int[] array, int left, int right) {
-        if (left < right) {
-            int mid = (left + right) / 2;
-            mergeSort(array, left, mid);
-            mergeSort(array, mid + 1, right);
-            merge(array, left, mid, right);
+    public HeapSort(int[] array) {
+        super(array);
+    }
+
+    @Override
+    public void sort(int[] array) {
+        HeapSort.heapSort(array);
+    }
+
+    public static void heapSort(int[] array) {
+        int n = array.length;
+        for (int i = n / 2 - 1; i >= 0; i--)
+            heapify(array, n, i);
+        for (int i = n - 1; i >= 0; i--) {
+            int temp = array[0];
+            array[0] = array[i];
+            array[i] = temp;
+            heapify(array, i, 0);
         }
     }
 
-    private static void merge(int[] array, int left, int mid, int right) {
-        int n1 = mid - left + 1;
-        int n2 = right - mid;
-        int[] L = new int[n1];
-        int[] R = new int[n2];
-        System.arraycopy(array, left, L, 0, n1);
-        System.arraycopy(array, mid + 1, R, 0, n2);
-        int i = 0, j = 0, k = left;
-        while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
-                array[k] = L[i];
-                i++;
-            } else {
-                array[k] = R[j];
-                j++;
-            }
-            k++;
-        }
-        while (i < n1) {
-            array[k] = L[i];
-            i++;
-            k++;
-        }
-        while (j < n2) {
-            array[k] = R[j];
-            j++;
-            k++;
+    private static void heapify(int[] array, int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        if (left < n && array[left] > array[largest])
+            largest = left;
+        if (right < n && array[right] > array[largest])
+            largest = right;
+        if (largest != i) {
+            int swap = array[i];
+            array[i] = array[largest];
+            array[largest] = swap;
+            heapify(array, n, largest);
         }
     }
 }

@@ -22,9 +22,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.algorithm.theories.sort;
+package com.spring.ctx.domain.chapter12.task.execution.inJava.sort;
 
-public class MergeSort {
+public class MergeSort extends AbstractSort {
+
+    public MergeSort(int[] array) {
+        super(array);
+    }
+
+    @Override
+    public void sort(int[] array) {
+        MergeSort.mergeSort(array, 0, array.length - 1);
+    }
 
     public static void mergeSort(int[] array, int left, int right) {
         if (left < right) {
