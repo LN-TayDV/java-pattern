@@ -24,7 +24,9 @@
  */
 package com.iluwatar.algorithm.theories.on.internet.search.astar;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.PriorityQueue;
+import java.util.Set;
 
 public class AStar {
 

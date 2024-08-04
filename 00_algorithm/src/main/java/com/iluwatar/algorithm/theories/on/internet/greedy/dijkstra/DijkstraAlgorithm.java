@@ -24,8 +24,6 @@
  */
 package com.iluwatar.algorithm.theories.on.internet.greedy.dijkstra;
 
-import java.util.*;
-
 public class DijkstraAlgorithm {
     private static final int V = 9;
 

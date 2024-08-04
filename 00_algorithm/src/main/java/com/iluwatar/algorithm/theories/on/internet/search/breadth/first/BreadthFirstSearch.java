@@ -24,7 +24,8 @@
  */
 package com.iluwatar.algorithm.theories.on.internet.search.breadth.first;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class BreadthFirstSearch {
     private int V; // Số lượng đỉnh

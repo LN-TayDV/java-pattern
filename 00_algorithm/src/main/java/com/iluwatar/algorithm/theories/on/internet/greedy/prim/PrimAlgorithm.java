@@ -24,8 +24,6 @@
  */
 package com.iluwatar.algorithm.theories.on.internet.greedy.prim;
 
-import java.util.*;
-
 public class PrimAlgorithm {
     public static int primMST(int[][] graph) {
         int V = graph.length;

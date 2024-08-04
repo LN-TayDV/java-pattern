@@ -25,12 +25,15 @@
 package com.iluwatar.algorithm.theories.on.internet.encryption;
 
 import java.util.Arrays;
-import weka.core.*;
 import weka.classifiers.functions.LinearRegression;
-import weka.classifiers.lazy.IBk;
-import weka.classifiers.functions.SMO;
 import weka.classifiers.functions.MultilayerPerceptron;
+import weka.classifiers.functions.SMO;
+import weka.classifiers.lazy.IBk;
 import weka.classifiers.trees.J48;
+import weka.core.Attribute;
+import weka.core.DenseInstance;
+import weka.core.FastVector;
+import weka.core.Instances;
 
 public class MachineLearning {
 

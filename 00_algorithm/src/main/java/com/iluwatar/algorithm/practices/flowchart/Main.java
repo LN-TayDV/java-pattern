@@ -24,11 +24,11 @@
  */
 package com.iluwatar.algorithm.practices.flowchart;
 
-import lombok.extern.slf4j.Slf4j;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class Main {
