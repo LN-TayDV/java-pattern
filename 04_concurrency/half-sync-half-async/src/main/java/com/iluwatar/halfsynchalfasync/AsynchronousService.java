@@ -42,7 +42,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class AsynchronousService {
-    /*
+    /**
      * Đây là lớp đại diện cho lớp hàng đợi cũng như lớp đồng bộ của mẫu thiết kế. Nhóm luồng
      * chứa các luồng làm việc thực hiện các nhiệm vụ theo cách chặn/đồng bộ. Các nhiệm vụ dài hạn
      * nên được thực hiện trong nền để không ảnh hưởng đến hiệu suất của luồng chính.
