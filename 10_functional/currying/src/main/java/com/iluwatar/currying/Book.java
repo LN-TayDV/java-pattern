@@ -45,6 +45,7 @@ public class Book {
         -> bookTitle
         -> bookPublicationDate
         -> new Book(bookGenre, bookAuthor, bookTitle, bookPublicationDate);
+
     private final Genre genre;
     private final String author;
     private final String title;

@@ -1,236 +1,86 @@
----
-title: Async Method Invocation
-category: Concurrency
-language: en
-tag:
-    - Asynchronous
-    - Decoupling
-    - Reactive
-    - Scalability
-    - Thread management
----
+### Mẫu Thiết Kế: Gọi Phương Thức Bất Đồng Bộ
 
-## Intent
+**Mục đích**
 
-Asynchronous method invocation is a pattern where the calling thread is not blocked while waiting results of tasks. The pattern provides parallel processing of multiple independent tasks and retrieving the results via callbacks or waiting until everything is done.
+Mẫu gọi phương thức bất đồng bộ giúp luồng gọi không bị chặn khi chờ kết quả của các tác vụ. Mẫu này cho phép xử lý song song nhiều tác vụ độc lập và nhận kết quả qua callback hoặc chờ cho đến khi mọi việc hoàn tất.
 
-## Also known as
+**Cũng được biết đến với**
 
-* Asynchronous Procedure Call
+* Cuộc gọi phương thức bất đồng bộ (Asynchronous Procedure Call)
 
-## Explanation
+**Giải thích**
 
-Real-world example
+**Ví dụ thực tế**
 
-> In the context of space rockets, an analogous example of the Async Method Invocation pattern can be seen in the communication between the mission control center and the onboard systems of the rocket. When mission control sends a command to the rocket to adjust its trajectory or perform a system check, they do not wait idly for the rocket to complete the task and report back. Instead, mission control continues to monitor other aspects of the mission and manage different tasks. The rocket executes the command asynchronously and sends a status update or result back to mission control once the operation is complete. This allows mission control to efficiently manage multiple concurrent operations without being blocked by any single task, similar to how asynchronous method invocation works in software systems.
+> Trong bối cảnh tên lửa vũ trụ, mẫu gọi phương thức bất đồng bộ có thể thấy trong giao tiếp giữa trung tâm điều khiển nhiệm vụ và các hệ thống trên tên lửa. Khi trung tâm điều khiển gửi lệnh cho tên lửa điều chỉnh quỹ đạo hoặc thực hiện kiểm tra hệ thống, họ không chờ đợi tên lửa hoàn thành nhiệm vụ và phản hồi ngay lập tức. Thay vào đó, trung tâm điều khiển tiếp tục giám sát các khía cạnh khác của nhiệm vụ và quản lý các công việc khác. Tên lửa thực hiện lệnh một cách bất đồng bộ và gửi cập nhật trạng thái hoặc kết quả trở lại trung tâm điều khiển khi hoàn thành. Điều này cho phép trung tâm điều khiển quản lý nhiều hoạt động đồng thời mà không bị chặn bởi một nhiệm vụ cụ thể.
 
-In plain words
+**Nói đơn giản**
 
-> Asynchronous method invocation starts task processing and returns immediately before the task is ready. The results of the task processing are returned to the caller later.
+> Gọi phương thức bất đồng bộ bắt đầu xử lý tác vụ và trả về ngay lập tức trước khi tác vụ sẵn sàng. Kết quả của tác vụ được trả về cho người gọi sau đó.
 
-Wikipedia says
+**Wikipedia nói**
 
-> In multithreaded computer programming, asynchronous method invocation (AMI), also known as asynchronous method calls or the asynchronous pattern is a design pattern in which the call site is not blocked while waiting for the called code to finish. Instead, the calling thread is notified when the reply arrives. Polling for a reply is an undesired option.
+> Trong lập trình đa luồng, gọi phương thức bất đồng bộ (AMI), còn được gọi là cuộc gọi phương thức bất đồng bộ hoặc mẫu bất đồng bộ, là một mẫu thiết kế trong đó vị trí gọi không bị chặn khi chờ đợi mã đã gọi hoàn thành. Thay vào đó, luồng gọi được thông báo khi phản hồi đến. Việc kiểm tra phản hồi là một tùy chọn không mong muốn.
 
-**Programmatic Example**
+**Ví dụ chương trình**
 
-In this example, we are launching space rockets and deploying lunar rovers.
+Dưới đây là ví dụ về việc phóng tên lửa và triển khai các rover mặt trăng:
 
-The application demonstrates the async method invocation pattern. The key parts of the pattern are`AsyncResult` which is an intermediate container for an asynchronously evaluated value, `AsyncCallback` which can be provided to be executed on task completion and `AsyncExecutor` that manages the execution of the async tasks.
+* Các lớp `AsyncResult`, `AsyncCallback`, và `AsyncExecutor` cho phép thực hiện các tác vụ bất đồng bộ.
+* `ThreadAsyncExecutor` là một triển khai của `AsyncExecutor`, xử lý các tác vụ bất đồng bộ trên các luồng riêng biệt.
 
 ```java
 public interface AsyncResult<T> {
     boolean isCompleted();
-
     T getValue() throws ExecutionException;
-
     void await() throws InterruptedException;
 }
-```
 
-```java
 public interface AsyncCallback<T> {
     void onComplete(T value);
-
     void onError(Exception ex);
 }
-```
 
-```java
 public interface AsyncExecutor {
     <T> AsyncResult<T> startProcess(Callable<T> task);
-
     <T> AsyncResult<T> startProcess(Callable<T> task, AsyncCallback<T> callback);
-
     <T> T endProcess(AsyncResult<T> asyncResult) throws ExecutionException, InterruptedException;
 }
 ```
 
-`ThreadAsyncExecutor` is an implementation of `AsyncExecutor`. Some of its key parts are highlighted next.
-
-```java
-public class ThreadAsyncExecutor implements AsyncExecutor {
-
-    @Override
-    public <T> AsyncResult<T> startProcess(Callable<T> task) {
-        return startProcess(task, null);
-    }
-
-    @Override
-    public <T> AsyncResult<T> startProcess(Callable<T> task, AsyncCallback<T> callback) {
-        var result = new CompletableResult<>(callback);
-        new Thread(
-                () -> {
-                    try {
-                        result.setValue(task.call());
-                    } catch (Exception ex) {
-                        result.setException(ex);
-                    }
-                },
-                "executor-" + idx.incrementAndGet())
-                .start();
-        return result;
-    }
-
-    @Override
-    public <T> T endProcess(AsyncResult<T> asyncResult)
-            throws ExecutionException, InterruptedException {
-        if (!asyncResult.isCompleted()) {
-            asyncResult.await();
-        }
-        return asyncResult.getValue();
-    }
-}
-```
-
-Then we are ready to launch some rockets to see how everything works together.
-
-```java
-  public static void main(String[] args) throws Exception {
-    // construct a new executor that will run async tasks
-    var executor = new ThreadAsyncExecutor();
-
-    // start few async tasks with varying processing times, two last with callback handlers
-    final var asyncResult1 = executor.startProcess(lazyval(10, 500));
-    final var asyncResult2 = executor.startProcess(lazyval("test", 300));
-    final var asyncResult3 = executor.startProcess(lazyval(50L, 700));
-    final var asyncResult4 = executor.startProcess(lazyval(20, 400),
-            callback("Deploying lunar rover"));
-    final var asyncResult5 =
-            executor.startProcess(lazyval("callback", 600), callback("Deploying lunar rover"));
-
-    // emulate processing in the current thread while async tasks are running in their own threads
-    Thread.sleep(350); // Oh boy, we are working hard here
-    log("Mission command is sipping coffee");
-
-    // wait for completion of the tasks
-    final var result1 = executor.endProcess(asyncResult1);
-    final var result2 = executor.endProcess(asyncResult2);
-    final var result3 = executor.endProcess(asyncResult3);
-    asyncResult4.await();
-    asyncResult5.await();
-
-    // log the results of the tasks, callbacks log immediately when complete
-    log(String.format(ROCKET_LAUNCH_LOG_PATTERN, result1));
-    log(String.format(ROCKET_LAUNCH_LOG_PATTERN, result2));
-    log(String.format(ROCKET_LAUNCH_LOG_PATTERN, result3));
-}
-```
-
-Here's the program console output.
-
-```
-21:47:08.227[executor-2]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<test> launched successfully
-21:47:08.269[main]INFO com.iluwatar.async.method.invocation.generic.App-Mission command is sipping coffee
-21:47:08.318[executor-4]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<20>launched successfully
-21:47:08.335[executor-4]INFO com.iluwatar.async.method.invocation.generic.App-Deploying lunar rover<20>
-21:47:08.414[executor-1]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<10>launched successfully
-21:47:08.519[executor-5]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<callback> launched successfully
-21:47:08.519[executor-5]INFO com.iluwatar.async.method.invocation.generic.App-Deploying lunar rover<callback>
-21:47:08.616[executor-3]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<50>launched successfully
-21:47:08.617[main]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<10>launch complete
-21:47:08.617[main]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<test> launch complete
-21:47:08.618[main]INFO com.iluwatar.async.method.invocation.generic.App-Space rocket<50>launch complete
-```
-
-# Class diagram
-
-![Async Method Invocation](./etc/async-method-invocation.urm.png "Async Method Invocation")
-
-## Applicability
-
-Use the async method invocation pattern when
-
-* When operations do not need to complete before proceeding with the next steps in a program.
-* For tasks that are resource-intensive or time-consuming, such as IO operations, network requests, or complex computations, where making the operation synchronous would significantly impact performance or user experience.
-* In GUI applications to prevent freezing or unresponsiveness during long-running tasks.
-* In web applications for non-blocking IO operations.
-
-## Known Uses
-
-* Web servers handling HTTP requests asynchronously to improve throughput and reduce latency.
-* Desktop and mobile applications using background threads to perform time-consuming operations without blocking the user interface.
-* Microservices architectures where services perform asynchronous communications via messaging queues or event streams.
-* [FutureTask](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html)
-* [CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
-* [ExecutorService](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html)
-* [Task-based Asynchronous Pattern](https://msdn.microsoft.com/en-us/library/hh873175.aspx)
-
-## Consequences
-
-Benefits:
-
-* Improved Responsiveness: The main thread or application flow remains unblocked, improving the user experience in GUI applications and overall responsiveness.
-* Better Resource Utilization: By enabling parallel execution, system resources (like CPU and IO) are utilized more efficiently, potentially improving the application's throughput.
-* Scalability: Easier to scale applications, as tasks can be distributed across available resources more effectively.
-
-Trade-offs:
-
-* Complexity: Introducing asynchronous operations can complicate the codebase, making it more challenging to understand, debug, and maintain.
-* Resource Management: Requires careful management of threads or execution contexts, which can introduce overhead and potential resource exhaustion issues.
-* Error Handling: Asynchronous operations can make error handling more complex, as exceptions may occur in different threads or at different times.
-
-Related Patterns:
-
-* [Command](https://java-design-patterns.com/patterns/command/): Asynchronous method invocation can be used to implement the Command pattern, where commands are executed asynchronously.
-* [Observer](https://java-design-patterns.com/patterns/observer/): Asynchronous method invocation can be used to notify observers asynchronously when a subject's state changes.
-* [Promise](https://java-design-patterns.com/patterns/promise/): The AsyncResult interface can be considered a form of Promise, representing a value that may not be available yet.
-
-## Credits
-
-* [Design Patterns: Elements of Reusable Object-Oriented Software](https://amzn.to/3Ti1N4f)
-* [Effective Java](https://amzn.to/4cGk2Jz)
-* [Java Concurrency in Practice](https://amzn.to/4ab97VU)
-
-## Ứng dụng
+**Tính ứng dụng**
 
 Sử dụng mẫu gọi phương thức bất đồng bộ khi:
 
 * Các hoạt động không cần hoàn thành trước khi tiếp tục với các bước tiếp theo trong chương trình.
-* Cho các nhiệm vụ tốn tài nguyên hoặc mất thời gian, như thao tác IO, yêu cầu mạng, hoặc tính toán phức tạp, nơi làm cho hoạt động đồng bộ sẽ ảnh hưởng đáng kể đến hiệu suất hoặc trải nghiệm người dùng.
-* Trong các ứng dụng GUI để ngăn chặn đóng băng hoặc không phản hồi trong các nhiệm vụ chạy lâu.
+* Các nhiệm vụ tốn tài nguyên hoặc mất thời gian, như thao tác IO, yêu cầu mạng, hoặc tính toán phức tạp.
+* Trong các ứng dụng GUI để ngăn chặn việc đóng băng hoặc không phản hồi.
 * Trong các ứng dụng web cho các thao tác IO không chặn.
 
-## Các ứng dụng đã biết
+**Ứng dụng đã biết**
 
-* Các máy chủ web xử lý yêu cầu HTTP bất đồng bộ để cải thiện thực hiện và giảm độ trễ.
-* Ứng dụng máy tính để bàn và di động sử dụng các luồng nền để thực hiện các hoạt động mất thời gian mà không chặn giao diện người dùng.
-* Kiến trúc microservices trong đó các dịch vụ thực hiện giao tiếp bất đồng bộ thông qua hàng đợi tin nhắn hoặc luồng sự kiện.
-* [FutureTask](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/FutureTask.html)
-* [CompletableFuture](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html)
-* [ExecutorService](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html)
-* [Mẫu Asynchronous Pattern dựa trên nhiệm vụ](https://msdn.microsoft.com/en-us/library/hh873175.aspx)
+* Máy chủ web xử lý yêu cầu HTTP bất đồng bộ.
+* Ứng dụng máy tính để bàn và di động sử dụng luồng nền cho các hoạt động mất thời gian.
+* Kiến trúc microservices thực hiện giao tiếp bất đồng bộ qua hàng đợi tin nhắn hoặc luồng sự kiện.
 
-## Hậu quả
+**Hậu quả**
 
-Lợi ích:
+* **Lợi ích:**
+    * Cải thiện phản hồi của ứng dụng.
+    * Sử dụng tài nguyên hiệu quả hơn.
+    * Dễ mở rộng ứng dụng.
 
-* Phản hồi cải thiện: Luồng chính hoặc dòng ứng dụng vẫn không bị chặn, cải thiện trải nghiệm người dùng trong ứng dụng GUI và phản hồi tổng thể.
-* Sử dụng tài nguyên tốt hơn: Bằng cách cho phép thực hiện song song, các tài nguyên hệ thống (như CPU và IO) được sử dụng hiệu quả hơn, có thể cải thiện hiệu suất của ứng dụng.
-* Khả năng mở rộng: Dễ dàng mở rộng ứng dụng, vì nhiệm vụ có thể được phân phối trên các tài nguyên có sẵn một cách hiệu quả hơn.
+* **Nhược điểm:**
+    * Tăng độ phức tạp của mã nguồn.
+    * Quản lý tài nguyên đòi hỏi cẩn thận.
+    * Xử lý lỗi trở nên phức tạp hơn.
 
-Nhược điểm:
+**Các mẫu liên quan**
 
-* Phức tạp: Giới thiệu các hoạt động bất đồng bộ có thể làm phức tạp mã nguồn, làm cho nó khó hiểu, gỡ lỗi và bảo trì hơn.
-* Quản lý tài nguyên: Yêu cầu quản lý cẩn thận các luồng hoặc ngữ cảnh thực thi, có thể gây ra chi phí và vấn đề cạn kiệt tài nguyên tiềm ẩn.
-* Xử lý lỗi: Các hoạt động bất đồng bộ có thể làm cho xử lý lỗi trở nên phức tạp hơn, vì các ngoại lệ có thể xảy ra trong các luồng khác nhau hoặc vào các thời điểm khác nhau.
+* [Command](https://java-design-patterns.com/patterns/command/): Thực hiện các lệnh bất đồng bộ.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Thông báo cho các quan sát viên một cách bất đồng bộ.
+* [Promise](https://java-design-patterns.com/patterns/promise/): Đại diện cho một giá trị có thể chưa có sẵn.
+
+---
+
+Nếu cần thêm thông tin hoặc có câu hỏi khác, cứ cho mình biết nhé!

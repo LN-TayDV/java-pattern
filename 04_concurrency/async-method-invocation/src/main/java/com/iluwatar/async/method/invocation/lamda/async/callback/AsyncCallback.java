@@ -10,8 +10,10 @@ public class AsyncCallback implements Callback {
     public AsyncCallback() {
     }
 
+    private static final AsyncCallback instance = new AsyncCallback();
+
     public static AsyncCallback create() {
-        return new AsyncCallback();
+        return instance;
     }
 
     @Override

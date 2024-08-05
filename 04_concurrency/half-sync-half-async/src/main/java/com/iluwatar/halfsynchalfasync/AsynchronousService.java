@@ -34,46 +34,43 @@ import java.util.concurrent.TimeUnit;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * This is the asynchronous layer which does not block when a new request arrives. It just passes
- * the request to the synchronous layer which consists of a queue i.e. a {@link BlockingQueue} and a
- * pool of threads i.e. {@link ThreadPoolExecutor}. Out of this pool of worker threads one of the
- * thread picks up the task and executes it synchronously in background and the result is posted
- * back to the caller via callback.
+ * Đây là lớp không đồng bộ, không chặn khi một yêu cầu mới đến. Nó chỉ chuyển
+ * yêu cầu tới lớp đồng bộ bao gồm một hàng đợi {@link BlockingQueue} và một
+ * nhóm các luồng {@link ThreadPoolExecutor}. Trong nhóm các luồng làm việc này,
+ * một trong các luồng sẽ nhận nhiệm vụ và thực hiện nó đồng bộ trong nền và kết quả
+ * sẽ được gửi lại cho caller thông qua callback.
  */
 @Slf4j
 public class AsynchronousService {
-    /*
-     * This represents the queuing layer as well as synchronous layer of the pattern. The thread pool
-     * contains worker threads which execute the tasks in blocking/synchronous manner. Long-running
-     * tasks should be performed in the background which does not affect the performance of main
-     * thread.
+    /**
+     * Đây là lớp đại diện cho lớp hàng đợi cũng như lớp đồng bộ của mẫu thiết kế. Nhóm luồng
+     * chứa các luồng làm việc thực hiện các nhiệm vụ theo cách chặn/đồng bộ. Các nhiệm vụ dài hạn
+     * nên được thực hiện trong nền để không ảnh hưởng đến hiệu suất của luồng chính.
      */
     private final ExecutorService service;
 
     /**
-     * Creates an asynchronous service using {@code workQueue} as communication channel between
-     * asynchronous layer and synchronous layer. Different types of queues such as Priority queue, can
-     * be used to control the pattern of communication between the layers.
+     * Tạo một dịch vụ không đồng bộ sử dụng {@code workQueue} làm kênh giao tiếp giữa
+     * lớp không đồng bộ và lớp đồng bộ. Các loại hàng đợi khác nhau như hàng đợi ưu tiên có thể
+     * được sử dụng để kiểm soát mẫu giao tiếp giữa các lớp.
      */
     public AsynchronousService(BlockingQueue<Runnable> workQueue) {
         service = new ThreadPoolExecutor(10, 10, 10, TimeUnit.SECONDS, workQueue);
     }
 
-
     /**
-     * A non-blocking method which performs the task provided in background and returns immediately.
+     * Một phương thức không chặn thực hiện nhiệm vụ được cung cấp trong nền và trả về ngay lập tức.
      *
-     * <p>On successful completion of task the result is posted back using callback method {@link
-     * AsyncTask#onPostCall(Object)}, if task execution is unable to complete normally due to some
-     * exception then the reason for error is posted back using callback method {@link
+     * <p>Khi nhiệm vụ hoàn thành thành công, kết quả sẽ được gửi lại bằng phương thức callback {@link
+     * AsyncTask#onPostCall(Object)}, nếu thực hiện nhiệm vụ không thể hoàn thành bình thường do một số
+     * ngoại lệ thì lý do lỗi sẽ được gửi lại bằng phương thức callback {@link
      * AsyncTask#onError(Throwable)}.
      *
-     * <p>NOTE: The results are posted back in the context of background thread in this
-     * implementation.
+     * <p>CHÚ Ý: Kết quả được gửi lại trong ngữ cảnh của luồng nền trong triển khai này.
      */
     public <T> void execute(final AsyncTask<T> task) {
         try {
-            // some small tasks such as validation can be performed here.
+            // Một số nhiệm vụ nhỏ như xác thực có thể được thực hiện ở đây.
             task.onPreCall();
         } catch (Exception e) {
             task.onError(e);
@@ -86,14 +83,15 @@ public class AsynchronousService {
                 super.done();
                 try {
                     /*
-                     * called in context of background thread. There is other variant possible where result is
-                     * posted back and sits in the queue of caller thread which then picks it up for
-                     * processing. An example of such a system is Android OS, where the UI elements can only
-                     * be updated using UI thread. So result must be posted back in UI thread.
+                     * Được gọi trong ngữ cảnh của luồng nền. Có một biến thể khác có thể xảy ra
+                     * khi kết quả được gửi lại và nằm trong hàng đợi của luồng caller, sau đó
+                     * được nhận để xử lý. Một ví dụ về hệ thống như vậy là hệ điều hành Android,
+                     * nơi các phần tử giao diện người dùng chỉ có thể được cập nhật bằng luồng UI.
+                     * Vì vậy, kết quả phải được gửi lại trong luồng UI.
                      */
                     task.onPostCall(get());
                 } catch (InterruptedException e) {
-                    // should not occur
+                    // không nên xảy ra
                 } catch (ExecutionException e) {
                     task.onError(e.getCause());
                 }
@@ -102,14 +100,14 @@ public class AsynchronousService {
     }
 
     /**
-     * Stops the pool of workers. This is a blocking call to wait for all tasks to be completed.
+     * Dừng nhóm các luồng làm việc. Đây là một gọi chặn để chờ tất cả các nhiệm vụ hoàn thành.
      */
     public void close() {
         service.shutdown();
         try {
             service.awaitTermination(10, TimeUnit.SECONDS);
         } catch (InterruptedException ie) {
-            LOGGER.error("Error waiting for executor service shutdown!");
+            LOGGER.error("Lỗi khi chờ đóng dịch vụ executor!");
         }
     }
 }

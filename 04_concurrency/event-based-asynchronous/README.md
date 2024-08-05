@@ -1,69 +1,59 @@
----
-title: Event-Based Asynchronous
-category: Concurrency
-language: en
-tag:
-    - Asynchronous
-    - Decoupling
-    - Event-driven
-    - Fault tolerance
-    - Messaging
-    - Reactive
-    - Scalability
+Dưới đây là bản dịch của cơ chế **Event-Based Asynchronous** sang tiếng Việt:
+
 ---
 
-## Also known as
+## Cũng được biết đến với
 
-* Asynchronous Event Handling
+* Xử lý Sự kiện Bất đồng bộ
 
-## Intent
+## Mục đích
 
-The Event-Based Asynchronous pattern allows a system to handle tasks that might take some time to complete without blocking the execution of the program. It enables better resource utilization by freeing up a thread that would otherwise be blocked waiting for the task to complete.
+Mẫu thiết kế Bất đồng bộ Dựa trên Sự kiện cho phép hệ thống xử lý các tác vụ có thể mất một thời gian để hoàn thành mà không làm tắc nghẽn việc thực thi chương trình. Nó giúp sử dụng tài nguyên tốt hơn bằng cách giải phóng một luồng mà nếu không sẽ bị chặn lại khi chờ tác vụ hoàn tất.
 
-## Explanation
+## Giải thích
 
-Real-world example
+**Ví dụ thực tế**
 
-> A real-world analogy of the Event-Based Asynchronous design pattern is how a restaurant operates. When a customer places an order, the waiter records the order and passes it to the kitchen. Instead of waiting at the kitchen for the food to be prepared, the waiter continues to serve other tables. Once the kitchen completes the order, they signal (event) the waiter, who then delivers the food to the customer. This allows the waiter to handle multiple tasks efficiently without idle waiting, similar to how asynchronous programming handles tasks in parallel, enhancing overall efficiency and responsiveness.
+> Một ví dụ thực tế về mẫu thiết kế Bất đồng bộ Dựa trên Sự kiện là cách một nhà hàng hoạt động. Khi một khách hàng đặt món, người phục vụ ghi lại đơn hàng và chuyển nó cho nhà bếp. Thay vì chờ đợi ở nhà bếp cho món ăn được chuẩn bị, người phục vụ tiếp tục phục vụ các bàn khác. Khi nhà bếp hoàn tất đơn hàng, họ gửi tín hiệu (sự kiện) cho người phục vụ, người sau đó giao món ăn cho khách hàng. Điều này cho phép người phục vụ xử lý nhiều nhiệm vụ hiệu quả mà không phải chờ đợi không cần thiết, tương tự như cách lập trình bất đồng bộ xử lý các tác vụ song song, nâng cao hiệu suất và khả năng phản hồi tổng thể.
 
-In Plain Words
+**Nói đơn giản**
 
-> The Event-Based Asynchronous design pattern allows tasks to be executed in the background, notifying the main program via events when completed, thereby enhancing system efficiency and responsiveness without blocking ongoing operations.
+> Mẫu thiết kế Bất đồng bộ Dựa trên Sự kiện cho phép các tác vụ được thực hiện ở nền, thông báo cho chương trình chính thông qua các sự kiện khi hoàn tất, từ đó nâng cao hiệu suất và khả năng phản hồi của hệ thống mà không làm tắc nghẽn các hoạt động đang diễn ra.
 
-**Programmatic Example**
+**Ví dụ lập trình**
 
-The Event-Based Asynchronous design pattern allows tasks to be executed in the background, notifying the main program via events when completed. This enhances system efficiency and responsiveness without blocking ongoing operations.
+Mẫu thiết kế Bất đồng bộ Dựa trên Sự kiện cho phép các tác vụ được thực hiện ở nền, thông báo cho chương trình chính thông qua các sự kiện khi hoàn tất. Điều này nâng cao hiệu suất và khả năng phản hồi của hệ thống mà không làm tắc nghẽn các hoạt động đang diễn ra.
 
-In the provided code, we have several key classes implementing this pattern:
+Trong mã ví dụ được cung cấp, chúng ta có một số lớp chính triển khai mẫu này:
 
-- `App`: The main class that runs the application. It interacts with the `EventManager` to create, start, stop, and check the status of events.
-- `EventManager`: Manages the lifecycle of events, including creating, starting, stopping, and checking the status of events. It maintains a map of event IDs to `Event` objects.
-- `Event`: An abstract class that represents an event. It has two concrete subclasses: `AsyncEvent` and `SyncEvent`.
-- `AsyncEvent` and `SyncEvent`: Represent asynchronous and synchronous events respectively.
-- Custom exceptions: Thrown by the `EventManager` when certain conditions are not met.
+- `App`: Lớp chính chạy ứng dụng. Nó tương tác với `EventManager` để tạo, bắt đầu, dừng và kiểm tra trạng thái của các sự kiện.
+- `EventManager`: Quản lý vòng đời của các sự kiện, bao gồm việc tạo, bắt đầu, dừng và kiểm tra trạng thái của các sự kiện. Nó duy trì một bản đồ từ ID sự kiện đến các đối tượng `Event`.
+- `Event`: Một lớp trừu tượng đại diện cho một sự kiện. Nó có hai lớp con cụ thể: `AsyncEvent` và `SyncEvent`.
+- `AsyncEvent` và `SyncEvent`: Đại diện cho các sự kiện bất đồng bộ và đồng bộ tương ứng.
+- Các ngoại lệ tùy chỉnh: Được ném ra bởi `EventManager` khi các điều kiện nhất định không được đáp ứng.
 
-Here's a simplified code example of how these classes interact:
+Dưới đây là ví dụ mã đơn giản về cách các lớp này tương tác:
 
 ```java
-// Create an EventManager
+// Tạo một EventManager
 EventManager eventManager = new EventManager();
 
-// Create an asynchronous event that runs for 60 seconds
+// Tạo một sự kiện bất đồng bộ chạy trong 60 giây
 int asyncEventId = eventManager.createAsync(Duration.ofSeconds(60));
 
-// Start the asynchronous event
+// Bắt đầu sự kiện bất đồng bộ
 eventManager.start(asyncEventId);
 
-// Check the status of the asynchronous event
+// Kiểm tra trạng thái của sự kiện bất đồng bộ
 eventManager.status(asyncEventId);
 
-// Stop the asynchronous event
+// Dừng sự kiện bất đồng bộ
 eventManager.cancel(asyncEventId);
 ```
 
-In this example, the `App` class creates an `EventManager`, then uses it to create, start, check the status of, and stop an asynchronous event. The `EventManager` creates an `AsyncEvent` object, starts it in a separate thread, checks its status, and stops it when requested.
+Trong ví dụ này, lớp `App` tạo một `EventManager`, sau đó sử dụng nó để tạo, bắt đầu, kiểm tra trạng thái của và dừng một sự kiện bất đồng bộ. `EventManager` tạo một đối tượng `AsyncEvent`, bắt đầu nó trong một luồng riêng, kiểm tra trạng thái của nó và dừng nó khi yêu cầu.
 
-The `EventManager` class is the core of the Event-Based Asynchronous pattern implementation. It manages the lifecycle of events, including creating, starting, stopping, and checking the status of events. It maintains a map of event IDs to `Event` objects. Here's a snippet of how it creates an asynchronous event:
+Lớp `EventManager` là phần cốt lõi của việc triển khai mẫu Bất đồng bộ Dựa trên Sự kiện. Nó quản lý vòng đời của các sự kiện, bao gồm việc tạo, bắt đầu, dừng và kiểm tra trạng thái của các sự kiện. Nó duy trì một bản đồ từ ID sự kiện đến các đối tượng `Event`. Dưới đây là đoạn mã về cách nó tạo một sự kiện bất đồng bộ:
 
 ```java
 public int createAsync(Duration runtime) throws MaxNumOfEventsAllowedException, LongRunningEventException {
@@ -73,7 +63,7 @@ public int createAsync(Duration runtime) throws MaxNumOfEventsAllowedException, 
 }
 ```
 
-The `Event` class is an abstract class that represents an event. It has two concrete subclasses: `AsyncEvent` and `SyncEvent`. An `Event` has an ID, a runtime (how long it should run), and a status (whether it's running, completed, or ready to start). It also has methods to start and stop the event. Here's a snippet of how an `AsyncEvent` starts:
+Lớp `Event` là một lớp trừu tượng đại diện cho một sự kiện. Nó có hai lớp con cụ thể: `AsyncEvent` và `SyncEvent`. Một `Event` có một ID, thời gian chạy (bao lâu nó nên chạy) và trạng thái (nó đang chạy, đã hoàn thành, hoặc sẵn sàng để bắt đầu). Nó cũng có các phương thức để bắt đầu và dừng sự kiện. Dưới đây là đoạn mã về cách một `AsyncEvent` bắt đầu:
 
 ```java
 @Override
@@ -91,28 +81,28 @@ public void start() {
 }
 ```
 
-In this snippet, when an `AsyncEvent` is started, it runs in a separate thread without blocking the main thread.
+Trong đoạn mã này, khi một `AsyncEvent` được bắt đầu, nó chạy trong một luồng riêng mà không làm tắc nghẽn luồng chính.
 
-A synchronous event is created and managed similarly to an asynchronous event. Here's a snippet of how it creates and manages a synchronous event:
+Một sự kiện đồng bộ được tạo và quản lý tương tự như một sự kiện bất đồng bộ. Dưới đây là đoạn mã về cách tạo và quản lý một sự kiện đồng bộ:
 
 ```java
-// Create an EventManager
+// Tạo một EventManager
 EventManager eventManager = new EventManager();
 
-// Create a synchronous event that runs for 60 seconds
+// Tạo một sự kiện đồng bộ chạy trong 60 giây
 int syncEventId = eventManager.create(Duration.ofSeconds(60));
 
-// Start the synchronous event
+// Bắt đầu sự kiện đồng bộ
 eventManager.start(syncEventId);
 
-// Check the status of the synchronous event
+// Kiểm tra trạng thái của sự kiện đồng bộ
 eventManager.status(syncEventId);
 
-// Stop the synchronous event
+// Dừng sự kiện đồng bộ
 eventManager.cancel(syncEventId);
 ```
 
-In the `EventManager` class, a synchronous event is created using the `create` method:
+Trong lớp `EventManager`, một sự kiện đồng bộ được tạo bằng cách sử dụng phương thức `create`:
 
 ```java
 public int create(Duration runtime) throws MaxNumOfEventsAllowedException, LongRunningEventException {
@@ -122,64 +112,46 @@ public int create(Duration runtime) throws MaxNumOfEventsAllowedException, LongR
 }
 ```
 
-The `SyncEvent` class is a subclass of `Event` that represents a synchronous event. When a `SyncEvent` is started, it runs on the main thread and blocks it until the event is completed. Here's a snippet of how a `SyncEvent` starts:
+Lớp `SyncEvent` là một lớp con của `Event` đại diện cho một sự kiện đồng bộ. Khi một `SyncEvent` được bắt đầu, nó chạy trên luồng chính và làm tắc nghẽn nó cho đến khi sự kiện hoàn tất. Đây là sự khác biệt so với một `AsyncEvent`, mà chạy trong một luồng riêng mà không làm tắc nghẽn luồng chính.
 
-```java
-@Override
-public void start() {
-  try {
-    handleRunStart();
-    Thread.sleep(getRuntime().toMillis());
-    handleRunComplete();
-  } catch (InterruptedException e) {
-    handleRunFailure(e.getMessage());
-  }
-}
-```
+Đây là các phần chính của mẫu thiết kế Bất đồng bộ Dựa trên Sự kiện như được triển khai trong mã này. Mẫu thiết kế này cho phép các tác vụ được thực hiện ở nền, thông báo cho chương trình chính thông qua các sự kiện khi hoàn tất, từ đó nâng cao hiệu suất và khả năng phản hồi của hệ thống mà không làm tắc nghẽn các hoạt động đang diễn ra.
 
-In this snippet, when a `SyncEvent` is started, it runs on the main thread, blocking it until the event is completed. This is in contrast to an `AsyncEvent`, which runs in a separate thread without blocking the main thread.
-
-These are the key parts of the Event-Based Asynchronous design pattern as implemented in this code. The pattern allows tasks to be executed in the background, notifying the main program via events when completed, thereby enhancing system efficiency and responsiveness without blocking ongoing operations.
-
-## Class diagram
+## Sơ đồ lớp
 
 ![Event-Based Asynchronous](./etc/event-asynchronous.png "Event-Based Asynchronous")
 
-## Applicability
+## Tính khả dụng
 
-* When multiple tasks can be processed in parallel and independently.
-* Systems that require responsiveness and cannot afford to have threads blocked waiting for an operation to complete.
-* In GUI applications where user interface responsiveness is critical.
-* Distributed systems where long network operations are involved.
+* Khi nhiều tác vụ có thể được xử lý song song và độc lập.
+* Hệ thống yêu cầu khả năng phản hồi và không thể để các luồng bị chặn chờ đợi một thao tác hoàn tất.
+* Trong các ứng dụng GUI nơi khả năng phản hồi của giao diện người dùng là rất quan trọng.
+* Các hệ thống phân tán có liên quan đến các hoạt động mạng dài hạn.
 
-## Known Uses
+## Sử dụng đã biết
 
-* GUI libraries in Java (e.g., JavaFX, Swing with SwingWorker).
-* Java Message Service (JMS) for handling asynchronous messaging.
-* Java’s CompletableFuture and various Event-Driven Frameworks.
+* Thư viện GUI trong Java (ví dụ: JavaFX, Swing với SwingWorker).
+* Java Message Service (JMS) để xử lý tin nhắn bất đồng bộ.
+* CompletableFuture trong Java và các Framework Dựa trên Sự kiện khác.
 
-## Consequences
+## Hậu quả
 
-Benefits:
+Lợi ích:
 
-* Improves application scalability and responsiveness.
-* Reduces the resources wasted on threads that would simply wait for I/O operations.
-* Enhances fault tolerance through isolation of process execution.
+* Cải thiện khả năng mở rộng và khả năng phản hồi của ứng dụng.
+* Giảm lãng phí tài nguyên trên các luồng sẽ chỉ chờ đợi các hoạt động I/O.
+* Tăng cường khả năng chống lỗi thông qua việc cách ly quá trình thực thi.
 
-Trade-offs:
+Nhược điểm:
 
-* Increases complexity of error handling as errors may occur in different threads or at different times.
-* Can lead to harder-to-follow code and debugging challenges due to the non-linear nature of asynchronous code execution.
+* Tăng độ phức tạp của việc xử lý lỗi vì lỗi có thể xảy ra ở các luồng khác nhau hoặc vào các thời điểm khác nhau.
+* Có thể dẫn đến mã khó theo dõi hơn và khó gỡ lỗi do tính không tuyến tính của việc thực thi mã bất đồng bộ.
 
-Related Patterns
+Các mẫu liên quan
 
-* [Observer](https://java-design-patterns.com/patterns/observer/): Often used in conjunction where the observer reacts to events as they occur.
-* Publish/Subscribe: Related in terms of event handling mechanisms, particularly for messaging and event distribution across components.
-* [Command](https://java-design-patterns.com/patterns/command/): Useful for encapsulating all information needed to perform an action or trigger an event.
+* [Observer](https://java-design-patterns.com/patterns/observer/): Thường được sử dụng kết hợp với mẫu này, nơi người quan sát phản ứng với các sự kiện khi chúng xảy ra.
+* Publish/Subscribe: Liên quan đến các cơ chế xử lý sự kiện, đặc biệt là cho việc phân phối tin nhắn và sự kiện giữa các thành phần.
+* [Command](https://java-design-patterns.com/patterns/command/): Hữu ích cho việc đóng gói tất cả thông tin cần thiết để thực hiện một hành động hoặc kích hoạt một sự kiện.
 
-## Credits
+## Tín dụng
 
-* [Java Concurrency in Practice](https://amzn.to/4cYY4kU)
-* [Patterns of Enterprise Application Architecture](https://amzn.to/3Uh7rW1)
-* [Pro JavaFX 8: A Definitive Guide to Building Desktop, Mobile, and Embedded Java Clients](https://amzn.to/3vHUqLL)
-* [Event-based Asynchronous Pattern Overview (Microsoft)](https://msdn.microsoft.com/en-us/library/wewwczdw%28v=vs.110%29.aspx?f=255&MSPPError=-2147217396)
+* [Java Concurrency in Practice](https://amzn.to/4c
