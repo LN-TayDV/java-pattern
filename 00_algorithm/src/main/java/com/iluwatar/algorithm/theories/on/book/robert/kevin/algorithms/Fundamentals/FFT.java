@@ -85,8 +85,9 @@
 
 package com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Fundamentals;
 
-import edu.princeton.cs.algs4.system.StdOut;
-import edu.princeton.cs.algs4.system.StdRandom;
+
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdOut;
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdRandom;
 
 /**
  * The {@code FFT} class provides methods for computing the

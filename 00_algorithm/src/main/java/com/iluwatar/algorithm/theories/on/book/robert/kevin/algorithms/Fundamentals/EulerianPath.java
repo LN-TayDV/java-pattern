@@ -33,13 +33,14 @@
 
 package com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Fundamentals;
 
-import edu.princeton.cs.algs4.algorithms.Graphs.BreadthFirstPaths;
-import edu.princeton.cs.algs4.algorithms.Graphs.DirectedEulerianCycle;
-import edu.princeton.cs.algs4.algorithms.Graphs.DirectedEulerianPath;
-import edu.princeton.cs.algs4.algorithms.Graphs.Graph;
-import edu.princeton.cs.algs4.algorithms.Graphs.GraphGenerator;
-import edu.princeton.cs.algs4.system.StdOut;
-import edu.princeton.cs.algs4.system.StdRandom;
+
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Graphs.BreadthFirstPaths;
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Graphs.DirectedEulerianCycle;
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Graphs.DirectedEulerianPath;
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Graphs.Graph;
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Graphs.GraphGenerator;
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdOut;
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdRandom;
 
 /**
  * The {@code EulerianPath} class represents a data type

@@ -42,7 +42,8 @@
 
 package com.iluwatar.algorithm.theories.on.book.robert.kevin.system;
 
-import edu.princeton.cs.algs4.algorithms.Fundamentals.ThreeSum;
+
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Fundamentals.ThreeSum;
 
 /**
  * The {@code DoublingRatio} class provides a client for measuring
