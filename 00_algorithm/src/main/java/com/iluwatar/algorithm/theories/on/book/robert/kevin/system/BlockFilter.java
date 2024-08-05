@@ -54,7 +54,8 @@
 
 package com.iluwatar.algorithm.theories.on.book.robert.kevin.system;
 
-import edu.princeton.cs.algs4.algorithms.Fundamentals.SET;
+
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Fundamentals.SET;
 
 /**
  * The {@code BlockFilter} class provides a client for reading in a <em>blocklist</em>

@@ -32,8 +32,9 @@
 
 package com.iluwatar.algorithm.theories.on.book.robert.kevin.algorithms.Fundamentals;
 
-import edu.princeton.cs.algs4.system.StdIn;
-import edu.princeton.cs.algs4.system.StdOut;
+
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdIn;
+import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdOut;
 
 /**
  * Created by ricardodpsx@gmail.com on 4/01/15.
