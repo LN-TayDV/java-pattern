@@ -45,7 +45,7 @@
  *
  ******************************************************************************/
 
-package com.iluwatar.algorithm.theories.on.learning.Sorting.elementary;
+package com.iluwatar.algorithm.theories.on.learning.Sorting;
 
 import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdIn;
 import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdOut;

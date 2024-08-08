@@ -23,54 +23,56 @@
  * THE SOFTWARE.
  */
 /******************************************************************************
- *  Compilation:  javac Quick.java
- *  Execution:    java Quick < input.txt
+ *  Compilation:  javac Shell.java
+ *  Execution:    java Shell < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   https://algs4.cs.princeton.edu/23quicksort/tiny.txt
- *                https://algs4.cs.princeton.edu/23quicksort/words3.txt
+ *  Data files:   https://algs4.cs.princeton.edu/21elementary/tiny.txt
+ *                https://algs4.cs.princeton.edu/21elementary/words3.txt
  *
- *  Sorts a sequence of strings from standard input using quicksort.
+ *  Sorts a sequence of strings from standard input using shellsort.
  *
  *  % more tiny.txt
  *  S O R T E X A M P L E
  *
- *  % java Quick < tiny.txt
+ *  % java Shell < tiny.txt
  *  A E E L M O P R S T X                 [ one string per line ]
  *
  *  % more words3.txt
  *  bed bug dad yes zoo ... all bad yet
  *
- *  % java Quick < words3.txt
+ *  % java Shell < words3.txt
  *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
  *
  *
- *  Remark: For a type-safe version that uses static generics, see
- *
- *    https://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java
- *
  ******************************************************************************/
 
-package com.iluwatar.algorithm.theories.on.learning.Sorting.elementary;
+package com.iluwatar.algorithm.theories.on.learning.Sorting;
 
 import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdIn;
 import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdOut;
-import com.iluwatar.algorithm.theories.on.book.robert.kevin.system.StdRandom;
 
 /**
- * The {@code Quick} class provides static methods for sorting an
- * array and selecting the ith smallest element in an array using quicksort.
+ * The {@code Shell} class provides static methods for sorting an
+ * array using <em>Shellsort</em> with
+ * <a href = "https://oeis.org/A003462"> Knuth's increment sequence</a>
+ * (1, 4, 13, 40, ...). In the worst case, this implementation makes
+ * &Theta;(<em>n</em><sup>3/2</sup>) compares and exchanges to sort
+ * an array of length <em>n</em>.
+ * <p>
+ * This sorting algorithm is not stable.
+ * It uses &Theta;(1) extra memory (not including the input array).
  * <p>
  * For additional documentation, see
- * <a href="https://algs4.cs.princeton.edu/23quicksort">Section 2.3</a>
- * of <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
+ * <a href="https://algs4.cs.princeton.edu/21elementary">Section 2.1</a> of
+ * <i>Algorithms, 4th Edition</i> by Robert Sedgewick and Kevin Wayne.
  *
  * @author Robert Sedgewick
  * @author Kevin Wayne
  */
-public class Quick {
+public class Shell {
 
     // This class should not be instantiated.
-    private Quick() {
+    private Shell() {
     }
 
     /**
@@ -79,86 +81,25 @@ public class Quick {
      * @param a the array to be sorted
      */
     public static void sort(Comparable[] a) {
-        StdRandom.shuffle(a);
-        sort(a, 0, a.length - 1);
+        int n = a.length;
+
+        // 3x+1 increment sequence:  1, 4, 13, 40, 121, 364, 1093, ...
+        int h = 1;
+        while (h < n / 3) {
+            h = 3 * h + 1;
+        }
+
+        while (h >= 1) {
+            // h-sort the array
+            for (int i = h; i < n; i++) {
+                for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
+                    exch(a, j, j - h);
+                }
+            }
+            assert isHsorted(a, h);
+            h /= 3;
+        }
         assert isSorted(a);
-    }
-
-    // quicksort the subarray from a[lo] to a[hi]
-    private static void sort(Comparable[] a, int lo, int hi) {
-        if (hi <= lo) {
-            return;
-        }
-        int j = partition(a, lo, hi);
-        sort(a, lo, j - 1);
-        sort(a, j + 1, hi);
-        assert isSorted(a, lo, hi);
-    }
-
-    // partition the subarray a[lo..hi] so that a[lo..j-1] <= a[j] <= a[j+1..hi]
-    // and return the index j.
-    private static int partition(Comparable[] a, int lo, int hi) {
-        int i = lo;
-        int j = hi + 1;
-        Comparable v = a[lo];
-        while (true) {
-
-            // find item on lo to swap
-            while (less(a[++i], v)) {
-                if (i == hi) {
-                    break;
-                }
-            }
-
-            // find item on hi to swap
-            while (less(v, a[--j])) {
-                if (j == lo) {
-                    break;      // redundant since a[lo] acts as sentinel
-                }
-            }
-
-            // check if pointers cross
-            if (i >= j) {
-                break;
-            }
-
-            exch(a, i, j);
-        }
-
-        // put partitioning item v at a[j]
-        exch(a, lo, j);
-
-        // now, a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
-        return j;
-    }
-
-    /**
-     * Rearranges the array so that {@code a[k]} contains the kth smallest key;
-     * {@code a[0]} through {@code a[k-1]} are less than (or equal to) {@code a[k]}; and
-     * {@code a[k+1]} through {@code a[n-1]} are greater than (or equal to) {@code a[k]}.
-     *
-     * @param a the array
-     * @param k the rank of the key
-     * @return the key of rank {@code k}
-     * @throws IllegalArgumentException unless {@code 0 <= k < a.length}
-     */
-    public static Comparable select(Comparable[] a, int k) {
-        if (k < 0 || k >= a.length) {
-            throw new IllegalArgumentException("index is not between 0 and " + a.length + ": " + k);
-        }
-        StdRandom.shuffle(a);
-        int lo = 0, hi = a.length - 1;
-        while (hi > lo) {
-            int i = partition(a, lo, hi);
-            if (i > k) {
-                hi = i - 1;
-            } else if (i < k) {
-                lo = i + 1;
-            } else {
-                return a[i];
-            }
-        }
-        return a[lo];
     }
 
 
@@ -168,9 +109,6 @@ public class Quick {
 
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
-        if (v == w) {
-            return false;   // optimization when reference equals
-        }
         return v.compareTo(w) < 0;
     }
 
@@ -186,11 +124,7 @@ public class Quick {
      *  Check if array is sorted - useful for debugging.
      ***************************************************************************/
     private static boolean isSorted(Comparable[] a) {
-        return isSorted(a, 0, a.length - 1);
-    }
-
-    private static boolean isSorted(Comparable[] a, int lo, int hi) {
-        for (int i = lo + 1; i <= hi; i++) {
+        for (int i = 1; i < a.length; i++) {
             if (less(a[i], a[i - 1])) {
                 return false;
             }
@@ -198,6 +132,15 @@ public class Quick {
         return true;
     }
 
+    // is the array h-sorted?
+    private static boolean isHsorted(Comparable[] a, int h) {
+        for (int i = h; i < a.length; i++) {
+            if (less(a[i], a[i - h])) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     // print array to standard output
     private static void show(Comparable[] a) {
@@ -207,28 +150,15 @@ public class Quick {
     }
 
     /**
-     * Reads in a sequence of strings from standard input; quicksorts them;
+     * Reads in a sequence of strings from standard input; Shellsorts them;
      * and prints them to standard output in ascending order.
-     * Shuffles the array and then prints the strings again to
-     * standard output, but this time, using the select method.
      *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
         String[] a = StdIn.readAllStrings();
-        Quick.sort(a);
+        Shell.sort(a);
         show(a);
-        assert isSorted(a);
-
-        // shuffle
-        StdRandom.shuffle(a);
-
-        // display results again using select
-        StdOut.println();
-        for (int i = 0; i < a.length; i++) {
-            String ith = (String) Quick.select(a, i);
-            StdOut.println(ith);
-        }
     }
 
 }
