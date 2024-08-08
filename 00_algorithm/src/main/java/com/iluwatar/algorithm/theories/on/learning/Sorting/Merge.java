@@ -26,7 +26,7 @@ package com.iluwatar.algorithm.theories.on.learning.Sorting;
 
 public class Merge {
 
-    public static void sort(int[] array, int left, int right) {
+    public static void sort(Comparable[] array, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
             sort(array, left, mid);
@@ -35,7 +35,7 @@ public class Merge {
         }
     }
 
-    private static void merge(int[] array, int left, int mid, int right) {
+    private static void merge(Comparable[] array, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
         int[] L = new int[n1];
