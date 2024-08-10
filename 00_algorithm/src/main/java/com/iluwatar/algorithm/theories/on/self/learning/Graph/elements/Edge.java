@@ -16,7 +16,7 @@ public class Edge<T, W> {
     private final Vertex<T> startVertex;
     private final Vertex<T> endVertex;
     private final W weight;
-    private boolean directed;
+    private final boolean directed;
 
     public Edge(Vertex<T> startVertex, Vertex<T> endVertex, W weight, boolean directed) {
         this.startVertex = startVertex;
