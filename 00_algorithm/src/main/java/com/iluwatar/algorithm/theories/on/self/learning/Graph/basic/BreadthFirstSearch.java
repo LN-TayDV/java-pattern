@@ -41,10 +41,9 @@ public class BreadthFirstSearch<T, W> {
         LOGGER.info("--------------------------------------------------------------------------");
         while (!queue.isEmpty()) {
 
-            // Lấy đỉnh từ đầu hàng đợi
             LOGGER.info("Lấy đỉnh từ đầu hàng đợi");
             Vertex<T> currentVertex = queue.poll();
-            System.out.println("Visited vertex: " + currentVertex.getTop());
+            LOGGER.info("---------- Visited vertex: {} ----------------" , currentVertex.getTop());
 
             // Duyệt qua các đỉnh kề
             LOGGER.info("Duyệt qua các đỉnh kề");
@@ -63,7 +62,7 @@ public class BreadthFirstSearch<T, W> {
     }
     public static void main(String[] args) {
         // Tạo đồ thị
-        Graph<String, Integer> graph = new Graph<>(true);
+        Graph<String, Integer> graph = new Graph<>(false);
 
         // Thêm các đỉnh vào đồ thị
         graph.addVertex("A");

@@ -36,7 +36,7 @@ public class DepthFirstSearch<T, W> {
     private static <T, W> void dfsRecursive(Graph<T, W> graph, Vertex<T> vertex, Set<Vertex<T>> visited) {
         LOGGER.info("Thăm đỉnh: " + vertex.getTop());
         visited.add(vertex);
-        System.out.println("Visited vertex: " + vertex.getTop());
+        LOGGER.info("---------- Visited vertex: {} ----------------" , vertex.getTop());
 
         // Duyệt qua các đỉnh kề
         LOGGER.info("Duyệt qua các đỉnh kề của đỉnh " + vertex.getTop());
