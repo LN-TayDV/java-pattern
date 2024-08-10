@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,15 @@ public class Graph<T, W> {
         Vertex<T> vertex = new Vertex<>(top);
         adjacentVertices.putIfAbsent(vertex, new ArrayList<>()); // Thêm vertex vào adjacentVertices nếu chưa có
         return vertex;
+    }
+
+    public Optional<String> typeWeight () {
+        // Kiểm tra xem có cạnh nào tồn tại không
+        return adjacentVertices.values().stream().flatMap(List::stream)
+            .findFirst()
+            .map(edge -> {
+                return edge.getWeight().getClass().getTypeName();
+            });
     }
 
     public Vertex<T> getVertex(T top) {
