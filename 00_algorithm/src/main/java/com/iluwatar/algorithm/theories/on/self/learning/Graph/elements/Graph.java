@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class Graph<T, W> {
 
     /** Lưu trữ các đỉnh và các cạnh liên kết với từng đỉnh */
-    private Map<Vertex<T>, List<Edge<T, W>>> adjacentVertices;
+    private final Map<Vertex<T>, List<Edge<T, W>>> adjacentVertices;
 
     /** Vô hướng : false / Có hướng : true */
     private boolean directed;
@@ -51,12 +51,12 @@ public class Graph<T, W> {
         }
 
         // Thêm cạnh vào danh sách của startVertex
-        Edge<T, W> edge = new Edge<>(startVertex, endVertex, weight, directed);
+        Edge<T, W> edge = new Edge<>(startVertex, endVertex, weight);
         adjacentVertices.get(startVertex).add(edge);
 
         // Nếu đồ thị là vô hướng, thêm cạnh ngược từ endVertex về startVertex
         if (!directed) {
-            Edge<T, W> reverseEdge = new Edge<>(endVertex, startVertex, weight, false);
+            Edge<T, W> reverseEdge = new Edge<>(endVertex, startVertex, weight);
             adjacentVertices.get(endVertex).add(reverseEdge);
         }
     }
@@ -69,6 +69,10 @@ public class Graph<T, W> {
         return adjacentVertices.keySet();
     }
 
+    public boolean getDirected () {
+        return this.directed;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -77,7 +81,7 @@ public class Graph<T, W> {
             sb.append(key.getTop()).append(" -> ");
             sb.append("[ ");
             sb.append(value.stream()
-                .map(Edge::toString)
+                .map(e -> e.toString(this.directed))
                 .collect(Collectors.joining(", ")));
             sb.append(" ]\n");
         });
