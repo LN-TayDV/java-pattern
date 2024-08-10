@@ -65,6 +65,7 @@ public class DepthFirstSearch<T, W> {
         // Thêm các cạnh vào đồ thị
         graph.addEdge("A", "B", 1);
         graph.addEdge("A", "C", 2);
+        graph.addEdge("A", "D", 8);
         graph.addEdge("B", "D", 3);
         graph.addEdge("C", "E", 4);
         graph.addEdge("D", "E", 5);
