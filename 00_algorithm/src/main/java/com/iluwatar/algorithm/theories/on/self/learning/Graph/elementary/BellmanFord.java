@@ -5,7 +5,6 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Vertex;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Tìm Đường Đi Ngắn Nhất
@@ -34,7 +33,7 @@ public class BellmanFord {
         }
 
         // Khoảng cách từ đỉnh nguồn đến chính nó là 0
-        distance.put(source, defaultValue(graph)); // Giả định W là số nguyên
+        distance.put(source, AlgorithmUtils.defaultValue(graph)); // Giả định W là số nguyên
 
         // Số lượng đỉnh trong đồ thị
         int V = graph.getVertices().size();
@@ -48,9 +47,9 @@ public class BellmanFord {
 
                     // Nếu khoảng cách từ u đến v thông qua cạnh này ngắn hơn, cập nhật khoảng cách
                     if (distance.get(u) != null &&
-                        (distance.get(v) == null || add(distance.get(u), weight).compareTo(distance.get(v)) < 0)
+                        (distance.get(v) == null || AlgorithmUtils.add(distance.get(u), weight).compareTo(distance.get(v)) < 0)
                     ) {
-                        distance.put(v, add(distance.get(u), weight));
+                        distance.put(v, AlgorithmUtils.add(distance.get(u), weight));
                     }
                 }
             }
@@ -63,7 +62,7 @@ public class BellmanFord {
                 W weight = edge.getWeight();
 
                 // Nếu phát hiện chu trình trọng số âm, ném ra ngoại lệ
-                if (distance.get(u) != null && add(distance.get(u), weight).compareTo(distance.get(v)) < 0) {
+                if (distance.get(u) != null && AlgorithmUtils.add(distance.get(u), weight).compareTo(distance.get(v)) < 0) {
                     throw new IllegalArgumentException("Graph contains a negative-weight cycle");
                 }
             }
@@ -73,50 +72,6 @@ public class BellmanFord {
         return distance;
     }
 
-    // Hàm tiện ích để cộng hai giá trị số học
-    @SuppressWarnings("unchecked")
-    private static <T, W extends Number & Comparable<W>> W defaultValue(Graph<T, W> graph) {
-        return graph.typeWeight()
-            .map(targetClassTypeName -> {
-                if (targetClassTypeName.equals(Integer.class.getTypeName())) {
-                    return (W) Integer.valueOf(0);
-
-                } else if (targetClassTypeName.equals(Double.class.getTypeName())) {
-                    return (W) Double.valueOf(0);
-
-                } else if (targetClassTypeName.equals(Long.class.getTypeName())) {
-                    return (W) Long.valueOf(0);
-
-                } else if (targetClassTypeName.equals(Float.class.getTypeName())) {
-                    return (W) Float.valueOf(0);
-                }
-
-                return null;
-            })
-            .filter(Objects::nonNull)
-            .orElseThrow(() -> new UnsupportedOperationException("Type not supported"));
-    }
-
-    // Hàm tiện ích để cộng hai giá trị số học
-    @SuppressWarnings("unchecked")
-    private static <W extends Number & Comparable<W>> W add(W a, W b) {
-
-        if (a instanceof Integer) {
-            return (W) Integer.valueOf(a.intValue() + b.intValue());
-
-        } else if (a instanceof Double) {
-            return (W) Double.valueOf(a.doubleValue() + b.doubleValue());
-
-        } else if (a instanceof Long) {
-            return (W) Long.valueOf(a.longValue() + b.longValue());
-
-        } else if (a instanceof Float) {
-            return (W) Float.valueOf(a.floatValue() + b.floatValue());
-
-        } else {
-            throw new UnsupportedOperationException("Type not supported");
-        }
-    }
 
     public static void main(String[] args) {
         // Tạo đồ thị có hướng
