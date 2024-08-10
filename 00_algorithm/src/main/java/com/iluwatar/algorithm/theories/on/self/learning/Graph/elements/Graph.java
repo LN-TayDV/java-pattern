@@ -70,14 +70,14 @@ public class Graph<T, W> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for (Map.Entry<Vertex<T, W>, List<Edge<T, W>>> entry : adjacencyList.entrySet()) {
-            sb.append(entry.getKey().getTop()).append(" -> ");
+        adjacencyList.forEach((key, value) -> {
+            sb.append(key.getTop()).append(" -> ");
             sb.append("[ ");
-            sb.append(entry.getValue().stream()
+            sb.append(value.stream()
                 .map(Edge::toString)
                 .collect(Collectors.joining(", ")));
             sb.append(" ]\n");
-        }
+        });
         return sb.toString();
     }
 }
