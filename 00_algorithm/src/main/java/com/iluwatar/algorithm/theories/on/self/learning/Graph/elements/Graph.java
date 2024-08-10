@@ -51,12 +51,12 @@ public class Graph<T, W> {
         }
 
         // Thêm cạnh vào danh sách của startVertex
-        Edge<T, W> edge = new Edge<>(startVertex, endVertex, weight);
+        Edge<T, W> edge = new Edge<>(startVertex, endVertex, weight, directed);
         adjacentVertices.get(startVertex).add(edge);
 
         // Nếu đồ thị là vô hướng, thêm cạnh ngược từ endVertex về startVertex
         if (!directed) {
-            Edge<T, W> reverseEdge = new Edge<>(endVertex, startVertex, weight);
+            Edge<T, W> reverseEdge = new Edge<>(endVertex, startVertex, weight, directed);
             adjacentVertices.get(endVertex).add(reverseEdge);
         }
     }
@@ -81,7 +81,7 @@ public class Graph<T, W> {
             sb.append(key.getTop()).append(" -> ");
             sb.append("[ ");
             sb.append(value.stream()
-                .map(e -> e.toString(this.directed))
+                .map(Edge::toString)
                 .collect(Collectors.joining(", ")));
             sb.append(" ]\n");
         });

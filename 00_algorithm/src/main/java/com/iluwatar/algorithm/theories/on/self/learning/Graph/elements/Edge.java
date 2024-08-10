@@ -16,11 +16,13 @@ public class Edge<T, W> {
     private final Vertex<T> startVertex;
     private final Vertex<T> endVertex;
     private final W weight;
+    private boolean directed;
 
-    public Edge(Vertex<T> startVertex, Vertex<T> endVertex, W weight) {
+    public Edge(Vertex<T> startVertex, Vertex<T> endVertex, W weight, boolean directed) {
         this.startVertex = startVertex;
         this.endVertex = endVertex;
         this.weight = weight;
+        this.directed = directed;
     }
 
     public Vertex<T> getStartVertex() {
@@ -36,7 +38,8 @@ public class Edge<T, W> {
     }
 
 
-    public String toString(boolean directed) {
+    @Override
+    public String toString() {
         return String.format(
             "%s %s %s (%s)",
             startVertex,
