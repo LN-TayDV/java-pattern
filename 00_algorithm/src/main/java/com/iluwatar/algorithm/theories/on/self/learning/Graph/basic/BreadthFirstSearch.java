@@ -49,7 +49,7 @@ public class BreadthFirstSearch<T, W> {
             // Duyệt qua các đỉnh kề
             LOGGER.info("Duyệt qua các đỉnh kề");
             for (Edge<T, W> edge : graph.getEdges(currentVertex)) {
-                
+
                 // Vì BFS duyệt từ startVertex tới endVertex
                 Vertex<T> neighbor = edge.getEndVertex();
 

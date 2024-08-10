@@ -1,7 +1,6 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,11 +40,6 @@ public class Graph<T, W> {
             .filter(v -> v.getTop().equals(top))
             .findFirst()
             .orElse(null);
-    }
-
-    public List<Edge<T, W>> getEdges (T top) {
-        // Tìm và trả về vertex có id tương ứng
-        return adjacentVertices.getOrDefault(top, Collections.emptyList());
     }
 
     public void addEdge(T startTop, T endTop, W weight) {
