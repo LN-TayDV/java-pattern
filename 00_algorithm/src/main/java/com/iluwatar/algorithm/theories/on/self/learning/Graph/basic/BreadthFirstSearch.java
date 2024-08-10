@@ -63,7 +63,7 @@ public class BreadthFirstSearch<T, W> {
     }
     public static void main(String[] args) {
         // Tạo đồ thị
-        Graph<String, Integer> graph = new Graph<>(false);
+        Graph<String, Integer> graph = new Graph<>(true);
 
         // Thêm các đỉnh vào đồ thị
         graph.addVertex("A");
