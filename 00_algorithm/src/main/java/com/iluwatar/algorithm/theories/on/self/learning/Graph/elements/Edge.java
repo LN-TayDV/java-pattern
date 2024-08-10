@@ -13,23 +13,23 @@ import lombok.EqualsAndHashCode;
 })
 public class Edge<T, W> {
 
-    private Vertex<T, W> startVertex;
-    private Vertex<T, W> endVertex;
+    private Vertex<T> startVertex;
+    private Vertex<T> endVertex;
     private W weight;
     private boolean directed;
 
-    public Edge(Vertex<T, W> startVertex, Vertex<T, W> endVertex, W weight, boolean directed) {
+    public Edge(Vertex<T> startVertex, Vertex<T> endVertex, W weight, boolean directed) {
         this.startVertex = startVertex;
         this.endVertex = endVertex;
         this.weight = weight;
         this.directed = directed;
     }
 
-    public Vertex<T, W> getStartVertex() {
+    public Vertex<T> getStartVertex() {
         return startVertex;
     }
 
-    public Vertex<T, W> getEndVertex() {
+    public Vertex<T> getEndVertex() {
         return endVertex;
     }
 

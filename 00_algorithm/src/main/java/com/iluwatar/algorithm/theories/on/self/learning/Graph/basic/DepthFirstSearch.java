@@ -1,5 +1,6 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.basic;
 
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Edge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Vertex;
 import java.util.HashSet;
@@ -13,41 +14,41 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DepthFirstSearch<T, W> {
 
-    // Phương thức thực hiện DFS từ đỉnh bắt đầu `startVertex`
+    // Phương thức thực hiện DFS từ đỉnh bắt đầu `startTop`
     public static <T, W> void algorithm(Graph<T, W> graph, T startTop) {
         LOGGER.info("Lấy đỉnh bắt đầu từ đồ thị");
-        Vertex<T, W> startVertex = graph.getVertex(startTop);
+        Vertex<T> startVertex = graph.getVertex(startTop);
 
         if (startVertex == null) {
             throw new IllegalArgumentException("Start vertex not found in graph");
         }
 
         LOGGER.info("Tập hợp để đánh dấu các đỉnh đã được thăm");
-        Set<Vertex<T, W>> visited = new HashSet<>();
+        Set<Vertex<T>> visited = new HashSet<>();
 
         LOGGER.info("---------------------------------------------------------------------------");
 
         LOGGER.info("Bắt đầu duyệt đồ thị theo chiều sâu");
-        dfsRecursive(startVertex, visited);
+        dfsRecursive(graph, startVertex, visited);
     }
 
     // Phương thức đệ quy cho DFS
-    private static <T, W> void dfsRecursive(Vertex<T, W> vertex, Set<Vertex<T, W>> visited) {
-
+    private static <T, W> void dfsRecursive(Graph<T, W> graph, Vertex<T> vertex, Set<Vertex<T>> visited) {
         LOGGER.info("Thăm đỉnh: " + vertex.getTop());
         visited.add(vertex);
         System.out.println("Visited vertex: " + vertex.getTop());
 
         // Duyệt qua các đỉnh kề
         LOGGER.info("Duyệt qua các đỉnh kề của đỉnh " + vertex.getTop());
-        for (Vertex<T, W> neighbor : vertex.getAdjacentVertices()) {
+        for (Edge<T, W> edge : graph.getEdges(vertex)) {
+            Vertex<T> neighbor = edge.getEndVertex(); // Duyệt đến endVertex của cạnh
+
             // Nếu đỉnh kề chưa được thăm, thực hiện DFS đệ quy
             if (!visited.contains(neighbor)) {
                 LOGGER.info("Đỉnh " + neighbor.getTop() + " chưa được thăm, thực hiện DFS đệ quy thăm đỉnh " + neighbor.getTop());
-                dfsRecursive(neighbor, visited);
+                dfsRecursive(graph, neighbor, visited);
             }
         }
-
     }
 
     public static void main(String[] args) {
