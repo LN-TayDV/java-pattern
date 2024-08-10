@@ -47,7 +47,9 @@ public class BellmanFord {
                     W weight = edge.getWeight();
 
                     // Nếu khoảng cách từ u đến v thông qua cạnh này ngắn hơn, cập nhật khoảng cách
-                    if (distance.get(u) != null && (distance.get(v) == null || add(distance.get(u), weight).compareTo(distance.get(v)) < 0)) {
+                    if (distance.get(u) != null &&
+                        (distance.get(v) == null || add(distance.get(u), weight).compareTo(distance.get(v)) < 0)
+                    ) {
                         distance.put(v, add(distance.get(u), weight));
                     }
                 }
