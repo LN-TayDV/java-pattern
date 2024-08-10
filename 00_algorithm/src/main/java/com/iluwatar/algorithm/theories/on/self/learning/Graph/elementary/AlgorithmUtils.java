@@ -25,7 +25,6 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elementary;
 
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Graph;
-import java.util.Objects;
 
 public class AlgorithmUtils {
 
@@ -49,7 +48,6 @@ public class AlgorithmUtils {
 
                 return null;
             })
-            .filter(Objects::nonNull)
             .orElseThrow(() -> new UnsupportedOperationException("Type not supported"));
     }
 
