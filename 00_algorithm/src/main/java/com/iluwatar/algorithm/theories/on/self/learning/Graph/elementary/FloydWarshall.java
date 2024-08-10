@@ -159,15 +159,15 @@ public class FloydWarshall {
                 System.out.println("Distances from " + from.getTop() + ":");
 
                 StringBuilder sb = new StringBuilder();
-                sb.append("[ ");
+                sb.append("{\n ");
                 sb.append(
                     value.entrySet()
                         .stream()
-                        .map(entry -> String.format("%s -> %s (%s)", from.getTop(),  entry.getKey().getTop(), entry.getValue()))
-                        .collect(Collectors.joining(" , "))
+                        .map(entry -> String.format("%s -> %s : (%s)", from.getTop(),  entry.getKey().getTop(), entry.getValue()))
+                        .collect(Collectors.joining(" , \n "))
 
                 );
-                sb.append(" ]");
+                sb.append("\n}");
 
                 System.out.println(sb.toString());
             });
