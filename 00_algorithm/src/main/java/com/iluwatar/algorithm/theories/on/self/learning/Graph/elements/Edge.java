@@ -44,9 +44,9 @@ public class Edge<T, W> {
     @Override
     public String toString() {
         return String.format(
-            "%s -%s-> %s (weight: %s)",
+            "%s %s %s (%s)",
             startVertex,
-            directed ? ">" : "-",
+            directed ? "->>" : "-->",
             endVertex,
             weight
         );
