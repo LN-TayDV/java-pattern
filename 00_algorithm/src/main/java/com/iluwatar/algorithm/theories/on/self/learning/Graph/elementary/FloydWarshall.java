@@ -163,7 +163,7 @@ public class FloydWarshall {
                 sb.append(
                     value.entrySet()
                         .stream()
-                        .map(entry -> String.format("%s -> %s : (%s)", from.getTop(),  entry.getKey().getTop(), entry.getValue()))
+                        .map(e -> String.format("%s -> %s : (%s)", from.getTop(),  e.getKey().getTop(), e.getValue()))
                         .collect(Collectors.joining(" , \n "))
 
                 );
