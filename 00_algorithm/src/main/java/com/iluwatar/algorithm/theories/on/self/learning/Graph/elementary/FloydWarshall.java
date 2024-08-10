@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Class implementing the Floyd-Warshall algorithm for finding the shortest paths in a graph.
@@ -152,17 +153,28 @@ public class FloydWarshall {
         try {
             Map<Vertex<String>, Map<Vertex<String>, Double>> shortestPaths = FloydWarshall.algorithm(graph);
 
+            //[ %s --> %s (%s)]
+
             // In ra khoảng cách ngắn nhất giữa tất cả các cặp đỉnh
+
             shortestPaths.forEach((key, value) -> {
                 Vertex<String> from = key;
                 System.out.println("Distances from " + from.getTop() + ":");
 
-                for (Map.Entry<Vertex<String>, Double> entry : value.entrySet()) {
-                    Vertex<String> to = entry.getKey();
-                    Double dist = entry.getValue();
-                    System.out.println("  to " + to.getTop() + " is " + dist);
-                }
+                StringBuilder sb = new StringBuilder();
+                sb.append("[ ");
+                sb.append(
+                    value.entrySet()
+                        .stream()
+                        .map(entry -> String.format("%s -> %s (%s)", from.getTop(),  entry.getKey().getTop(), entry.getValue()))
+                        .collect(Collectors.joining(" , "))
+
+                );
+                sb.append(" ]");
+
+                System.out.println(sb.toString());
             });
+
 
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
