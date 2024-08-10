@@ -31,7 +31,7 @@ public class AlgorithmUtils {
 
     // Hàm tiện ích để cộng hai giá trị số học
     @SuppressWarnings("unchecked")
-    public static <W extends Number & Comparable<W>> W add(W a, W b) {
+    public static <W extends Number & Comparable<W>> W distance(W a, W b) {
 
         if (a instanceof Integer) {
             return (W) Integer.valueOf(a.intValue() + b.intValue());
