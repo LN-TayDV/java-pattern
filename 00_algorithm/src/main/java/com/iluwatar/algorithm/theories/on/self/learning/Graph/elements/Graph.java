@@ -78,6 +78,7 @@ public class Graph<T, W> {
                 .collect(Collectors.joining(", ")));
             sb.append(" ]\n");
         });
+        
         return sb.toString();
     }
 }
