@@ -1,7 +1,11 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * T : Top
@@ -10,57 +14,69 @@ import java.util.Map;
  * @param <W>
  */
 public class Graph<T, W> {
-    private Map<T, Vertex<T, W>> vertices;
+    // Lưu trữ các đỉnh và các cạnh liên kết với từng đỉnh
+    private Map<Vertex<T, W>, List<Edge<T, W>>> adjacencyList;
+
+    //Vô hướng : false / Có hướng : true
     private boolean directed;
 
     public Graph(boolean directed) {
         this.directed = directed;
-        this.vertices = new HashMap<>();
+        this.adjacencyList = new HashMap<>();
     }
 
     public Vertex<T, W> addVertex(T top) {
         Vertex<T, W> vertex = new Vertex<>(top, null);
-        vertices.put(top, vertex);
+        adjacencyList.putIfAbsent(vertex, new ArrayList<>()); // Thêm vertex vào adjacencyList nếu chưa có
         return vertex;
     }
 
-    public Vertex<T, W> getVertex(T id) {
-        return vertices.get(id);
+    public Vertex<T, W> getVertex(T top) {
+        // Tìm và trả về vertex có id tương ứng
+        return adjacencyList.keySet().stream()
+            .filter(v -> v.getTop().equals(top))
+            .findFirst()
+            .orElse(null);
     }
 
     public void addEdge(T startTop, T endTop, W weight) {
-        // Lấy đỉnh tương ứng với ID `startTop` từ bản đồ `vertices`
-        Vertex<T, W> startVertex = vertices.get(startTop);
+        Vertex<T, W> startVertex = getVertex(startTop);
+        Vertex<T, W> endVertex = getVertex(endTop);
 
-        // Lấy đỉnh tương ứng với ID `endTop` từ bản đồ `vertices`
-        Vertex<T, W> endVertex = vertices.get(endTop);
-
-        // Kiểm tra nếu một trong hai đỉnh không tồn tại (null), ném ra ngoại lệ
         if (startVertex == null || endVertex == null) {
             throw new IllegalArgumentException("Invalid vertex id");
         }
 
-        // Thêm `endVertex` như là hàng xóm của `startVertex` với trọng số `weight`
-        startVertex.addNeighbor(endVertex.setWeight(weight));
+        // Thêm cạnh vào danh sách của startVertex
+        Edge<T, W> edge = new Edge<>(startVertex, endVertex, weight, directed);
+        adjacencyList.get(startVertex).add(edge);
 
-        // Nếu đồ thị là vô hướng, thêm `startVertex` như là hàng xóm của `endVertex`
+        // Nếu đồ thị là vô hướng, thêm cạnh ngược từ endVertex về startVertex
         if (!directed) {
-            endVertex.addNeighbor(startVertex.setWeight(weight));
+            Edge<T, W> reverseEdge = new Edge<>(endVertex, startVertex, weight, false);
+            adjacencyList.get(endVertex).add(reverseEdge);
         }
     }
 
+    public List<Edge<T, W>> getEdges(Vertex<T, W> vertex) {
+        return adjacencyList.get(vertex);
+    }
 
-    public Map<T, Vertex<T, W>> getVertices() {
-        return vertices;
+    public Set<Vertex<T, W>> getVertices() {
+        return adjacencyList.keySet();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Vertex<T, W> vertex : vertices.values()) {
-            sb.append(vertex.getTop()).append(" -> ")
-                .append(vertex.getAdjacentVerticesString())
-                .append("\n");
+
+        for (Map.Entry<Vertex<T, W>, List<Edge<T, W>>> entry : adjacencyList.entrySet()) {
+            sb.append(entry.getKey().getTop()).append(" -> ");
+            sb.append("[ ");
+            sb.append(entry.getValue().stream()
+                .map(Edge::toString)
+                .collect(Collectors.joining(", ")));
+            sb.append(" ]\n");
         }
         return sb.toString();
     }

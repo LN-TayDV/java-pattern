@@ -1,11 +1,16 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * T : Top
  * W : Weight
  * @param <T>
  * @param <W>
  */
+@EqualsAndHashCode(of = {
+    "startVertex", "endVertex", "weight", "directed"
+})
 public class Edge<T, W> {
 
     private Vertex<T, W> startVertex;
@@ -38,7 +43,12 @@ public class Edge<T, W> {
 
     @Override
     public String toString() {
-        return String.format("%s -%s-> %s (weight: %s)",
-            startVertex, directed ? ">" : "-", endVertex, weight);
+        return String.format(
+            "%s -%s-> %s (weight: %s)",
+            startVertex,
+            directed ? ">" : "-",
+            endVertex,
+            weight
+        );
     }
 }

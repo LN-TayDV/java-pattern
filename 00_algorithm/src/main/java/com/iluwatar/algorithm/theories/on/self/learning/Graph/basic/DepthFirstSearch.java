@@ -43,7 +43,7 @@ public class DepthFirstSearch<T, W> {
         for (Vertex<T, W> neighbor : vertex.getAdjacentVertices()) {
             // Nếu đỉnh kề chưa được thăm, thực hiện DFS đệ quy
             if (!visited.contains(neighbor)) {
-                LOGGER.info("Đỉnh " + neighbor.getTop() + " chưa được thăm, thực hiện DFS đệ quy");
+                LOGGER.info("Đỉnh " + neighbor.getTop() + " chưa được thăm, thực hiện DFS đệ quy thăm đỉnh " + neighbor.getTop());
                 dfsRecursive(neighbor, visited);
             }
         }
@@ -63,10 +63,10 @@ public class DepthFirstSearch<T, W> {
 
         // Thêm các cạnh vào đồ thị
         graph.addEdge("A", "B", 1);
-        graph.addEdge("A", "C", 1);
-        graph.addEdge("B", "D", 1);
-        graph.addEdge("C", "E", 1);
-        graph.addEdge("D", "E", 1);
+        graph.addEdge("A", "C", 2);
+        graph.addEdge("B", "D", 3);
+        graph.addEdge("C", "E", 4);
+        graph.addEdge("D", "E", 5);
 
         // In ra cấu trúc đồ thị
         System.out.println(graph);

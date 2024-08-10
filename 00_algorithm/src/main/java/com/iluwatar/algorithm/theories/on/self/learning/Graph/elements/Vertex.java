@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
  * @param <W>
  */
 public class Vertex<T, W> {
-
     private T top;
     private W weight;
     private Set<Vertex<T, W>> adjacentVertices;

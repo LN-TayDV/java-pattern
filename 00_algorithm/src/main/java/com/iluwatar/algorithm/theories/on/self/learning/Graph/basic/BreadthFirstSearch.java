@@ -60,7 +60,7 @@ public class BreadthFirstSearch<T, W> {
 
     public static void main(String[] args) {
         // Tạo đồ thị
-        Graph<String, Integer> graph = new Graph<>(false);
+        Graph<String, Integer> graph = new Graph<>(true);
 
         // Thêm các đỉnh vào đồ thị
         graph.addVertex("A");
@@ -71,10 +71,10 @@ public class BreadthFirstSearch<T, W> {
 
         // Thêm các cạnh vào đồ thị
         graph.addEdge("A", "B", 1);
-        graph.addEdge("A", "C", 1);
-        graph.addEdge("B", "D", 1);
-        graph.addEdge("C", "E", 1);
-        graph.addEdge("D", "E", 1);
+        graph.addEdge("A", "C", 3);
+        graph.addEdge("B", "D", 5);
+        graph.addEdge("C", "E", 7);
+        graph.addEdge("D", "E", 9);
 
         // In ra cấu trúc đồ thị
         System.out.println(graph);
