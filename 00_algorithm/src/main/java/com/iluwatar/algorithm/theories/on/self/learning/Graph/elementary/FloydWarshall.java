@@ -153,10 +153,7 @@ public class FloydWarshall {
         try {
             Map<Vertex<String>, Map<Vertex<String>, Double>> shortestPaths = FloydWarshall.algorithm(graph);
 
-            //[ %s --> %s (%s)]
-
             // In ra khoảng cách ngắn nhất giữa tất cả các cặp đỉnh
-
             shortestPaths.forEach((key, value) -> {
                 Vertex<String> from = key;
                 System.out.println("Distances from " + from.getTop() + ":");
