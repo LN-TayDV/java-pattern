@@ -140,13 +140,15 @@ public class BellmanFord {
         // Đổi trọng số của cạnh từ E đến D thành giá trị dương để tránh chu trình âm
         graph.addEdge("E", "D", 1.0);
 
+        System.out.println(graph);
+
         // Chạy thuật toán Bellman-Ford từ đỉnh A
         try {
-            Map<Vertex<String>, Double> shortestPaths = BellmanFord.algorithm(graph, vA);
+            Map<Vertex<String>, Double> shortestPaths = BellmanFord.algorithm(graph, vE);
 
             // In ra khoảng cách ngắn nhất từ đỉnh A đến tất cả các đỉnh khác
             for (Map.Entry<Vertex<String>, Double> entry : shortestPaths.entrySet()) {
-                System.out.println("Shortest distance from A to " + entry.getKey().getTop() + " is " + entry.getValue());
+                System.out.println("Shortest distance from E to " + entry.getKey().getTop() + " is " + entry.getValue());
             }
         } catch (IllegalArgumentException e) {
             System.err.println(e.getMessage());
