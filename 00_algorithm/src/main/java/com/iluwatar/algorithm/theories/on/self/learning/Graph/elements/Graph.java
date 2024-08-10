@@ -34,12 +34,9 @@ public class Graph<T, W> {
     }
 
     public Optional<String> typeWeight () {
-        // Kiểm tra xem có cạnh nào tồn tại không
         return adjacentVertices.values().stream().flatMap(List::stream)
             .findFirst()
-            .map(edge -> {
-                return edge.getWeight().getClass().getTypeName();
-            });
+            .map(edge -> edge.getWeight().getClass().getTypeName());
     }
 
     public Vertex<T> getVertex(T top) {
