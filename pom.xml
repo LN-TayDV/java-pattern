@@ -118,6 +118,13 @@
                 <version>${system-lambda.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>3.6.1</version> <!-- Bạn có thể thay đổi phiên bản nếu cần -->
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -140,6 +147,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version> <!-- Bạn có thể thay đổi phiên bản nếu cần -->
         </dependency>
     </dependencies>
     <build>
