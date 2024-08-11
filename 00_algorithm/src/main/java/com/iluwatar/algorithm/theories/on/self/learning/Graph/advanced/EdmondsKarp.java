@@ -122,32 +122,26 @@ public class EdmondsKarp {
         Map<Vertex<T>, Vertex<T>> parentMap, W infinity, W zero) {
 
         // Khởi tạo dòng chảy tối đa có thể cho đường tăng cường
-        W pathFlow = AlgorithmUtils.min(AlgorithmUtils.subtract(infinity, zero), infinity);
+        W pathFlow = infinity;
         Vertex<T> current = sink;
 
         // Lần theo đường tăng cường để tìm dòng chảy nhỏ nhất
-        while (current != null && !current.equals(source)) {
+        while (!current.equals(source)) {
             Vertex<T> parent = parentMap.get(current);
-            if (parent == null) {
-                throw new IllegalStateException("Parent map does not contain a parent for vertex " + current);
-            }
-            // Tìm cạnh từ parent đến current
             Edge<T, W> edge = findEdge(graph, parent, current);
-            // Cập nhật dòng chảy tối đa có thể bằng cách lấy giá trị nhỏ nhất
             pathFlow = AlgorithmUtils.min(pathFlow, edge.getWeight());
             current = parent;
         }
 
-        // Cập nhật dòng chảy cho các cạnh trong đường tăng cường
+        // In thông tin đường tăng cường và dòng chảy
+        System.out.println("Đường tăng cường và dòng chảy: ");
         current = sink;
-        while (current != null && !current.equals(source)) {
+        while (!current.equals(source)) {
             Vertex<T> parent = parentMap.get(current);
-            if (parent == null) {
-                throw new IllegalStateException("Parent map does not contain a parent for vertex " + current);
-            }
-
-            // Tìm cạnh từ parent đến current
             Edge<T, W> edge = findEdge(graph, parent, current);
+
+            System.out.println("Từ " + parent.getTop() + " đến " + current.getTop() + ", dòng chảy: " + pathFlow + ", trọng số trước: " + edge.getWeight());
+
             // Giảm trọng số của cạnh hiện tại theo dòng chảy
             edge.setWeight(AlgorithmUtils.subtract(edge.getWeight(), pathFlow));
 
@@ -156,14 +150,13 @@ public class EdmondsKarp {
             if (reverseEdge == null) {
                 // Nếu không tìm thấy cạnh ngược, thêm mới với trọng số là pathFlow
                 reverseEdge = new Edge<>(current, parent, pathFlow, graph.isDirected());
-                // Thêm vào danh sách cạnh của parent
-                graph.getEdges(parent).add(reverseEdge);
+                graph.addEdge(current.getTop(), parent.getTop(), reverseEdge.getWeight());
             } else {
                 // Nếu đã có cạnh ngược, cập nhật trọng số của nó
                 reverseEdge.setWeight(AlgorithmUtils.sum(reverseEdge.getWeight(), pathFlow));
             }
 
-            // Tiếp tục đến đỉnh cha
+            System.out.println("Trọng số sau cập nhật: " + edge.getWeight());
             current = parent;
         }
 
@@ -206,17 +199,17 @@ public class EdmondsKarp {
         Vertex<String> vC = graph.addVertex("C");
         Vertex<String> vD = graph.addVertex("D");
         Vertex<String> vE = graph.addVertex("E");
-        Vertex<String> vG = graph.addVertex("G");
 
         // Thêm các cạnh với trọng số
-        graph.addEdge("A", "B", 1);
-        graph.addEdge("A", "C", 4);
-        graph.addEdge("B", "D", 2);
-        graph.addEdge("C", "D", 1);
-        graph.addEdge("D", "E", 3);
-        graph.addEdge("E", "F", 2);
-        graph.addEdge("F", "G", 1);
-        graph.addEdge("C", "G", 7);
+        graph.addEdge("A", "B", 10); // Dòng chảy tối đa từ A đến B là 10
+        graph.addEdge("A", "C", 10); // Dòng chảy tối đa từ A đến C là 10
+        graph.addEdge("B", "C", 2);  // Dòng chảy tối đa từ B đến C là 2
+        graph.addEdge("B", "D", 4);  // Dòng chảy tối đa từ B đến D là 4
+        graph.addEdge("B", "E", 8);  // Dòng chảy tối đa từ B đến E là 8
+        graph.addEdge("C", "E", 9);  // Dòng chảy tối đa từ C đến E là 9
+        graph.addEdge("D", "F", 10); // Dòng chảy tối đa từ D đến F là 10
+        graph.addEdge("E", "D", 6);  // Dòng chảy tối đa từ E đến D là 6
+        graph.addEdge("E", "F", 10); // Dòng chảy tối đa từ E đến F là 10
 
         // Đặt giá trị zero và vô cực cho loại W
         Integer zero = 0;
@@ -228,4 +221,5 @@ public class EdmondsKarp {
         // In kết quả
         System.out.println("Dòng chảy tối đa: " + maxFlow);
     }
+
 }
