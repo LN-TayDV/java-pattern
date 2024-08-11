@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.stream.Collectors;
 
 /**
  * Tìm Đường Đi Ngắn Nhất Trong Đồ Thị Có Trọng Số Âm
@@ -148,7 +149,10 @@ public class Johnson {
 
                 W adjustedWeight = AlgorithmUtils.sum(
                     edge.getWeight(),
-                    AlgorithmUtils.subtract(h.get(u), h.get(v))
+                    AlgorithmUtils.subtract(
+                        h.get(u) == null ? AlgorithmUtils.defaultValue(graph) : h.get(u),
+                        h.get(v) == null ? AlgorithmUtils.defaultValue(graph) : h.get(v)
+                    )
                 );
 
                 adjustedGraph.addEdge(u.getTop(), v.getTop(), adjustedWeight);
@@ -190,5 +194,46 @@ public class Johnson {
         }
 
         return distances;
+    }
+
+    public static void main(String[] args) {
+        // Tạo đồ thị
+        Graph<String, Integer> graph = new Graph<>(true); // true cho đồ thị có hướng
+
+        // Thêm các đỉnh
+        Vertex<String> a = new Vertex<>("A");
+        Vertex<String> b = new Vertex<>("B");
+        Vertex<String> c = new Vertex<>("C");
+        Vertex<String> d = new Vertex<>("D");
+        Vertex<String> e = new Vertex<>("E");
+
+        // Thêm các đỉnh vào đồ thị
+        graph.addVertex(a.getTop());
+        graph.addVertex(b.getTop());
+        graph.addVertex(c.getTop());
+        graph.addVertex(d.getTop());
+        graph.addVertex(e.getTop());
+
+        // Thêm các cạnh
+        graph.addEdge(a.getTop(), b.getTop(), 1);
+        graph.addEdge(b.getTop(), c.getTop(), 1);
+        graph.addEdge(c.getTop(), a.getTop(), 1);
+        graph.addEdge(b.getTop(), d.getTop(), 1);
+        graph.addEdge(d.getTop(), e.getTop(), 1);
+        graph.addEdge(e.getTop(), d.getTop(), 1);
+
+        // Tìm các SCC
+        var map =  Johnson.algorithm(graph, "A");
+
+        // In kết quả ra màn hình
+        int count = 1;
+        map.forEach((k1, v1) -> {
+            var s= String.format("%s --> [ %s ]",
+                k1.getTop(),
+                v1.entrySet().stream().map(en -> String.format("%s(%s) ", en.getKey().getTop(), en.getValue())).collect(Collectors.joining(", "))
+            );
+
+            System.out.println(s);
+        });
     }
 }
