@@ -155,7 +155,7 @@ public class EdmondsKarp {
             Edge<T, W> reverseEdge = findReverseEdge(graph, current, parent);
             if (reverseEdge == null) {
                 // Nếu không tìm thấy cạnh ngược, thêm mới với trọng số là pathFlow
-                reverseEdge = new Edge<>(current, parent, pathFlow, graph.getDirected());
+                reverseEdge = new Edge<>(current, parent, pathFlow, graph.isDirected());
                 // Thêm vào danh sách cạnh của parent
                 graph.getEdges(parent).add(reverseEdge);
             } else {
