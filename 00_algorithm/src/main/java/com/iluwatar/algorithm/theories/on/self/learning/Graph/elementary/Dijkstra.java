@@ -84,7 +84,7 @@ public class Dijkstra {
                 W weight = edge.getWeight();
 
                 // Tính toán khoảng cách mới từ đỉnh nguồn đến v thông qua u
-                W newDist = AlgorithmUtils.distance(distance.get(u), weight);
+                W newDist = AlgorithmUtils.sum(distance.get(u), weight);
 
                 // Nếu khoảng cách mới này ngắn hơn, cập nhật khoảng cách và đỉnh trước đó
                 if (distance.get(v) == null || newDist.compareTo(distance.get(v)) < 0) {

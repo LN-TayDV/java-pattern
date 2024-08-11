@@ -26,10 +26,10 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elementary;
 
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Graph;
 
+@SuppressWarnings("unchecked")
 public class AlgorithmUtils {
 
     // Hàm tiện ích để cộng hai giá trị số học
-    @SuppressWarnings("unchecked")
     public static <T, W extends Number & Comparable<W>> W defaultValue(Graph<T, W> graph) {
         return graph.typeWeight()
             .map(targetClassTypeName -> {
@@ -52,8 +52,7 @@ public class AlgorithmUtils {
     }
 
     // Hàm tiện ích để cộng hai giá trị số học
-    @SuppressWarnings("unchecked")
-    public static <W extends Number & Comparable<W>> W distance(W a, W b) {
+    public static <W extends Number & Comparable<W>> W sum(W a, W b) {
 
         if (a instanceof Integer) {
             return (W) Integer.valueOf(a.intValue() + b.intValue());
@@ -70,5 +69,25 @@ public class AlgorithmUtils {
         } else {
             throw new UnsupportedOperationException("Type not supported");
         }
+    }
+
+
+    // Phương thức trừ hai giá trị của W
+    public static <W extends Number & Comparable<W>> W subtract(W a, W b) {
+        if (a instanceof Integer) {
+            return (W) Integer.valueOf(a.intValue() - b.intValue());
+        } else if (a instanceof Long) {
+            return (W) Long.valueOf(a.longValue() - b.longValue());
+        } else if (a instanceof Double) {
+            return (W) Double.valueOf(a.doubleValue() - b.doubleValue());
+        } else if (a instanceof Float) {
+            return (W) Float.valueOf(a.floatValue() - b.floatValue());
+        }
+        throw new UnsupportedOperationException("Type not supported: " + a.getClass().getName());
+    }
+
+    // Phương thức tìm giá trị nhỏ nhất giữa hai giá trị của W
+    public static <W extends Number & Comparable<W>> W min(W a, W b) {
+        return a.compareTo(b) < 0 ? a : b;
     }
 }

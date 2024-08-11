@@ -71,9 +71,9 @@ public class BellmanFord {
 
                     // Nếu khoảng cách từ u đến v thông qua cạnh này ngắn hơn, cập nhật khoảng cách
                     if (distance.get(u) != null &&
-                        (distance.get(v) == null || AlgorithmUtils.distance(distance.get(u), weight).compareTo(distance.get(v)) < 0)
+                        (distance.get(v) == null || AlgorithmUtils.sum(distance.get(u), weight).compareTo(distance.get(v)) < 0)
                     ) {
-                        distance.put(v, AlgorithmUtils.distance(distance.get(u), weight));
+                        distance.put(v, AlgorithmUtils.sum(distance.get(u), weight));
                     }
                 }
             }
@@ -86,7 +86,7 @@ public class BellmanFord {
                 W weight = edge.getWeight();
 
                 // Nếu phát hiện chu trình trọng số âm, ném ra ngoại lệ
-                if (distance.get(u) != null && AlgorithmUtils.distance(distance.get(u), weight).compareTo(distance.get(v)) < 0) {
+                if (distance.get(u) != null && AlgorithmUtils.sum(distance.get(u), weight).compareTo(distance.get(v)) < 0) {
                     throw new IllegalArgumentException("Graph contains a negative-weight cycle");
                 }
             }

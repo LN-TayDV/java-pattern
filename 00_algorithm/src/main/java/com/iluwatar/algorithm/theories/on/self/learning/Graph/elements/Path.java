@@ -134,10 +134,10 @@ public class Path<T, FC extends Number & Comparable<FC>> implements Iterable<Pat
         }
 
         if (this.toVertex != null) {
-            sb.append(" --").append("(").append(this.fCost).append(")").append("-- "); // Thêm chi phí vào chuỗi
+            sb.append(" --").append("(").append("f-cost : ").append(this.fCost).append(")").append("-- "); // Thêm chi phí vào chuỗi
             sb.append(this.toVertex); // Đệ quy gọi phương thức toString của đỉnh tiếp theo
         } else {
-            sb.append(" --").append("(").append(this.fCost).append(")").append("-- [END]"); // Nếu là đỉnh cuối cùng, kết thúc chuỗi
+            sb.append(" --").append("(").append("f-cost : ").append(this.fCost).append(")").append("-- [END]"); // Nếu là đỉnh cuối cùng, kết thúc chuỗi
         }
 
         return sb.toString(); // Trả về chuỗi kết quả

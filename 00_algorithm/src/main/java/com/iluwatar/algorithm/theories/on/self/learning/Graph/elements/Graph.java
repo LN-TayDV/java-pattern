@@ -57,6 +57,11 @@ public class Graph<T, W> {
         return vertex;
     }
 
+    public void addVT(T top) {
+        Vertex<T> vertex = new Vertex<>(top);
+        adjacentVertices.putIfAbsent(vertex, new ArrayList<>()); // Thêm vertex vào adjacentVertices nếu chưa có
+    }
+
     public Optional<String> typeWeight () {
         return adjacentVertices.values().stream().flatMap(List::stream)
             .findFirst()
@@ -96,6 +101,23 @@ public class Graph<T, W> {
         return adjacentVertices.get(vertex);
     }
 
+    public Edge<T, W> getEdge(Vertex<T> u, Vertex<T> v) {
+        // Lấy danh sách các cạnh từ đỉnh u
+        List<Edge<T, W>> edges = adjacentVertices.get(u);
+
+        // Tìm và trả về cạnh có đỉnh kết thúc là v
+        if (edges != null) {
+            for (Edge<T, W> edge : edges) {
+                if (edge.getEndVertex().equals(v)) {
+                    return edge;
+                }
+            }
+        }
+
+        // Nếu không tìm thấy, trả về null
+        return null;
+    }
+
     public List<Edge<T, W>> getEdges() {
         return adjacentVertices.values().stream().flatMap(List::stream).toList();
     }
@@ -123,4 +145,20 @@ public class Graph<T, W> {
         
         return sb.toString();
     }
+
+    public boolean hasEdge(T startTop, T endTop) {
+        Vertex<T> startVertex = getVertex(startTop);
+        Vertex<T> endVertex = getVertex(endTop);
+
+        if (startVertex == null || endVertex == null) {
+            return false; // Một trong hai đỉnh không tồn tại
+        }
+
+        // Lấy danh sách các cạnh của đỉnh bắt đầu
+        List<Edge<T, W>> edges = adjacentVertices.get(startVertex);
+
+        // Kiểm tra xem có cạnh nào nối đến đỉnh kết thúc không
+        return edges.stream().anyMatch(edge -> edge.getEndVertex().equals(endVertex));
+    }
+
 }

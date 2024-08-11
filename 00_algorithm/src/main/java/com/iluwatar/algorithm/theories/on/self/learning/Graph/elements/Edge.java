@@ -25,6 +25,7 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
 
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 
 /**
  * T : Top
@@ -39,7 +40,8 @@ public class Edge<T, W> {
 
     private final Vertex<T> startVertex;
     private final Vertex<T> endVertex;
-    private final W weight;
+    @Setter
+    private W weight;
     private final boolean directed;
 
     public Edge(Vertex<T> startVertex, Vertex<T> endVertex, W weight, boolean directed) {
@@ -65,7 +67,7 @@ public class Edge<T, W> {
     @Override
     public String toString() {
         return String.format(
-            "%s %s %s (%s)",
+            "%s %s %s (weight : %s)",
             startVertex,
             directed ? "->>" : "-->",
             endVertex,

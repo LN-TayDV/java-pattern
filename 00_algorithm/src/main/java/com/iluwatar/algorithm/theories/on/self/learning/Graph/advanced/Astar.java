@@ -73,21 +73,23 @@ public class Astar {
 
         // Bắt đầu vòng lặp tìm kiếm
         while (!openQueue.isEmpty()) {
-            Vertex<T> current = openQueue.poll(); // Lấy đỉnh có f-cost thấp nhất
+            // Lấy đỉnh có f-cost thấp nhất
+            Vertex<T> current = openQueue.poll();
 
             // Nếu đã đến đỉnh đích, xây dựng và trả về đường đi tối ưu
             if (current.equals(goal)) {
                 return reconstructPath(cameFrom, current, gCost.get(goal), fCost);
             }
 
-            openSet.remove(current); // Loại bỏ đỉnh này khỏi tập hợp mở
+            // Loại bỏ đỉnh này khỏi tập hợp mở
+            openSet.remove(current);
 
             // Duyệt qua các cạnh kề
             for (Edge<T, W> edge : graph.getEdges(current)) {
                 Vertex<T> neighbor = edge.getEndVertex();
 
                 //Chi phí tạm thời để đi từ đỉnh bắt đầu đến đỉnh neighbor qua đỉnh current.
-                W tentativeGCost = AlgorithmUtils.distance(gCost.get(current), edge.getWeight());
+                W tentativeGCost = AlgorithmUtils.sum(gCost.get(current), edge.getWeight());
 
                 //So sánh và cập nhật: So sánh tentativeGCost với gCost hiện tại của neighbor.
                 //Nếu tentativeGCost thấp hơn, cập nhật gCost và fCost cho neighbor.
@@ -95,11 +97,12 @@ public class Astar {
                     // Cập nhật thông tin đường đi nếu chi phí mới thấp hơn
                     cameFrom.put(neighbor, current);
                     gCost.put(neighbor, tentativeGCost);
-                    fCost.put(neighbor, AlgorithmUtils.distance(tentativeGCost, heuristic.estimate(neighbor, goal)));
+                    fCost.put(neighbor, AlgorithmUtils.sum(tentativeGCost, heuristic.estimate(neighbor, goal)));
 
                     if (!openSet.contains(neighbor)) {
                         openSet.add(neighbor);
-                        openQueue.add(neighbor); // Thêm đỉnh vào hàng đợi ưu tiên để tiếp tục khám phá
+                        // Thêm đỉnh vào hàng đợi ưu tiên để tiếp tục khám phá
+                        openQueue.add(neighbor);
                     }
                 }
             }

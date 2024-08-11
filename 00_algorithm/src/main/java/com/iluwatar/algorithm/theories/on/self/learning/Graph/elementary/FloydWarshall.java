@@ -106,7 +106,7 @@ public class FloydWarshall {
                     if (distance.get(iVertex).get(kVertex) != null && distance.get(kVertex).get(jVertex) != null) {
 
                         // Tính toán khoảng cách mới từ i đến j thông qua k
-                        W newDist = AlgorithmUtils.distance(
+                        W newDist = AlgorithmUtils.sum(
                             distance.get(iVertex).get(kVertex),
                             distance.get(kVertex).get(jVertex)
                         );
@@ -126,7 +126,7 @@ public class FloydWarshall {
             // Nếu khoảng cách từ u đến chính nó không phải là null (vô cực)
             if (distance.get(u).get(u) != null) {
                 // So sánh khoảng cách từ u đến chính nó với giá trị mặc định (0)
-                W distanceFromUToZero = AlgorithmUtils.distance(distance.get(u).get(u), AlgorithmUtils.defaultValue(graph));
+                W distanceFromUToZero = AlgorithmUtils.sum(distance.get(u).get(u), AlgorithmUtils.defaultValue(graph));
 
                 // Nếu khoảng cách từ u đến chính nó nhỏ hơn giá trị mặc định, có nghĩa là đồ thị chứa chu trình trọng số âm
                 if (distanceFromUToZero.compareTo(distance.get(u).get(u)) < 0) {
