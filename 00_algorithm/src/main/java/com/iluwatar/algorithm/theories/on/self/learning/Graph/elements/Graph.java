@@ -151,4 +151,19 @@ public class Graph<T, W extends Number & Comparable<W>> {
         return edges.stream().anyMatch(edge -> edge.getEndVertex().equals(endVertex));
     }
 
+    public void removeEdge(Vertex<T> vertex, Edge<T, W> edge) {
+
+        // Lấy danh sách các cạnh kết nối với đỉnh fromVertex
+        List<Edge<T, W>> edges = adjacentVertices.get(vertex);
+
+        // Nếu danh sách cạnh không rỗng, xóa cạnh chỉ định từ danh sách
+        if (edges != null) {
+            edges.remove(edge);
+
+            // Nếu không còn cạnh nào liên kết với đỉnh, xóa đỉnh khỏi bản đồ
+            if (edges.isEmpty()) {
+                adjacentVertices.remove(vertex);
+            }
+        }
+    }
 }
