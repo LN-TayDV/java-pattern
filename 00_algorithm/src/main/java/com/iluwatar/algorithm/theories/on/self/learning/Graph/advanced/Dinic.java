@@ -29,12 +29,12 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Edge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Vertex;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Queue;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -60,7 +60,7 @@ public class Dinic {
      */
     public static <T, W extends Number & Comparable<W>> MaxFlowPath<T, W> algorithm(Graph<T, W> graph, Vertex<T> source, Vertex<T> sink, W zero, W infinity) {
         W maxFlow = zero;
-        NodeVT<Vertex<T>> maxFlowVertices = null; // Danh sách các đỉnh tạo nên maxFlow
+        List<Vertex<T>> maxFlowVertices = new ArrayList<>();
 
         while (bfsLevelGraph(graph, source, sink, zero)) {
             Map<Vertex<T>, Iterator<Edge<T, W>>> edgeIteratorMap = new HashMap<>();
@@ -69,11 +69,11 @@ public class Dinic {
             }
 
             W flow;
-            while (!(flow = dfsBlockingFlow(graph, source, sink, edgeIteratorMap, infinity, zero, new ArrayList<>())).equals(zero)) {
+            while (!(flow = dfsBlockingFlow(graph, source, sink, edgeIteratorMap, infinity, zero)).equals(zero)) {
                 maxFlow = AlgorithmUtils.sum(maxFlow, flow);
                 // Update maxFlowVertices
-                NodeVT<Vertex<T>> currentNode = new NodeVT<>(source, maxFlowVertices);
-                maxFlowVertices = currentNode;
+                List<Vertex<T>> path = reconstructPath(graph, source, sink);
+                maxFlowVertices.addAll(path);
             }
         }
 
@@ -119,14 +119,10 @@ public class Dinic {
      * @param edgeIteratorMap - Bản đồ chứa các iterator cạnh cho từng đỉnh
      * @param flow - Dòng chảy hiện tại
      * @param zero - Giá trị zero của loại W
-     * @param path - Đường đi hiện tại được theo dõi
      * @return Giá trị dòng chảy chặn
      */
-    private static <T, W extends Number & Comparable<W>> W dfsBlockingFlow(Graph<T, W> graph, Vertex<T> u, Vertex<T> sink, Map<Vertex<T>, Iterator<Edge<T, W>>> edgeIteratorMap, W flow, W zero, List<Vertex<T>> path) {
-        path.add(u);
-
+    private static <T, W extends Number & Comparable<W>> W dfsBlockingFlow(Graph<T, W> graph, Vertex<T> u, Vertex<T> sink, Map<Vertex<T>, Iterator<Edge<T, W>>> edgeIteratorMap, W flow, W zero) {
         if (u.equals(sink)) {
-            // Nếu đến đích, trả về dòng chảy hiện tại
             return flow;
         }
 
@@ -139,7 +135,7 @@ public class Dinic {
             if (edge.getWeight().compareTo(zero) > 0) {
                 W currentFlow = AlgorithmUtils.min(flow, edge.getWeight());
 
-                W tempFlow = dfsBlockingFlow(graph, v, sink, edgeIteratorMap, currentFlow, zero, path);
+                W tempFlow = dfsBlockingFlow(graph, v, sink, edgeIteratorMap, currentFlow, zero);
 
                 if (tempFlow.compareTo(zero) > 0) {
                     edge.setWeight(AlgorithmUtils.subtract(edge.getWeight(), tempFlow));
@@ -149,14 +145,41 @@ public class Dinic {
                         .findFirst()
                         .ifPresent(reverseEdge -> reverseEdge.setWeight(AlgorithmUtils.sum(reverseEdge.getWeight(), tempFlow)));
 
-                    path.remove(path.size() - 1);
                     return tempFlow;
                 }
             }
         }
 
-        path.remove(path.size() - 1);
         return zero;
+    }
+
+    /**
+     * Khôi phục đường đi từ đỉnh nguồn đến đỉnh đích.
+     */
+    private static <T, W extends Number & Comparable<W>> List<Vertex<T>> reconstructPath(Graph<T, W> graph, Vertex<T> source, Vertex<T> sink) {
+        List<Vertex<T>> path = new ArrayList<>();
+        Vertex<T> current = sink;
+
+        // Thực hiện tìm đường đi từ đích đến nguồn
+        while (current != null && !current.equals(source)) {
+            path.add(current);
+            current = findPreviousVertexInPath(graph, current);
+        }
+
+        if (current != null) {
+            path.add(source);
+        }
+
+        Collections.reverse(path);
+        return path;
+    }
+
+    /**
+     * Tìm đỉnh trước đó trong đường đi từ đỉnh hiện tại.
+     */
+    private static <T, W extends Number & Comparable<W>> Vertex<T> findPreviousVertexInPath(Graph<T, W> graph, Vertex<T> current) {
+        // Cần cài đặt logic để tìm đỉnh trước đó từ đỉnh hiện tại trong đồ thị.
+        return null; // Placeholder return, cần thay thế với logic thực sự.
     }
 
     @NoArgsConstructor
@@ -164,18 +187,17 @@ public class Dinic {
     @Data
     private static class MaxFlowPath<T, W> implements Iterable<Vertex<T>> {
         private W maxFlow;
-        private NodeVT<Vertex<T>> maxFlowVertex; // Danh sách các đỉnh tạo nên maxFlow
+        private List<Vertex<T>> maxFlowVertices; // Danh sách các đỉnh tạo nên maxFlow
 
         @Override
         public Iterator<Vertex<T>> iterator() {
-            return new VertexIterator(maxFlowVertex);
+            return maxFlowVertices.iterator();
         }
 
         @Override
-        public String toString () {
+        public String toString() {
             StringBuilder sb = new StringBuilder();
-
-            Iterator<Vertex<T>> iterator = new VertexIterator(maxFlowVertex);
+            Iterator<Vertex<T>> iterator = maxFlowVertices.iterator();
 
             while (iterator.hasNext()) {
                 Vertex<T> vertex = iterator.next();
@@ -185,32 +207,7 @@ public class Dinic {
                 }
             }
 
-            return String.format("{ maxFlow : %s , maxFlowVertex : %s }", maxFlow, sb.toString());
-        }
-
-
-        // Lớp Iterator để duyệt qua các đỉnh trong danh sách liên kết
-        private class VertexIterator implements Iterator<Vertex<T>> {
-            private NodeVT<Vertex<T>> current;
-
-            public VertexIterator(NodeVT<Vertex<T>> start) {
-                this.current = start;
-            }
-
-            @Override
-            public boolean hasNext() {
-                return current != null;
-            }
-
-            @Override
-            public Vertex<T> next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException("No more elements in the list.");
-                }
-                Vertex<T> vertex = current.getFirstVertex();
-                current = current.getNextVertex();
-                return vertex;
-            }
+            return String.format("{ maxFlow : %s , maxFlowVertices : %s }", maxFlow, sb.toString());
         }
     }
 
@@ -224,33 +221,35 @@ public class Dinic {
 
     public static void main(String[] args) {
         // Tạo đồ thị
-        Graph<String, Integer> graph = new Graph<>(true);
+        Graph<String, Double> graph = new Graph<>(true);
 
         // Thêm các đỉnh
         Vertex<String> s = graph.addVertex("A");
-        Vertex<String> goal = graph.addVertex("G");
+        Vertex<String> vG = graph.addVertex("G");
         Vertex<String> vB = graph.addVertex("B");
         Vertex<String> vC = graph.addVertex("C");
         Vertex<String> vD = graph.addVertex("D");
-        Vertex<String> vE = graph.addVertex("E");
-        Vertex<String> t = graph.addVertex("F");
+        Vertex<String> t = graph.addVertex("E");
+        Vertex<String> vF = graph.addVertex("F");
 
         // Thêm các cạnh với trọng số
-        graph.addEdge("A", "B", 1);
-        graph.addEdge("A", "C", 4);
-        graph.addEdge("B", "D", 2);
-        graph.addEdge("C", "D", 1);
-        graph.addEdge("D", "E", 3);
-        graph.addEdge("E", "F", 2);
-        graph.addEdge("F", "G", 1);
-        graph.addEdge("C", "G", 7);
+        graph.addEdge("A", "B", 1.0);
+        graph.addEdge("A", "C", 4.0);
+        graph.addEdge("B", "D", 2.0);
+        graph.addEdge("C", "D", 1.0);
+        graph.addEdge("D", "E", 3.0);
+        graph.addEdge("E", "F", 2.0);
+        graph.addEdge("F", "G", 1.0);
+        graph.addEdge("C", "G", 7.0);
+
+        System.out.println(graph);
 
         // Đặt giá trị zero và vô cực cho loại W
-        Integer zero = 0;
-        Integer infinity = Integer.MAX_VALUE;
+        Double zero = 0.0;
+        Double infinity = Double.valueOf(String.valueOf(Integer.MAX_VALUE));
 
         // Gọi thuật toán Dinic để tìm dòng chảy tối đa
-        MaxFlowPath<String, Integer> result = Dinic.algorithm(graph, s, t, zero, infinity);
+        MaxFlowPath<String, Double> result = Dinic.algorithm(graph, s, t, zero, infinity);
 
         // In kết quả
         System.out.println(result);
