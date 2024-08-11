@@ -24,7 +24,6 @@
  */
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
 
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elementary.AlgorithmUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -96,22 +95,6 @@ public class Graph<T, W extends Number & Comparable<W>> {
             Edge<T, W> reverseEdge = new Edge<>(endVertex, startVertex, weight, directed);
             adjacentVertices.get(endVertex).add(reverseEdge);
         }
-    }
-
-    public  void addEdge(Vertex<T> current, Vertex<T> parent, W weight, W pathFlow) {
-        Edge<T, W> reverseEdge = new Edge<>(
-            current,
-            parent,
-            weight,
-            this.directed
-        );
-
-        this.addEdge(
-            reverseEdge.getStartVertex().getTop(),
-            reverseEdge.getEndVertex().getTop(),
-            AlgorithmUtils.sum(reverseEdge.getWeight(), pathFlow)
-        );
-
     }
 
     public List<Edge<T, W>> getEdges(Vertex<T> vertex) {

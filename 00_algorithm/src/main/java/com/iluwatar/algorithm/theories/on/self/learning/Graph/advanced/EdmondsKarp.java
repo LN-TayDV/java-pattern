@@ -53,10 +53,11 @@ public class EdmondsKarp {
      * @return Giá trị dòng chảy tối đa dạng W.
      */
     public static <T, W extends Number & Comparable<W>> W algorithm(Graph<T, W> graph, Vertex<T> source, Vertex<T> sink, W zero, W infinity) {
+        // Khởi tạo dòng chảy tối đa là zero
         W maxFlow = zero;
 
         while (true) {
-            // Tìm đường tăng cường trong đồ thị
+            // Tìm đường tăng cường trong đồ thị từ nguồn đến đích
             Map<Vertex<T>, Vertex<T>> parentMap = bfsFindAugmentingPath(graph, source, sink, zero);
             if (parentMap == null) {
                 // Nếu không còn đường tăng cường, kết thúc thuật toán
@@ -66,7 +67,7 @@ public class EdmondsKarp {
             // Tính dòng chảy tối đa có thể cho đường tăng cường
             W pathFlow = calculatePathFlow(graph, source, sink, parentMap, infinity, zero);
 
-            // Cập nhật dòng chảy trong đồ thị
+            // Cập nhật dòng chảy tối đa
             maxFlow = AlgorithmUtils.sum(maxFlow, pathFlow);
         }
 
@@ -77,25 +78,32 @@ public class EdmondsKarp {
      * Hàm BFS để tìm đường tăng cường từ nguồn đến đích.
      */
     private static <T, W extends Number & Comparable<W>> Map<Vertex<T>, Vertex<T>> bfsFindAugmentingPath(Graph<T, W> graph, Vertex<T> source, Vertex<T> sink, W zero) {
+        // Khởi tạo bản đồ để lưu trữ cha của mỗi đỉnh và bản đồ lưu trữ dòng chảy
         Map<Vertex<T>, Vertex<T>> parentMap = new HashMap<>();
         Map<Vertex<T>, W> pathFlow = new HashMap<>();
+        // Khởi tạo hàng đợi BFS
         Queue<Vertex<T>> queue = new LinkedList<>();
 
+        // Bắt đầu từ đỉnh nguồn
         queue.offer(source);
         parentMap.put(source, null);
         pathFlow.put(source, zero);
 
+        // Tiến hành BFS để tìm đường tăng cường
         while (!queue.isEmpty()) {
             Vertex<T> u = queue.poll();
 
+            // Duyệt tất cả các cạnh của đỉnh u
             for (Edge<T, W> edge : graph.getEdges(u)) {
                 Vertex<T> v = edge.getEndVertex();
                 W residualCapacity = edge.getWeight();
 
+                // Nếu đỉnh v chưa được khám phá và có dung lượng còn lại
                 if (!parentMap.containsKey(v) && residualCapacity.compareTo(zero) > 0) {
                     parentMap.put(v, u);
                     pathFlow.put(v, AlgorithmUtils.min(pathFlow.get(u), residualCapacity));
                     if (v.equals(sink)) {
+                        // Nếu đã đến đích, trả về bản đồ cha
                         return parentMap;
                     }
                     queue.offer(v);
@@ -113,7 +121,7 @@ public class EdmondsKarp {
         Graph<T, W> graph, Vertex<T> source, Vertex<T> sink,
         Map<Vertex<T>, Vertex<T>> parentMap, W infinity, W zero) {
 
-        // Tính toán dòng chảy tối đa có thể cho đường tăng cường
+        // Khởi tạo dòng chảy tối đa có thể cho đường tăng cường
         W pathFlow = AlgorithmUtils.min(AlgorithmUtils.subtract(infinity, zero), infinity);
         Vertex<T> current = sink;
 
@@ -123,7 +131,9 @@ public class EdmondsKarp {
             if (parent == null) {
                 throw new IllegalStateException("Parent map does not contain a parent for vertex " + current);
             }
+            // Tìm cạnh từ parent đến current
             Edge<T, W> edge = findEdge(graph, parent, current);
+            // Cập nhật dòng chảy tối đa có thể bằng cách lấy giá trị nhỏ nhất
             pathFlow = AlgorithmUtils.min(pathFlow, edge.getWeight());
             current = parent;
         }
@@ -135,15 +145,25 @@ public class EdmondsKarp {
             if (parent == null) {
                 throw new IllegalStateException("Parent map does not contain a parent for vertex " + current);
             }
+
+            // Tìm cạnh từ parent đến current
             Edge<T, W> edge = findEdge(graph, parent, current);
+            // Giảm trọng số của cạnh hiện tại theo dòng chảy
             edge.setWeight(AlgorithmUtils.subtract(edge.getWeight(), pathFlow));
 
-            // Cập nhật hoặc thêm cạnh ngược
+            // Tìm hoặc thêm cạnh ngược từ current đến parent
             Edge<T, W> reverseEdge = findReverseEdge(graph, current, parent);
             if (reverseEdge == null) {
-                graph.addEdge(current, parent, zero, pathFlow);
+                // Nếu không tìm thấy cạnh ngược, thêm mới với trọng số là pathFlow
+                reverseEdge = new Edge<>(current, parent, pathFlow, graph.getDirected());
+                // Thêm vào danh sách cạnh của parent
+                graph.getEdges(parent).add(reverseEdge);
+            } else {
+                // Nếu đã có cạnh ngược, cập nhật trọng số của nó
+                reverseEdge.setWeight(AlgorithmUtils.sum(reverseEdge.getWeight(), pathFlow));
             }
 
+            // Tiếp tục đến đỉnh cha
             current = parent;
         }
 
@@ -154,6 +174,7 @@ public class EdmondsKarp {
      * Tìm cạnh trong đồ thị từ đỉnh u đến đỉnh v.
      */
     private static <T, W extends Number & Comparable<W>> Edge<T, W> findEdge(Graph<T, W> graph, Vertex<T> u, Vertex<T> v) {
+        // Tìm và trả về cạnh từ u đến v
         return graph.getEdges(u).stream()
             .filter(edge -> edge.getEndVertex().equals(v))
             .findFirst()
@@ -164,11 +185,13 @@ public class EdmondsKarp {
      * Tìm cạnh ngược trong đồ thị từ đỉnh u đến đỉnh v.
      */
     private static <T, W extends Number & Comparable<W>> Edge<T, W> findReverseEdge(Graph<T, W> graph, Vertex<T> u, Vertex<T> v) {
+        // Tìm và trả về cạnh ngược từ u đến v, hoặc null nếu không có
         return graph.getEdges(u).stream()
             .filter(edge -> edge.getEndVertex().equals(v))
             .findFirst()
             .orElse(null);
     }
+
 
     public static void main(String[] args) {
         // Tạo đồ thị
