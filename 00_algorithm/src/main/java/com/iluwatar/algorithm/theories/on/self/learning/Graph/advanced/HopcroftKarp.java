@@ -162,7 +162,7 @@ public class HopcroftKarp<T, W extends Number & Comparable<W>> {
         for (Vertex<T> u : leftVertices) {
             Vertex<T> v = hopcroftKarp.pairU.get(u);
             if (v != null) {
-                path.add(u, AlgorithmUtils.defaultValue(graph, 1)); // Giả định fCost là 1 cho mỗi cạnh
+                path.add(u, hopcroftKarp.one(graph)); // Giả định fCost là 1 cho mỗi cạnh
             }
         }
 
