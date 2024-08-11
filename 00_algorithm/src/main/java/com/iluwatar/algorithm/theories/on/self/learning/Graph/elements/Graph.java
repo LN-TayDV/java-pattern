@@ -97,25 +97,20 @@ public class Graph<T, W> {
         }
     }
 
+    public Edge<T, W> addEdge(Vertex<T> current, Vertex<T> parent, W weight) {
+        this.addEdge(current.getTop(), parent.getTop(), weight);
+        return getEdge(current, parent);
+    }
+
     public List<Edge<T, W>> getEdges(Vertex<T> vertex) {
         return adjacentVertices.get(vertex);
     }
 
     public Edge<T, W> getEdge(Vertex<T> u, Vertex<T> v) {
-        // Lấy danh sách các cạnh từ đỉnh u
-        List<Edge<T, W>> edges = adjacentVertices.get(u);
-
-        // Tìm và trả về cạnh có đỉnh kết thúc là v
-        if (edges != null) {
-            for (Edge<T, W> edge : edges) {
-                if (edge.getEndVertex().equals(v)) {
-                    return edge;
-                }
-            }
-        }
-
-        // Nếu không tìm thấy, trả về null
-        return null;
+        return adjacentVertices.get(u).stream()
+            .filter(edge -> edge.getEndVertex().equals(v))
+            .findFirst()
+            .orElse(null);
     }
 
     public List<Edge<T, W>> getEdges() {
