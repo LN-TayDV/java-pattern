@@ -175,7 +175,8 @@ public class EdmondsKarp {
      */
     private static <T, W extends Number & Comparable<W>> Edge<T, W> findEdge(Graph<T, W> graph, Vertex<T> u, Vertex<T> v) {
         // Tìm và trả về cạnh từ u đến v
-        return graph.getEdges(u).stream()
+        return graph.getEdges(u)
+            .stream()
             .filter(edge -> edge.getEndVertex().equals(v))
             .findFirst()
             .orElseThrow(() -> new NoSuchElementException("Edge not found"));
@@ -186,7 +187,8 @@ public class EdmondsKarp {
      */
     private static <T, W extends Number & Comparable<W>> Edge<T, W> findReverseEdge(Graph<T, W> graph, Vertex<T> u, Vertex<T> v) {
         // Tìm và trả về cạnh ngược từ u đến v, hoặc null nếu không có
-        return graph.getEdges(u).stream()
+        return graph.getEdges(u)
+            .stream()
             .filter(edge -> edge.getEndVertex().equals(v))
             .findFirst()
             .orElse(null);
