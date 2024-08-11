@@ -140,6 +140,10 @@ public class HopcroftKarp<T, W extends Number & Comparable<W>> {
         return  AlgorithmUtils.defaultValue(graph, 1); // Placeholder, replace with correct implementation
     }
 
+    private W any(Graph<T, W> graph, Integer value) {
+        return  AlgorithmUtils.defaultValue(graph, value);
+    }
+
     // Phương thức để cộng hai giá trị W
     private W add(W a, W b) {
         // Implement this method to perform addition with W
