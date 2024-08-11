@@ -44,12 +44,14 @@ import java.util.PriorityQueue;
 public class Johnson {
 
     // Tìm đường đi ngắn nhất giữa tất cả các cặp đỉnh
-    public static <T, W extends Number & Comparable<W>> Map<Vertex<T>, Map<Vertex<T>, Integer>> findShortestPaths(Graph<T, Integer> graph, T defaultVertex) {
+    public static <T, W extends Number & Comparable<W>> Map<Vertex<T>, Map<Vertex<T>, W>> algorithm(Graph<T, W> graph, T defaultVertex) {
+
         List<Vertex<T>> vertices = new ArrayList<>(graph.getVertices());
+
         Vertex<T> virtualVertex = new Vertex<>(defaultVertex);
 
         // Thêm đỉnh ảo vào đồ thị
-        Graph<T, Integer> modifiedGraph = new Graph<>(graph.isDirected());
+        Graph<T, W> modifiedGraph = new Graph<>(graph.isDirected());
         for (Vertex<T> vertex : vertices) {
             modifiedGraph.addVertex(vertex.getTop());
         }
@@ -57,27 +59,27 @@ public class Johnson {
 
         // Thêm các cạnh từ đỉnh ảo đến tất cả các đỉnh còn lại
         for (Vertex<T> vertex : vertices) {
-            modifiedGraph.addEdge(virtualVertex.getTop(), vertex.getTop(), 0);
+            modifiedGraph.addEdge(virtualVertex.getTop(), vertex.getTop(), AlgorithmUtils.defaultValue(graph));
         }
 
         // Thêm tất cả các cạnh của đồ thị gốc vào đồ thị mới
         for (Vertex<T> u : vertices) {
-            for (Edge<T, Integer> edge : graph.getEdges(u)) {
+            for (Edge<T, W> edge : graph.getEdges(u)) {
                 Vertex<T> v = edge.getDestination();
                 modifiedGraph.addEdge(u.getTop(), v.getTop(), edge.getWeight());
             }
         }
 
         // Sử dụng Bellman-Ford để tính toán khoảng cách từ đỉnh ảo
-        Map<Vertex<T>, Integer> h = bellmanFord(modifiedGraph, virtualVertex);
+        Map<Vertex<T>, W> h = bellmanFord(modifiedGraph, virtualVertex);
 
         // Điều chỉnh trọng số của đồ thị
-        Graph<T, Integer> adjustedGraph = adjustGraphWeights(graph, h);
+        Graph<T, W> adjustedGraph = adjustGraphWeights(graph, h);
 
         // Tìm đường đi ngắn nhất từ mỗi đỉnh
-        Map<Vertex<T>, Map<Vertex<T>, Integer>> allPairsShortestPaths = new HashMap<>();
+        Map<Vertex<T>, Map<Vertex<T>, W>> allPairsShortestPaths = new HashMap<>();
         for (Vertex<T> vertex : vertices) {
-            Map<Vertex<T>, Integer> distances = dijkstra(adjustedGraph, vertex);
+            Map<Vertex<T>, W> distances = dijkstra(adjustedGraph, vertex);
             allPairsShortestPaths.put(vertex, distances);
         }
 
@@ -157,30 +159,30 @@ public class Johnson {
     }
 
     // Thuật toán Dijkstra để tìm đường đi ngắn nhất từ một đỉnh
-    private static <T> Map<Vertex<T>, Integer> dijkstra(Graph<T, Integer> graph, Vertex<T> source) {
-        Map<Vertex<T>, Integer> distances = new HashMap<>();
+    private static  <T, W extends Number & Comparable<W>> Map<Vertex<T>, W> dijkstra(Graph<T, W> graph, Vertex<T> source) {
+        Map<Vertex<T>, W> distances = new HashMap<>();
 
         PriorityQueue<Vertex<T>> queue = new PriorityQueue<>(Comparator.comparing(distances::get));
 
         for (Vertex<T> vertex : graph.getVertices()) {
-            distances.put(vertex, Integer.MAX_VALUE);
+            distances.put(vertex, AlgorithmUtils.max(graph));
             queue.add(vertex);
         }
 
-        distances.put(source, 0);
+        distances.put(source, AlgorithmUtils.defaultValue(graph));
         queue.add(source);
 
         while (!queue.isEmpty()) {
 
             Vertex<T> u = queue.poll();
 
-            for (Edge<T, Integer> edge : graph.getEdges(u)) {
+            for (Edge<T, W> edge : graph.getEdges(u)) {
 
                 Vertex<T> v = edge.getDestination();
 
-                int newDist = distances.get(u) + edge.getWeight();
+                W newDist = AlgorithmUtils.sum(distances.get(u), edge.getWeight());
 
-                if (newDist < distances.get(v)) {
+                if (newDist.compareTo(distances.get(v)) < 0) {
                     distances.put(v, newDist);
                     queue.add(v);
                 }
