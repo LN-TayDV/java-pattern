@@ -82,4 +82,8 @@ public class Edge<T, W extends Number & Comparable<W>> {
     public Vertex<T> getToVertex() {
         return this.endVertex;
     }
+
+    public Vertex<T> getDestination() {
+        return this.endVertex;
+    }
 }

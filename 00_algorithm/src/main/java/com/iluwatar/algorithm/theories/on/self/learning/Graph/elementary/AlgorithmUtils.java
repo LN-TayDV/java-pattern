@@ -52,6 +52,28 @@ public class AlgorithmUtils {
     }
 
     // Hàm tiện ích để cộng hai giá trị số học
+    public static <T, W extends Number & Comparable<W>> W defaultValue(Graph<T, W> graph, Integer value) {
+        return graph.typeWeight()
+            .map(targetClassTypeName -> {
+                if (targetClassTypeName.equals(Integer.class.getTypeName())) {
+                    return (W) Integer.valueOf(value);
+
+                } else if (targetClassTypeName.equals(Double.class.getTypeName())) {
+                    return (W) Double.valueOf(value);
+
+                } else if (targetClassTypeName.equals(Long.class.getTypeName())) {
+                    return (W) Long.valueOf(value);
+
+                } else if (targetClassTypeName.equals(Float.class.getTypeName())) {
+                    return (W) Float.valueOf(value);
+                }
+
+                return null;
+            })
+            .orElseThrow(() -> new UnsupportedOperationException("Type not supported"));
+    }
+
+    // Hàm tiện ích để cộng hai giá trị số học
     public static <W extends Number & Comparable<W>> W sum(W a, W b) {
 
         if (a instanceof Integer) {

@@ -24,8 +24,185 @@
  */
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.advanced;
 
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elementary.AlgorithmUtils;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Edge;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Graph;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Path;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Vertex;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+
 /**
  * Hopcroft-Karp: Tìm kết hợp cực đại trong đồ thị lưỡng phân.
  */
-public class HopcroftKarp {
+public class HopcroftKarp<T, W extends Number & Comparable<W>> {
+
+    private final Graph<T, W> graph;
+    private final List<Vertex<T>> leftVertices;
+    private final List<Vertex<T>> rightVertices;
+    private final W infinity;
+    private final Map<Vertex<T>, Vertex<T>> pairU; // Sự ghép nối từ U
+    private final Map<Vertex<T>, Vertex<T>> pairV; // Sự ghép nối từ V
+    private final Map<Vertex<T>, W> dist;          // Khoảng cách trong BFS
+
+    // Constructor để khởi tạo thuật toán
+    public HopcroftKarp(Graph<T, W> graph, List<Vertex<T>> leftVertices, List<Vertex<T>> rightVertices, W infinity) {
+        this.graph = graph;
+        this.leftVertices = leftVertices;
+        this.rightVertices = rightVertices;
+        this.infinity = infinity;
+        this.pairU = new HashMap<>();
+        this.pairV = new HashMap<>();
+        this.dist = new HashMap<>();
+
+        // Khởi tạo ghép nối và khoảng cách
+        for (Vertex<T> u : leftVertices) {
+            pairU.put(u, null);
+        }
+        for (Vertex<T> v : rightVertices) {
+            pairV.put(v, null);
+        }
+    }
+
+    // Tìm ghép nối cực đại sử dụng thuật toán Hopcroft-Karp
+    public int maximumMatching() {
+        int matchingSize = 0;
+        while (bfs()) {
+            for (Vertex<T> u : leftVertices) {
+                if (pairU.get(u) == null && dfs(u)) {
+                    matchingSize++;
+                }
+            }
+        }
+        return matchingSize;
+    }
+
+    // Tìm khoảng cách từ đỉnh trong BFS
+    private boolean bfs() {
+        Queue<Vertex<T>> queue = new LinkedList<>();
+        for (Vertex<T> u : leftVertices) {
+            if (pairU.get(u) == null) {
+                dist.put(u, zero()); // Zero là giá trị số không tương ứng với kiểu W
+                queue.add(u);
+            } else {
+                dist.put(u, infinity);
+            }
+        }
+        dist.put(null, infinity);
+
+        while (!queue.isEmpty()) {
+            Vertex<T> u = queue.poll();
+            if (dist.get(u).compareTo(dist.get(null)) < 0) {
+                for (Edge<T, W> edge : graph.getEdges(u)) {
+                    Vertex<T> v = edge.getDestination();
+                    if (dist.get(pairV.get(v)) == infinity) {
+                        dist.put(pairV.get(v), add(dist.get(u), one())); // one() là giá trị số một tương ứng với kiểu W
+                        queue.add(pairV.get(v));
+                    }
+                }
+            }
+        }
+        return dist.get(null).compareTo(infinity) < 0;
+    }
+
+    // Tìm ghép nối tối ưu sử dụng DFS
+    private boolean dfs(Vertex<T> u) {
+        if (u != null) {
+            for (Edge<T, W> edge : graph.getEdges(u)) {
+                Vertex<T> v = edge.getDestination();
+                if (dist.get(pairV.get(v)).compareTo(add(dist.get(u), one())) == 0) {
+                    if (dfs(pairV.get(v))) {
+                        pairV.put(v, u);
+                        pairU.put(u, v);
+                        return true;
+                    }
+                }
+            }
+            dist.put(u, infinity);
+            return false;
+        }
+        return true;
+    }
+
+    // Phương thức static để khởi tạo và chạy thuật toán Hopcroft-Karp
+    public static <T, W extends Number & Comparable<W>> Path<T, W> algorithm(Graph<T, W> graph, List<Vertex<T>> leftVertices, List<Vertex<T>> rightVertices, W infinity) {
+        // Khởi tạo thuật toán Hopcroft-Karp
+        HopcroftKarp<T, W> hopcroftKarp = new HopcroftKarp<>(graph, leftVertices, rightVertices, infinity);
+
+        // Tìm kết hợp cực đại
+        int matchingSize = hopcroftKarp.maximumMatching();
+
+        // Tạo đối tượng Path để lưu kết quả
+        Path<T, W> path = new Path<>();
+
+        // Xử lý và thêm kết quả vào Path
+        for (Vertex<T> u : leftVertices) {
+            Vertex<T> v = hopcroftKarp.pairU.get(u);
+            if (v != null) {
+                path.add(u, AlgorithmUtils.defaultValue(graph, 1)); // Giả định fCost là 1 cho mỗi cạnh
+            }
+        }
+
+        // Trả về kết quả Path
+        return path;
+    }
+
+    // Phương thức để tạo giá trị 0 cho kiểu W
+    private W zero() {
+        // Implement this method based on how you create a zero value for W
+        return (W) Integer.valueOf(0); // Placeholder, replace with correct implementation
+    }
+
+    // Phương thức để tạo giá trị 1 cho kiểu W
+    private W one() {
+        // Implement this method based on how you create a one value for W
+        return (W) Integer.valueOf(1); // Placeholder, replace with correct implementation
+    }
+
+    // Phương thức để cộng hai giá trị W
+    private W add(W a, W b) {
+        // Implement this method to perform addition with W
+        // This is a placeholder implementation
+        return AlgorithmUtils.sum(a,b); // Replace with correct implementation
+    }
+
+    public static void main(String[] args) {
+        // Tạo đồ thị có hướng với trọng số là số thực (Double)
+        Graph<String, Double> graph = new Graph<>(true);
+
+        // Thêm các đỉnh vào đồ thị
+        Vertex<String> s = graph.addVertex("S");
+        Vertex<String> source = graph.addVertex("A");
+        Vertex<String> b = graph.addVertex("B");
+        Vertex<String> c = graph.addVertex("C");
+        Vertex<String> sink = graph.addVertex("T");
+
+        // Thêm các cạnh với trọng số (dung lượng)
+        graph.addEdge("S", "A", 10.0);
+        graph.addEdge("S", "B", 5.0);
+        graph.addEdge("A", "B", 15.0);
+        graph.addEdge("A", "C", 10.0);
+        graph.addEdge("B", "C", 10.0);
+        graph.addEdge("B", "T", 10.0);
+        graph.addEdge("C", "T", 10.0);
+
+        System.out.println(graph);
+
+        // Chạy thuật toán Ford-Fulkerson để tìm luồng cực đại từ đỉnh nguồn đến đỉnh đích
+        var path = HamiltonianPath.algorithm(graph);
+
+        // In ra đường đi Eulerian Path
+        if (path != null) {
+            System.out.println("HopcroftKarp Path: " + path);
+        } else {
+            System.out.println("Không tìm thấy đường đi Eulerian trong đồ thị.");
+        }
+
+
+    }
+
+
 }
