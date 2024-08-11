@@ -100,10 +100,10 @@ public class Kruskal {
         Graph<String, Double> graph = new Graph<>(false);
 
         // Thêm các đỉnh
-        Vertex<String> vA = graph.addVertex("A");
-        Vertex<String> vB = graph.addVertex("B");
-        Vertex<String> vC = graph.addVertex("C");
-        Vertex<String> vD = graph.addVertex("D");
+        graph.addVertex("A");
+        graph.addVertex("B");
+        graph.addVertex("C");
+        graph.addVertex("D");
 
         // Thêm các cạnh với trọng số
         graph.addEdge("A", "B", 1.0);
