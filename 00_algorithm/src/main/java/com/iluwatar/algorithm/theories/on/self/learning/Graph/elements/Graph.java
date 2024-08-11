@@ -167,4 +167,8 @@ public class Graph<T, W extends Number & Comparable<W>> {
             }
         }
     }
+
+    public boolean isDirected() {
+        return this.getDirected();
+    }
 }

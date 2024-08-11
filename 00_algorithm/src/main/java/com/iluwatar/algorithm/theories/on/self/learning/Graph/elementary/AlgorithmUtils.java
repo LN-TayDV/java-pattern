@@ -108,6 +108,27 @@ public class AlgorithmUtils {
         throw new UnsupportedOperationException("Type not supported: " + a.getClass().getName());
     }
 
+    public static <T, W extends Number & Comparable<W>> W max(Graph<T, W> graph) {
+        return (W) graph.typeWeight()
+            .map(targetClassTypeName -> {
+                if (targetClassTypeName.equals(Integer.class.getTypeName())) {
+                    return Integer.MAX_VALUE;
+
+                } else if (targetClassTypeName.equals(Double.class.getTypeName())) {
+                    return Double.MAX_VALUE;
+
+                } else if (targetClassTypeName.equals(Long.class.getTypeName())) {
+                    return Long.MAX_VALUE;
+
+                } else if (targetClassTypeName.equals(Float.class.getTypeName())) {
+                    return Float.MAX_VALUE;
+                }
+
+                return null;
+            })
+            .orElseThrow(() -> new UnsupportedOperationException("Type not supported"));
+    }
+
     // Phương thức tìm giá trị nhỏ nhất giữa hai giá trị của W
     public static <W extends Number & Comparable<W>> W min(W a, W b) {
         return a.compareTo(b) < 0 ? a : b;
