@@ -36,10 +36,10 @@ import lombok.extern.slf4j.Slf4j;
  * Duyệt tất cả các đỉnh của đồ thị bắt đầu từ một đỉnh và đi sâu vào các đỉnh kề chưa được thăm.
  */
 @Slf4j
-public class DepthFirstSearch<T, W> {
+public class DepthFirstSearch<T, W extends Number & Comparable<W>> {
 
     // Phương thức thực hiện DFS từ đỉnh bắt đầu `startTop`
-    public static <T, W> void algorithm(Graph<T, W> graph, T startTop) {
+    public static <T, W extends Number & Comparable<W>> void algorithm(Graph<T, W> graph, T startTop) {
         LOGGER.info("Lấy đỉnh bắt đầu từ đồ thị");
         Vertex<T> startVertex = graph.getVertex(startTop);
 
@@ -57,7 +57,7 @@ public class DepthFirstSearch<T, W> {
     }
 
     // Phương thức đệ quy cho DFS
-    private static <T, W> void dfsRecursive(Graph<T, W> graph, Vertex<T> vertex, Set<Vertex<T>> visited) {
+    private static <T, W extends Number & Comparable<W>> void dfsRecursive(Graph<T, W> graph, Vertex<T> vertex, Set<Vertex<T>> visited) {
         LOGGER.info("Thăm đỉnh: " + vertex.getTop());
         visited.add(vertex);
         LOGGER.info("---------- Visited vertex: {} ----------------" , vertex.getTop());

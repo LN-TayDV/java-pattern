@@ -49,7 +49,7 @@ public class TopologicalSorting {
      * @param <W> Kiểu dữ liệu của trọng số cạnh.
      * @return Danh sách các đỉnh được sắp xếp theo thứ tự topo.
      */
-    public static <T, W> List<Vertex<T>> algorithm(Graph<T, W> graph) {
+    public static <T, W extends Number & Comparable<W>> List<Vertex<T>> algorithm(Graph<T, W> graph) {
         List<Vertex<T>> sortedList = new ArrayList<>();
         Set<Vertex<T>> visited = new HashSet<>();
         Deque<Vertex<T>> stack = new ArrayDeque<>();
@@ -76,7 +76,7 @@ public class TopologicalSorting {
      * @param <T> Kiểu dữ liệu của đỉnh.
      * @param <W> Kiểu dữ liệu của trọng số cạnh.
      */
-    private static <T, W> void topologicalSortUtil(Vertex<T> vertex,
+    private static <T, W extends Number & Comparable<W>> void topologicalSortUtil(Vertex<T> vertex,
                                                    Set<Vertex<T>> visited,
                                                    Deque<Vertex<T>> stack,
                                                    Graph<T, W> graph) {

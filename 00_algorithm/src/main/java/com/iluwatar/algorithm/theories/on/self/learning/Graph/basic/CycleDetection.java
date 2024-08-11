@@ -37,7 +37,7 @@ import java.util.Set;
 public class CycleDetection {
 
     // Phương thức tĩnh để kiểm tra chu trình trong đồ thị
-    public static <T, W> boolean algorithm(Graph<T, W> graph) {
+    public static <T, W extends Number & Comparable<W>> boolean algorithm(Graph<T, W> graph) {
         Set<Vertex<T>> visited = new HashSet<>();
         Set<Vertex<T>> recursionStack = new HashSet<>();
 
@@ -55,7 +55,7 @@ public class CycleDetection {
     }
 
     // Phương thức đệ quy để thực hiện DFS và kiểm tra chu trình
-    private static <T, W> boolean dfs(Vertex<T> current,
+    private static <T, W extends Number & Comparable<W>> boolean dfs(Vertex<T> current,
                                       Set<Vertex<T>> visited,
                                       Set<Vertex<T>> recursionStack,
                                       Graph<T, W> graph,

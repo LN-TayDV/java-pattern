@@ -41,7 +41,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class BreadthFirstSearch<T, W> {
 
     // Phương thức thực hiện BFS từ đỉnh bắt đầu `startTop`
-    public static <T, W> void algorithm(Graph<T, W> graph, T startTop) {
+    public static <T, W extends Number & Comparable<W>> void algorithm(Graph<T, W> graph, T startTop) {
 
         LOGGER.info("Lấy đỉnh bắt đầu từ đồ thị");
         Vertex<T> startVertex = graph.getVertex(startTop);

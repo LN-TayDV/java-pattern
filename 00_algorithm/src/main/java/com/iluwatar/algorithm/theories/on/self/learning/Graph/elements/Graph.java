@@ -24,6 +24,7 @@
  */
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
 
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elementary.AlgorithmUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +39,7 @@ import java.util.stream.Collectors;
  * @param <T>
  * @param <W>
  */
-public class Graph<T, W> {
+public class Graph<T, W extends Number & Comparable<W>> {
 
     /** Lưu trữ các đỉnh và các cạnh liên kết với từng đỉnh */
     private final Map<Vertex<T>, List<Edge<T, W>>> adjacentVertices;
@@ -97,9 +98,20 @@ public class Graph<T, W> {
         }
     }
 
-    public Edge<T, W> addEdge(Vertex<T> current, Vertex<T> parent, W weight) {
-        this.addEdge(current.getTop(), parent.getTop(), weight);
-        return getEdge(current, parent);
+    public  void addEdge(Vertex<T> current, Vertex<T> parent, W weight, W pathFlow) {
+        Edge<T, W> reverseEdge = new Edge<>(
+            current,
+            parent,
+            weight,
+            this.directed
+        );
+
+        this.addEdge(
+            reverseEdge.getStartVertex().getTop(),
+            reverseEdge.getEndVertex().getTop(),
+            AlgorithmUtils.sum(reverseEdge.getWeight(), pathFlow)
+        );
+
     }
 
     public List<Edge<T, W>> getEdges(Vertex<T> vertex) {

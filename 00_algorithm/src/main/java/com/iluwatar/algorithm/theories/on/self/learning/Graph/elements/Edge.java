@@ -36,7 +36,7 @@ import lombok.Setter;
 @EqualsAndHashCode(of = {
     "startVertex", "endVertex", "weight"
 })
-public class Edge<T, W> {
+public class Edge<T, W extends Number & Comparable<W>> {
 
     private final Vertex<T> startVertex;
     private final Vertex<T> endVertex;

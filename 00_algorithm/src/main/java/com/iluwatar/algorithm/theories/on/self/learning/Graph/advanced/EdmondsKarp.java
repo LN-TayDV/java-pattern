@@ -141,9 +141,8 @@ public class EdmondsKarp {
             // Cập nhật hoặc thêm cạnh ngược
             Edge<T, W> reverseEdge = findReverseEdge(graph, current, parent);
             if (reverseEdge == null) {
-                reverseEdge = graph.addEdge(current, parent, zero);
+                graph.addEdge(current, parent, zero, pathFlow);
             }
-            reverseEdge.setWeight(AlgorithmUtils.sum(reverseEdge.getWeight(), pathFlow));
 
             current = parent;
         }
