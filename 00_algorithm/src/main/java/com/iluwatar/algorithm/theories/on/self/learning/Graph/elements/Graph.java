@@ -25,6 +25,7 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,7 +99,7 @@ public class Graph<T, W extends Number & Comparable<W>> {
     }
 
     public List<Edge<T, W>> getEdges(Vertex<T> vertex) {
-        return adjacentVertices.get(vertex);
+        return adjacentVertices.getOrDefault(vertex, Collections.emptyList());
     }
 
     public Edge<T, W> getEdge(Vertex<T> u, Vertex<T> v) {

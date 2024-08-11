@@ -74,4 +74,12 @@ public class Edge<T, W extends Number & Comparable<W>> {
             weight
         );
     }
+
+    public Vertex<T> getFromVertex() {
+        return this.startVertex;
+    }
+
+    public Vertex<T> getToVertex() {
+        return this.endVertex;
+    }
 }
