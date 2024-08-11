@@ -100,6 +100,32 @@ public class Path<T, FC extends Number & Comparable<FC>> implements Iterable<Pat
         return new PathIterator<>(this);
     }
 
+    public void removeLast() {
+
+        // Nếu đường đi không có đỉnh nào hoặc chỉ có một đỉnh, thiết lập lại đường đi thành null
+        if (toVertex == null) {
+            fromVertex = null;
+            fCost = null;
+            // Không cần thiết phải đặt `toVertex` thành null vì nó đã là null
+        } else {
+            // Tìm phần tử trước đỉnh cuối cùng
+            Path<T, FC> current = this;
+            Path<T, FC> previous = null;
+
+            // Duyệt để tìm phần tử trước phần tử cuối cùng
+            while (current.toVertex != null) {
+                previous = current;
+                current = current.toVertex;
+            }
+
+            // Nếu phần tử trước đỉnh cuối cùng không phải là null
+            if (previous != null) {
+                // Loại bỏ đỉnh cuối cùng
+                previous.toVertex = null;
+            }
+        }
+    }
+
     // Lớp PathIterator để thực hiện việc duyệt qua đường đi
     private static class PathIterator<T, FC extends Number & Comparable<FC>> implements Iterator<Path<T, FC>> {
 
@@ -133,13 +159,24 @@ public class Path<T, FC extends Number & Comparable<FC>> implements Iterable<Pat
             sb.append(this.fromVertex.getTop()); // Thêm đỉnh bắt đầu vào chuỗi
         }
 
-        if (this.toVertex != null) {
-            sb.append(" --").append("(").append("f-cost : ").append(this.fCost).append(")").append("-- "); // Thêm chi phí vào chuỗi
-            sb.append(this.toVertex); // Đệ quy gọi phương thức toString của đỉnh tiếp theo
-        } else {
-            sb.append(" --").append("(").append("f-cost : ").append(this.fCost).append(")").append("-- [END]"); // Nếu là đỉnh cuối cùng, kết thúc chuỗi
-        }
+        if(this.fCost == null) {
+            if (this.toVertex != null) {
+                sb.append("--> "); // Thêm chi phí vào chuỗi
+                sb.append(this.toVertex); // Đệ quy gọi phương thức toString của đỉnh tiếp theo
+            } else {
+                sb.append("--> ").append("[END]"); // Nếu là đỉnh cuối cùng, kết thúc chuỗi
+            }
+            return sb.toString(); // Trả về chuỗi kết quả
 
-        return sb.toString(); // Trả về chuỗi kết quả
+        }else {
+            if (this.toVertex != null) {
+                sb.append(" --").append("(").append("f-cost : ").append(this.fCost).append(")").append("-- "); // Thêm chi phí vào chuỗi
+                sb.append(this.toVertex); // Đệ quy gọi phương thức toString của đỉnh tiếp theo
+            } else {
+                sb.append(" --").append("(").append("f-cost : ").append(this.fCost).append(")").append("-- [END]"); // Nếu là đỉnh cuối cùng, kết thúc chuỗi
+            }
+
+            return sb.toString(); // Trả về chuỗi kết quả
+        }
     }
 }
