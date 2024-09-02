@@ -35,7 +35,7 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
     }
 
     // Phương thức deg chỉ áp dụng cho Edge
-    public Set<Edge<V, ? extends Number>> degForIndirect(Vertex<V> u) {
+    public Set<GraphGdge<V, ? extends Number>> degForIndirect(Vertex<V> u) {
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
         if (!adjacencyList.containsKey(u.getTop())) {
@@ -46,11 +46,11 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
         E elements = getElements(u.getTop());
 
         // Tạo một tập hợp chứa các Edge liên quan
-        Set<Edge<V, ? extends Number>> edges = new HashSet<>();
+        Set<GraphGdge<V, ? extends Number>> edges = new HashSet<>();
 
         for (GraphGdge<V, ? extends Number> element : elements) {
             if (element instanceof Edge) {
-                edges.add((Edge<V, ? extends Number>) element);
+                edges.add(element);
             }
         }
 
@@ -74,15 +74,17 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
 
         // Duyệt qua tất cả các cung liên quan đến đỉnh u
         for (GraphGdge<V, ? extends Number> arc : elements) {
-            if (arc.u().equals(u)) {
-                // Nếu đỉnh nguồn là u, thì đây là một cung đi ra (deg+(u))
-                outArcs.add(arc);
-                outDegreeCount++;
-            }
-            if (arc.v().equals(u)) {
-                // Nếu đỉnh đích là u, thì đây là một cung đi vào (deg-(u))
-                inArcs.add(arc);
-                inDegreeCount++;
+            if (arc instanceof Arc) {
+                if (arc.u().equals(u)) {
+                    // Nếu đỉnh nguồn là u, thì đây là một cung đi ra (deg+(u))
+                    outArcs.add(arc);
+                    outDegreeCount++;
+                }
+                if (arc.v().equals(u)) {
+                    // Nếu đỉnh đích là u, thì đây là một cung đi vào (deg-(u))
+                    inArcs.add(arc);
+                    inDegreeCount++;
+                }
             }
         }
 
