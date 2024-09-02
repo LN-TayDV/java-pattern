@@ -28,7 +28,12 @@ public class Edge<E, W extends Number> implements GraphGdge<E, W> {
 
     @Override
     public String toString() {
-        return vertexU.toString() + " -- " + vertexV.toString() + " (weight: " + weight + ")";
+        return String.format(
+            "%s -- %s (w : %s)",
+            vertexU.toString(),
+            vertexV.toString(),
+            weight
+        );
     }
 
     // Phương thức để kiểm tra xem cạnh có phải là khuyên không
@@ -36,11 +41,4 @@ public class Edge<E, W extends Number> implements GraphGdge<E, W> {
         return vertexU.equals(vertexV);
     }
 
-    /**
-     * Đỉnh kề : Hai đình u, v được gọi là 2 đình kề nếu tồn tại cạnh e = (u, v) là cạnh của đồ thị.
-     * Ví dụ AB = (A, B), AF = (A, F)
-     *
-     * Cạnh liên thuộc : Nếu cạnh e = (u, v) là cạnh của đồ thị thì cạnh e
-     * được gọi là cạnh liên thuộc với 2 đình u, v. Ví dụ AF là cạnh liên thuộc với 2 đình A, F
-     */
 }

@@ -32,5 +32,16 @@ public class Arc<E, W extends Number> implements GraphGdge<E , W> {
     public Vertex<E> v() {
         return this.to;
     }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "%s -> %s (w : %s)",
+            from.toString(),
+            to.toString(),
+            weight
+        );
+    }
+
 }
 
