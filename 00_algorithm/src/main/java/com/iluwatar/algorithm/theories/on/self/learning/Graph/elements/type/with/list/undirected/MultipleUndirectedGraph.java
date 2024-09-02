@@ -2,7 +2,7 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.wit
 
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Edge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphValue;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +31,7 @@ public class MultipleUndirectedGraph <V> extends Graph<V, Set<Edge<V, ? extends 
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean addEdge(GraphValue<V, ? extends Number> element) {
+    public boolean addEdge(GraphGdge<V, ? extends Number> element) {
         if (!(element instanceof Edge)) {
             throw new IllegalArgumentException("Element must be an instance of Edge.");
         }
@@ -75,6 +75,6 @@ public class MultipleUndirectedGraph <V> extends Graph<V, Set<Edge<V, ? extends 
         graph.addEdge(new Edge<>(v2, v3, Double.valueOf("5")));
         graph.addEdge(new Edge<>(v3, v1, Double.valueOf("7")));
 
-        System.out.println(graph);
+        System.out.println(graph.deg(v1));
     }
 }

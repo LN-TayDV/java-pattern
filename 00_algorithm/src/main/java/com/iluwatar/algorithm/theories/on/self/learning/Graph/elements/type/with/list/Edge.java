@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public class Edge<E, W extends Number> implements GraphValue<E, W> {
+public class Edge<E, W extends Number> implements GraphGdge<E, W> {
 
     private Vertex<E> vertexU; // Đỉnh đầu tiên
     private Vertex<E> vertexV; // Đỉnh thứ hai
@@ -23,6 +23,8 @@ public class Edge<E, W extends Number> implements GraphValue<E, W> {
     public Vertex<E> v() {
         return this.vertexV;
     }
+
+
 
     @Override
     public String toString() {

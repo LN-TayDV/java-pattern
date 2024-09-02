@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 
-public abstract class Graph<V, E extends Collection<? extends GraphValue<V, ? extends Number>>> {
+public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? extends Number>>> {
 
     protected final Map<V, E> adjacencyList; // Tập hợp các đỉnh và các cạnh liên quan
 
@@ -18,7 +18,7 @@ public abstract class Graph<V, E extends Collection<? extends GraphValue<V, ? ex
     public abstract boolean addVertex(V vertex);
 
     // Phương thức trừu tượng thêm cạnh vào đồ thị
-    public abstract boolean addEdge(GraphValue<V, ? extends Number> element);
+    public abstract boolean addEdge(GraphGdge<V, ? extends Number> element);
 
     // Lấy tập hợp các đỉnh
     public Set<V> getVertices() {
@@ -29,6 +29,17 @@ public abstract class Graph<V, E extends Collection<? extends GraphValue<V, ? ex
     public E getElements(V vertex) {
         return adjacencyList.getOrDefault(vertex, createEmptyCollection());
     }
+
+    public E deg (Vertex<V> u) {
+        // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
+        if (!adjacencyList.containsKey(u.getTop())) {
+            return createEmptyCollection();
+        }
+
+        // Trả về tập hợp các phần tử liên quan đến đỉnh u
+        return getElements(u.getTop());
+    }
+
 
     // Tạo một tập hợp rỗng phù hợp với kiểu E
     protected abstract E createEmptyCollection();
@@ -47,7 +58,7 @@ public abstract class Graph<V, E extends Collection<? extends GraphValue<V, ? ex
         E elementsFromU = getElements(u);
 
         // Kiểm tra xem đỉnh v có xuất hiện trong tập hợp các phần tử liên quan đến đỉnh u không
-        for (GraphValue<V, ? extends Number> element : elementsFromU) {
+        for (GraphGdge<V, ? extends Number> element : elementsFromU) {
             if (element.u().equals(v) || element.v().equals(v)) {
                 return true;
             }
@@ -69,7 +80,7 @@ public abstract class Graph<V, E extends Collection<? extends GraphValue<V, ? ex
         E elementsFromU = getElements(u);
 
         // Kiểm tra xem có cạnh nào liên thuộc với đỉnh u và v không
-        for (GraphValue<V, ? extends Number> element : elementsFromU) {
+        for (GraphGdge<V, ? extends Number> element : elementsFromU) {
             if ((element.u().equals(u) && element.v().equals(v)) ||
                 (element.u().equals(v) && element.v().equals(u))) {
                 return true;
@@ -87,7 +98,7 @@ public abstract class Graph<V, E extends Collection<? extends GraphValue<V, ? ex
             V vertex = entry.getKey();
             E elements = entry.getValue();
             sb.append(vertex).append(":\n");
-            for (GraphValue<V, ? extends Number> element : elements) {
+            for (GraphGdge<V, ? extends Number> element : elements) {
                 sb.append("  ").append(element).append("\n");
             }
         }

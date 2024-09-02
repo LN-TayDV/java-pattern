@@ -2,7 +2,7 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.wit
 
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Arc;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphValue;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 import java.util.HashSet;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class MultipleDirectedGraph <V> extends Graph<V, Set<Arc<V, ? extends Num
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean addEdge(GraphValue<V, ? extends Number> edge) {
+    public boolean addEdge(GraphGdge<V, ? extends Number> edge) {
         if (!(edge instanceof Arc)) {
             throw new IllegalArgumentException("Edge must be an instance of Arc.");
         }

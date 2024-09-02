@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
-public class Arc<E, W extends Number> implements GraphValue<E , W> {
+public class Arc<E, W extends Number> implements GraphGdge<E , W> {
 
     @Getter
     private Vertex<E> from; // Đỉnh bắt đầu

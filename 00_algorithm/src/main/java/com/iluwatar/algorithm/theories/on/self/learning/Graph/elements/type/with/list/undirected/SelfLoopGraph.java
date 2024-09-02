@@ -1,7 +1,7 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.undirected;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Edge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphValue;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 import java.util.*;
 
@@ -29,7 +29,7 @@ public class SelfLoopGraph<V> extends Graph<V, Set<Edge<V, ? extends  Number>>> 
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean addEdge(GraphValue<V, ? extends Number> element) {
+    public boolean addEdge(GraphGdge<V, ? extends Number> element) {
         if (!(element instanceof Edge)) {
             throw new IllegalArgumentException("Element must be an instance of Edge.");
         }
