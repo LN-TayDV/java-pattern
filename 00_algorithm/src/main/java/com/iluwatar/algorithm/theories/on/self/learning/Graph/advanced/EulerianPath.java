@@ -24,10 +24,10 @@
  */
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.advanced;
 
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Edge;
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Graph;
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Path;
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Vertex;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.map.Edge;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.map.Graph;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.map.Path;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.map.Vertex;
 import java.util.Deque;
 import java.util.HashSet;
 import java.util.LinkedList;

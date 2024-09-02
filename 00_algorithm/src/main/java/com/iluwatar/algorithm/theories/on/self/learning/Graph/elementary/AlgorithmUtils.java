@@ -24,7 +24,7 @@
  */
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elementary;
 
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.Graph;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.map.Graph;
 
 @SuppressWarnings("unchecked")
 public class AlgorithmUtils {
