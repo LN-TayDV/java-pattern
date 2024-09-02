@@ -1,6 +1,5 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.directed;
 
-import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Arc;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;

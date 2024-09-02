@@ -1,5 +1,7 @@
-package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list;
+package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.undirected;
 
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

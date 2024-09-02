@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.directed.Arc;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.undirected.Edge;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -33,7 +35,8 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
         return adjacencyList.getOrDefault(vertex, createEmptyCollection());
     }
 
-    // Phương thức deg chỉ áp dụng cho Edge
+    /** Phương thức deg chỉ áp dụng cho Edge
+     */
     public Set<GraphGdge<V, ? extends Number>> degForIndirect(Vertex<V> u) {
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
