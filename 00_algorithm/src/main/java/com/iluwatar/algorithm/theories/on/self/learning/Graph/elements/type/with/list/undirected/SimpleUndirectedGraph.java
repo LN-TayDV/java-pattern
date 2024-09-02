@@ -24,6 +24,10 @@ public class SimpleUndirectedGraph<V> extends Graph<V> {
 
     @Override
     public boolean addEdge(GraphGdge<V, ? extends Number> element) {
+        if (!(element instanceof Edge)) {
+            throw new IllegalArgumentException("Element must be an instance of Edge.");
+        }
+
         V fromVertex = element.u().getTop();
         V toVertex = element.v().getTop();
 
