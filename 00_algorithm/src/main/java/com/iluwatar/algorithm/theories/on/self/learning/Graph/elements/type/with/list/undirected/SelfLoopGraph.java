@@ -62,22 +62,6 @@ public class SelfLoopGraph<V> extends Graph<V, Set<Edge<V, ? extends  Number>>> 
         return new HashSet<>();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Vertices and their edges:\n");
-
-        for (Map.Entry<V, Set<Edge<V, ? extends  Number>>> entry : adjacencyList.entrySet()) {
-            V vertex = entry.getKey();
-            Set<Edge<V, ? extends  Number>> edges = entry.getValue();
-            sb.append(vertex).append(":\n");
-            for (Edge<V, ? extends  Number> edge : edges) {
-                sb.append("  ").append(edge).append("\n");
-            }
-        }
-
-        return sb.toString();
-    }
 
     public static void main(String[] args) {
 

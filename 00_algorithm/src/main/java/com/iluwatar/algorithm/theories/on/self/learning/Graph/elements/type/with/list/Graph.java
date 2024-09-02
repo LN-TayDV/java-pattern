@@ -9,7 +9,6 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@SuppressWarnings("unchecked")
 public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? extends Number>>> {
 
     protected final Map<V, E> adjacencyList; // Tập hợp các đỉnh và các cạnh liên quan

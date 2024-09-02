@@ -5,7 +5,6 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class MultipleDirectedGraph <V> extends Graph<V, Set<Arc<V, ? extends Number>>> {
@@ -48,22 +47,6 @@ public class MultipleDirectedGraph <V> extends Graph<V, Set<Arc<V, ? extends Num
         return new HashSet<>();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Vertices and their arcs:\n");
-
-        for (Map.Entry<V, Set<Arc<V, ? extends Number>>> entry : adjacencyList.entrySet()) {
-            V vertex = entry.getKey();
-            Set<Arc<V, ? extends Number>> arcs = entry.getValue();
-            sb.append(vertex).append(":\n");
-            for (Arc<V, ? extends Number> arc : arcs) {
-                sb.append("  ").append(arc).append("\n");
-            }
-        }
-
-        return sb.toString();
-    }
 
     public static void main(String[] args) {
         MultipleDirectedGraph<String> graph = new MultipleDirectedGraph<>();
@@ -81,6 +64,6 @@ public class MultipleDirectedGraph <V> extends Graph<V, Set<Arc<V, ? extends Num
         graph.addEdge(new Arc<>(v2, v3, Double.valueOf("5")));
         graph.addEdge(new Arc<>(v3, v1, Double.valueOf("7")));
 
-        System.out.println(graph.degForDirect(v2));
+        System.out.println(graph);
     }
 }
