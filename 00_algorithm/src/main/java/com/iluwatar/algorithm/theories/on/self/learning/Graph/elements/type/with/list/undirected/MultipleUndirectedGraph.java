@@ -20,6 +20,7 @@ public class MultipleUndirectedGraph<V> extends Graph<V> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public boolean addEdge(GraphGdge<V, ? extends Number> element) {
         if (!(element instanceof Edge)) {
             throw new IllegalArgumentException("Element must be an instance of Edge.");
@@ -37,7 +38,7 @@ public class MultipleUndirectedGraph<V> extends Graph<V> {
         // Add the edge to the set of edges for both vertices
         boolean added = false;
         added |= adjacencyList.get(fromVertex).add(edge);
-        added |= adjacencyList.get(toVertex).add(new Edge<>(edge.v(), edge.u(), edge.getWeight())); // Symmetric for undirected graph
+        added |= adjacencyList.get(toVertex).add(new Edge<>(edge.v(), edge.u(), edge.w())); // Symmetric for undirected graph
 
         return added;
     }
