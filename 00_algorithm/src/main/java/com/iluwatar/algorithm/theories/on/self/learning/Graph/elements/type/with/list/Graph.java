@@ -1,11 +1,13 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
+@SuppressWarnings("unchecked")
 public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? extends Number>>> {
 
     protected final Map<V, E> adjacencyList; // Tập hợp các đỉnh và các cạnh liên quan
@@ -30,16 +32,28 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
         return adjacencyList.getOrDefault(vertex, createEmptyCollection());
     }
 
-    public E deg (Vertex<V> u) {
+    // Phương thức deg chỉ áp dụng cho Edge
+    public Set<Edge<V, ? extends Number>> deg(Vertex<V> u) {
+
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
         if (!adjacencyList.containsKey(u.getTop())) {
-            return createEmptyCollection();
+            return Collections.emptySet();
         }
 
-        // Trả về tập hợp các phần tử liên quan đến đỉnh u
-        return getElements(u.getTop());
-    }
+        // Lấy tập hợp các phần tử liên quan đến đỉnh u
+        E elements = getElements(u.getTop());
 
+        // Tạo một tập hợp chứa các Edge liên quan
+        Set<Edge<V, ? extends Number>> edges = new HashSet<>();
+
+        for (GraphGdge<V, ? extends Number> element : elements) {
+            if (element instanceof Edge) {
+                edges.add((Edge<V, ? extends Number>) element);
+            }
+        }
+
+        return edges;
+    }
 
     // Tạo một tập hợp rỗng phù hợp với kiểu E
     protected abstract E createEmptyCollection();
