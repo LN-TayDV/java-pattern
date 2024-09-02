@@ -75,6 +75,6 @@ public class MultipleUndirectedGraph <V> extends Graph<V, Set<Edge<V, ? extends 
         graph.addEdge(new Edge<>(v2, v3, Double.valueOf("5")));
         graph.addEdge(new Edge<>(v3, v1, Double.valueOf("7")));
 
-        System.out.println(graph.deg(v1));
+        System.out.println(graph.degForIndirect(v1));
     }
 }

@@ -77,10 +77,10 @@ public class MultipleDirectedGraph <V> extends Graph<V, Set<Arc<V, ? extends Num
         graph.addVertex(v3.getTop());
 
         graph.addEdge(new Arc<>(v1, v2, Double.valueOf("3")));
-        graph.addEdge(new Arc<>(v1, v2, Double.valueOf("5")));
+        graph.addEdge(new Arc<>(v2, v1, Double.valueOf("5")));
         graph.addEdge(new Arc<>(v2, v3, Double.valueOf("5")));
         graph.addEdge(new Arc<>(v3, v1, Double.valueOf("7")));
 
-        System.out.println(graph);
+        System.out.println(graph.degForDirect(v2));
     }
 }

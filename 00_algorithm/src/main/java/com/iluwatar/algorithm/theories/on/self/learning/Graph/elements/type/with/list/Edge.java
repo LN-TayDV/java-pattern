@@ -1,9 +1,14 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @AllArgsConstructor
+@SuppressWarnings("unchecked")
+@EqualsAndHashCode(of = {
+    "vertexU", "vertexV", "weight"
+})
 public class Edge<E, W extends Number> implements GraphGdge<E, W> {
 
     private Vertex<E> vertexU; // Đỉnh đầu tiên

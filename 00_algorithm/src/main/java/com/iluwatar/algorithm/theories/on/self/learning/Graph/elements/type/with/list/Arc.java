@@ -1,9 +1,13 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @AllArgsConstructor
+@EqualsAndHashCode(of = {
+    "from", "to", "weight"
+})
 public class Arc<E, W extends Number> implements GraphGdge<E , W> {
 
     @Getter

@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @SuppressWarnings("unchecked")
 public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? extends Number>>> {
@@ -33,7 +35,7 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
     }
 
     // Phương thức deg chỉ áp dụng cho Edge
-    public Set<Edge<V, ? extends Number>> deg(Vertex<V> u) {
+    public Set<Edge<V, ? extends Number>> degForIndirect(Vertex<V> u) {
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
         if (!adjacencyList.containsKey(u.getTop())) {
@@ -54,6 +56,69 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
 
         return edges;
     }
+
+    // Phương thức deg chỉ áp dụng cho Arc
+    public DegreeReversal<DegreeValue, DegreeValue> degForDirect(Vertex<V> u) {
+        // Khởi tạo biến để lưu trữ thông tin bán bậc ra và bán bậc vào
+        int outDegreeCount = 0;
+        int inDegreeCount = 0;
+
+        // Tập hợp các cung đi ra từ đỉnh u (deg+(u))
+        Set<Arc<V, ? extends Number>> outArcs = new HashSet<>();
+
+        // Tập hợp các cung đi vào đỉnh u (deg-(u))
+        Set<Arc<V, ? extends Number>> inArcs = new HashSet<>();
+
+        // Giả định có một phương thức getElements để lấy tất cả các cung liên quan đến đỉnh u
+        Set<Arc<V, ? extends Number>> elements = (Set<Arc<V, ? extends Number>>) getElements(u.getTop());
+
+        // Duyệt qua tất cả các cung liên quan đến đỉnh u
+        for (Arc<V, ? extends Number> arc : elements) {
+            if (arc.getFrom().equals(u)) {
+                // Nếu đỉnh nguồn là u, thì đây là một cung đi ra (deg+(u))
+                outArcs.add(arc);
+                outDegreeCount++;
+            }
+            if (arc.getTo().equals(u)) {
+                // Nếu đỉnh đích là u, thì đây là một cung đi vào (deg-(u))
+                inArcs.add(arc);
+                inDegreeCount++;
+            }
+        }
+
+        // Tạo các đối tượng DegreeValue cho bán bậc ra và bán bậc vào
+        DegreeValue positiveDegree = new DegreeValue(outDegreeCount, outArcs);
+        DegreeValue negativeDegree = new DegreeValue(inDegreeCount, inArcs);
+
+        // Trả về một đối tượng DegreeReversal chứa bán bậc ra và bán bậc vào của đỉnh u
+        return new DegreeReversal<>(u, positiveDegree, negativeDegree);
+    }
+
+
+    @Data
+    @AllArgsConstructor
+    private class DegreeReversal<P extends DegreeValue, N extends DegreeValue> {
+
+        private Vertex<V> u;
+        private P positiveDegree;
+        private N negativeDegree;
+
+        @Override
+        public String toString() {
+            return String.format("deg(%s) = (%s, %s) ",
+                u.getTop(),
+                positiveDegree.numberOfArcs,
+                negativeDegree.numberOfArcs
+            );
+        }
+    }
+
+    @AllArgsConstructor
+    private class DegreeValue {
+        int numberOfArcs;
+        Set<Arc<V, ? extends Number>> degreeArcs;
+    }
+
 
     // Tạo một tập hợp rỗng phù hợp với kiểu E
     protected abstract E createEmptyCollection();
