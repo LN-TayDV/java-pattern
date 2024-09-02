@@ -64,22 +64,22 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
         int inDegreeCount = 0;
 
         // Tập hợp các cung đi ra từ đỉnh u (deg+(u))
-        Set<Arc<V, ? extends Number>> outArcs = new HashSet<>();
+        Set<GraphGdge<V, ? extends Number>> outArcs = new HashSet<>();
 
         // Tập hợp các cung đi vào đỉnh u (deg-(u))
-        Set<Arc<V, ? extends Number>> inArcs = new HashSet<>();
+        Set<GraphGdge<V, ? extends Number>> inArcs = new HashSet<>();
 
-        // Giả định có một phương thức getElements để lấy tất cả các cung liên quan đến đỉnh u
-        Set<Arc<V, ? extends Number>> elements = (Set<Arc<V, ? extends Number>>) getElements(u.getTop());
+        // Lấy tập hợp các phần tử liên quan đến đỉnh u
+        E elements = getElements(u.getTop());
 
         // Duyệt qua tất cả các cung liên quan đến đỉnh u
-        for (Arc<V, ? extends Number> arc : elements) {
-            if (arc.getFrom().equals(u)) {
+        for (GraphGdge<V, ? extends Number> arc : elements) {
+            if (arc.u().equals(u)) {
                 // Nếu đỉnh nguồn là u, thì đây là một cung đi ra (deg+(u))
                 outArcs.add(arc);
                 outDegreeCount++;
             }
-            if (arc.getTo().equals(u)) {
+            if (arc.v().equals(u)) {
                 // Nếu đỉnh đích là u, thì đây là một cung đi vào (deg-(u))
                 inArcs.add(arc);
                 inDegreeCount++;
@@ -136,7 +136,7 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
     @AllArgsConstructor
     private class DegreeValue {
         int numberOfArcs;
-        Set<Arc<V, ? extends Number>> degreeArcs;
+        Set<GraphGdge<V, ? extends Number>> degreeArcs;
     }
 
 
