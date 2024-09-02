@@ -3,8 +3,6 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.wit
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
-import java.util.HashSet;
-import java.util.Set;
 
 public class MultipleDirectedGraph <V> extends Graph<V> {
 
@@ -40,12 +38,6 @@ public class MultipleDirectedGraph <V> extends Graph<V> {
         // Thêm cung vào tập hợp cung của đỉnh bắt đầu
         return adjacencyList.get(fromVertex).add(arc);
     }
-
-    @Override
-    protected Set<GraphGdge<V, ? extends Number>> createEmptyCollection() {
-        return new HashSet<>();
-    }
-
 
     public static void main(String[] args) {
         MultipleDirectedGraph<String> graph = new MultipleDirectedGraph<>();

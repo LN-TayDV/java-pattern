@@ -3,8 +3,6 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.wit
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
-import java.util.HashSet;
-import java.util.Set;
 
 public class SelfLoopGraph<V> extends Graph<V> {
 
@@ -50,13 +48,6 @@ public class SelfLoopGraph<V> extends Graph<V> {
         return added;
 
     }
-
-    @Override
-    protected Set<GraphGdge<V, ? extends Number>> createEmptyCollection() {
-        return new HashSet<>();
-    }
-
-
 
     public static void main(String[] args) {
         Graph<String> graph = new SelfLoopGraph<>();

@@ -3,8 +3,6 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.wit
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
-import java.util.HashSet;
-import java.util.Set;
 
 public class MultipleUndirectedGraph<V> extends Graph<V> {
 
@@ -42,11 +40,6 @@ public class MultipleUndirectedGraph<V> extends Graph<V> {
         added |= adjacencyList.get(toVertex).add(new Edge<>(edge.v(), edge.u(), edge.getWeight())); // Symmetric for undirected graph
 
         return added;
-    }
-
-    @Override
-    protected Set<GraphGdge<V, ? extends Number>> createEmptyCollection() {
-        return new HashSet<>();
     }
 
     public static void main(String[] args) {

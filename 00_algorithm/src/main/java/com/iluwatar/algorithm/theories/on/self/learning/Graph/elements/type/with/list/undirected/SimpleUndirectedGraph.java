@@ -3,8 +3,6 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.wit
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
-import java.util.HashSet;
-import java.util.Set;
 
 public class SimpleUndirectedGraph<V> extends Graph<V> {
 
@@ -41,11 +39,6 @@ public class SimpleUndirectedGraph<V> extends Graph<V> {
         added |= adjacencyList.get(toVertex).add(new Edge<>(element.v(), element.u(), element.w())); // Add reverse edge for undirected graph
 
         return added;
-    }
-
-    @Override
-    protected Set<GraphGdge<V, ? extends Number>> createEmptyCollection() {
-        return new HashSet<>();
     }
 
     public static void main(String[] args) {
