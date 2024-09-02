@@ -1,17 +1,13 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.undirected;
+
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Graph;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-/**
- * Giả đồ thị vô hướng : G = <V, E>, gồm V là tập các đỉnh,
- * E là họ các cặp không có thứ tự gồm hai phần tử không nhất thiết phải khác nhau của V gọi là các cạnh.
- * Cạnh e = (u, u) được gọi là khuyên.
- * @param <V> Loại của đỉnh
- */
-
-public class SelfLoopGraph<V> extends Graph<V, Set<Edge<V, ? extends  Number>>> {
+public class SelfLoopGraph<V> extends Graph<V> {
 
     public SelfLoopGraph() {
         super();
@@ -26,17 +22,12 @@ public class SelfLoopGraph<V> extends Graph<V, Set<Edge<V, ? extends  Number>>> 
         return false;
     }
 
-    @Override
-    @SuppressWarnings("unchecked")
-    public boolean addEdge(GraphGdge<V, ? extends Number> element) {
-        if (!(element instanceof Edge)) {
-            throw new IllegalArgumentException("Element must be an instance of Edge.");
-        }
 
-        Edge<V, ? extends Number> edge = (Edge<V, ? extends Number>) element;
-        V fromVertex = edge.u().getTop();
-        V toVertex = edge.v().getTop();
-        Number weight = edge.getWeight(); // Trọng số của cạnh
+    @Override
+    public boolean addEdge(GraphGdge<V, ? extends Number> element) {
+        V fromVertex = element.u().getTop();
+        V toVertex = element.v().getTop();
+        Number weight = element.w();
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
         if (!adjacencyList.containsKey(fromVertex) || !adjacencyList.containsKey(toVertex)) {
@@ -50,21 +41,37 @@ public class SelfLoopGraph<V> extends Graph<V, Set<Edge<V, ? extends  Number>>> 
 
         // Thêm cạnh vào tập hợp cạnh của cả hai đỉnh
         boolean added = false;
-        added |= adjacencyList.get(fromVertex).add(edge);
-        added |= adjacencyList.get(toVertex).add(new Edge<>(edge.v(), edge.u(), edge.getWeight())); // Đối xứng cho đồ thị vô hướng
+        added |= adjacencyList.get(fromVertex).add(element);
+        added |= adjacencyList.get(toVertex).add(new Edge<>(element.v(), element.u(), element.w())); // Đối xứng cho đồ thị vô hướng
 
         return added;
+
     }
 
     @Override
-    protected Set<Edge<V, ? extends  Number>> createEmptyCollection() {
+    protected Set<GraphGdge<V, ? extends Number>> createEmptyCollection() {
         return new HashSet<>();
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Vertices and their edges:\n");
+
+        for (Map.Entry<V, Set<GraphGdge<V, ? extends Number>>> entry : adjacencyList.entrySet()) {
+            V vertex = entry.getKey();
+            Set<GraphGdge<V, ? extends Number>> edges = entry.getValue();
+            sb.append(vertex).append(":\n");
+            for (GraphGdge<V, ? extends Number> edge : edges) {
+                sb.append("  ").append(edge).append("\n");
+            }
+        }
+
+        return sb.toString();
+    }
 
     public static void main(String[] args) {
-
-        SelfLoopGraph<String> graph = new SelfLoopGraph<>();
+        Graph<String> graph = new SelfLoopGraph<>();
 
         Vertex<String> v1 = new Vertex<>("A");
         Vertex<String> v2 = new Vertex<>("B");
@@ -74,12 +81,11 @@ public class SelfLoopGraph<V> extends Graph<V, Set<Edge<V, ? extends  Number>>> 
         graph.addVertex(v2.getTop());
         graph.addVertex(v3.getTop());
 
-        graph.addEdge(new Edge<>(v1, v1));
-        graph.addEdge(new Edge<>(v1, v2));
-        graph.addEdge(new Edge<>(v2, v2));
-        graph.addEdge(new Edge<>(v3, v1));
+        graph.addEdge(new Edge<>(v1, v1, 0)); // Self-loop with weight 0
+        graph.addEdge(new Edge<>(v1, v2, 1)); // Edge between v1 and v2
+        graph.addEdge(new Edge<>(v2, v2, 0)); // Self-loop with weight 0
+        graph.addEdge(new Edge<>(v3, v1, 2)); // Edge between v3 and v1
 
         System.out.println(graph);
     }
 }
-

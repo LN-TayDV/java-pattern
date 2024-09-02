@@ -6,14 +6,7 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Đa đồ thị vô hướng : Đa đồ thị vô hướng G = <V, E>,
- * gồm V là tập các đình,
- * E là họ các cặp không có thứ tự gồm hai phần tử khác nhau của V gọi là các cạnh.
- * Hai cạnh e1, e2 được gọi là cạnh bội nếu chúng cùng tương ứng với 1 cặp đỉnh
- * @param <V>
- */
-public class MultipleUndirectedGraph <V> extends Graph<V, Set<Edge<V, ? extends Number>>> {
+public class MultipleUndirectedGraph<V> extends Graph<V> {
 
     public MultipleUndirectedGraph() {
         super();
@@ -29,7 +22,6 @@ public class MultipleUndirectedGraph <V> extends Graph<V, Set<Edge<V, ? extends 
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public boolean addEdge(GraphGdge<V, ? extends Number> element) {
         if (!(element instanceof Edge)) {
             throw new IllegalArgumentException("Element must be an instance of Edge.");
@@ -39,26 +31,25 @@ public class MultipleUndirectedGraph <V> extends Graph<V, Set<Edge<V, ? extends 
         V fromVertex = edge.u().getTop();
         V toVertex = edge.v().getTop();
 
-        // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
+        // Check the existence of vertices in the graph
         if (!adjacencyList.containsKey(fromVertex) || !adjacencyList.containsKey(toVertex)) {
             throw new IllegalArgumentException("Both vertices must be part of the graph.");
         }
 
-        // Thêm cạnh vào tập hợp cạnh của cả hai đỉnh
+        // Add the edge to the set of edges for both vertices
         boolean added = false;
         added |= adjacencyList.get(fromVertex).add(edge);
-        added |= adjacencyList.get(toVertex).add(new Edge<>(edge.v(), edge.u(), edge.getWeight())); // Đối xứng cho đồ thị vô hướng
+        added |= adjacencyList.get(toVertex).add(new Edge<>(edge.v(), edge.u(), edge.getWeight())); // Symmetric for undirected graph
 
         return added;
     }
 
     @Override
-    protected Set<Edge<V, ? extends Number>> createEmptyCollection() {
+    protected Set<GraphGdge<V, ? extends Number>> createEmptyCollection() {
         return new HashSet<>();
     }
 
     public static void main(String[] args) {
-
         MultipleUndirectedGraph<String> graph = new MultipleUndirectedGraph<>();
 
         Vertex<String> v1 = new Vertex<>("A");
@@ -77,3 +68,4 @@ public class MultipleUndirectedGraph <V> extends Graph<V, Set<Edge<V, ? extends 
         System.out.println(graph);
     }
 }
+

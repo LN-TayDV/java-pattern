@@ -6,7 +6,7 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with
 import java.util.HashSet;
 import java.util.Set;
 
-public class MultipleDirectedGraph <V> extends Graph<V, Set<Arc<V, ? extends Number>>> {
+public class MultipleDirectedGraph <V> extends Graph<V> {
 
     public MultipleDirectedGraph() {
         super();
@@ -42,7 +42,7 @@ public class MultipleDirectedGraph <V> extends Graph<V, Set<Arc<V, ? extends Num
     }
 
     @Override
-    protected Set<Arc<V, ? extends Number>> createEmptyCollection() {
+    protected Set<GraphGdge<V, ? extends Number>> createEmptyCollection() {
         return new HashSet<>();
     }
 

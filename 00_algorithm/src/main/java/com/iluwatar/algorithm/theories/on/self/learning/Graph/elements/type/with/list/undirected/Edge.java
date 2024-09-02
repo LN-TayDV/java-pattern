@@ -31,6 +31,10 @@ public class Edge<E, W extends Number> implements GraphGdge<E, W> {
         return this.vertexV;
     }
 
+    @Override
+    public W w() {
+        return this.weight;
+    }
 
 
     @Override

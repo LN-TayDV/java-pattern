@@ -4,9 +4,10 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-public class SimpleUndirectedGraph<V> extends Graph<V, Set<Edge<V, ? extends Number>>> {
+public class SimpleUndirectedGraph<V> extends Graph<V> {
 
     public SimpleUndirectedGraph() {
         super();
@@ -22,37 +23,47 @@ public class SimpleUndirectedGraph<V> extends Graph<V, Set<Edge<V, ? extends Num
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public boolean addEdge(GraphGdge<V, ? extends Number> element) {
-        if (!(element instanceof Edge)) {
-            throw new IllegalArgumentException("Element must be an instance of Edge.");
-        }
+        V fromVertex = element.u().getTop();
+        V toVertex = element.v().getTop();
 
-        Edge<V, ? extends Number> edge = (Edge<V, ? extends Number>) element;
-        V fromVertex = edge.u().getTop();
-        V toVertex = edge.v().getTop();
-
-        // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
+        // Check if both vertices are present in the graph
         if (!adjacencyList.containsKey(fromVertex) || !adjacencyList.containsKey(toVertex)) {
             throw new IllegalArgumentException("Both vertices must be part of the graph.");
         }
 
-        // Thêm cạnh vào tập hợp cạnh của cả hai đỉnh
+        // Add edge to the adjacency list of both vertices
         boolean added = false;
-        added |= adjacencyList.get(fromVertex).add(edge);
-        added |= adjacencyList.get(toVertex).add(new Edge<>(edge.v(), edge.u(), edge.getWeight())); // Đối xứng cho đồ thị vô hướng
+        added |= adjacencyList.get(fromVertex).add(element);
+        added |= adjacencyList.get(toVertex).add(new Edge<>(element.v(), element.u(), element.w())); // Add reverse edge for undirected graph
 
         return added;
     }
 
     @Override
-    public Set<Edge<V, ? extends Number>> createEmptyCollection() {
+    protected Set<GraphGdge<V, ? extends Number>> createEmptyCollection() {
         return new HashSet<>();
     }
 
-    public static void main(String[] args) {
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Vertices and their edges:\n");
 
-        SimpleUndirectedGraph<String> graph = new SimpleUndirectedGraph<>();
+        for (Map.Entry<V, Set<GraphGdge<V, ? extends Number>>> entry : adjacencyList.entrySet()) {
+            V vertex = entry.getKey();
+            Set<GraphGdge<V, ? extends Number>> edges = entry.getValue();
+            sb.append(vertex).append(":\n");
+            for (GraphGdge<V, ? extends Number> edge : edges) {
+                sb.append("  ").append(edge).append("\n");
+            }
+        }
+
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        Graph<String> graph = new SimpleUndirectedGraph<>();
 
         Vertex<String> v1 = new Vertex<>("A");
         Vertex<String> v2 = new Vertex<>("B");
@@ -63,11 +74,10 @@ public class SimpleUndirectedGraph<V> extends Graph<V, Set<Edge<V, ? extends Num
         graph.addVertex(v3.getTop());
 
         graph.addEdge(new Edge<>(v1, v2, Double.valueOf("3")));
-        graph.addEdge(new Edge<>(v1, v2, Double.valueOf("5")));
+        graph.addEdge(new Edge<>(v1, v2, Double.valueOf("5"))); // Adding multiple edges between the same vertices
         graph.addEdge(new Edge<>(v2, v3, Double.valueOf("5")));
         graph.addEdge(new Edge<>(v3, v1, Double.valueOf("7")));
 
         System.out.println(graph);
     }
 }
-

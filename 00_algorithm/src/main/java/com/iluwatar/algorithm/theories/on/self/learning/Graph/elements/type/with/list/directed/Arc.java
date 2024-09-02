@@ -40,6 +40,11 @@ public class Arc<E, W extends Number> implements GraphGdge<E , W> {
     }
 
     @Override
+    public W w() {
+        return this.weight;
+    }
+
+    @Override
     public String toString() {
         return String.format(
             "%s -> %s (w : %s)",
