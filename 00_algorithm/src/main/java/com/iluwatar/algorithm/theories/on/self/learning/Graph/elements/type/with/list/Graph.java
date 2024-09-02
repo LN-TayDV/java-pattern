@@ -7,20 +7,21 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 public abstract class Graph<V> {
 
     // Adjacency list for vertices and their related edges
-    protected final Map<V, Set<GraphGdge<V, ? extends Number>>> adjacencyList;
+    protected final Map<Vertex<V>, Set<GraphGdge<V, ? extends Number>>> adjacencyList;
 
     public Graph() {
         this.adjacencyList = new HashMap<>();
     }
 
     // Abstract method to add a vertex to the graph
-    public abstract boolean addVertex(V vertex);
+    public abstract boolean addVertex(Vertex<V> vertex);
 
     // Abstract method to add an edge to the graph
     public abstract boolean addEdge(GraphGdge<V, ? extends Number> element);
@@ -32,7 +33,7 @@ public abstract class Graph<V> {
 
     // Get the set of vertices
     public Set<V> getVertices() {
-        return adjacencyList.keySet();
+        return adjacencyList.keySet().stream().map(Vertex::getTop).collect(Collectors.toSet());
     }
 
     // Get the set of edges related to a vertex
@@ -148,8 +149,8 @@ public abstract class Graph<V> {
         StringBuilder sb = new StringBuilder();
         sb.append("Vertices and their elements:\n");
 
-        for (Map.Entry<V, Set<GraphGdge<V, ? extends Number>>> entry : adjacencyList.entrySet()) {
-            V vertex = entry.getKey();
+        for (Map.Entry<Vertex<V>, Set<GraphGdge<V, ? extends Number>>> entry : adjacencyList.entrySet()) {
+            Vertex<V> vertex = entry.getKey();
             Set<GraphGdge<V, ? extends Number>> elements = entry.getValue();
             sb.append(vertex).append(":\n");
             for (GraphGdge<V, ? extends Number> element : elements) {

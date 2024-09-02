@@ -4,7 +4,6 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class SimpleUndirectedGraph<V> extends Graph<V> {
@@ -14,7 +13,7 @@ public class SimpleUndirectedGraph<V> extends Graph<V> {
     }
 
     @Override
-    public boolean addVertex(V vertex) {
+    public boolean addVertex(Vertex<V> vertex) {
         if (!adjacencyList.containsKey(vertex)) {
             adjacencyList.put(vertex, createEmptyCollection());
             return true;
@@ -49,23 +48,6 @@ public class SimpleUndirectedGraph<V> extends Graph<V> {
         return new HashSet<>();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Vertices and their edges:\n");
-
-        for (Map.Entry<V, Set<GraphGdge<V, ? extends Number>>> entry : adjacencyList.entrySet()) {
-            V vertex = entry.getKey();
-            Set<GraphGdge<V, ? extends Number>> edges = entry.getValue();
-            sb.append(vertex).append(":\n");
-            for (GraphGdge<V, ? extends Number> edge : edges) {
-                sb.append("  ").append(edge).append("\n");
-            }
-        }
-
-        return sb.toString();
-    }
-
     public static void main(String[] args) {
         Graph<String> graph = new SimpleUndirectedGraph<>();
 
@@ -73,9 +55,9 @@ public class SimpleUndirectedGraph<V> extends Graph<V> {
         Vertex<String> v2 = new Vertex<>("B");
         Vertex<String> v3 = new Vertex<>("C");
 
-        graph.addVertex(v1.getTop());
-        graph.addVertex(v2.getTop());
-        graph.addVertex(v3.getTop());
+        graph.addVertex(v1);
+        graph.addVertex(v2);
+        graph.addVertex(v3);
 
         graph.addEdge(new Edge<>(v1, v2, Double.valueOf("3")));
         graph.addEdge(new Edge<>(v1, v2, Double.valueOf("5"))); // Adding multiple edges between the same vertices

@@ -13,7 +13,7 @@ public class MultipleUndirectedGraph<V> extends Graph<V> {
     }
 
     @Override
-    public boolean addVertex(V vertex) {
+    public boolean addVertex(Vertex<V> vertex) {
         if (!adjacencyList.containsKey(vertex)) {
             adjacencyList.put(vertex, createEmptyCollection());
             return true;
@@ -56,9 +56,9 @@ public class MultipleUndirectedGraph<V> extends Graph<V> {
         Vertex<String> v2 = new Vertex<>("B");
         Vertex<String> v3 = new Vertex<>("C");
 
-        graph.addVertex(v1.getTop());
-        graph.addVertex(v2.getTop());
-        graph.addVertex(v3.getTop());
+        graph.addVertex(v1);
+        graph.addVertex(v2);
+        graph.addVertex(v3);
 
         graph.addEdge(new Edge<>(v1, v2, Double.valueOf("3")));
         graph.addEdge(new Edge<>(v1, v2, Double.valueOf("5")));
