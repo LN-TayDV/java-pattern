@@ -37,17 +37,17 @@ public abstract class Graph<V> {
     }
 
     // Lấy tập hợp các cạnh liên quan đến một đỉnh
-    public Set<GraphGdge<V, ? extends Number>> getElements(V vertex) {
+    public Set<GraphGdge<V, ? extends Number>> getElements(Vertex<V> vertex) {
         return adjacencyList.getOrDefault(vertex, createEmptyCollection());
     }
 
     // Tính bậc cho các cạnh (áp dụng cho Edge)
     public Set<GraphGdge<V, ? extends Number>> degForIndirect(Vertex<V> u) {
-        if (!adjacencyList.containsKey(u.getTop())) {
+        if (!adjacencyList.containsKey(u)) {
             return Collections.emptySet();
         }
 
-        Set<GraphGdge<V, ? extends Number>> elements = getElements(u.getTop());
+        Set<GraphGdge<V, ? extends Number>> elements = getElements(u);
         Set<GraphGdge<V, ? extends Number>> edges = new HashSet<>();
 
         for (GraphGdge<V, ? extends Number> element : elements) {
@@ -67,7 +67,7 @@ public abstract class Graph<V> {
         Set<GraphGdge<V, ? extends Number>> outArcs = new HashSet<>();
         Set<GraphGdge<V, ? extends Number>> inArcs = new HashSet<>();
 
-        Set<GraphGdge<V, ? extends Number>> elements = getElements(u.getTop());
+        Set<GraphGdge<V, ? extends Number>> elements = getElements(u);
 
         for (GraphGdge<V, ? extends Number> arc : elements) {
             if (arc instanceof Arc) {
@@ -112,7 +112,7 @@ public abstract class Graph<V> {
     }
 
     // Kiểm tra xem hai đỉnh u và v có kề nhau không
-    public boolean areAdjacent(V u, V v) {
+    public boolean areAdjacent(Vertex<V> u, Vertex<V> v) {
         if (!adjacencyList.containsKey(u) || !adjacencyList.containsKey(v)) {
             return false;
         }
@@ -128,7 +128,7 @@ public abstract class Graph<V> {
     }
 
     // Kiểm tra xem có cạnh nào nối hai đỉnh u và v không
-    public boolean isIncidentTo(V u, V v) {
+    public boolean isIncidentTo(Vertex<V> u, Vertex<V> v) {
         if (!adjacencyList.containsKey(u) || !adjacencyList.containsKey(v)) {
             return false;
         }

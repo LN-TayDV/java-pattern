@@ -1,9 +1,14 @@
 package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list;
 
+import lombok.EqualsAndHashCode;
+
 /**
  * T : Top
  * @param <T>
  */
+@EqualsAndHashCode(of = {
+    "top"
+})
 public class Vertex<T> {
 
     private T top;
