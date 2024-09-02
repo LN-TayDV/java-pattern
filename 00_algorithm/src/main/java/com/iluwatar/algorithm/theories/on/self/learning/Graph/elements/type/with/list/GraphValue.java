@@ -2,4 +2,8 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.wit
 
 public  interface GraphValue<E , W> {
 
+    Vertex<E> u() ;
+
+    Vertex<E> v() ;
+
 }

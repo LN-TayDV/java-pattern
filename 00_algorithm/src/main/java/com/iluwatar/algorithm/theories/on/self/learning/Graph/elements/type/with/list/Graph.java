@@ -48,11 +48,8 @@ public abstract class Graph<V, E extends Collection<? extends GraphValue<V, ? ex
 
         // Kiểm tra xem đỉnh v có xuất hiện trong tập hợp các phần tử liên quan đến đỉnh u không
         for (GraphValue<V, ? extends Number> element : elementsFromU) {
-            if (element instanceof Edge) {
-                Edge<V, ? extends Number> edge = (Edge<V, ? extends Number>) element;
-                if (edge.u().equals(v) || edge.v().equals(v)) {
-                    return true;
-                }
+            if (element.u().equals(v) || element.v().equals(v)) {
+                return true;
             }
         }
         return false;
@@ -73,12 +70,9 @@ public abstract class Graph<V, E extends Collection<? extends GraphValue<V, ? ex
 
         // Kiểm tra xem có cạnh nào liên thuộc với đỉnh u và v không
         for (GraphValue<V, ? extends Number> element : elementsFromU) {
-            if (element instanceof Edge) {
-                Edge<V, ? extends Number> edge = (Edge<V, ? extends Number>) element;
-                if ((edge.u().equals(u) && edge.v().equals(v)) ||
-                    (edge.u().equals(v) && edge.v().equals(u))) {
-                    return true;
-                }
+            if ((element.u().equals(u) && element.v().equals(v)) ||
+                (element.u().equals(v) && element.v().equals(u))) {
+                return true;
             }
         }
         return false;
