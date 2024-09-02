@@ -28,8 +28,8 @@ public class MultipleUndirectedGraph<V> extends Graph<V> {
         }
 
         Edge<V, ? extends Number> edge = (Edge<V, ? extends Number>) element;
-        V fromVertex = edge.u().getTop();
-        V toVertex = edge.v().getTop();
+        Vertex<V> fromVertex = edge.u();
+        Vertex<V> toVertex = edge.v();
 
         // Check the existence of vertices in the graph
         if (!adjacencyList.containsKey(fromVertex) || !adjacencyList.containsKey(toVertex)) {
@@ -50,7 +50,7 @@ public class MultipleUndirectedGraph<V> extends Graph<V> {
     }
 
     public static void main(String[] args) {
-        MultipleUndirectedGraph<String> graph = new MultipleUndirectedGraph<>();
+        Graph<String> graph = new MultipleUndirectedGraph<>();
 
         Vertex<String> v1 = new Vertex<>("A");
         Vertex<String> v2 = new Vertex<>("B");

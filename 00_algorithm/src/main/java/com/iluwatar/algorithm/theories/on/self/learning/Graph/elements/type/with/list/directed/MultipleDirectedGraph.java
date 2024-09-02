@@ -29,8 +29,8 @@ public class MultipleDirectedGraph <V> extends Graph<V> {
         }
 
         Arc<V, ? extends Number> arc = (Arc<V, ? extends Number>) edge;
-        V fromVertex = arc.getFrom().getTop();
-        V toVertex = arc.getTo().getTop();
+        Vertex<V> fromVertex = arc.getFrom();
+        Vertex<V> toVertex = arc.getTo();
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
         if (!adjacencyList.containsKey(fromVertex) || !adjacencyList.containsKey(toVertex)) {

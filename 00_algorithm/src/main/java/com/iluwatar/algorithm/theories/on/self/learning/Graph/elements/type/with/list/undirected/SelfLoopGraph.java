@@ -28,8 +28,8 @@ public class SelfLoopGraph<V> extends Graph<V> {
             throw new IllegalArgumentException("Element must be an instance of Edge.");
         }
 
-        V fromVertex = element.u().getTop();
-        V toVertex = element.v().getTop();
+        Vertex<V> fromVertex = element.u();
+        Vertex<V> toVertex = element.v();
         Number weight = element.w();
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
