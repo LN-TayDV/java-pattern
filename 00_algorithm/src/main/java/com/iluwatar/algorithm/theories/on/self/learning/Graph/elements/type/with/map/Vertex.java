@@ -22,68 +22,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
-
-import lombok.EqualsAndHashCode;
-import lombok.Setter;
+package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.map;
 
 /**
  * T : Top
- * W : Weight
  * @param <T>
- * @param <W>
  */
-@EqualsAndHashCode(of = {
-    "startVertex", "endVertex", "weight"
-})
-public class Edge<T, W extends Number & Comparable<W>> {
+public class Vertex<T> {
 
-    private final Vertex<T> startVertex;
-    private final Vertex<T> endVertex;
-    @Setter
-    private W weight;
-    private final boolean directed;
+    private T top;
 
-    public Edge(Vertex<T> startVertex, Vertex<T> endVertex, W weight, boolean directed) {
-        this.startVertex = startVertex;
-        this.endVertex = endVertex;
-        this.weight = weight;
-        this.directed = directed;
+    public Vertex(T top) {
+        this.top = top;
     }
 
-    public Vertex<T> getStartVertex() {
-        return startVertex;
+    public T getTop() {
+        return top;
     }
 
-    public Vertex<T> getEndVertex() {
-        return endVertex;
+    public Vertex<T> setTop (T top) {
+        this.top = top;
+        return this;
     }
-
-    public W getWeight() {
-        return weight;
-    }
-
 
     @Override
     public String toString() {
-        return String.format(
-            "%s %s %s (weight : %s)",
-            startVertex,
-            directed ? "->>" : "-->",
-            endVertex,
-            weight
-        );
-    }
-
-    public Vertex<T> getFromVertex() {
-        return this.startVertex;
-    }
-
-    public Vertex<T> getToVertex() {
-        return this.endVertex;
-    }
-
-    public Vertex<T> getDestination() {
-        return this.endVertex;
+        return top.toString();
     }
 }

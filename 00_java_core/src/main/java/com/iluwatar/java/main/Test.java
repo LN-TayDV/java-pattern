@@ -1,22 +1,16 @@
 package com.iluwatar.java.main;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import java.lang.ref.Reference;
 import java.lang.reflect.InvocationTargetException;
-import java.util.EnumSet;
-import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 public class Test {
 
@@ -76,13 +70,13 @@ public class Test {
         private int valueTest;
     }
 
-    public static void main(String[] args) {
+    public  void main(String args) {
         var test = Test01.of(2, 3);
         System.out.println(test);
         System.out.println(test.getValue());
     }
 
-    public  void main(String args) {
+    public static void main(String... args) {
         System.out.print(f);
         System.out.print(" ");
         System.out.print(ch);
@@ -116,7 +110,21 @@ public class Test {
 
         System.out.println(entity);
 
-        Long l = Long.valueOf(200);
+        // Gọi các phương thức get và in kết quả
+        Stream.of(entity.getClass().getMethods())
+            .filter(mt -> mt.getName().startsWith("get"))
+            .forEach(mt -> {
+                try {
+                    Object returnValue = mt.invoke(entity);
+                    System.out.println(mt.getName() + " = " + returnValue);
+                } catch (IllegalAccessException | InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            });
+
+        System.out.println(entity);
+
+        Long l = 200L;
 
     }
 }

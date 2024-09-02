@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements;
+package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.map;
 
 import java.util.ArrayList;
 import java.util.Collections;
