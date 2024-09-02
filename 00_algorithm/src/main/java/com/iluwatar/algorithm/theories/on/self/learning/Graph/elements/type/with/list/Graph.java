@@ -69,7 +69,7 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
         // Tập hợp các cung đi vào đỉnh u (deg-(u))
         Set<GraphGdge<V, ? extends Number>> inArcs = new HashSet<>();
 
-        // Lấy tập hợp các phần tử liên quan đến đỉnh u
+        // Lấy tập hợp các đỉnh liên thông với đến đỉnh u
         E elements = getElements(u.getTop());
 
         // Duyệt qua tất cả các cung liên quan đến đỉnh u
