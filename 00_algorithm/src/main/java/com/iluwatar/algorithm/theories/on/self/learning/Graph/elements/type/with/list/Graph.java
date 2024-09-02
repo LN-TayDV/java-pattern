@@ -113,6 +113,26 @@ public abstract class Graph<V , E extends Collection<? extends GraphGdge<V, ? ex
         }
     }
 
+    /**
+     * Đường đi, chu trình
+     */
+
+    /**
+     *  Đồ thị liên thông : luôn tìm được đường đi từ giữa hai đỉnh bất kì => Đồ thị vô hướng
+     */
+
+    /**
+     * Trong trường hợp đồ thị không liên thông : bài toán đêm các thành phần không liên thông trong
+     * toàn bộ đồ thị
+     * => Đồ thị vô hường
+     */
+
+    /**
+     * Liên thông mạnh yếu : => Đồ thị có hướng
+     * Đồ thị liên thông mạnh = đồ thị vô hướng có cấu trúc giống liên thông mạnh + có hường
+     * Đồ thị liên thông yếu = đồ thị liên thông mạnh - có hướng
+     */
+
     @AllArgsConstructor
     private class DegreeValue {
         int numberOfArcs;
