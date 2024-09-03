@@ -8,6 +8,8 @@ public  interface GraphGdge<E , W> {
 
     W w();
 
+    GraphGdge<E , W> reverse ();
+
     // Phương thức mặc định để cung cấp chuỗi mô tả về cạnh
     default String describe() {
         return String.format("%s -- %s", u().getTop(), v().getTop());

@@ -4,9 +4,16 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 
-public class SelfLoopGraph<V> extends Graph<V> {
+/**
+ * UndirectedGraph  :
+ * 1/ Đa đồ thị vô hướng
+ * 2/ Đơn đồ thị vô hướng
+ * 3/ Đồ thị có cạnh khuyên (đỉnh đầu và đỉnh cuối trùng nhau)
+ * @param <V>
+ */
+public class UndirectedGraph<V> extends Graph<V> {
 
-    public SelfLoopGraph() {
+    public UndirectedGraph() {
         super();
     }
 
@@ -19,15 +26,16 @@ public class SelfLoopGraph<V> extends Graph<V> {
         return false;
     }
 
-
     @Override
+    @SuppressWarnings("unchecked")
     public boolean addEdge(GraphGdge<V, ? extends Number> element) {
         if (!(element instanceof Edge)) {
             throw new IllegalArgumentException("Element must be an instance of Edge.");
         }
 
-        Vertex<V> fromVertex = element.u();
-        Vertex<V> toVertex = element.v();
+        Edge<V, ? extends Number> edge = (Edge<V, ? extends Number>) element;
+        Vertex<V> fromVertex = edge.u();
+        Vertex<V> toVertex = edge.v();
         Number weight = element.w();
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
@@ -42,15 +50,15 @@ public class SelfLoopGraph<V> extends Graph<V> {
 
         // Thêm cạnh vào tập hợp cạnh của cả hai đỉnh
         boolean added = false;
-        added |= adjacencyList.get(fromVertex).add(element);
-        added |= adjacencyList.get(toVertex).add(new Edge<>(element.v(), element.u(), element.w())); // Đối xứng cho đồ thị vô hướng
+        added |= adjacencyList.get(fromVertex).add(edge);
+        // Đối xứng cho đồ thị vô hướng
+        added |= adjacencyList.get(toVertex).add(edge.reverse());
 
         return added;
-
     }
 
     public static void main(String[] args) {
-        Graph<String> graph = new SelfLoopGraph<>();
+        Graph<String> graph = new UndirectedGraph<>();
 
         Vertex<String> v1 = new Vertex<>("A");
         Vertex<String> v2 = new Vertex<>("B");
@@ -60,11 +68,12 @@ public class SelfLoopGraph<V> extends Graph<V> {
         graph.addVertex(v2);
         graph.addVertex(v3);
 
-        graph.addEdge(new Edge<>(v1, v1, 0)); // Self-loop with weight 0
-        graph.addEdge(new Edge<>(v1, v2, 1)); // Edge between v1 and v2
-        graph.addEdge(new Edge<>(v2, v2, 0)); // Self-loop with weight 0
-        graph.addEdge(new Edge<>(v3, v1, 2)); // Edge between v3 and v1
+        graph.addEdge(new Edge<>(v1, v2, Double.valueOf("3")));
+        graph.addEdge(new Edge<>(v1, v2, Double.valueOf("5")));
+        graph.addEdge(new Edge<>(v2, v3, Double.valueOf("5")));
+        graph.addEdge(new Edge<>(v3, v1, Double.valueOf("7")));
 
         System.out.println(graph);
     }
 }
+

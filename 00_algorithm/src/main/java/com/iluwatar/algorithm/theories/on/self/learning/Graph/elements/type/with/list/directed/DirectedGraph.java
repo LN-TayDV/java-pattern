@@ -4,9 +4,13 @@ import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
 
-public class MultipleDirectedGraph <V> extends Graph<V> {
+/**
+ * Đa đồ thị có hướng :
+ * @param <V>
+ */
+public class DirectedGraph<V> extends Graph<V> {
 
-    public MultipleDirectedGraph() {
+    public DirectedGraph() {
         super();
     }
 
@@ -26,9 +30,8 @@ public class MultipleDirectedGraph <V> extends Graph<V> {
             throw new IllegalArgumentException("Edge must be an instance of Arc.");
         }
 
-        Arc<V, ? extends Number> arc = (Arc<V, ? extends Number>) edge;
-        Vertex<V> fromVertex = arc.getFrom();
-        Vertex<V> toVertex = arc.getTo();
+        Vertex<V> fromVertex = edge.u();
+        Vertex<V> toVertex = edge.v();
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
         if (!adjacencyList.containsKey(fromVertex) || !adjacencyList.containsKey(toVertex)) {
@@ -36,11 +39,11 @@ public class MultipleDirectedGraph <V> extends Graph<V> {
         }
 
         // Thêm cung vào tập hợp cung của đỉnh bắt đầu
-        return adjacencyList.get(fromVertex).add(arc);
+        return adjacencyList.get(fromVertex).add(edge);
     }
 
     public static void main(String[] args) {
-        MultipleDirectedGraph<String> graph = new MultipleDirectedGraph<>();
+        DirectedGraph<String> graph = new DirectedGraph<>();
 
         Vertex<String> v1 = new Vertex<>("A");
         Vertex<String> v2 = new Vertex<>("B");

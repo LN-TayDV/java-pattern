@@ -2,6 +2,7 @@ package com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.wit
 
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.GraphGdge;
 import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.Vertex;
+import com.iluwatar.algorithm.theories.on.self.learning.Graph.elements.type.with.list.directed.Arc;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -36,6 +37,10 @@ public class Edge<E, W extends Number> implements GraphGdge<E, W> {
         return this.weight;
     }
 
+    @Override
+    public GraphGdge<E, W> reverse() {
+        return new Edge<>(this.v(), this.u(), this.w());
+    }
 
     @Override
     public String toString() {
