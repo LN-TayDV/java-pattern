@@ -28,15 +28,14 @@ public class UndirectedGraph<V> extends Graph<V> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean addEdge(GraphGdge<V, ? extends Number> element) {
-        if (!(element instanceof Edge)) {
+    public boolean addEdge(GraphGdge<V, ? extends Number> edge) {
+        if (!(edge instanceof Edge)) {
             throw new IllegalArgumentException("Element must be an instance of Edge.");
         }
 
-        Edge<V, ? extends Number> edge = (Edge<V, ? extends Number>) element;
         Vertex<V> fromVertex = edge.u();
         Vertex<V> toVertex = edge.v();
-        Number weight = element.w();
+        Number weight = edge.w();
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
         if (!adjacencyList.containsKey(fromVertex) || !adjacencyList.containsKey(toVertex)) {

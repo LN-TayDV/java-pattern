@@ -25,13 +25,13 @@ public class DirectedGraph<V> extends Graph<V> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public boolean addEdge(GraphGdge<V, ? extends Number> edge) {
-        if (!(edge instanceof Arc)) {
+    public boolean addEdge(GraphGdge<V, ? extends Number> arc) {
+        if (!(arc instanceof Arc)) {
             throw new IllegalArgumentException("Edge must be an instance of Arc.");
         }
 
-        Vertex<V> fromVertex = edge.u();
-        Vertex<V> toVertex = edge.v();
+        Vertex<V> fromVertex = arc.u();
+        Vertex<V> toVertex = arc.v();
 
         // Kiểm tra sự tồn tại của các đỉnh trong đồ thị
         if (!adjacencyList.containsKey(fromVertex) || !adjacencyList.containsKey(toVertex)) {
@@ -39,7 +39,7 @@ public class DirectedGraph<V> extends Graph<V> {
         }
 
         // Thêm cung vào tập hợp cung của đỉnh bắt đầu
-        return adjacencyList.get(fromVertex).add(edge);
+        return adjacencyList.get(fromVertex).add(arc);
     }
 
     public static void main(String[] args) {
