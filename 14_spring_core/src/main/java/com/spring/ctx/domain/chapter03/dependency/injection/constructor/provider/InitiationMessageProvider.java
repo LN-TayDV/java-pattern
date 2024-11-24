@@ -22,42 +22,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter04.FactoryBeans;
+package com.spring.ctx.domain.chapter03.dependency.injection.constructor.provider;
 
-import lombok.extern.slf4j.Slf4j;
-import java.security.MessageDigest;
+import org.springframework.stereotype.Component;
 
-@Slf4j
-public class MessageDigester {
+@Component("provider01")
+public class InitiationMessageProvider implements MessageProvider {
 
-    private MessageDigest digest1;
-    private MessageDigest digest2;
-
-    public void setDigest1(MessageDigest digest1) {
-        this.digest1 = digest1;
+    public InitiationMessageProvider() {
+        System.out.println(" --> InitiationMessageProvider: bean created");
     }
 
-    public void setDigest2(MessageDigest digest2) {
-        this.digest2 = digest2;
-    }
-
-    public void digest(String msg) {
-        LOGGER.info("Using digest1");
-        digest(msg, digest1);
-
-        LOGGER.info("Using digest2");
-        digest(msg, digest2);
-    }
-
-    private void digest(String msg, MessageDigest digest) {
-        LOGGER.info("Using algorithm: " + digest.getAlgorithm());
-        digest.reset();
-
-        byte[] bytes = msg.getBytes();
-        byte[] out = digest.digest(bytes);
-
-        // we are printing the actual byte values
-        LOGGER.info("Original Message: {} ", bytes);
-        LOGGER.info("Encrypted Message: {} ", out);
+    @Override
+    public String getMessage() {
+        return "Hello World!";
     }
 }

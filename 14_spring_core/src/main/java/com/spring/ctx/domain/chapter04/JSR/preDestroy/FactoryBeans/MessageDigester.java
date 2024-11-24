@@ -22,36 +22,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter04.FactoryBeans;
+package com.spring.ctx.domain.chapter04.JSR.preDestroy.FactoryBeans;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import lombok.extern.slf4j.Slf4j;
+import java.security.MessageDigest;
 
-@Configuration
-@ComponentScan(basePackages = "com.spring.ctx.domain.chapter04.FactoryBeans")
-public class MessageDigestConfig {
+@Slf4j
+public class MessageDigester {
 
-    @Bean
-    public MessageDigestFactoryBean shaDigest(){
-        MessageDigestFactoryBean shaDigest = new MessageDigestFactoryBean();
-        shaDigest.setAlgorithmName("SHA1");
-        return shaDigest;
+    private MessageDigest digest1;
+    private MessageDigest digest2;
+
+    public void setDigest1(MessageDigest digest1) {
+        this.digest1 = digest1;
     }
 
-    @Bean//MD5
-    public MessageDigestFactoryBean defaultDigest(){
-        return new MessageDigestFactoryBean();
+    public void setDigest2(MessageDigest digest2) {
+        this.digest2 = digest2;
     }
 
-    @Bean
-    public MessageDigester digester() throws Exception {
-        MessageDigester messageDigester = new MessageDigester();
-        messageDigester.setDigest1(shaDigest().getObject());
-        messageDigester.setDigest2(defaultDigest().getObject());
-        return messageDigester;
+    public void digest(String msg) {
+        LOGGER.info("Using digest1");
+        digest(msg, digest1);
+
+        LOGGER.info("Using digest2");
+        digest(msg, digest2);
     }
 
+    private void digest(String msg, MessageDigest digest) {
+        LOGGER.info("Using algorithm: " + digest.getAlgorithm());
+        digest.reset();
 
+        byte[] bytes = msg.getBytes();
+        byte[] out = digest.digest(bytes);
 
+        // we are printing the actual byte values
+        LOGGER.info("Original Message: {} ", bytes);
+        LOGGER.info("Encrypted Message: {} ", out);
+    }
 }

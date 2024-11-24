@@ -22,19 +22,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter03.dependency.injection.constructor;
+package com.spring.ctx.domain.chapter04.JSR.preDestroy.FactoryBeans;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.InitializingBean;
+import java.security.MessageDigest;
 
-@Component("provider01")
-public class InitiationMessageProvider implements MessageProvider {
+public class MessageDigestFactoryBean implements FactoryBean<MessageDigest>, InitializingBean {
 
-    public InitiationMessageProvider() {
-        System.out.println(" --> InitiationMessageProvider: bean created");
+    private String algorithmName = "MD5";
+
+    private MessageDigest messageDigest = null;
+
+    @Override
+    public MessageDigest getObject() throws Exception {
+        return messageDigest;
     }
 
     @Override
-    public String getMessage() {
-        return "Hello World!";
+    public Class<MessageDigest> getObjectType() {
+        return MessageDigest.class;
+    }
+
+    @Override
+    public boolean isSingleton() {
+        return true;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        messageDigest = MessageDigest.getInstance(algorithmName);
+    }
+
+    public void setAlgorithmName(String algorithmName) {
+        this.algorithmName = algorithmName;
     }
 }

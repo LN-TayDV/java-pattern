@@ -24,6 +24,7 @@
  */
 package com.spring.ctx.domain.chapter03.dependency.injection.constructor;
 
+import com.spring.ctx.domain.chapter03.dependency.injection.constructor.provider.MessageProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -40,8 +41,14 @@ public class StandardOutMessageRenderer implements MessageRenderer {
      * which tells Spring which constructor to use when
      * instantiating this bean,
      */
-    @Autowired
+   /* @Autowired
     public StandardOutMessageRenderer(@Qualifier("provider02") MessageProvider messageProvider) {
+        System.out.println(" --> StandardOutMessageRenderer: package constructor called");
+        this.messageProvider = messageProvider;
+    }*/
+
+    @Autowired
+    public StandardOutMessageRenderer(@Qualifier("provider01") MessageProvider messageProvider) {
         System.out.println(" --> StandardOutMessageRenderer: package constructor called");
         this.messageProvider = messageProvider;
     }

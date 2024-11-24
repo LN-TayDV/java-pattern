@@ -24,6 +24,8 @@
  */
 package com.spring.ctx.domain.chapter03.dependency.injection.constructor;
 
+import com.spring.ctx.domain.chapter03.dependency.injection.constructor.provider.MessageProvider;
+
 public interface MessageRenderer {
     void render();
 

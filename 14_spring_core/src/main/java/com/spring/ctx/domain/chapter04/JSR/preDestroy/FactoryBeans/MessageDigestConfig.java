@@ -22,19 +22,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter04.FactoryBeans;
+package com.spring.ctx.domain.chapter04.JSR.preDestroy.FactoryBeans;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-public class FactoryBeanDemo {
+@Configuration
+@ComponentScan(basePackages = "com.spring.ctx.domain.chapter04.FactoryBeans")
+public class MessageDigestConfig {
 
-    public static void main(String... args) {
-        var ctx = new AnnotationConfigApplicationContext(MessageDigestConfig.class);
-
-        MessageDigester digester = ctx.getBean("digester", MessageDigester.class);
-
-        digester.digest("Hello World!");
-
-        ctx.close();
+    @Bean
+    public MessageDigestFactoryBean shaDigest(){
+        MessageDigestFactoryBean shaDigest = new MessageDigestFactoryBean();
+        shaDigest.setAlgorithmName("SHA1");
+        return shaDigest;
     }
+
+    @Bean//MD5
+    public MessageDigestFactoryBean defaultDigest(){
+        return new MessageDigestFactoryBean();
+    }
+
+    @Bean
+    public MessageDigester digester() throws Exception {
+        MessageDigester messageDigester = new MessageDigester();
+        messageDigester.setDigest1(shaDigest().getObject());
+        messageDigester.setDigest2(defaultDigest().getObject());
+        return messageDigester;
+    }
+
+
+
 }

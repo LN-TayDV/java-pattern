@@ -22,8 +22,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter03.dependency.injection.constructor;
+package com.spring.ctx.domain.chapter04.JSR.preDestroy.FactoryBeans;
 
-public interface MessageProvider {
-    String getMessage();
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class FactoryBeanDemo {
+
+    public static void main(String... args) {
+        var ctx = new AnnotationConfigApplicationContext(MessageDigestConfig.class);
+
+        MessageDigester digester = ctx.getBean("digester", MessageDigester.class);
+
+        digester.digest("Hello World!");
+
+        ctx.close();
+    }
 }
