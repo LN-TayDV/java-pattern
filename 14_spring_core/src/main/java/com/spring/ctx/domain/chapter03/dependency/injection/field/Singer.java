@@ -22,25 +22,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter03.dependency.injection.constructor.field;
+package com.spring.ctx.domain.chapter03.dependency.injection.field;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
-public class Inspiration {
+@Component("singer")
+public class Singer {
 
-    private String lyric = "I can keep the door cracked open, to let light through";
+    @Autowired
+    private Inspiration inspirationBean;
 
-    public Inspiration(@Value("For all my running, I can understand") String lyric) {
-        this.lyric = lyric;
+    public void sing() {
+        System.out.println("... " + inspirationBean.getLyric());
     }
 
-    public String getLyric() {
-        return lyric;
-    }
-
-    public void setLyric(String lyric) {
-        this.lyric = lyric;
-    }
 }
