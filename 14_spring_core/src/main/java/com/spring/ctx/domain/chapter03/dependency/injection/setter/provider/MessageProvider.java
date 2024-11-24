@@ -22,14 +22,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter03.dependency.injection.setter;
+package com.spring.ctx.domain.chapter03.dependency.injection.setter.provider;
 
-import org.springframework.stereotype.Component;
-
-@Component("provider")
-public class InitiationMessageProvider implements MessageProvider {
-    @Override
-    public String getMessage() {
-        return "Hello World!";
-    }
+public interface MessageProvider {
+    String getMessage();
 }

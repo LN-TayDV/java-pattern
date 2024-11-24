@@ -24,6 +24,7 @@
  */
 package com.spring.ctx.domain.chapter03.dependency.injection.setter;
 
+import com.spring.ctx.domain.chapter03.dependency.injection.setter.provider.MessageProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
