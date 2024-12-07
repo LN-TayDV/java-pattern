@@ -28,31 +28,54 @@ import com.spring.ctx.domain.chapter03.dependency.injection.setter.provider.Mess
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("renderer")
+// Đánh dấu lớp này là một Spring Component để Spring quản lý
+@Component("renderer") // Đăng ký bean với tên "renderer" trong Application Context
 public class StandardOutMessageRenderer implements MessageRenderer {
 
+    // Dependency sẽ được inject thông qua setter
     private MessageProvider messageProvider;
 
-    public StandardOutMessageRenderer(){
+    /**
+     * Constructor mặc định.
+     * Spring sẽ gọi constructor này khi khởi tạo bean.
+     * Đây là nơi ta có thể thêm logic khởi tạo ban đầu (nếu cần).
+     */
+    public StandardOutMessageRenderer() {
         System.out.println(" --> StandardOutMessageRenderer: constructor called");
     }
 
+    /**
+     * Setter method để Spring inject dependency.
+     * @Autowired: Cho phép Spring tự động gọi setter này để inject MessageProvider.
+     * @param provider: Bean của kiểu MessageProvider được Spring cung cấp.
+     */
     @Override
-    @Autowired //Autowired annotation must be put on every setter that is called by Spring to inject a dependency.
+    @Autowired
     public void setMessageProvider(MessageProvider provider) {
         System.out.println(" --> StandardOutMessageRenderer: setting the provider");
-        this.messageProvider = provider;
+        this.messageProvider = provider; // Lưu dependency được inject vào field
     }
 
+    /**
+     * Thực hiện hành động sử dụng dependency đã được inject.
+     * Nếu dependency không được inject, sẽ ném RuntimeException.
+     */
     @Override
     public void render() {
         if (messageProvider == null) {
+            // Kiểm tra xem dependency đã được inject chưa
             throw new RuntimeException(
-                    "You must set the property messageProvider of class:" + StandardOutMessageRenderer.class.getName());
+                "You must set the property messageProvider of class: "
+                    + StandardOutMessageRenderer.class.getName());
         }
+        // Sử dụng dependency để in thông điệp
         System.out.println(messageProvider.getMessage());
     }
 
+    /**
+     * Getter method trả về dependency đã được inject.
+     * @return Dependency kiểu MessageProvider.
+     */
     @Override
     public MessageProvider getMessageProvider() {
         return this.messageProvider;
