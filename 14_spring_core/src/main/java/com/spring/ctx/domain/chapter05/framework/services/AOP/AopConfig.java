@@ -40,74 +40,87 @@ import org.springframework.context.annotation.Configuration;
  * 2/ Đăng kí advice vào bean proxy
  * 3/ Sủ dụng Advice
  */
-@Configuration
+@Configuration // Đánh dấu lớp này là một cấu hình Spring, nơi khai báo và quản lý các bean.
 public class AopConfig implements BeanFactoryAware {
 
-    private BeanFactory beanFactory;
+    private BeanFactory beanFactory; // Đối tượng BeanFactory để quản lý các bean trong ứng dụng.
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        // Lưu lại tham chiếu đến BeanFactory để sử dụng trong các bean khác.
         this.beanFactory = beanFactory;
     }
 
     @Bean
     public GrammyGuitarist johnMayer() {
+        // Khai báo một bean GrammyGuitarist đại diện cho đối tượng mục tiêu (target) của AOP.
         return new GrammyGuitarist();
     }
 
     @Bean
     public Advice advice() {
+        // Khai báo một bean Advice, là logic xử lý cắt ngang.
+        // Ở đây sử dụng AuditAdvice để thực thi logic quanh các phương thức mục tiêu.
         return new AuditAdvice();
     }
 
     @Bean
     public DefaultPointcutAdvisor advisor() {
-        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor();
-        advisor.setAdvice(advice());
+        // Khai báo một Advisor kết hợp Advice với Pointcut để định nghĩa phạm vi áp dụng AOP.
+
+        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor(); // Tạo một Advisor mặc định.
+        advisor.setAdvice(advice()); // Thiết lập logic cắt ngang (advice) từ bean advice().
 
         AspectJExpressionPointcut pc = new AspectJExpressionPointcut();
+        // Sử dụng AspectJExpressionPointcut để chỉ định các phương thức được áp dụng advice.
         pc.setExpression("execution(* talk*(..))");
-        advisor.setPointcut(pc);
+        // Biểu thức này chỉ định áp dụng AOP cho tất cả các phương thức bắt đầu bằng "talk".
+        advisor.setPointcut(pc); // Gán Pointcut vào Advisor.
 
-        return advisor;
+        return advisor; // Trả về Advisor hoàn chỉnh.
     }
 
     @Bean
     public GrammyGuitarist proxyOne() {
+        // Tạo một proxy cho GrammyGuitarist sử dụng ProxyFactoryBean.
         ProxyFactoryBean pfb = new ProxyFactoryBean();
-        pfb.setProxyTargetClass(true);
-        pfb.setTarget(johnMayer());
+        pfb.setProxyTargetClass(true); // Sử dụng proxy dựa trên lớp (CGLIB), không phải giao diện.
+        pfb.setTarget(johnMayer()); // Đặt đối tượng mục tiêu là bean johnMayer.
         pfb.setInterceptorNames("advice");
-        pfb.setBeanFactory(beanFactory);
+        // Chỉ định interceptor (advice) sẽ được áp dụng, sử dụng tên bean "advice".
+        pfb.setBeanFactory(beanFactory); // Thiết lập BeanFactory để quản lý bean này.
         pfb.setFrozen(true);
-        return (GrammyGuitarist) pfb.getObject();
+        // Đóng băng proxy để ngăn thay đổi thêm sau khi cấu hình xong.
+        return (GrammyGuitarist) pfb.getObject(); // Trả về proxy dưới dạng GrammyGuitarist.
     }
 
     @Bean
     public GrammyGuitarist proxyTwo() {
+        // Tương tự proxyOne nhưng sử dụng advisor thay vì trực tiếp sử dụng advice.
         ProxyFactoryBean pfb = new ProxyFactoryBean();
-        pfb.setProxyTargetClass(true);
-        pfb.setTarget(johnMayer());
+        pfb.setProxyTargetClass(true); // Sử dụng proxy dựa trên lớp (CGLIB).
+        pfb.setTarget(johnMayer()); // Đặt đối tượng mục tiêu là bean johnMayer.
         pfb.setInterceptorNames("advisor");
-        pfb.setBeanFactory(beanFactory);
+        // Chỉ định advisor sẽ được áp dụng, sử dụng tên bean "advisor".
+        pfb.setBeanFactory(beanFactory); // Thiết lập BeanFactory.
         pfb.setFrozen(true);
-        return (GrammyGuitarist) pfb.getObject();
+        // Đóng băng proxy để ngăn thay đổi thêm sau khi cấu hình xong.
+        return (GrammyGuitarist) pfb.getObject(); // Trả về proxy dưới dạng GrammyGuitarist.
     }
 
     @Bean
     public Documentarist documentaristOne() {
+        // Tạo một bean Documentarist sử dụng proxyOne làm dependency.
         Documentarist documentarist = new Documentarist();
-        documentarist.setDep(proxyOne());
-        return documentarist;
+        documentarist.setDep(proxyOne()); // Đặt proxyOne làm đối tượng phụ thuộc.
+        return documentarist; // Trả về Documentarist.
     }
-
 
     @Bean
     public Documentarist documentaristTwo() {
+        // Tạo một bean Documentarist sử dụng proxyTwo làm dependency.
         Documentarist documentarist = new Documentarist();
-        documentarist.setDep(proxyTwo());
-        return documentarist;
+        documentarist.setDep(proxyTwo()); // Đặt proxyTwo làm đối tượng phụ thuộc.
+        return documentarist; // Trả về Documentarist.
     }
-
-
 }
