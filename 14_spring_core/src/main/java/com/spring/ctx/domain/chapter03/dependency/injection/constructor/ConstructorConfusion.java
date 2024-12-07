@@ -29,43 +29,60 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component // Đánh dấu lớp này là một Spring Bean, để Spring có thể quản lý và khởi tạo đối tượng của lớp này.
 public class ConstructorConfusion {
 
+    private final String someValue;  // Thuộc tính để lưu trữ giá trị chuỗi, sẽ được gán từ constructor.
 
-    private final String someValue;
-
+    /**
+     * Constructor này nhận vào một tham số kiểu String và gán giá trị này cho thuộc tính someValue.
+     * Khi Spring khởi tạo đối tượng này bằng constructor này, thông báo sẽ được in ra.
+     * Tuy nhiên, constructor này không có annotation @Autowired, vì vậy Spring sẽ không sử dụng constructor này để khởi tạo bean mà thay vào đó sẽ sử dụng constructor có annotation @Autowired.
+     */
     public ConstructorConfusion(String someValue) {
         System.out.println("ConstructorConfusion(String) called");
         this.someValue = someValue;
     }
 
     /**
-     * Because the second constructor is annotated with @Autowired
-     * This tells Spring to use this constructor to instantiate this bean. Without that
-     * annotation, Spring cannot decide on its own which constructor to use, and running this class results in the
-     * following exception being thrown.
+     * Constructor này được đánh dấu với annotation @Autowired, điều này nói với Spring rằng Spring sẽ sử dụng constructor này để khởi tạo bean.
+     * @Value("90") cung cấp giá trị tĩnh cho tham số someValue trong constructor này, giá trị này sẽ là "90".
+     * Nếu không có annotation @Autowired, Spring không thể quyết định được constructor nào sẽ được gọi khi tạo bean và sẽ gây ra lỗi.
      */
     @Autowired
     public ConstructorConfusion(@Value("90") int someValue) {
         System.out.println("ConstructorConfusion(int) called");
 
+        // Chuyển đổi giá trị int sang chuỗi và gán cho thuộc tính someValue.
         this.someValue = "Number: " + someValue;
     }
 
-    public
-    static void main(String... args) {
+    /**
+     * Phương thức main() là điểm khởi đầu của chương trình. Nó sẽ khởi tạo Spring application context,
+     * đăng ký lớp ConstructorConfusion như một bean và khởi tạo bean này.
+     * Sau đó, nó in thông tin của bean ConstructorConfusion vừa được khởi tạo.
+     */
+    public static void main(String... args) {
+        // Tạo một Spring context sử dụng AnnotationConfigApplicationContext
         var ctx = new AnnotationConfigApplicationContext();
 
+        // Đăng ký lớp ConstructorConfusion vào Spring context
         ctx.register(ConstructorConfusion.class);
 
+        // Khởi động Spring context
         ctx.refresh();
 
+        // Lấy bean ConstructorConfusion từ Spring context
         var cc = ctx.getBean(ConstructorConfusion.class);
 
+        // In thông tin của bean ConstructorConfusion
         System.out.println("Does this work? " + cc);
     }
 
+    /**
+     * Phương thức này trả về giá trị của thuộc tính someValue,
+     * giúp hiển thị thông tin về đối tượng khi gọi print.
+     */
     public String toString() {
         return someValue;
     }

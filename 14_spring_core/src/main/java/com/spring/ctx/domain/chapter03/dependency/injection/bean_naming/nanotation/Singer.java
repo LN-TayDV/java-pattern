@@ -26,14 +26,15 @@ package com.spring.ctx.domain.chapter03.dependency.injection.bean_naming.nanotat
 
 import org.springframework.stereotype.Component;
 
-@Component("johnMayer")
-//@Award(prize = {"grammy", "platinum disk"})
-@Trophy(name = {"grammy", "platinum disk"})
+// Lớp Singer, đại diện cho một ca sĩ và sử dụng annotation Trophy để lưu thông tin giải thưởng
+@Component("johnMayer")  // Đánh dấu lớp này là một Spring bean với tên là "johnMayer"
+@Trophy(name = {"grammy", "platinum disk"})  // Gán giải thưởng cho Singer thông qua @Trophy
 public class Singer {
 
-    private String lyric = "I used to crave the sight of you";
+    private String lyric = "I used to crave the sight of you";  // Lời bài hát của ca sĩ
 
     public void sing() {
+        // Phương thức sing in lời bài hát
         System.out.println(lyric);
     }
 }

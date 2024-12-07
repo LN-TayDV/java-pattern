@@ -24,26 +24,29 @@
  */
 package com.spring.ctx.domain.chapter03.dependency.injection.bean_naming.styles;
 
+import java.util.Locale;
+import java.util.Objects;
+import java.util.UUID;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.AnnotationBeanNameGenerator;
 
-import java.util.Locale;
-import java.util.Objects;
-import java.util.UUID;
-
 public class SimpleBeanNameGenerator extends AnnotationBeanNameGenerator {
 
+    // Override phương thức để xây dựng tên bean mặc định
     @Override
     protected String buildDefaultBeanName(BeanDefinition definition, BeanDefinitionRegistry registry) {
+        // Lấy tên lớp bean từ BeanDefinition
         var beanName = Objects
-                .requireNonNull(definition.getBeanClassName())
-                .substring(definition.getBeanClassName().lastIndexOf(".") + 1)
-                .toLowerCase(Locale.ROOT);
+            .requireNonNull(definition.getBeanClassName())  // Đảm bảo rằng tên lớp không null
+            .substring(definition.getBeanClassName().lastIndexOf(".") + 1)  // Lấy phần tên lớp sau dấu chấm (loại bỏ package)
+            .toLowerCase(Locale.ROOT);  // Chuyển tên lớp sang chữ thường (ví dụ: MyBean -> mybean)
 
-        var uid = UUID.randomUUID().toString().replace("-","").substring(0,8);
+        // Tạo một UUID ngẫu nhiên, loại bỏ dấu '-' và lấy 8 ký tự đầu tiên
+        var uid = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
 
+        // Kết hợp tên lớp và UUID để tạo ra tên bean cuối cùng
         return beanName + "-" + uid;
     }
-
 }
+

@@ -26,8 +26,9 @@ package com.spring.ctx.domain.chapter03.dependency.injection.bean_naming.nanotat
 
 import org.springframework.core.annotation.AliasFor;
 
-@Award
+@Award // Định nghĩa rằng `@Trophy` kế thừa từ annotation `@Award`
 public @interface Trophy {
-    @AliasFor(annotation = Award.class, attribute = "value")
-    String[] name() default {};
+    @AliasFor(annotation = Award.class, attribute = "prize") // Dùng @AliasFor để liên kết thuộc tính "name" với thuộc tính "prize" trong @Award.
+    String[] name() default {}; // Thuộc tính "name" sẽ ánh xạ đến "prize" của @Award.
 }
+

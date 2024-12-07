@@ -26,9 +26,10 @@ package com.spring.ctx.domain.chapter03.dependency.injection.bean_naming.nanotat
 
 import java.lang.annotation.*;
 
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
+@Target({ElementType.TYPE}) // Định nghĩa annotation này có thể áp dụng cho lớp (class), interface, hoặc enum.
+@Retention(RetentionPolicy.RUNTIME) // Chỉ định rằng annotation này sẽ có sẵn tại thời điểm chạy (runtime).
+@Documented // Cho phép annotation này được đưa vào tài liệu API.
 public @interface Award {
-    String[] prize() default {};
+    String[] prize() default {}; // Định nghĩa một thuộc tính "prize" kiểu mảng chuỗi (String[]), giá trị mặc định là mảng rỗng.
 }
+

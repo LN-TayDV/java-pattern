@@ -29,46 +29,67 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component("renderer")
+@Component("renderer")  // Đánh dấu lớp này là một bean trong Spring Container và đặt tên là "renderer".
 public class StandardOutMessageRenderer implements MessageRenderer {
 
+    // Thuộc tính để lưu đối tượng MessageProvider mà sẽ được inject vào.
     private MessageProvider messageProvider;
 
     /**
-     * The
-     *
-     * @Autowired annotation is not used to decorate the constructor,
-     * which tells Spring which constructor to use when
-     * instantiating this bean,
+     * @Autowired annotation không được dùng để trang trí constructor,
+     * điều này nói với Spring biết constructor nào sẽ được sử dụng khi
+     * tạo ra bean này.
      */
-   /* @Autowired
+
+    // Phương thức constructor không sử dụng @Autowired, nhưng Spring vẫn có thể tự động inject
+    // MessageProvider vào thuộc tính messageProvider nhờ vào sự tồn tại của các phương thức setter.
+    /* @Autowired
     public StandardOutMessageRenderer(@Qualifier("provider02") MessageProvider messageProvider) {
         System.out.println(" --> StandardOutMessageRenderer: package constructor called");
         this.messageProvider = messageProvider;
     }*/
 
+    // Constructor này sử dụng @Autowired để Spring tự động inject bean MessageProvider có tên "provider01"
     @Autowired
     public StandardOutMessageRenderer(@Qualifier("provider01") MessageProvider messageProvider) {
+        // In ra thông báo khi constructor được gọi.
         System.out.println(" --> StandardOutMessageRenderer: package constructor called");
+        // Gán giá trị cho thuộc tính messageProvider.
         this.messageProvider = messageProvider;
     }
 
+    /**
+     * Phương thức render() dùng để hiển thị thông điệp từ MessageProvider.
+     * Trước khi in ra thông điệp, phương thức kiểm tra nếu messageProvider là null,
+     * nếu là null thì ném ra một ngoại lệ RuntimeException.
+     */
     @Override
     public void render() {
+        // Kiểm tra xem messageProvider có null không, nếu có thì ném ngoại lệ.
         if (messageProvider == null) {
             throw new RuntimeException(
-                    "You must set the property messageProvider of class:" + StandardOutMessageRenderer.class.getName());
+                "You must set the property messageProvider of class:" + StandardOutMessageRenderer.class.getName());
         }
+        // In thông điệp từ MessageProvider ra màn hình.
         System.out.println(messageProvider.getMessage());
     }
 
+    /**
+     * Phương thức trả về đối tượng messageProvider hiện tại.
+     */
     @Override
     public MessageProvider getMessageProvider() {
         return this.messageProvider;
     }
 
+    /**
+     * Phương thức setter để thiết lập giá trị cho messageProvider.
+     * Khi phương thức này được gọi, nó sẽ thiết lập thuộc tính messageProvider
+     * và in ra thông báo rằng provider đã được thiết lập.
+     */
     @Override
     public void setMessageProvider(MessageProvider provider) {
+        // In ra thông báo khi messageProvider được thiết lập.
         System.out.println(" --> StandardOutMessageRenderer: setting the provider");
         this.messageProvider = provider;
     }
