@@ -33,19 +33,28 @@ import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
 public class AnnotationPointcutDemo {
 
     public static void main(String... args) {
+        // Tạo một đối tượng AnnotatedGuitarist (đối tượng mục tiêu).
         var johnMayer = new AnnotatedGuitarist();
 
+        // Tạo một Pointcut để khớp với các phương thức có annotation @AdviceRequired.
         var pc = AnnotationMatchingPointcut.forMethodAnnotation(AdviceRequired.class);
+
+        // Tạo một Advisor kết hợp Pointcut và Advice (logic xử lý cắt ngang).
         var advisor = new DefaultPointcutAdvisor(pc, new SimpleAroundAdvice());
 
+        // Tạo một ProxyFactory để tạo proxy.
         ProxyFactory pf = new ProxyFactory();
-        pf.setTarget(johnMayer);
-        pf.addAdvisor(advisor);
+        pf.setTarget(johnMayer); // Đặt đối tượng mục tiêu là johnMayer.
+        pf.addAdvisor(advisor); // Thêm Advisor để áp dụng AOP logic.
 
+        // Tạo proxy từ ProxyFactory và ép kiểu về AnnotatedGuitarist.
         AnnotatedGuitarist proxy = (AnnotatedGuitarist) pf.getProxy();
-        proxy.sing();
-        proxy.sing(new GrammyGuitarist.Guitar());
-        proxy.rest();
+
+        // Gọi các phương thức của proxy:
+        proxy.sing(); // Gọi phương thức sing() (nếu có annotation @AdviceRequired thì áp dụng Advice).
+        proxy.sing(new GrammyGuitarist.Guitar()); // Gọi phương thức sing(Guitar).
+        proxy.rest(); // Gọi phương thức rest() (không bị áp dụng Advice vì không khớp Pointcut).
     }
+
 
 }
