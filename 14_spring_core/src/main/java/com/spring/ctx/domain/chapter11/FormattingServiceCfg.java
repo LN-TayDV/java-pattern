@@ -34,35 +34,51 @@ import org.springframework.format.Formatter;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
 
+// Đánh dấu lớp này là một lớp cấu hình cho Spring
 @Configuration
 public class FormattingServiceCfg {
 
+    // Định nghĩa một bean của loại FormattingConversionService.
+    // Bean này cung cấp dịch vụ có thể định dạng và phân tích các đối tượng, ví dụ như LocalDate.
     @Bean
     public FormattingConversionService conversionService() {
 
+        // Tạo một thể hiện mới của DefaultFormattingConversionService.
+        // Tham số "true" chỉ ra rằng dịch vụ này sẽ được khởi tạo với một bộ các định dạng mặc định.
         var formattingConversionServiceBean = new DefaultFormattingConversionService(true);
 
+        // Thêm một formatter tùy chỉnh cho LocalDate.
         formattingConversionServiceBean.addFormatter(localDateFormatter());
 
+        // Trả về FormattingConversionService đã được cấu hình.
         return formattingConversionServiceBean;
     }
 
+    // Định nghĩa một formatter tùy chỉnh cho LocalDate. Formatter này chịu trách nhiệm phân tích và định dạng đối tượng LocalDate.
     protected Formatter<LocalDate> localDateFormatter() {
 
+        // Tạo một implementation của Formatter cho LocalDate.
         return new Formatter<LocalDate>() {
+            // Phương thức parse nhận một chuỗi (source) và chuyển đổi nó thành đối tượng LocalDate.
             @Override
             public LocalDate parse(String source, Locale locale) throws ParseException {
+                // Phân tích chuỗi thành LocalDate sử dụng phương thức getDateTimeFormatter().
                 return LocalDate.parse(source, getDateTimeFormatter());
             }
 
+            // Phương thức print nhận một đối tượng LocalDate và chuyển đổi nó thành chuỗi đã định dạng.
             @Override
             public String print(LocalDate source, Locale locale) {
+                // Chuyển đối tượng LocalDate thành chuỗi sử dụng phương thức getDateTimeFormatter().
                 return source.format(getDateTimeFormatter());
             }
 
+            // Một phương thức trợ giúp trả về DateTimeFormatter với định dạng mong muốn.
+            // Trong trường hợp này, trả về định dạng "yyyy-MM-dd".
             protected DateTimeFormatter getDateTimeFormatter() {
                 return DateTimeFormatter.ofPattern("yyyy-MM-dd");
             }
         };
     }
 }
+

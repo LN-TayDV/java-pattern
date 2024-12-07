@@ -32,28 +32,41 @@ import org.springframework.aop.framework.ProxyFactory;
 public class IntroductionDemo {
 
     public static void main(String... args) {
+        // Tạo đối tượng Contact và thiết lập tên cho đối tượng này.
         Contact target = new Contact();
         target.setName("John Mayer");
 
+        // Tạo Advisor, đây là một phần của AOP (Aspect-Oriented Programming) để bổ sung hành vi cho đối tượng.
         IntroductionAdvisor advisor = new IsModifiedAdvisor();
 
+        // Tạo ProxyFactory, là công cụ để tạo đối tượng proxy với hành vi bổ sung.
         ProxyFactory pf = new ProxyFactory();
-        pf.setTarget(target);
-        pf.addAdvisor(advisor);
-        pf.setOptimize(true);
+        pf.setTarget(target); // Đặt đối tượng target (Contact) là đối tượng gốc.
+        pf.addAdvisor(advisor); // Thêm Advisor vào ProxyFactory, Advisor sẽ bổ sung hành vi (IsModified).
+        pf.setOptimize(true); // Kích hoạt tối ưu hóa đối với proxy (cải thiện hiệu suất).
 
+        // Tạo proxy từ target (Contact) với các hành vi bổ sung từ Advisor.
         Contact proxy = (Contact) pf.getProxy();
-        IsModified proxyInterface = (IsModified)proxy;
 
-        LOGGER.info("Is Contact? => {} " , (proxy instanceof Contact));
-        LOGGER.info("Is IsModified? => {} " , (proxy instanceof IsModified));
+        // Lấy interface IsModified từ proxy. Proxy sẽ cung cấp các phương thức của IsModified (ví dụ: isModified()).
+        IsModified proxyInterface = (IsModified) proxy;
 
-        LOGGER.info("Has been modified? => {} " , proxyInterface.isModified());
+        // Kiểm tra xem proxy có phải là đối tượng Contact không.
+        LOGGER.info("Is Contact? => {} ", (proxy instanceof Contact));
 
+        // Kiểm tra xem proxy có phải là đối tượng IsModified không.
+        LOGGER.info("Is IsModified? => {} ", (proxy instanceof IsModified));
+
+        // Kiểm tra xem đối tượng có bị thay đổi (modified) hay không.
+        LOGGER.info("Has been modified? => {} ", proxyInterface.isModified());
+
+        // Thiết lập lại tên cho Contact (không thay đổi giá trị nên không bị modified).
         proxy.setName("John Mayer");
-        LOGGER.info("Has been modified? => {} " , proxyInterface.isModified());
+        LOGGER.info("Has been modified? => {} ", proxyInterface.isModified());
 
+        // Thay đổi tên của Contact, đây là sự thay đổi thực sự, vì vậy proxy sẽ bị modified.
         proxy.setName("Ben Barnes");
-        LOGGER.info("Has been modified? => {} " , proxyInterface.isModified());
+        LOGGER.info("Has been modified? => {} ", proxyInterface.isModified());
     }
+
 }

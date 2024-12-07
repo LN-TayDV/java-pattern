@@ -30,11 +30,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class LocalDatePropertyEditor extends PropertyEditorSupport {
-
+    // Tạo đối tượng DateTimeFormatter với mẫu ngày "yyyy-MM-dd"
     private final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    // Phương thức này được gọi khi Spring cần chuyển chuỗi thành LocalDate
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
+        // Chuyển chuỗi thành LocalDate và thiết lập giá trị cho đối tượng
         setValue(LocalDate.parse(text, dateFormat));
     }
 }

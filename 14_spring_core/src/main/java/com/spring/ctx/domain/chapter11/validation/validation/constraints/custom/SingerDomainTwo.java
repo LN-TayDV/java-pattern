@@ -51,9 +51,8 @@ public class SingerDomainTwo {
     @AssertTrue(message = "ERROR => [SingerDomainTwo]]! Individual singer should have gender and last name defined")
     public boolean isCountrySinger() {
         return genre == null
-            || (
-            !genre.equals(SingerDomain.Genre.COUNTRY)
-                || (gender != null && lastName != null)
+            || (!genre.equals(SingerDomain.Genre.COUNTRY)
+            || (gender != null && lastName != null)
         );
     }
 }

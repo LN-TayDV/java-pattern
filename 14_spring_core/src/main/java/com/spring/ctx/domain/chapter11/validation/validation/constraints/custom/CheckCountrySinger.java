@@ -31,16 +31,22 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
+// Đánh dấu annotation này để chỉ định rằng nó sẽ được sử dụng tại thời gian chạy (Runtime)
 @Retention(RetentionPolicy.RUNTIME)
+// Đánh dấu annotation này có thể được sử dụng cho lớp (class)
 @Target(ElementType.TYPE)
+// Chỉ định rằng annotation này sẽ sử dụng class `CountrySingerValidator` để xác thực
 @Constraint(validatedBy = CountrySingerValidator.class)
+// Đảm bảo rằng annotation này được đưa vào tài liệu API
 @Documented
 public @interface CheckCountrySinger {
 
+    // Mặc định thông báo lỗi nếu vi phạm
     String message() default "Country Singer should have gender and last name defined";
 
+    // Định nghĩa nhóm xác nhận (có thể sử dụng cho các mục đích phân nhóm khi xác thực)
     Class<?>[] groups() default {};
 
+    // Định nghĩa payload có thể kèm theo thông tin bổ sung (thường sử dụng cho các thông tin bổ sung liên quan đến lỗi)
     Class<? extends Payload>[] payload() default {};
 }

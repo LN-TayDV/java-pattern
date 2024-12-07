@@ -33,14 +33,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CustomEditorCfg {
 
+    // Định nghĩa bean CustomEditorConfigurer để cấu hình editor tùy chỉnh
     @Bean
     public CustomEditorConfigurer customEditorConfigurer() {
-        var cus = new CustomEditorConfigurer();
+        var cus = new CustomEditorConfigurer(); // Tạo đối tượng CustomEditorConfigurer
 
+        // Cấu hình các editor tùy chỉnh cho các kiểu dữ liệu
         cus.setCustomEditors(
-            Map.of(LocalDate.class, LocalDatePropertyEditor.class)
+            Map.of(LocalDate.class, LocalDatePropertyEditor.class) // Đăng ký editor cho LocalDate
         );
 
-        return cus;
+        return cus; // Trả về CustomEditorConfigurer
     }
 }

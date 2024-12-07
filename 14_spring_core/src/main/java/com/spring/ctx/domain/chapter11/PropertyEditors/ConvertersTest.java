@@ -35,8 +35,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 @Slf4j
 public class ConvertersTest {
 
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapper = new ObjectMapper(); // Tạo đối tượng ObjectMapper
 
+    // Đăng ký module JavaTimeModule để xử lý các đối tượng thời gian (ví dụ LocalDate)
     static {
         mapper.registerModule(new JavaTimeModule());
     }
@@ -44,17 +45,19 @@ public class ConvertersTest {
     @SneakyThrows
     public static void main(String[] args) {
 
+        // Khởi tạo Spring ApplicationContext và tải các cấu hình
         try (var ctx = new AnnotationConfigApplicationContext(AppConfig.class,
             CustomRegistrarCfg.class)) {
 
+            // Lấy bean Blogger từ context và chuyển nó thành chuỗi JSON
             var springBlogger = ctx.getBean("springBlogger", Blogger.class);
             String springBloggerJson = mapper.writeValueAsString(springBlogger);
             LOGGER.info("SpringBlogger info: {}", springBloggerJson);
 
+            // Lấy bean AwsBlogger từ context và chuyển nó thành chuỗi JSON
             var awsBlogger = ctx.getBean("awsBlogger", Blogger.class);
             String awsBloggerJson = mapper.writeValueAsString(awsBlogger);
             LOGGER.info("AwsBlogger info: {}", awsBloggerJson);
         }
-
     }
 }

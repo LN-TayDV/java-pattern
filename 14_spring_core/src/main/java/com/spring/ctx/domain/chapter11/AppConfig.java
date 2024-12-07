@@ -33,24 +33,30 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+// Annotation @PropertySource để chỉ định nguồn tài nguyên chứa các giá trị cấu hình (properties file)
+// Tệp properties này nằm trong classpath và có tên là "blogger.properties"
 @PropertySource("classpath:blogger.properties")
 @Configuration
 public class AppConfig {
 
+    // Phương thức này tạo ra một Bean Blogger cho awsBlogger và sử dụng các giá trị mặc định được chỉ định trong @Value
     @Bean
     public Blogger awsBlogger(@Value("Alex") String firstName,
                               @Value("DeBrie") String lastName,
                               @Value("https://www.alexdebrie.com") URL personalSite,
                               @Value("1980-01-02") LocalDate birthDate) throws Exception {
+        // Tạo và trả về đối tượng Blogger sử dụng các giá trị đã chỉ định
         return new Blogger(firstName, lastName, birthDate, personalSite);
     }
 
+    // Phương thức này tạo ra một Bean Blogger cho springBlogger và sử dụng các giá trị cấu hình từ tệp properties
     @Bean
     public Blogger springBlogger(@Value("${springBlogger.firstName}") String firstName,
                                  @Value("${springBlogger.lastName}") String lastName,
                                  @Value("${springBlogger.personalSite}") URL personalSite,
                                  @Value("${springBlogger.birthDate}") LocalDate birthDate)
         throws Exception {
+        // Tạo và trả về đối tượng Blogger sử dụng các giá trị từ tệp properties
         return new Blogger(firstName, lastName, birthDate, personalSite);
     }
 }

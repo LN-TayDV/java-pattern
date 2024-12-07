@@ -36,30 +36,36 @@ public class JakartaValidationTest {
 
         try (var ctx = new AnnotationConfigApplicationContext(JakartaValidationCfg.class)) {
 
+            // Lấy bean `SingerValidationService` từ Spring context
             var singerBeanValidationService = ctx.getBean(SingerValidationService.class);
 
+            // Tạo đối tượng `SingerDomain` và thiết lập các giá trị
             SingerDomain singer = new SingerDomain();
             singer.setFirstName("J");
             singer.setLastName("Mayer");
-            singer.setGenre(null);
-            singer.setGender(null);
+            singer.setGenre(null);  // Genre không được định nghĩa
+            singer.setGender(null); // Gender không được định nghĩa
 
+            // Tiến hành validate đối tượng `singer` thông qua service
             var violations = singerBeanValidationService.validateSinger(singer);
 
+            // Kiểm tra và log số lượng vi phạm
             LOGGER.info(" assertEquals : {}", 2 == violations.size());
 
+            // Liệt kê các vi phạm (nếu có)
             listViolations(violations);
         }
 
     }
 
+    // Phương thức này in ra các thông tin vi phạm của đối tượng `SingerDomain`
     private static void listViolations(Set<ConstraintViolation<SingerDomain>> violations) {
         violations.forEach(violation ->
             LOGGER.info(
                 "Validation error for property: {} with value: {} with error message: {}",
-                violation.getPropertyPath(),
-                violation.getInvalidValue(),
-                violation.getMessage()
+                violation.getPropertyPath(), // Đường dẫn thuộc tính bị vi phạm
+                violation.getInvalidValue(),   // Giá trị của thuộc tính bị vi phạm
+                violation.getMessage()         // Thông điệp lỗi validation
             )
         );
     }

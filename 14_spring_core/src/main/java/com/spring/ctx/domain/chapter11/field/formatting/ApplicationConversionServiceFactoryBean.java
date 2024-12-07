@@ -39,43 +39,50 @@ import org.springframework.stereotype.Service;
 
 @Service("conversionService")
 @Slf4j
-public class ApplicationConversionServiceFactoryBean extends
-    FormattingConversionServiceFactoryBean {
+public class ApplicationConversionServiceFactoryBean extends FormattingConversionServiceFactoryBean {
 
-    private static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd";
-    private final Set<Formatter<?>> formatters = new HashSet<>();
-    private DateTimeFormatter dateTimeFormatter;
-    private String datePattern = DEFAULT_DATE_PATTERN;
+    private static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd";  // Mẫu định dạng ngày mặc định
+    private final Set<Formatter<?>> formatters = new HashSet<>();  // Bộ sưu tập các formatter
+    private DateTimeFormatter dateTimeFormatter;  // Định dạng thời gian
+    private String datePattern = DEFAULT_DATE_PATTERN;  // Mẫu định dạng ngày mặc định
 
+    // Getter cho datePattern
     public String getDatePattern() {
         return datePattern;
     }
 
+    // Setter cho datePattern, có thể nhận giá trị từ các cấu hình Spring
     @Autowired(required = false)
     public void setDatePattern(String datePattern) {
         this.datePattern = datePattern;
     }
 
+    // Phương thức khởi tạo, được gọi sau khi tất cả các thuộc tính đã được thiết lập
     @PostConstruct
     public void init() {
+        // Khởi tạo DateTimeFormatter với mẫu ngày đã được thiết lập
         dateTimeFormatter = DateTimeFormatter.ofPattern(datePattern);
+        // Thêm formatter cho LocalDate vào danh sách formatters
         formatters.add(getDateTimeFormatter());
+        // Gọi phương thức setFormatters để thiết lập các formatter cho service
         setFormatters(formatters);
     }
 
+    // Phương thức tạo Formatter cho LocalDate
     public Formatter<LocalDate> getDateTimeFormatter() {
-
         return new Formatter<>() {
+            // Phương thức phân tích cú pháp chuỗi ngày và chuyển đổi thành LocalDate
             @Override
             public LocalDate parse(String source, Locale locale) throws ParseException {
-                LOGGER.info("Parsing date string: " + source);
-                return LocalDate.parse(source, dateTimeFormatter);
+                LOGGER.info("Parsing date string: " + source);  // Log thông tin phân tích
+                return LocalDate.parse(source, dateTimeFormatter);  // Phân tích chuỗi thành LocalDate
             }
 
+            // Phương thức định dạng LocalDate thành chuỗi
             @Override
             public String print(LocalDate source, Locale locale) {
-                LOGGER.info("Formatting datetime: " + source);
-                return source.format(dateTimeFormatter);
+                LOGGER.info("Formatting datetime: " + source);  // Log thông tin định dạng
+                return source.format(dateTimeFormatter);  // Định dạng LocalDate thành chuỗi
             }
         };
     }

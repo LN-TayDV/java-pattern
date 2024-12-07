@@ -40,20 +40,27 @@ import org.springframework.context.support.ConversionServiceFactoryBean;
 @Import(AppConfig.class)
 public class ConverterCfg {
 
+    // Định nghĩa bean ConversionService để cấu hình các converter tùy chỉnh
     @Bean
     public ConversionServiceFactoryBean conversionService() {
 
+        // Tạo đối tượng ConversionServiceFactoryBean, nơi chứa các converter tùy chỉnh
         var conversionServiceFactoryBean = new ConversionServiceFactoryBean();
 
+        // Khởi tạo một Set để chứa các converter
         var convs = new HashSet<>();
 
-        convs.add(new LocalDateConverter());
-        convs.add(new SimpleBlogger.BloggerToSimpleBloggerConverter());
+        // Thêm các converter vào Set
+        convs.add(new LocalDateConverter()); // Thêm LocalDateConverter tùy chỉnh
+        convs.add(new SimpleBlogger.BloggerToSimpleBloggerConverter()); // Thêm SimpleBlogger.BloggerToSimpleBloggerConverter tùy chỉnh
 
+        // Thiết lập các converter đã thêm vào ConversionServiceFactoryBean
         conversionServiceFactoryBean.setConverters(convs);
 
+        // Gọi phương thức afterPropertiesSet để khởi tạo bean sau khi tất cả các thuộc tính đã được thiết lập
         conversionServiceFactoryBean.afterPropertiesSet();
 
+        // Trả về ConversionServiceFactoryBean đã được cấu hình
         return conversionServiceFactoryBean;
     }
 }

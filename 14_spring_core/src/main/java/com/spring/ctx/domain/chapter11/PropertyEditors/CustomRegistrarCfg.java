@@ -35,27 +35,31 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan(basePackages = "com.spring.ctx.domain.chapter11.PropertyEditors")
-@Import(AppConfig.class)
+@ComponentScan(basePackages = "com.spring.ctx.domain.chapter11.PropertyEditors") // Quét thư mục chứa các editor
+@Import(AppConfig.class) // Nhập cấu hình từ AppConfig
 public class CustomRegistrarCfg {
 
+    // Định nghĩa bean PropertyEditorRegistrar để đăng ký editor tùy chỉnh cho LocalDate
     @Bean
     public PropertyEditorRegistrar registrar() {
-        return registry -> registry.registerCustomEditor(LocalDate.class,
-            new LocalDatePropertyEditor());
+        return registry -> {
+            // Đăng ký LocalDatePropertyEditor cho kiểu dữ liệu LocalDate
+            registry.registerCustomEditor(LocalDate.class, new LocalDatePropertyEditor());
+        };
     }
 
+    // Định nghĩa bean CustomEditorConfigurer để cấu hình sử dụng các PropertyEditor
     @Bean
     public CustomEditorConfigurer customEditorConfigurer() {
+        var cus = new CustomEditorConfigurer(); // Tạo đối tượng CustomEditorConfigurer
 
-        var cus = new CustomEditorConfigurer();
+        var registrars = new PropertyEditorRegistrar[1]; // Khởi tạo mảng PropertyEditorRegistrar
 
-        var registrars = new PropertyEditorRegistrar[1];
+        registrars[0] = registrar(); // Đăng ký PropertyEditorRegistrar vào mảng
 
-        registrars[0] = registrar();
+        cus.setPropertyEditorRegistrars(registrars); // Cấu hình registrar cho CustomEditorConfigurer
 
-        cus.setPropertyEditorRegistrars(registrars);
-
-        return cus;
+        return cus; // Trả về CustomEditorConfigurer
     }
 }
+
