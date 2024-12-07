@@ -22,9 +22,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter05.object.modification.detection;
+package com.spring.ctx.domain.chapter05.usage.poincuts.advisor.CreatingAdviceProgrammatically.detection;
 
-public interface IsModified {
+import org.springframework.aop.support.DefaultIntroductionAdvisor;
 
-    boolean isModified();
+public class IsModifiedAdvisor extends DefaultIntroductionAdvisor {
+
+    public IsModifiedAdvisor() {
+        super(new IsModifiedMixin());
+    }
 }

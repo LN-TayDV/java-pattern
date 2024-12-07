@@ -47,44 +47,57 @@ public class StaticMethodMatcherPointcutMain {
      */
 
     public static void main(String... args) { // Phương thức chính để chạy chương trình
-        // Tạo các đối tượng GoodGuitarist và GreatGuitarist
+        // Tạo các đối tượng "GoodGuitarist" (nghệ sĩ guitar tốt) và "GreatGuitarist" (nghệ sĩ guitar xuất sắc)
         GoodGuitarist johnMayer = new GoodGuitarist();
         GreatGuitarist ericClapton = new GreatGuitarist();
 
-        // Khai báo các biến proxy cho giao diện Singer
+        // Khai báo các biến "proxyOne" và "proxyTwo" để lưu trữ các proxy của giao diện "Singer"
         Singer proxyOne;
         Singer proxyTwo;
 
-        // Tạo một Pointcut để khớp với các phương thức theo tiêu chí nhất định
+        // Tạo một Pointcut ("SimpleStaticPointcut") để xác định các phương thức cần được áp dụng logic tư vấn.
         Pointcut pc = new SimpleStaticPointcut();
-        // Tạo một Advice chứa logic xử lý chéo để áp dụng
+
+        // Tạo một Advice ("SimpleAroundAdvice") chứa logic xử lý sẽ được áp dụng trước hoặc sau các phương thức được chỉ định.
         Advice advice = new SimpleAroundAdvice();
-        // Tạo một Advisor kết hợp Pointcut và Advice
+
+        // Kết hợp Pointcut và Advice để tạo thành một Advisor ("DefaultPointcutAdvisor")
+        // Advisor giúp xác định phương thức nào sẽ được áp dụng logic tư vấn và cách áp dụng nó.
         Advisor advisor = new DefaultPointcutAdvisor(pc, advice);
 
-        // Tạo một ProxyFactory để tạo các proxy
+        // Tạo một ProxyFactory để tạo proxy cho đối tượng đầu tiên (johnMayer)
         ProxyFactory pf = new ProxyFactory();
-        // Thêm Advisor vào ProxyFactory
+
+        // Thêm Advisor vào ProxyFactory - đây là logic tư vấn sẽ được áp dụng cho các phương thức khớp với Pointcut.
         pf.addAdvisor(advisor);
-        // Đặt đối tượng đích của proxy là johnMayer (GoodGuitarist)
+
+        // Đặt đối tượng mục tiêu (target) là "johnMayer"
         pf.setTarget(johnMayer);
-        // Tạo proxy và ép kiểu nó thành giao diện Singer
+
+        // Tạo proxy từ ProxyFactory và ép kiểu proxy thành giao diện "Singer"
         proxyOne = (Singer) pf.getProxy();
 
-        // Tạo một ProxyFactory mới cho proxy tiếp theo
+        // Tạo một ProxyFactory mới cho đối tượng thứ hai (ericClapton)
         pf = new ProxyFactory();
-        // Thêm cùng một Advisor vào ProxyFactory mới
+
+        // Thêm cùng một Advisor vào ProxyFactory này (sử dụng lại logic tư vấn đã định nghĩa trước đó).
         pf.addAdvisor(advisor);
-        // Đặt đối tượng đích của proxy là ericClapton (GreatGuitarist)
+
+        // Đặt đối tượng mục tiêu (target) là "ericClapton"
         pf.setTarget(ericClapton);
-        // Tạo proxy và ép kiểu nó thành giao diện Singer
+
+        // Tạo proxy từ ProxyFactory và ép kiểu proxy thành giao diện "Singer"
         proxyTwo = (Singer) pf.getProxy();
 
-        // Gọi phương thức sing() trên proxyOne
+        // Gọi phương thức "sing()" trên "proxyOne" (proxy của johnMayer).
+        // Nếu phương thức "sing()" khớp với Pointcut, logic trong Advice sẽ được áp dụng.
         proxyOne.sing();
-        // Gọi phương thức sing() trên proxyTwo
+
+        // Gọi phương thức "sing()" trên "proxyTwo" (proxy của ericClapton).
+        // Tương tự, logic trong Advice sẽ được áp dụng nếu phương thức "sing()" khớp với Pointcut.
         proxyTwo.sing();
     }
+
 
     // Lớp SimpleStaticPointcut mở rộng từ StaticMethodMatcherPointcut
     static class SimpleStaticPointcut extends StaticMethodMatcherPointcut {

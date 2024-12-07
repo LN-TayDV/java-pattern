@@ -37,20 +37,33 @@ import java.lang.reflect.Method;
 @Slf4j
 public class DynamicMethodMatcherPointcutMain {
 
-    public static void main(String... args) {
+    public static void main(String... args) { // Phương thức chính để chạy chương trình
+
+        // Tạo đối tượng "GoodGuitarist" làm đối tượng mục tiêu
         GoodGuitarist target = new GoodGuitarist();
+
+        // Tạo một Advisor kết hợp giữa Pointcut động (SimpleDynamicPointcut) và Advice (SimpleAroundAdvice)
         Advisor advisor = new DefaultPointcutAdvisor(new SimpleDynamicPointcut(), new SimpleAroundAdvice());
 
+        // Tạo một ProxyFactory để tạo proxy cho đối tượng mục tiêu
         ProxyFactory pf = new ProxyFactory();
+
+        // Đặt đối tượng mục tiêu (target) cho proxy là "target" (GoodGuitarist)
         pf.setTarget(target);
+
+        // Thêm Advisor vào ProxyFactory - logic tư vấn sẽ được áp dụng cho các phương thức khớp với Pointcut
         pf.addAdvisor(advisor);
 
-        Singer proxy = (Singer)pf.getProxy();
-        proxy.sing("C");
-        proxy.sing("c");
-        proxy.sing("E");
-        proxy.sing();
+        // Tạo proxy từ ProxyFactory và ép kiểu nó thành giao diện "Singer"
+        Singer proxy = (Singer) pf.getProxy();
+
+        // Gọi phương thức "sing(String)" với các giá trị tham số khác nhau
+        proxy.sing("C"); // Khớp với Pointcut động nếu điều kiện được đáp ứng
+        proxy.sing("c"); // Xem xét có khớp với Pointcut động hay không
+        proxy.sing("E"); // Tương tự, kiểm tra điều kiện của Pointcut động
+        proxy.sing();    // Phương thức này không có tham số, cần kiểm tra xem có bị áp dụng tư vấn không
     }
+
 
     static class SimpleDynamicPointcut extends DynamicMethodMatcherPointcut {
 

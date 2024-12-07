@@ -22,13 +22,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.spring.ctx.domain.chapter05.object.modification.detection;
+package com.spring.ctx.domain.chapter05.usage.poincuts.advisor.CreatingAdviceProgrammatically.detection;
 
-import org.springframework.aop.support.DefaultIntroductionAdvisor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class IsModifiedAdvisor extends DefaultIntroductionAdvisor {
+@Data
+@NoArgsConstructor
+public class Contact {
+    private String name;
+    private String phoneNumber;
+    private String email;
 
-    public IsModifiedAdvisor() {
-        super(new IsModifiedMixin());
-    }
 }
