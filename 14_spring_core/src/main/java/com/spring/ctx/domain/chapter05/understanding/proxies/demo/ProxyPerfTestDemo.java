@@ -38,8 +38,8 @@ public class ProxyPerfTestDemo {
         NameMatchMethodPointcutAdvisor advisor = new NameMatchMethodPointcutAdvisor(new NoOpBeforeAdvice());
         advisor.setMappedName("advised");
         LOGGER.info("Starting tests ...");
-        runCglibTests(advisor, target);
-        runCglibFrozenTests(advisor, target);
+        //runCglibTests(advisor, target);
+        //runCglibFrozenTests(advisor, target);
         runJdkTests(advisor, target);
     }
 

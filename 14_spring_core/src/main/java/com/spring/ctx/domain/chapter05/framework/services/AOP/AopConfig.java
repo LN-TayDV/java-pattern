@@ -35,6 +35,11 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 1/ Tạo Advice
+ * 2/ Đăng kí advice vào bean proxy
+ * 3/ Sủ dụng Advice
+ */
 @Configuration
 public class AopConfig implements BeanFactoryAware {
 
@@ -56,6 +61,18 @@ public class AopConfig implements BeanFactoryAware {
     }
 
     @Bean
+    public DefaultPointcutAdvisor advisor() {
+        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor();
+        advisor.setAdvice(advice());
+
+        AspectJExpressionPointcut pc = new AspectJExpressionPointcut();
+        pc.setExpression("execution(* talk*(..))");
+        advisor.setPointcut(pc);
+
+        return advisor;
+    }
+
+    @Bean
     public GrammyGuitarist proxyOne() {
         ProxyFactoryBean pfb = new ProxyFactoryBean();
         pfb.setProxyTargetClass(true);
@@ -64,13 +81,6 @@ public class AopConfig implements BeanFactoryAware {
         pfb.setBeanFactory(beanFactory);
         pfb.setFrozen(true);
         return (GrammyGuitarist) pfb.getObject();
-    }
-
-    @Bean
-    public Documentarist documentaristOne() {
-        Documentarist documentarist = new Documentarist();
-        documentarist.setDep(proxyOne());
-        return documentarist;
     }
 
     @Bean
@@ -85,22 +95,19 @@ public class AopConfig implements BeanFactoryAware {
     }
 
     @Bean
+    public Documentarist documentaristOne() {
+        Documentarist documentarist = new Documentarist();
+        documentarist.setDep(proxyOne());
+        return documentarist;
+    }
+
+
+    @Bean
     public Documentarist documentaristTwo() {
         Documentarist documentarist = new Documentarist();
         documentarist.setDep(proxyTwo());
         return documentarist;
     }
 
-    @Bean
-    public DefaultPointcutAdvisor advisor() {
-        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor();
-        advisor.setAdvice(advice());
-
-        AspectJExpressionPointcut pc = new AspectJExpressionPointcut();
-        pc.setExpression("execution(* sing*(..))");
-        advisor.setPointcut(pc);
-
-        return advisor;
-    }
 
 }
