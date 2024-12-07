@@ -27,15 +27,15 @@ package com.spring.ctx.domain.chapter03.dependency.injection.methods;
 import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.stereotype.Component;
 
-@Component("abstractLockOpener")
+@Component("abstractLockOpener") // Đánh dấu lớp là một Spring Bean với tên định danh "abstractLockOpener".
 public abstract class AbstractLockOpener implements LockOpener {
 
-    @Lookup("keyHelper")
+    @Lookup("keyHelper") // Annotation này cho phép Spring cung cấp một bean `keyHelper` mỗi khi phương thức được gọi.
     @Override
-    public abstract KeyHelper getMyKeyOpener() ;
+    public abstract KeyHelper getMyKeyOpener(); // Khai báo phương thức trừu tượng, Spring sẽ tự động triển khai.
 
     @Override
     public void openLock() {
-        getMyKeyOpener().open();
+        getMyKeyOpener().open(); // Gọi phương thức `open()` trên bean `keyHelper` được trả về mỗi lần gọi `getMyKeyOpener`.
     }
 }

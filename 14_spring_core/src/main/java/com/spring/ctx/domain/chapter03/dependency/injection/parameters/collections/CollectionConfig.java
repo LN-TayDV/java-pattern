@@ -30,24 +30,27 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-@Configuration
+@Configuration // Đánh dấu lớp là một lớp cấu hình Spring.
 public class CollectionConfig {
+
     @Bean
-    public List<Song> list(){
+    public List<Song> list() {
+        // Tạo và trả về một danh sách các đối tượng `Song`.
         return List.of(
-                new Song("Not the end"),
-                new Song("Rise Up")
+            new Song("Not the end"), // Bài hát đầu tiên.
+            new Song("Rise Up")     // Bài hát thứ hai.
         );
     }
 
     @Bean
-    public Song song1(){
+    public Song song1() {
+        // Tạo và trả về một bean kiểu `Song`.
         return new Song("Here's to hoping");
     }
 
     @Bean
-    public Song song2(){
+    public Song song2() {
+        // Tạo và trả về một bean kiểu `Song`.
         return new Song("Wishing the best for you");
     }
-
 }

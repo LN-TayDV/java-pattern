@@ -28,6 +28,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = "com.spring.ctx.domain.chapter03.methods.injection")
+@ComponentScan(basePackages = "com.spring.ctx.domain.chapter03.dependency.injection.methods")
 public class LookupConfig {
 }

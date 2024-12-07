@@ -36,24 +36,24 @@ import org.springframework.stereotype.Component;
  * especially if they are singletons.
  */
 
-@Component("standardLockOpener")
-public class StandardLockOpener implements LockOpener{
+@Component("standardLockOpener") // Đánh dấu lớp là một Spring Bean với tên định danh "standardLockOpener".
+public class StandardLockOpener implements LockOpener {
 
-    private KeyHelper keyHelper;
+    private KeyHelper keyHelper; // Biến phụ thuộc sẽ được tiêm (injected) vào.
 
-    @Autowired
-    @Qualifier("keyHelper")
+    @Autowired // Sử dụng Dependency Injection (DI) để tự động tiêm phụ thuộc vào biến `keyHelper`.
+    @Qualifier("keyHelper") // Chỉ định bean cụ thể (có tên "keyHelper") được sử dụng khi có nhiều bean cùng loại.
     public void setKeyHelper(KeyHelper keyHelper) {
-        this.keyHelper = keyHelper;
+        this.keyHelper = keyHelper; // Gán đối tượng phụ thuộc được tiêm vào biến `keyHelper`.
     }
 
     @Override
     public KeyHelper getMyKeyOpener() {
-        return keyHelper;
+        return keyHelper; // Trả về đối tượng `keyHelper` đã được DI.
     }
 
     @Override
     public void openLock() {
-        keyHelper.open();
+        keyHelper.open(); // Gọi phương thức `open()` trên đối tượng `keyHelper` để mở khóa.
     }
 }

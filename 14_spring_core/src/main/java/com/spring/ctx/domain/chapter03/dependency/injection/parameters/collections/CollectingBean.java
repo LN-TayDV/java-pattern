@@ -31,19 +31,22 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+@Component // Đánh dấu lớp là một Spring Bean được quản lý bởi Spring Container.
 public class CollectingBean {
 
-    @Autowired @Qualifier("list")
+    @Autowired
+    @Qualifier("list") // Tiêm bean cụ thể (bean `list` được định nghĩa trong cấu hình).
     List<Song> songList1;
 
-    @Autowired
+    @Autowired // Tiêm tất cả các bean cùng kiểu `Song` vào một danh sách.
     List<Song> songList2;
 
-    public void printCollections(){
+    public void printCollections() {
+        // In ra danh sách bài hát được tiêm bởi `@Qualifier("list")`.
         System.out.println("@Qualifier(\"list\") : ");
         songList1.forEach(s -> System.out.println(s.getTitle()));
 
+        // In ra danh sách bài hát được tiêm tự động mà không dùng `@Qualifier`.
         System.out.println("None @Qualifier(\"list\") : ");
         songList2.forEach(s -> System.out.println(s.getTitle()));
     }

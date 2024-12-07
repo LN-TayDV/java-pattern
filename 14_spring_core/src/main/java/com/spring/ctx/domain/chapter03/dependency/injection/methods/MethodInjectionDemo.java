@@ -30,21 +30,29 @@ import org.springframework.util.StopWatch;
 public class MethodInjectionDemo {
 
     public static void main(String... args) {
+        // Tạo một Spring ApplicationContext dựa trên cấu hình lớp `LookupConfig`.
         var ctx = new AnnotationConfigApplicationContext(LookupConfig.class);
 
+        // Lấy bean `abstractLockOpener` từ ApplicationContext và ép kiểu về `LockOpener`.
         var abstractLockOpener = ctx.getBean("abstractLockOpener", LockOpener.class);
+
+        // Lấy bean `standardLockOpener` từ ApplicationContext và ép kiểu về `LockOpener`.
         var standardLockOpener = ctx.getBean("standardLockOpener", LockOpener.class);
 
+        // Hiển thị thông tin về hai bean và so sánh hiệu suất.
         displayInfo("abstractLockOpener", abstractLockOpener);
         displayInfo("standardLockOpener", standardLockOpener);
     }
 
     public static void displayInfo(String beanName, LockOpener lockOpener) {
+        // Lấy hai đối tượng `KeyHelper` bằng cách gọi phương thức `getMyKeyOpener`.
         KeyHelper keyHelperOne = lockOpener.getMyKeyOpener();
         KeyHelper keyHelperTwo = lockOpener.getMyKeyOpener();
 
+        // Kiểm tra xem hai đối tượng `KeyHelper` có giống nhau (singleton) hay khác nhau (prototype).
         System.out.println("[" + beanName + "]: KeyHelper Instances the Same? " + (keyHelperOne == keyHelperTwo));
 
+        // Đo thời gian thực hiện 100.000 lần gọi phương thức `getMyKeyOpener` và `open`.
         StopWatch stopWatch = new StopWatch();
         stopWatch.start("lookupDemo");
         for (int x = 0; x < 100_000; x++) {
