@@ -44,13 +44,15 @@ public class Target {
     Foo fooTwo;
     Bar bar;
 
+    // Constructor có tham số foo (thực hiện việc inject Foo vào thuộc tính fooOne)
     @Autowired
     public Target(@Qualifier("foo") Foo foo) {
         this.fooOne = foo;
         log.info(" --> Target(Foo) called");
     }
 
-    public Target(@Qualifier("foo")Foo foo, Bar bar) {
+    // Constructor có tham số foo và bar (thực hiện việc inject Foo và Bar vào các thuộc tính)
+    public Target(@Qualifier("foo") Foo foo, Bar bar) {
         this.fooOne = foo;
         this.bar = bar;
         log.info(" --> Target(Foo, Bar) called");

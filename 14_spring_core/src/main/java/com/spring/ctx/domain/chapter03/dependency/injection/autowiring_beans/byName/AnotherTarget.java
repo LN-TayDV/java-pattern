@@ -40,25 +40,30 @@ public class AnotherTarget {
 
     private static final Logger log = LOGGER;
 
-     Foo fooOne;
-     Foo fooTwo;
-     Bar bar;
+    // Các thuộc tính được inject thông qua @Autowired
+    Foo fooOne;
+    Foo fooTwo;
+    Bar bar;
 
+    // Phương thức này sẽ được gọi để inject dependency cho fooOne
     @Autowired
-    public void setFooOne(@Qualifier("foo")Foo fooOne) {
+    public void setFooOne(@Qualifier("foo") Foo fooOne) {
         log.info(" --> AnotherTarget#setFooOne(Foo) called");
         this.fooOne = fooOne;
     }
 
+    // Phương thức này sẽ được gọi để inject dependency cho fooTwo
     @Autowired
-    public void setFooTwo(@Qualifier("anotherFoo")Foo fooTwo) {
+    public void setFooTwo(@Qualifier("anotherFoo") Foo fooTwo) {
         log.info(" --> AnotherTarget#setFooTwo(Foo) called");
         this.fooTwo = fooTwo;
     }
 
+    // Phương thức này sẽ được gọi để inject dependency cho bar
     @Autowired
     public void setBar(Bar bar) {
         log.info(" --> AnotherTarget#setBar(Bar) called");
         this.bar = bar;
     }
 }
+

@@ -38,31 +38,42 @@ import org.springframework.stereotype.Component;
  * Listing 3-57 shows a class named AnotherTarget that is pretty similar to the Target class,
  * but the properties are injected using setters.
  */
-@Component
-@Lazy
-@Slf4j
+@Component  // Đánh dấu lớp này là một Spring Bean, nghĩa là Spring sẽ quản lý vòng đời đối tượng của lớp này.
+@Lazy  // Đánh dấu đối tượng này sẽ chỉ được khởi tạo khi thực sự cần thiết, giúp giảm thời gian khởi động ứng dụng.
+@Slf4j  // Lombok annotation tự động tạo logger có tên là LOGGER để log các thông tin trong lớp này.
 public class AnotherTarget {
 
+    // Định nghĩa một logger để ghi lại thông tin log.
     private static final Logger log = LOGGER;
 
-    Foo fooOne;
-    Foo fooTwo;
-    Bar bar;
+    // Các thuộc tính sẽ được inject thông qua các phương thức setter.
+    Foo fooOne;  // Đối tượng fooOne thuộc kiểu Foo.
+    Foo fooTwo;  // Đối tượng fooTwo thuộc kiểu Foo.
+    Bar bar;     // Đối tượng bar thuộc kiểu Bar.
 
+    // Phương thức setter để inject đối tượng Foo vào fooOne.
+    // Annotation @Autowired giúp Spring tự động inject đối tượng Foo vào đây khi tạo đối tượng AnotherTarget.
     @Autowired
     public void setFooOne(Foo fooOne) {
+        // Ghi lại thông tin log khi phương thức này được gọi.
         log.info(" --> AnotherTarget#setFooOne(Foo) called");
-        this.fooOne = fooOne;
-    }
-    @Autowired
-    public void setFooTwo(Foo fooTwo) {
-        log.info(" --> AnotherTarget#setFooTwo(Foo) called");
-        this.fooTwo = fooTwo;
-    }
-    @Autowired
-    public void setBar(Bar bar) {
-        log.info(" --> AnotherTarget#setBar(Bar) called");
-        this.bar = bar;
+        this.fooOne = fooOne;  // Gán đối tượng Foo vào thuộc tính fooOne.
     }
 
+    // Phương thức setter để inject đối tượng Foo vào fooTwo.
+    @Autowired
+    public void setFooTwo(Foo fooTwo) {
+        // Ghi lại thông tin log khi phương thức này được gọi.
+        log.info(" --> AnotherTarget#setFooTwo(Foo) called");
+        this.fooTwo = fooTwo;  // Gán đối tượng Foo vào thuộc tính fooTwo.
+    }
+
+    // Phương thức setter để inject đối tượng Bar vào bar.
+    @Autowired
+    public void setBar(Bar bar) {
+        // Ghi lại thông tin log khi phương thức này được gọi.
+        log.info(" --> AnotherTarget#setBar(Bar) called");
+        this.bar = bar;  // Gán đối tượng Bar vào thuộc tính bar.
+    }
 }
+

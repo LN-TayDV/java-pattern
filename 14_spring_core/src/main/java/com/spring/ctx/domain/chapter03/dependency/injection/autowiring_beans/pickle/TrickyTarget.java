@@ -32,37 +32,45 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-@AllArgsConstructor
-@Setter
-@Slf4j
+@AllArgsConstructor  // Lombok annotation để tự động tạo constructor có tham số cho tất cả các thuộc tính của lớp.
+@Setter  // Lombok annotation để tự động tạo phương thức setter cho tất cả các thuộc tính.
+@Slf4j  // Lombok annotation để tự động tạo logger cho lớp.
 public class TrickyTarget {
 
+    // Tạo một đối tượng logger để ghi log vào file.
     private static final Logger log = LOGGER;
 
-    Foo fooOne;
-    Foo fooTwo;
-    Bar bar;
+    // Các thuộc tính mà Spring sẽ inject vào đối tượng này.
+    Foo fooOne;  // Thuộc tính fooOne kiểu Foo.
+    Foo fooTwo;  // Thuộc tính fooTwo kiểu Foo.
+    Bar bar;     // Thuộc tính bar kiểu Bar.
 
+    // Constructor mặc định, được gọi khi Spring khởi tạo đối tượng mà không có tham số.
     public TrickyTarget() {
-        log.info(" --> TrickyTarget() called");
+        log.info(" --> TrickyTarget() called");  // Ghi log khi constructor mặc định được gọi.
     }
 
-    @Autowired
-    @Qualifier("fooImplOne")
+    // Phương thức setter cho fooOne, được gọi khi Spring inject đối tượng Foo có tên "fooImplOne" vào.
+    @Autowired  // Spring sẽ tự động inject đối tượng vào thuộc tính fooOne.
+    @Qualifier("fooImplOne")  // Chỉ định rõ ràng rằng đối tượng fooImplOne sẽ được inject vào.
     public void setFooOne(Foo fooOne) {
-        this.fooOne = fooOne;
-        log.info(" --> Property fooOne set");
-    }
-    @Autowired
-    @Qualifier("fooImplTwo")
-    public void setFooTwo(Foo foo) {
-        this.fooTwo = foo;
-        log.info(" --> Property fooTwo set");
+        this.fooOne = fooOne;  // Gán giá trị cho thuộc tính fooOne.
+        log.info(" --> Property fooOne set");  // Ghi log khi thuộc tính fooOne được set giá trị.
     }
 
-    @Autowired
+    // Phương thức setter cho fooTwo, được gọi khi Spring inject đối tượng Foo có tên "fooImplTwo" vào.
+    @Autowired  // Spring sẽ tự động inject đối tượng vào thuộc tính fooTwo.
+    @Qualifier("fooImplTwo")  // Chỉ định rõ ràng rằng đối tượng fooImplTwo sẽ được inject vào.
+    public void setFooTwo(Foo foo) {
+        this.fooTwo = foo;  // Gán giá trị cho thuộc tính fooTwo.
+        log.info(" --> Property fooTwo set");  // Ghi log khi thuộc tính fooTwo được set giá trị.
+    }
+
+    // Phương thức setter cho bar, được gọi khi Spring inject đối tượng Bar vào.
+    @Autowired  // Spring sẽ tự động inject đối tượng vào thuộc tính bar.
     public void setBar(Bar bar) {
-        this.bar = bar;
-        log.info(" --> Property bar set");
+        this.bar = bar;  // Gán giá trị cho thuộc tính bar.
+        log.info(" --> Property bar set");  // Ghi log khi thuộc tính bar được set giá trị.
     }
 }
+
