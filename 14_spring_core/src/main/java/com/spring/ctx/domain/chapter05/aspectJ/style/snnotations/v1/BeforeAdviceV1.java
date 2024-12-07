@@ -31,14 +31,29 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-@Slf4j
+// Đánh dấu lớp này là một Spring Component để Spring quản lý.
 @Component
+// Đánh dấu lớp này là một Aspect chứa logic AOP (Aspect-Oriented Programming).
 @Aspect
+// Sử dụng Lombok để tự động tạo logger (`LOGGER`) cho việc ghi log.
+@Slf4j
 public class BeforeAdviceV1 {
 
+    /**
+     * Định nghĩa Advice kiểu `@Before`:
+     * - Logic trong phương thức này sẽ được thực thi **trước** khi phương thức mục tiêu được gọi.
+     *
+     * @param joinPoint: Đối tượng JoinPoint chứa thông tin về phương thức đang được gọi.
+     */
     @Before("execution(* com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items..sing*(com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items.Guitar))")
     public void simpleBeforeAdvice(JoinPoint joinPoint) {
+        // Lấy thông tin chữ ký của phương thức, bao gồm tên và kiểu lớp khai báo.
         var signature = (MethodSignature) joinPoint.getSignature();
-        LOGGER.info(" > Executing: {} from {}", signature.getName(), signature.getDeclaringTypeName() );
+
+        // Ghi log thông tin về phương thức sắp được thực thi.
+        LOGGER.info(" > Executing: {} from {}",
+            signature.getName(),              // Tên phương thức (vd: "singWithGuitar").
+            signature.getDeclaringTypeName()  // Tên lớp chứa phương thức (vd: "PretentiousGuitarist").
+        );
     }
 }

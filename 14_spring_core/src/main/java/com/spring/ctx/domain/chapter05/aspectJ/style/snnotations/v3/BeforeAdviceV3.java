@@ -37,16 +37,20 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class BeforeAdviceV3 {
 
+    // Định nghĩa một Pointcut cho các phương thức có tên bắt đầu bằng 'sing' và nhận một tham số kiểu Guitar
     @Pointcut("execution(* com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items..sing*(com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items.Guitar))")
     public void singExecution() {
     }
 
+    // Định nghĩa một Pointcut khác kiểm tra xem bean có tên bắt đầu bằng 'john' hay không
     @Pointcut("bean(john*)")
     public void isJohn() {
     }
 
+    // Phương thức Advice này sẽ được thực thi trước khi phương thức được gọi, nếu nó thỏa mãn cả hai Pointcut (singExecution và isJohn)
     @Before("singExecution() && isJohn()")
     public void simpleBeforeAdvice(JoinPoint joinPoint) {
+        // Lấy thông tin về phương thức đang được gọi
         var signature = (MethodSignature) joinPoint.getSignature();
         LOGGER.info(" > Executing: {} from {}", signature.getName(),
             signature.getDeclaringTypeName());

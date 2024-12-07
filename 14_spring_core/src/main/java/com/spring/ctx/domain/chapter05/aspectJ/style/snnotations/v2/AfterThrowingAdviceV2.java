@@ -38,18 +38,23 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class AfterThrowingAdviceV2 {
 
+    // Định nghĩa Pointcut để xác định phương thức mục tiêu.
     @Pointcut("execution(* com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items.PretentiosGuitarist.sing*(com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items..Guitar)) && args(value)")
     public void singExecution(Guitar value) {
     }
 
+    // Định nghĩa Advice sử dụng @AfterThrowing
     @AfterThrowing(value = "singExecution(guitar) ", argNames = "joinPoint,guitar, ex", throwing = "ex")
     public void simpleAfterAdvice(JoinPoint joinPoint, Guitar guitar, IllegalArgumentException ex) {
+        // Lấy thông tin chữ ký của phương thức mục tiêu đang gặp exception.
         var signature = (MethodSignature) joinPoint.getSignature();
 
+        // Ghi log thông tin về phương thức và thông tin về guitar.
         LOGGER.info(" > Executed: {} from {} with guitar {} ",
             signature.getName(),
             signature.getDeclaringTypeName(), guitar.getBrand());
 
+        // Nếu exception có thông báo chứa "Unacceptable guitar!", ném lại exception dưới dạng RuntimeException.
         if (ex.getMessage().contains("Unacceptable guitar!")) {
             throw new RuntimeException(ex.getMessage(), ex);
         }

@@ -38,26 +38,37 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class AroundAdviceV2 {
 
-
+    // Định nghĩa một Pointcut để xác định các phương thức cần áp dụng Advice
+    // Pointcut này sẽ chọn tất cả các phương thức có tên bắt đầu bằng "sing" và có tham số kiểu Guitar
     @Pointcut("execution(* com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items..sing*(com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items.Guitar)) && args(value)")
     public void singExecution(Guitar value) {
+        // Pointcut không cần cài đặt, chỉ định nơi phương thức này sẽ được áp dụng
     }
 
+    // Định nghĩa Around Advice để bao quanh phương thức mục tiêu
+    // @Around cho phép chúng ta can thiệp vào phương thức trước và sau khi phương thức đó thực thi
     @Around(value = "singExecution(guitar)", argNames = "pjp,guitar")
     public Object simpleAroundAdvice(ProceedingJoinPoint pjp, Guitar guitar) throws Throwable {
 
+        // Lấy thông tin chữ ký của phương thức mục tiêu
         var signature = (MethodSignature) pjp.getSignature();
 
+        // Ghi log trước khi phương thức mục tiêu thực thi
         LOGGER.info(" > Before Executing: {} from {} with argument {}",
-            signature.getName(),
-            signature.getDeclaringTypeName(), guitar.getBrand());
+            signature.getName(), // Tên phương thức
+            signature.getDeclaringTypeName(), // Tên lớp khai báo phương thức
+            guitar.getBrand()); // Tên thương hiệu của cây đàn guitar
 
-        Object retVal = pjp.proceed();
+        // Tiến hành thực thi phương thức mục tiêu
+        Object retVal = pjp.proceed(); // Gọi phương thức thực tế mà Pointcut chọn
 
+        // Ghi log sau khi phương thức mục tiêu thực thi xong
         LOGGER.info(" > After Executing: {} from {} with argument {}",
-            signature.getName(),
-            signature.getDeclaringTypeName(), guitar.getBrand());
+            signature.getName(), // Tên phương thức
+            signature.getDeclaringTypeName(), // Tên lớp khai báo phương thức
+            guitar.getBrand()); // Thương hiệu của cây đàn guitar
 
+        // Trả về kết quả từ phương thức mục tiêu
         return retVal;
     }
 }

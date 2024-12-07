@@ -32,19 +32,26 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-@Component
-@Aspect
-@Slf4j
+@Component // Đánh dấu lớp này là một Spring Bean để Spring có thể quản lý nó
+@Aspect // Đánh dấu lớp này là một Aspect trong Spring AOP
+@Slf4j // Annotation Lombok tự động tạo đối tượng Logger cho lớp này
 public class BeforeAdviceV2 {
 
-
+    // Định nghĩa Pointcut để xác định các phương thức cần áp dụng Advice
     @Pointcut("execution(* com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items..sing*(com.spring.ctx.domain.chapter05.aspectJ.style.snnotations.items.Guitar))")
     public void singExecution() {
+        // Pointcut không cần cài đặt logic, chỉ cần khai báo nơi phương thức này sẽ được áp dụng
     }
 
-    @Before("singExecution()")
+    // Định nghĩa Before Advice để can thiệp vào phương thức trước khi nó thực thi
+    @Before("singExecution()") // Áp dụng Advice cho các phương thức được chọn bởi Pointcut singExecution()
     public void simpleBeforeAdvice(JoinPoint joinPoint) {
+
+        // Lấy chữ ký của phương thức đang được gọi (tên phương thức, tên lớp)
         var signature = (MethodSignature) joinPoint.getSignature();
-        LOGGER.info(" > Executing: {} from {}", signature.getName(), signature.getDeclaringTypeName() );
+
+        // Ghi log thông tin về phương thức đang được gọi trước khi nó thực thi
+        LOGGER.info(" > Executing: {} from {}", signature.getName(), signature.getDeclaringTypeName());
     }
 }
+
