@@ -45,6 +45,11 @@ public class Arc<E, W extends Number> implements GraphGdge<E , W> {
     }
 
     @Override
+    public GraphGdge<E, W> reverse() {
+        throw new RuntimeException("Đây là vector có hướng , không thể đảo chiều");
+    }
+
+    @Override
     public String toString() {
         return String.format(
             "%s -> %s (w : %s)",

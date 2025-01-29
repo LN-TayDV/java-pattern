@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 public abstract class Graph<V> {
 
@@ -106,6 +107,7 @@ public abstract class Graph<V> {
     }
 
     @AllArgsConstructor
+    @Getter
     private class DegreeValue {
         int numberOfArcs;
         Set<GraphGdge<V, ? extends Number>> degreeArcs;
