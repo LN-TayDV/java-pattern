@@ -43,7 +43,7 @@ public class PackageCreationConfig {
         for (String subPackage : subPackages) {
             File dir = new File(contextPath + "/" + subPackage);
             if (!dir.exists()) {
-                dir.mkdirs();  // Tạo thư mục nếu chưa tồn tại
+                //dir.mkdirs();  // Tạo thư mục nếu chưa tồn tại
             }
         }
     }
