@@ -25,6 +25,7 @@
 
 package com.iluwatar.lazy.loading;
 
+import lombok.val;
 import java.util.function.Supplier;
 
 /**
@@ -36,17 +37,17 @@ class Java8HolderTest extends AbstractHolderTest {
 
 
     @Override
-    Heavy getInternalHeavyValue() throws Exception {
-        final var holderField = Java8Holder.class.getDeclaredField("heavy");
+    Heavy getInternalHeavyValue() throws Exception{
+        final val holderField = Java8Holder.class.getDeclaredField("heavy");
         holderField.setAccessible(true);
 
-        final var supplier = (Supplier<Heavy>) holderField.get(this.holder);
-        final var supplierClass = supplier.getClass();
+        final val supplier = (Supplier<Heavy>) holderField.get(this.holder);
+        final val supplierClass = supplier.getClass();
 
         // This is a little fishy, but I don't know another way to test this:
         // The lazy holder is at first a lambda, but gets replaced with a new supplier after loading ...
         if (supplierClass.isLocalClass()) {
-            final var instanceField = supplierClass.getDeclaredField("heavyInstance");
+            final val instanceField = supplierClass.getDeclaredField("heavyInstance");
             instanceField.setAccessible(true);
             return (Heavy) instanceField.get(supplier);
         } else {

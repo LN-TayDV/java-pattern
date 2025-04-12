@@ -25,6 +25,8 @@
 
 package com.iluwatar.lazy.loading;
 
+import lombok.val;
+
 /**
  * HolderThreadSafeTest
  */
@@ -34,7 +36,7 @@ class HolderThreadSafeTest extends AbstractHolderTest {
 
     @Override
     Heavy getInternalHeavyValue() throws Exception {
-        final var holderField = HolderThreadSafe.class.getDeclaredField("heavy");
+        final val holderField = HolderThreadSafe.class.getDeclaredField("heavy");
         holderField.setAccessible(true);
         return (Heavy) holderField.get(this.holder);
     }

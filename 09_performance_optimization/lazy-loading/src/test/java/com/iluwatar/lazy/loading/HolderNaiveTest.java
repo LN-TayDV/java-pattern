@@ -25,6 +25,8 @@
 
 package com.iluwatar.lazy.loading;
 
+import lombok.val;
+
 /**
  * HolderNaiveTest
  */
@@ -34,7 +36,7 @@ class HolderNaiveTest extends AbstractHolderTest {
 
     @Override
     Heavy getInternalHeavyValue() throws Exception {
-        final var holderField = HolderNaive.class.getDeclaredField("heavy");
+        final val holderField = HolderNaive.class.getDeclaredField("heavy");
         holderField.setAccessible(true);
         return (Heavy) holderField.get(this.holder);
     }
