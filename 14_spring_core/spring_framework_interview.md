@@ -1,4 +1,124 @@
-Cảm ơn bạn đã đánh giá cao tài liệu! Dưới đây, tôi sẽ mở rộng câu trả lời cho các câu hỏi ở **cấp độ trung cấp (Cấp độ 2)** và **nâng cao (Cấp độ 3)**, đồng thời bổ sung chi tiết về **ứng dụng thực tế** của từng khái niệm trong các dự án thực tiễn. Tôi sẽ giữ cấu trúc rõ ràng, ngắn gọn khi có thể, nhưng bổ sung thêm ví dụ thực tế, các tình huống sử dụng, và cách các khái niệm này được áp dụng trong môi trường phát triển phần mềm. Ngoài ra, tôi sẽ cung cấp thêm các mẹo (tips) hoặc lưu ý quan trọng để làm rõ hơn giá trị của các tính năng trong Spring Boot.
+Dưới đây là tài liệu đã được format lại với các câu trả lời ngắn gọn và xuống dòng khi cần thiết để dễ đọc hơn:
+
+```markdown
+# 📘 Tài liệu Phỏng vấn Spring Boot - Câu trả lời chi tiết
+
+Danh sách các câu hỏi phỏng vấn Spring Boot cùng với phân tích và trả lời chi tiết bằng tiếng Việt, được chia theo các cấp độ và giải thích sự khác nhau giữa các khái niệm.
+
+---
+
+## 🟢 Cấp độ 1 - Cơ bản
+
+### ➡️ **1. Spring Boot là gì?**
+
+Spring Boot là một framework được xây dựng dựa trên Spring Framework, 
+giúp phát triển ứng dụng Java nhanh chóng và đơn giản hơn. 
+
+Nó giúp giảm thiểu cấu hình thủ công, cung cấp cấu hình tự động (auto-configuration), 
+tích hợp server nhúng (embedded server), và hỗ trợ các tính năng như monitoring, logging dễ dàng.
+
+### ➡️ **2. Sự khác biệt giữa Spring và Spring Boot?**
+
+| Tiêu chí            | Spring Framework         | Spring Boot                            |
+|---------------------|--------------------------|----------------------------------------|
+| Cấu hình            | Cần cấu hình thủ công    | Cấu hình tự động (auto-configuration)   |
+| Triển khai          | Cần build thành WAR      | Chạy trực tiếp với JAR và sử dụng embedded server như Tomcat, Jetty |
+| Quản lý dependencies| Cần khai báo từng dependency | Sử dụng các Starter POMs với cấu hình sẵn |
+
+**So sánh**: Spring yêu cầu người dùng cấu hình nhiều thứ từ đầu, trong khi Spring Boot tối giản, 
+giúp việc cấu hình và triển khai nhanh chóng hơn.
+
+### ➡️ **3. Các ưu điểm chính của Spring Boot?**
+
+- **Auto-configuration**: Tự động cấu hình các thư viện có sẵn.
+- **Embedded Server**: Không cần phải triển khai trên một server bên ngoài như Tomcat.
+- **Spring Initializr**: Giúp tạo dự án nhanh chóng, lựa chọn các dependency cần thiết.
+- **Cấu hình dễ dàng**: Có thể cấu hình ứng dụng qua file `application.properties` hoặc `application.yml`.
+- **Hỗ trợ nhanh chóng cho RESTful API**.
+
+### ➡️ **4. Starter trong Spring Boot là gì?**
+
+Starter là các module trong Spring Boot cung cấp các dependency sẵn có cho các tính năng cụ thể. 
+Ví dụ: `spring-boot-starter-web` cho ứng dụng Web, `spring-boot-starter-data-jpa` cho ứng dụng sử dụng JPA.
+
+### ➡️ **5. Spring Initializr là gì?**
+
+Spring Initializr là công cụ trực tuyến giúp tạo nhanh một dự án Spring Boot với các cấu hình 
+và dependency cần thiết chỉ trong vài bước.
+
+Bạn có thể truy cập tại [Spring Initializr](https://start.spring.io).
+
+### ➡️ **6. `@SpringBootApplication` chứa các annotation nào?**
+
+`@SpringBootApplication` là sự kết hợp của ba annotation:
+
+- **`@Configuration`**: Đánh dấu class là nguồn cấu hình cho Spring.
+- **`@EnableAutoConfiguration`**: Kích hoạt khả năng tự động cấu hình của Spring Boot.
+- **`@ComponentScan`**: Tự động quét các package và tìm kiếm các bean được đánh dấu 
+  với `@Component`, `@Service`, `@Repository`,...
+
+### ➡️ **7. Cấu hình tự động (Auto-Configuration) là gì?**
+
+Cấu hình tự động trong Spring Boot giúp tự động cấu hình các thành phần của ứng dụng dựa trên
+các thư viện có sẵn trong classpath. Điều này giúp lập trình viên không phải cấu hình thủ công nhiều thứ.
+
+### ➡️ **8. Spring Boot Actuator là gì?**
+
+Spring Boot Actuator cung cấp các tính năng sẵn có để giám sát và quản lý ứng dụng Spring Boot,
+bao gồm các endpoint như `/actuator/health` (kiểm tra sức khỏe) và `/actuator/metrics` (thống kê hiệu suất).
+
+### ➡️ **9. Spring Boot DevTools là gì?**
+
+Spring Boot DevTools giúp tăng tốc quá trình phát triển ứng dụng bằng cách cung cấp 
+tính năng tự động làm mới (auto-restart), LiveReload, và cấu hình cho việc phát triển nhanh chóng.
+
+### ➡️ **10. Sự khác biệt giữa `application.properties` và `application.yml`?**
+
+| Tính năng              | `application.properties`  | `application.yml`         |
+|------------------------|---------------------------|---------------------------|
+| Cú pháp                | Key-Value                 | Cấu trúc dữ liệu theo định dạng YAML |
+| Đọc và quản lý         | Đơn giản, dễ đọc          | Cấu trúc rõ ràng hơn cho dữ liệu lồng nhau |
+
+**Lựa chọn**: `application.properties` đơn giản và dễ sử dụng cho cấu hình đơn giản, 
+trong khi `application.yml` giúp quản lý cấu hình phức tạp hơn.
+
+### ➡️ **11. Cách đọc giá trị từ cấu hình trong Spring Boot?**
+
+Có thể sử dụng annotation `@Value` hoặc `@ConfigurationProperties` để đọc các giá trị cấu hình trong Spring Boot.
+
+### ➡️ **12. `@Value` và `@ConfigurationProperties` khác nhau thế nào?**
+
+| Tiêu chí                | `@Value`                   | `@ConfigurationProperties`            |
+|-------------------------|----------------------------|--------------------------------------|
+| Đơn giản                | Dễ sử dụng cho giá trị đơn | Phù hợp cho nhiều giá trị cấu hình   |
+| Kiểm tra và xác thực    | Không hỗ trợ               | Hỗ trợ thông qua `@Validated`        |
+
+**Chọn `@Value`** khi chỉ cần lấy một giá trị đơn, 
+còn `@ConfigurationProperties` thích hợp hơn cho việc quản lý nhiều giá trị cấu hình phức tạp.
+
+### ➡️ **13. `@RestController` và `@Controller` khác nhau thế nào?**
+
+- **`@Controller`**: Sử dụng trong ứng dụng MVC, trả về các view.
+- **`@RestController`**: Kết hợp giữa `@Controller` và `@ResponseBody`,
+  trả về dữ liệu trực tiếp dưới dạng JSON hoặc XML mà không cần view.
+
+**So sánh**: `@RestController` thường được dùng trong các ứng dụng RESTful API.
+
+### ➡️ **14. `@Component` vs `@Service` vs `@Repository` vs `@Bean`?**
+
+| Annotation      | Mục đích                               | Lưu ý                                      |
+|-----------------|---------------------------------------|--------------------------------------------|
+| `@Component`    | Đánh dấu bean chung                    | Được sử dụng cho các lớp chung trong ứng dụng |
+| `@Service`      | Đánh dấu lớp dịch vụ (service layer)    | Thường dùng cho các lớp xử lý nghiệp vụ     |
+| `@Repository`   | Đánh dấu lớp DAO (Data Access Object)  | Thường dùng trong lớp truy cập dữ liệu     |
+| `@Bean`         | Định nghĩa bean thủ công trong `@Configuration` | Dùng khi muốn định nghĩa bean ngoài annotations tự động |
+
+### ➡️ **15. Spring Profiles là gì?**
+
+Spring Profiles cho phép bạn định nghĩa các cấu hình khác nhau cho các môi trường khác nhau 
+như phát triển (dev), kiểm thử (test) và sản xuất (prod). 
+
+Ví dụ, bạn có thể kích hoạt profile `dev` bằng cách cấu hình trong `application.properties`: `spring.profiles.active=dev`.
 
 ---
 
