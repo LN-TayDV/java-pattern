@@ -17,7 +17,6 @@ public class Main {
             System.out.print(end-start+" ");
             System.out.print(distance);
         }
-
     }
 
     public static void main(String[] start) {
@@ -77,12 +76,29 @@ public class Main {
 //        potato = !broccoli ^ carrot; //!true ^ false -> false ^ false -> false
 //        System.out.println(carrot + " , " + potato + " , " + broccoli);
 
-        var babies = Arrays.asList("chick" , "cygnet" ,      "duckling");
-        babies.replaceAll(x -> {
-            var newValue = "baby";
-            return newValue;
-        });
-        System.out.println(babies);
+//        var babies = Arrays.asList("chick" , "cygnet" ,      "duckling");
+//        babies.replaceAll(x -> {
+//            var newValue = "baby";
+//            return newValue;
+//        });
+//        System.out.println(babies);
+
+        var k = 9;
+        var s = 5;
+
+        switch (k) {
+            default:
+                if (k == 10) {
+                    s = s * 2;
+                } else {
+                    s = s + 4;
+                    break;
+                }
+            case 7:
+                s = s + 3;
+        }
+
+        System.out.println(s);
     }
 
 }

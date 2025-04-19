@@ -77,6 +77,7 @@
         <module>14_spring_core</module>
         <module>15_jakartar_ee</module>
         <module>16_OCP_study_guide</module>
+        <module>17_oracle-certified-professional-java-se-17-practice</module>
     </modules>
     <repositories>
         <repository>
